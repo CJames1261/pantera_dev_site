@@ -66,65 +66,56 @@ export default function Hero() {
           </div>
 
           {/* Right — Logo Card (Double-Bezel Architecture) */}
-          <ScrollReveal delay={0.2} direction="right">
-            <div className="relative flex items-center justify-center">
-              {/* Outer Shell */}
+          <div className="relative flex items-center justify-center">
+            {/* Outer Shell */}
+            <div
+              className="p-2 rounded-[2rem] border border-border-light w-full max-w-[480px] mx-auto animate-hero-card"
+              style={{
+                backgroundColor: "rgba(19, 19, 22, 0.6)",
+                boxShadow: "var(--shadow-card)",
+              }}
+            >
+              {/* Inner Core */}
               <div
-                className="p-2 rounded-[2rem] border border-border-light w-full max-w-[480px] mx-auto"
+                className="rounded-[calc(2rem-0.5rem)] bg-surface flex items-center justify-center relative overflow-hidden"
                 style={{
-                  backgroundColor: "rgba(19, 19, 22, 0.6)",
-                  boxShadow: "var(--shadow-card)",
+                  boxShadow: "var(--shadow-inner-highlight)",
                 }}
               >
-                {/* Inner Core */}
+                {/* Ambient glow behind logo */}
                 <div
-                  className="rounded-[calc(2rem-0.5rem)] bg-surface flex items-center justify-center relative overflow-hidden"
+                  className="absolute inset-0 opacity-20"
                   style={{
-                    boxShadow: "var(--shadow-inner-highlight)",
+                    background:
+                      "radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.3), transparent 70%)",
                   }}
-                >
-                  {/* Ambient glow behind logo */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.3), transparent 70%)",
-                    }}
-                  />
-                  <motion.img
-                    src={logoSmall}
-                    srcSet={`${logoSmall} 480w, ${logo} 1024w`}
-                    sizes="(max-width: 768px) 362px, 480px"
-                    alt="Pantera Claw"
-                    className="relative z-10 w-full aspect-square object-cover"
-                    fetchPriority="high"
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.32, 0.72, 0, 1],
-                      delay: 0.4,
-                    }}
-                  />
-                </div>
+                />
+                <img
+                  src={logoSmall}
+                  srcSet={`${logoSmall} 480w, ${logo} 1024w`}
+                  sizes="(max-width: 768px) 362px, 480px"
+                  alt="Pantera Claw"
+                  className="relative z-10 w-full aspect-square object-cover"
+                  fetchPriority="high"
+                />
               </div>
-
-              {/* Floating accent detail */}
-              <motion.div
-                className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)",
-                }}
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
             </div>
-          </ScrollReveal>
+
+            {/* Floating accent detail */}
+            <motion.div
+              className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)",
+              }}
+              animate={{ scale: [1, 1.15, 1] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>

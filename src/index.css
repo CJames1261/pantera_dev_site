@@ -71,6 +71,20 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ─── Hero Card Entrance (transform-only, no opacity delay for LCP) ─── */
+@keyframes hero-card-in {
+  from {
+    transform: scale(0.95) translateX(20px);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+
+.animate-hero-card {
+  animation: hero-card-in 1s var(--ease-out-expo) both;
+}
+
 /* ─── Noise Overlay (fixed, pointer-events-none) ─── */
 #root::after {
   content: "";
@@ -91,7 +105,7 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.09;
   background-image:
     linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px);
