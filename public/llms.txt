@@ -1,0 +1,32 @@
+# Pantera Claw
+
+> AI and data consulting firm based in Salt Lake City, Utah. We help businesses make smarter decisions by turning raw data into actionable insights, custom dashboards, and AI powered workflows.
+
+## About
+
+Pantera Claw is a consulting firm that specializes in business analytics, data engineering, and artificial intelligence. We work with businesses of all sizes to build scalable data infrastructure, automate reporting, and integrate AI into everyday operations. Our team combines deep technical expertise with clear communication so every stakeholder understands the value of their data.
+
+## Services
+
+- [Business Analytics Consulting](https://www.agenticaiutah.com/services): Custom analytics solutions that help businesses make data driven decisions.
+- [Custom Dashboard Development](https://www.agenticaiutah.com/services): Interactive dashboards built to visualize your key performance indicators.
+- [AI Workflow Automation](https://www.agenticaiutah.com/services): Agentic AI systems that automate repetitive business processes.
+- [Database Management](https://www.agenticaiutah.com/services): Scalable database architecture and data pipeline engineering.
+- [Data Strategy Consulting](https://www.agenticaiutah.com/services): Strategic roadmaps for becoming a data driven organization.
+- [Business Intelligence Solutions](https://www.agenticaiutah.com/services): End to end BI platforms for reporting and operational insights.
+- [Machine Learning Consulting](https://www.agenticaiutah.com/services): Custom ML models for prediction, segmentation, and classification.
+
+## Technical Specialties
+
+Agentic AI systems, LangGraph orchestration, ETL pipelines, causal inference modeling, LLM integration, advanced analytics, data engineering, and custom dashboard development.
+
+## Blog
+
+- [Blog](https://www.agenticaiutah.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
+
+## Contact
+
+- [Schedule a Free Consultation](https://www.agenticaiutah.com/contact)
+- Email: info@agenticaiutah.com
+- Phone: +1 801 898 0911
+- Location: Salt Lake City, Utah (serving clients nationwide)
