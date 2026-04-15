@@ -115,7 +115,7 @@ export default function ServicesBento() {
                     className="mt-auto inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline hover:gap-2.5 transition-all duration-500 group/link"
                     style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                   >
-                    Learn more
+                    Explore {service.title}
                     <ArrowUpRight size={14} weight="bold" className="text-accent" />
                   </Link>
                 </div>
@@ -160,7 +160,7 @@ export default function ServicesBento() {
                     className="mt-auto inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline hover:gap-2.5 transition-all duration-500 group/link"
                     style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                   >
-                    Learn more
+                    Explore {service.title}
                     <ArrowUpRight size={14} weight="bold" className="text-accent" />
                   </Link>
                 </div>

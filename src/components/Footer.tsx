@@ -48,13 +48,14 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               {[
-                { icon: LinkedinLogo, href: "#" },
-                { icon: GithubLogo, href: "#" },
-                { icon: XLogo, href: "#" },
-              ].map(({ icon: Icon, href }, i) => (
+                { icon: LinkedinLogo, href: "#", label: "LinkedIn" },
+                { icon: GithubLogo, href: "#", label: "GitHub" },
+                { icon: XLogo, href: "#", label: "X (Twitter)" },
+              ].map(({ icon: Icon, href, label }, i) => (
                 <a
                   key={i}
                   href={href}
+                  aria-label={label}
                   className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-tertiary hover:text-accent hover:border-accent/30 transition-all duration-500 no-underline"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
@@ -66,9 +67,9 @@ export default function Footer() {
 
           {/* Services Column */}
           <div>
-            <h4 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
+            <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Services
-            </h4>
+            </h3>
             <ul className="list-none p-0 m-0 flex flex-col gap-3">
               {services.map((service) => (
                 <li key={service}>
@@ -85,9 +86,9 @@ export default function Footer() {
 
           {/* Company Column */}
           <div>
-            <h4 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
+            <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Company
-            </h4>
+            </h3>
             <ul className="list-none p-0 m-0 flex flex-col gap-3">
               {company.map((item) => (
                 <li key={item.path}>
@@ -104,9 +105,9 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h4 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
+            <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Contact
-            </h4>
+            </h3>
             <ul className="list-none p-0 m-0 flex flex-col gap-4">
               <li className="flex items-center gap-3">
                 <EnvelopeSimple size={16} className="text-accent flex-shrink-0" />
@@ -146,14 +147,14 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-border py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-text-tertiary text-xs">
+          <p className="text-text-secondary text-xs">
             2024 Pantera Claw. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-text-tertiary text-xs hover:text-text-secondary transition-colors duration-300 no-underline">
+            <a href="#" className="text-text-secondary text-xs hover:text-text-primary transition-colors duration-300 no-underline">
               Privacy Policy
             </a>
-            <a href="#" className="text-text-tertiary text-xs hover:text-text-secondary transition-colors duration-300 no-underline">
+            <a href="#" className="text-text-secondary text-xs hover:text-text-primary transition-colors duration-300 no-underline">
               Terms of Service
             </a>
           </div>

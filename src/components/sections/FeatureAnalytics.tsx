@@ -86,9 +86,9 @@ export default function FeatureAnalytics() {
                 {/* Model name + status */}
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <h4 className="font-display font-semibold text-text-primary text-base">
+                    <h3 className="font-display font-semibold text-text-primary text-base">
                       Customer Churn Prediction
-                    </h4>
+                    </h3>
                     <span className="font-mono text-xs text-text-tertiary">
                       ML Model v2.1
                     </span>
