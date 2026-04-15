@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Pantera_Claw.webp";
-import logoSmall from "../../assets/Pantera_Claw_hero.webp";
 import ScrollReveal from "../ScrollReveal";
+
+const logoSmall = "/Pantera_Claw_hero.webp";
 
 export default function Hero() {
   return (
@@ -102,17 +102,11 @@ export default function Hero() {
             </div>
 
             {/* Floating accent detail */}
-            <motion.div
-              className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full"
+            <div
+              className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full animate-hero-float"
               style={{
                 background:
                   "radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)",
-              }}
-              animate={{ scale: [1, 1.15, 1] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
               }}
             />
           </div>

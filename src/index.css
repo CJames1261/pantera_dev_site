@@ -85,6 +85,26 @@ body {
   animation: hero-card-in 1s var(--ease-out-expo) both;
 }
 
+/* ─── Hero Floating Accent Pulse ─── */
+@keyframes hero-float {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-hero-float {
+  animation: hero-float 4s ease-in-out infinite;
+}
+
+/* ─── Cursor Blink (code terminal) ─── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1.2s infinite;
+}
+
 /* ─── Noise Overlay (fixed, pointer-events-none) ─── */
 #root::after {
   content: "";

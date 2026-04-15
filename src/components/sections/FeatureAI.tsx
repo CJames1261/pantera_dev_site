@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
 import { Brain, CheckCircle } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
+import { useInView } from "../../hooks/useInView";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const codeLines = [
   { indent: 0, tokens: [{ text: "from", color: "#C084FC" }, { text: " pantera ", color: "#F4F4F5" }, { text: "import", color: "#C084FC" }, { text: " Agent", color: "#60A5FA" }] },
@@ -18,6 +20,8 @@ const codeLines = [
 ];
 
 export default function FeatureAI() {
+  const [codeRef, codeInView] = useInView();
+
   return (
     <section className="relative z-10 py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
@@ -45,21 +49,18 @@ export default function FeatureAI() {
                   </span>
                 </div>
                 {/* Code block */}
-                <div className="p-5 lg:p-6 overflow-x-auto">
+                <div ref={codeRef} className="p-5 lg:p-6 overflow-x-auto">
                   <pre className="m-0">
                     <code className="font-mono text-sm leading-6">
                       {codeLines.map((line, i) => (
-                        <motion.div
+                        <div
                           key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.4,
-                            delay: i * 0.06,
-                            ease: [0.32, 0.72, 0, 1],
+                          style={{
+                            paddingLeft: `${line.indent * 1.5}rem`,
+                            opacity: codeInView ? 1 : 0,
+                            transform: codeInView ? "translateX(0)" : "translateX(-10px)",
+                            transition: `opacity 0.4s ${ease} ${i * 0.06}s, transform 0.4s ${ease} ${i * 0.06}s`,
                           }}
-                          style={{ paddingLeft: `${line.indent * 1.5}rem` }}
                           className="min-h-[1.5rem]"
                         >
                           {line.tokens.map((token, j) => (
@@ -67,13 +68,9 @@ export default function FeatureAI() {
                               {token.text}
                             </span>
                           ))}
-                        </motion.div>
+                        </div>
                       ))}
-                      <motion.span
-                        className="inline-block w-2 h-4 bg-accent ml-0.5 mt-1"
-                        animate={{ opacity: [1, 0, 1] }}
-                        transition={{ duration: 1.2, repeat: Infinity }}
-                      />
+                      <span className="inline-block w-2 h-4 bg-accent ml-0.5 mt-1 animate-cursor-blink" />
                     </code>
                   </pre>
                 </div>

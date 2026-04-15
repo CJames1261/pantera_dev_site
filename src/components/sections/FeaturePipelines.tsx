@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle,
@@ -8,6 +7,9 @@ import {
   ChartBar,
 } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
+import { useInView } from "../../hooks/useInView";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const pipelineStages = [
   {
@@ -41,6 +43,8 @@ const pipelineStages = [
 ];
 
 export default function FeaturePipelines() {
+  const [stagesRef, stagesInView] = useInView();
+
   return (
     <section className="relative z-10 py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
@@ -67,18 +71,15 @@ export default function FeaturePipelines() {
                 </div>
 
                 {/* Pipeline flow */}
-                <div className="flex flex-col gap-2">
+                <div ref={stagesRef} className="flex flex-col gap-2">
                   {pipelineStages.map((stage, i) => (
                     <div key={stage.label}>
-                      <motion.div
+                      <div
                         className="flex items-start gap-4 rounded-xl bg-surface-light border border-border p-4"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.5,
-                          delay: i * 0.12,
-                          ease: [0.32, 0.72, 0, 1],
+                        style={{
+                          opacity: stagesInView ? 1 : 0,
+                          transform: stagesInView ? "translateX(0)" : "translateX(-20px)",
+                          transition: `opacity 0.5s ${ease} ${i * 0.12}s, transform 0.5s ${ease} ${i * 0.12}s`,
                         }}
                       >
                         <div
@@ -111,23 +112,23 @@ export default function FeaturePipelines() {
                             ))}
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
 
                       {/* Connector arrow */}
                       {i < pipelineStages.length - 1 && (
                         <div className="flex justify-center py-1">
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.12 + 0.3 }}
+                          <div
+                            style={{
+                              opacity: stagesInView ? 1 : 0,
+                              transition: `opacity 0.4s ${ease} ${i * 0.12 + 0.3}s`,
+                            }}
                           >
                             <ArrowRight
                               size={14}
                               className="text-text-tertiary rotate-90"
                               weight="bold"
                             />
-                          </motion.div>
+                          </div>
                         </div>
                       )}
                     </div>

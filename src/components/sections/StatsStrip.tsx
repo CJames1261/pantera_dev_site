@@ -1,5 +1,7 @@
-import { motion } from "framer-motion";
 import ScrollReveal from "../ScrollReveal";
+import { useInView } from "../../hooks/useInView";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const stats = [
   { value: "0", label: "Websites developed" },
@@ -9,6 +11,8 @@ const stats = [
 ];
 
 export default function StatsStrip() {
+  const [gridRef, gridInView] = useInView();
+
   return (
     <section className="relative z-10 py-16 lg:py-20">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
@@ -23,18 +27,15 @@ export default function StatsStrip() {
               className="rounded-[calc(2rem-0.375rem)] bg-surface px-6 py-10 lg:px-12 lg:py-14"
               style={{ boxShadow: "var(--shadow-inner-highlight)" }}
             >
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+              <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
                 {stats.map((stat, i) => (
-                  <motion.div
+                  <div
                     key={stat.label}
                     className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.6,
-                      delay: i * 0.1,
-                      ease: [0.32, 0.72, 0, 1],
+                    style={{
+                      opacity: gridInView ? 1 : 0,
+                      transform: gridInView ? "translateY(0)" : "translateY(20px)",
+                      transition: `opacity 0.6s ${ease} ${i * 0.1}s, transform 0.6s ${ease} ${i * 0.1}s`,
                     }}
                   >
                     <div className="font-display font-bold text-3xl lg:text-4xl text-accent tracking-tight mb-2">
@@ -43,7 +44,7 @@ export default function StatsStrip() {
                     <div className="font-mono text-xs text-text-tertiary uppercase tracking-wider">
                       {stat.label}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>

@@ -78,6 +78,9 @@
     }
     </script>
 
+    <!-- Preload LCP hero image so the browser fetches it before JS executes -->
+    <link rel="preload" as="image" href="/Pantera_Claw_hero.webp" type="image/webp" fetchpriority="high" />
+
     <!-- Fonts (non-render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

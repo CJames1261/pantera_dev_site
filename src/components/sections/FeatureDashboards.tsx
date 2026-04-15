@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
 import { ChartBar, TrendUp, ArrowUpRight } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
+import { useInView } from "../../hooks/useInView";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const kpis = [
   { label: "Monthly Revenue", value: "$2.34M", change: "+12.3%", up: true },
@@ -11,6 +13,8 @@ const kpis = [
 const chartBars = [38, 52, 44, 67, 58, 73, 61, 82, 70, 88, 76, 92];
 
 export default function FeatureDashboards() {
+  const [barsRef, barsInView] = useInView();
+
   return (
     <section className="relative z-10 py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
@@ -108,9 +112,9 @@ export default function FeatureDashboards() {
                     </span>
                     <ArrowUpRight size={14} className="text-accent" />
                   </div>
-                  <div className="flex items-end gap-1.5 h-32">
+                  <div ref={barsRef} className="flex items-end gap-1.5 h-32">
                     {chartBars.map((height, i) => (
-                      <motion.div
+                      <div
                         key={i}
                         className="flex-1 rounded-t-sm"
                         style={{
@@ -118,14 +122,8 @@ export default function FeatureDashboards() {
                             i === chartBars.length - 1
                               ? "var(--color-accent)"
                               : "rgba(245, 158, 11, 0.25)",
-                        }}
-                        initial={{ height: 0 }}
-                        whileInView={{ height: `${height}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.6,
-                          delay: i * 0.05,
-                          ease: [0.32, 0.72, 0, 1],
+                          height: barsInView ? `${height}%` : "0",
+                          transition: `height 0.6s ${ease} ${i * 0.05}s`,
                         }}
                       />
                     ))}

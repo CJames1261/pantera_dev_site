@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { List, X, ArrowUpRight } from "@phosphor-icons/react";
 import logo from "../assets/Pantera_Claw.webp";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -48,7 +49,7 @@ export default function Navbar() {
                     ? "text-canvas bg-accent"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
-                style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+                style={{ transitionTimingFunction: ease }}
               >
                 {link.label}
               </Link>
@@ -59,11 +60,11 @@ export default function Navbar() {
           <Link
             to="/contact"
             className="hidden md:flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-5 pr-1.5 py-1.5 rounded-full no-underline transition-all duration-500 group"
-            style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+            style={{ transitionTimingFunction: ease }}
           >
             Get in touch
             <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
-              style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+              style={{ transitionTimingFunction: ease }}
             >
               <ArrowUpRight size={14} weight="bold" className="text-canvas" />
             </span>
@@ -72,98 +73,84 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full bg-surface-light flex items-center justify-center border-none cursor-pointer"
+            className="md:hidden w-10 h-10 rounded-full bg-surface-light flex items-center justify-center border-none cursor-pointer relative"
             aria-label="Toggle menu"
           >
-            <AnimatePresence mode="wait">
-              {mobileOpen ? (
-                <motion.div
-                  key="x"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                >
-                  <X size={20} weight="bold" className="text-text-primary" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                >
-                  <List size={20} weight="bold" className="text-text-primary" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                opacity: mobileOpen ? 0 : 1,
+                transform: mobileOpen ? "rotate(-90deg)" : "rotate(0)",
+                transition: `opacity 0.3s ${ease}, transform 0.3s ${ease}`,
+              }}
+            >
+              <List size={20} weight="bold" className="text-text-primary" />
+            </div>
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{
+                opacity: mobileOpen ? 1 : 0,
+                transform: mobileOpen ? "rotate(0)" : "rotate(90deg)",
+                transition: `opacity 0.3s ${ease}, transform 0.3s ${ease}`,
+              }}
+            >
+              <X size={20} weight="bold" className="text-text-primary" />
+            </div>
           </button>
         </div>
       </nav>
 
       {/* Mobile Overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-30 md:hidden flex flex-col items-center justify-center gap-6"
+      <div
+        className="fixed inset-0 z-30 md:hidden flex flex-col items-center justify-center gap-6"
+        style={{
+          backgroundColor: "rgba(9, 9, 11, 0.95)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          opacity: mobileOpen ? 1 : 0,
+          pointerEvents: mobileOpen ? "auto" : "none",
+          transition: `opacity 0.4s ${ease}`,
+        }}
+      >
+        {navLinks.map((link, i) => (
+          <div
+            key={link.path}
             style={{
-              backgroundColor: "rgba(9, 9, 11, 0.95)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              opacity: mobileOpen ? 1 : 0,
+              transform: mobileOpen ? "translateY(0)" : "translateY(30px)",
+              transition: `opacity 0.5s ${ease} ${mobileOpen ? i * 0.08 : 0}s, transform 0.5s ${ease} ${mobileOpen ? i * 0.08 : 0}s`,
             }}
           >
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.path}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{
-                  duration: 0.5,
-                  delay: i * 0.08,
-                  ease: [0.32, 0.72, 0, 1],
-                }}
-              >
-                <Link
-                  to={link.path}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-3xl font-semibold tracking-tight no-underline transition-colors duration-300 ${
-                    location.pathname === link.path
-                      ? "text-accent"
-                      : "text-text-primary"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{
-                duration: 0.5,
-                delay: navLinks.length * 0.08,
-                ease: [0.32, 0.72, 0, 1],
-              }}
+            <Link
+              to={link.path}
+              onClick={() => setMobileOpen(false)}
+              className={`text-3xl font-semibold tracking-tight no-underline transition-colors duration-300 ${
+                location.pathname === link.path
+                  ? "text-accent"
+                  : "text-text-primary"
+              }`}
             >
-              <Link
-                to="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="mt-4 inline-flex items-center gap-2 bg-accent text-canvas font-semibold text-lg px-8 py-3 rounded-full no-underline"
-              >
-                Get in touch
-                <ArrowUpRight size={18} weight="bold" />
-              </Link>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {link.label}
+            </Link>
+          </div>
+        ))}
+        <div
+          style={{
+            opacity: mobileOpen ? 1 : 0,
+            transform: mobileOpen ? "translateY(0)" : "translateY(30px)",
+            transition: `opacity 0.5s ${ease} ${mobileOpen ? navLinks.length * 0.08 : 0}s, transform 0.5s ${ease} ${mobileOpen ? navLinks.length * 0.08 : 0}s`,
+          }}
+        >
+          <Link
+            to="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="mt-4 inline-flex items-center gap-2 bg-accent text-canvas font-semibold text-lg px-8 py-3 rounded-full no-underline"
+          >
+            Get in touch
+            <ArrowUpRight size={18} weight="bold" />
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

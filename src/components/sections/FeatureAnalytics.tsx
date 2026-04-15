@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
 import { ChartLineUp, CheckCircle } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
+import { useInView } from "../../hooks/useInView";
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 const modelMetrics = [
   { label: "Accuracy", value: "98.2%" },
@@ -17,6 +19,9 @@ const predictiveFeatures = [
 ];
 
 export default function FeatureAnalytics() {
+  const [metricsRef, metricsInView] = useInView();
+  const [barsRef, barsInView] = useInView();
+
   return (
     <section className="relative z-10 py-24 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
@@ -99,18 +104,15 @@ export default function FeatureAnalytics() {
                 </div>
 
                 {/* Metrics grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div ref={metricsRef} className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                   {modelMetrics.map((m, i) => (
-                    <motion.div
+                    <div
                       key={m.label}
                       className="bg-surface-light rounded-xl p-3 text-center"
-                      initial={{ opacity: 0, y: 12 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.5,
-                        delay: i * 0.08,
-                        ease: [0.32, 0.72, 0, 1],
+                      style={{
+                        opacity: metricsInView ? 1 : 0,
+                        transform: metricsInView ? "translateY(0)" : "translateY(12px)",
+                        transition: `opacity 0.5s ${ease} ${i * 0.08}s, transform 0.5s ${ease} ${i * 0.08}s`,
                       }}
                     >
                       <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wide mb-1.5">
@@ -119,12 +121,12 @@ export default function FeatureAnalytics() {
                       <div className="font-mono text-xl font-bold text-accent">
                         {m.value}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
                 {/* Top Predictive Features */}
-                <div className="pt-5 border-t border-border">
+                <div ref={barsRef} className="pt-5 border-t border-border">
                   <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider">
                     Top Predictive Features
                   </span>
@@ -135,19 +137,13 @@ export default function FeatureAnalytics() {
                           {f.name}
                         </span>
                         <div className="flex-1 h-5 bg-surface-light rounded-md overflow-hidden">
-                          <motion.div
+                          <div
                             className="h-full rounded-md"
                             style={{
                               background:
                                 "linear-gradient(90deg, rgba(245, 158, 11, 0.4), rgba(245, 158, 11, 0.7))",
-                            }}
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${f.importance}%` }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: 0.7,
-                              delay: i * 0.1,
-                              ease: [0.32, 0.72, 0, 1],
+                              width: barsInView ? `${f.importance}%` : "0",
+                              transition: `width 0.7s ${ease} ${i * 0.1}s`,
                             }}
                           />
                         </div>

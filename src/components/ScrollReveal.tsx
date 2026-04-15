@@ -1,5 +1,4 @@
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useRef, useEffect, useState, type ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -10,12 +9,14 @@ interface ScrollRevealProps {
   scale?: boolean;
 }
 
-const directionOffsets = {
-  up: { y: 40 },
-  down: { y: -40 },
-  left: { x: 40 },
-  right: { x: -40 },
+const offsets: Record<string, string> = {
+  up: "translateX(0) translateY(40px)",
+  down: "translateX(0) translateY(-40px)",
+  left: "translateX(40px) translateY(0)",
+  right: "translateX(-40px) translateY(0)",
 };
+
+const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
 export default function ScrollReveal({
   children,
@@ -25,38 +26,41 @@ export default function ScrollReveal({
   blur = true,
   scale = false,
 }: ScrollRevealProps) {
-  const offset = directionOffsets[direction];
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-  const variants: Variants = {
-    hidden: {
-      opacity: 0,
-      ...offset,
-      filter: blur ? "blur(8px)" : "blur(0px)",
-      scale: scale ? 0.95 : 1,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      filter: "blur(0px)",
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        delay,
-        ease: [0.32, 0.72, 0, 1],
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
       },
-    },
-  };
+      { rootMargin: "-60px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const hiddenTransform = `${offsets[direction]}${scale ? " scale(0.95)" : ""}`;
+  const visibleTransform = `translateX(0) translateY(0)${scale ? " scale(1)" : ""}`;
+  const d = `${delay}s`;
 
   return (
-    <motion.div
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? visibleTransform : hiddenTransform,
+        filter: visible ? "blur(0px)" : blur ? "blur(8px)" : "blur(0px)",
+        transition: `opacity 0.8s ${ease} ${d}, transform 0.8s ${ease} ${d}, filter 0.8s ${ease} ${d}`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
