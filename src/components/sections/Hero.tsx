@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Pantera_Claw.webp";
+import logoSmall from "../../assets/Pantera_Claw_hero.webp";
 import ScrollReveal from "../ScrollReveal";
 
 export default function Hero() {
@@ -91,9 +92,12 @@ export default function Hero() {
                     }}
                   />
                   <motion.img
-                    src={logo}
+                    src={logoSmall}
+                    srcSet={`${logoSmall} 480w, ${logo} 1024w`}
+                    sizes="(max-width: 768px) 362px, 480px"
                     alt="Pantera Claw"
                     className="relative z-10 w-full aspect-square object-cover"
+                    fetchPriority="high"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
