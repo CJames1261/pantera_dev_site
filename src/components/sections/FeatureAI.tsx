@@ -23,11 +23,11 @@ export default function FeatureAI() {
   const [codeRef, codeInView] = useInView();
 
   return (
-    <section className="relative z-10 py-24 lg:py-32">
+    <section className="relative z-10 py-16 lg:py-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Code Terminal Visual — right on desktop */}
-          <ScrollReveal className="lg:order-2">
+          {/* Code Terminal Visual — right on desktop, below text on mobile. */}
+          <ScrollReveal className="order-2">
             <div
               className="p-2 rounded-[2rem] border border-border"
               style={{

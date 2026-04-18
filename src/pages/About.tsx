@@ -8,6 +8,7 @@ import {
 } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "../components/ScrollReveal";
+import Seo from "../components/Seo";
 import logo from "../assets/Pantera_Claw.webp";
 
 const values = [
@@ -49,6 +50,11 @@ const howWeHelp = [
 export default function About() {
   return (
     <main className="relative z-10 pt-32 lg:pt-40 pb-24">
+      <Seo
+        title="About | Pantera Claw — Salt Lake City Data & AI Consulting"
+        description="Pantera Claw is a small, senior team of data and AI engineers based in Salt Lake City. We take fewer clients, go deeper, and ship production systems your team can own."
+        path="/about"
+      />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">

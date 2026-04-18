@@ -60,10 +60,10 @@ const servicesRow2 = [
 
 export default function ServicesBento() {
   return (
-    <section className="relative z-10 py-24 lg:py-32">
+    <section className="relative z-10 py-16 lg:py-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-12">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
               <Lightbulb size={14} className="text-accent" weight="fill" />
               <span className="font-mono text-xs text-accent tracking-wide uppercase">
@@ -95,11 +95,11 @@ export default function ServicesBento() {
                 }}
               >
                 <div
-                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-8 h-full flex flex-col"
+                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-5 sm:p-6 md:p-8 h-full flex flex-col"
                   style={{ boxShadow: "var(--shadow-inner-highlight)" }}
                 >
                   <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 sm:mb-5"
                     style={{ backgroundColor: `${service.color}15` }}
                   >
                     <service.icon size={24} weight="duotone" style={{ color: service.color }} />
@@ -140,11 +140,11 @@ export default function ServicesBento() {
                 }}
               >
                 <div
-                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-8 h-full flex flex-col"
+                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-5 sm:p-6 md:p-8 h-full flex flex-col"
                   style={{ boxShadow: "var(--shadow-inner-highlight)" }}
                 >
                   <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 sm:mb-5"
                     style={{ backgroundColor: `${service.color}15` }}
                   >
                     <service.icon size={24} weight="duotone" style={{ color: service.color }} />

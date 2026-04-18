@@ -4,9 +4,6 @@ import {
   Phone,
   MapPin,
   ArrowUpRight,
-  LinkedinLogo,
-  GithubLogo,
-  XLogo,
 } from "@phosphor-icons/react";
 import logo from "../assets/Pantera_Claw.webp";
 
@@ -31,7 +28,7 @@ export default function Footer() {
     <footer className="relative z-10 border-t border-border mt-auto">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 lg:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 py-12 sm:py-16 lg:py-20">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 no-underline mb-5">
@@ -42,31 +39,15 @@ export default function Footer() {
                 Pantera Claw
               </span>
             </Link>
-            <p className="text-text-secondary text-sm leading-relaxed max-w-[280px] mb-6">
+            <p className="text-text-secondary text-sm leading-relaxed max-w-[280px]">
               Production-grade data infrastructure, analytics, and AI systems
               for growth-stage companies.
             </p>
-            <div className="flex items-center gap-3">
-              {[
-                { icon: LinkedinLogo, href: "#", label: "LinkedIn" },
-                { icon: GithubLogo, href: "#", label: "GitHub" },
-                { icon: XLogo, href: "#", label: "X (Twitter)" },
-              ].map(({ icon: Icon, href, label }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-text-tertiary hover:text-accent hover:border-accent/30 transition-all duration-500 no-underline"
-                  style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
-                >
-                  <Icon size={18} weight="regular" />
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Services Column */}
-          <div>
+          {/* Services Column (hidden on mobile; duplicates main nav + service
+              cards on home. Shows at sm: and up.) */}
+          <div className="hidden sm:block">
             <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Services
             </h3>
@@ -84,8 +65,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company Column */}
-          <div>
+          {/* Company Column (hidden on mobile; main nav already exposes all
+              these links. Shows at sm: and up.) */}
+          <div className="hidden sm:block">
             <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Company
             </h3>
@@ -112,19 +94,19 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <EnvelopeSimple size={16} className="text-accent flex-shrink-0" />
                 <a
-                  href="mailto:hello@panteraclaw.com"
+                  href="mailto:info@panteraclaw.com"
                   className="text-text-secondary text-sm hover:text-text-primary transition-colors duration-300 no-underline"
                 >
-                  hello@panteraclaw.com
+                  info@panteraclaw.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-accent flex-shrink-0" />
                 <a
-                  href="tel:+18015559247"
+                  href="tel:+18018980911"
                   className="text-text-secondary text-sm hover:text-text-primary transition-colors duration-300 no-underline"
                 >
-                  +1 (801) 555-9247
+                  +1 (801) 898-0911
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -148,16 +130,11 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-secondary text-xs">
-            2024 Pantera Claw. All rights reserved.
+            © {new Date().getFullYear()} Pantera Claw. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-text-secondary text-xs hover:text-text-primary transition-colors duration-300 no-underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-text-secondary text-xs hover:text-text-primary transition-colors duration-300 no-underline">
-              Terms of Service
-            </a>
-          </div>
+          <p className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider">
+            Salt Lake City, UT · Serving clients nationwide
+          </p>
         </div>
       </div>
     </footer>

@@ -8,7 +8,7 @@ const logoSmall = "/Pantera_Claw_hero.webp";
 export default function Hero() {
   return (
     <section className="relative z-10 min-h-[100dvh] flex items-center">
-      <div className="max-w-[1400px] mx-auto w-full px-4 md:px-8 lg:px-16 py-32 lg:py-40">
+      <div className="max-w-[1400px] mx-auto w-full px-4 md:px-8 lg:px-16 py-24 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left — Copy */}
           <div>
@@ -65,8 +65,9 @@ export default function Hero() {
             </ScrollReveal>
           </div>
 
-          {/* Right — Logo Card (Double-Bezel Architecture) */}
-          <div className="relative flex items-center justify-center">
+          {/* Right — Logo Card (Double-Bezel Architecture). Hidden on mobile to
+              put CTAs above the fold; returns at md: breakpoint and up. */}
+          <div className="relative hidden md:flex items-center justify-center">
             {/* Outer Shell */}
             <div
               className="p-2 rounded-[2rem] border border-border-light w-full max-w-[480px] mx-auto animate-hero-card"
@@ -100,15 +101,6 @@ export default function Hero() {
                 />
               </div>
             </div>
-
-            {/* Floating accent detail */}
-            <div
-              className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full animate-hero-float"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)",
-              }}
-            />
           </div>
         </div>
       </div>

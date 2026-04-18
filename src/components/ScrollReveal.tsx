@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState, type ReactNode } from "react";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -27,9 +28,14 @@ export default function ScrollReveal({
   scale = false,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const reduced = useReducedMotion();
+  const [visible, setVisible] = useState(reduced);
 
   useEffect(() => {
+    if (reduced) {
+      setVisible(true);
+      return;
+    }
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -43,7 +49,17 @@ export default function ScrollReveal({
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [reduced]);
+
+  // When reduce-motion is on, render content in its final state with no
+  // transforms, no blur, and no transition.
+  if (reduced) {
+    return (
+      <div ref={ref} className={className} style={{ opacity: 1 }}>
+        {children}
+      </div>
+    );
+  }
 
   const hiddenTransform = `${offsets[direction]}${scale ? " scale(0.95)" : ""}`;
   const visibleTransform = `translateX(0) translateY(0)${scale ? " scale(1)" : ""}`;

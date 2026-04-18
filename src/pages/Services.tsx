@@ -22,6 +22,7 @@ import {
   CloudArrowUp,
 } from "@phosphor-icons/react";
 import ScrollReveal from "../components/ScrollReveal";
+import Seo from "../components/Seo";
 
 /* ─── Service Data ─── */
 
@@ -639,6 +640,11 @@ export default function Services() {
 
   return (
     <>
+      <Seo
+        title="Services | Pantera Claw — Data Consulting, AI Automation, Dashboards"
+        description="Our services: business web development, database management, custom dashboards, AI workflow automation, business analytics, data strategy, BI solutions, and machine learning consulting."
+        path="/services"
+      />
       {/* Hero */}
       <section className="relative z-10 pt-36 pb-12 md:pt-44 md:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">

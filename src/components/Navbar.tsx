@@ -73,7 +73,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full bg-surface-light flex items-center justify-center border-none cursor-pointer relative"
+            className="md:hidden w-11 h-11 rounded-full bg-surface-light flex items-center justify-center border-none cursor-pointer relative"
             aria-label="Toggle menu"
           >
             <div

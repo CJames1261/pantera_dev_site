@@ -4,7 +4,7 @@ import ScrollReveal from "../ScrollReveal";
 
 export default function CTASection() {
   return (
-    <section className="relative z-10 py-24 lg:py-32">
+    <section className="relative z-10 py-20 lg:py-28">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
           <div
