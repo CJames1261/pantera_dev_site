@@ -700,13 +700,14 @@ export default function Services() {
                 className="font-display font-bold tracking-tighter text-text-primary mb-5"
                 style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}
               >
-                From autonomous agents
+                From AI agents
                 <br />
-                to causal models
+                to predictive dashboards
               </h1>
               <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[540px]">
-                Five integrated disciplines. One team that understands how they
-                connect. Every engagement draws on the full toolkit.
+                Five disciplines that plug into each other: data pipelines,
+                dashboards, AI agents, forecasting, and strategy. Every
+                engagement draws on the full toolkit.
               </p>
             </div>
           </ScrollReveal>
