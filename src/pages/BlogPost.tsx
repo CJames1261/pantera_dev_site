@@ -159,9 +159,12 @@ export default function BlogPostPage() {
         {/* Article body — "being prepared" state when ready === false */}
         <ScrollReveal delay={0.1}>
           {post.ready ? (
-            <div className="prose prose-invert max-w-none">
-              {/* TODO: render full article body from markdown or rich text once authored */}
-            </div>
+            post.bodyHtml ? (
+              <div
+                className="blog-body max-w-none text-text-secondary text-base lg:text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
+              />
+            ) : null
           ) : (
             <div
               className="p-1.5 rounded-[2rem] border border-border"

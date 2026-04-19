@@ -33,7 +33,7 @@ export default function Navbar() {
             <div className="w-9 h-9 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
               <img src={logo} alt="Pantera Claw" className="w-full h-full object-contain scale-125" />
             </div>
-            <span className="font-display font-semibold text-text-primary text-sm tracking-tight hidden sm:block">
+            <span className="font-display font-semibold text-text-primary text-sm tracking-tight">
               Pantera Claw
             </span>
           </Link>

@@ -71,7 +71,35 @@ export default function Blog() {
           </div>
         </ScrollReveal>
 
+        {/* Empty state */}
+        {!featuredPost && (
+          <ScrollReveal>
+            <div
+              className="p-1.5 rounded-[2rem] border border-border"
+              style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+            >
+              <div
+                className="rounded-[calc(2rem-0.375rem)] bg-surface p-10 lg:p-16 text-center"
+                style={{ boxShadow: "var(--shadow-inner-highlight)" }}
+              >
+                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-4 justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  New posts publish Mondays
+                </div>
+                <h2 className="font-display font-bold text-text-primary text-2xl tracking-tight mb-3">
+                  The next post lands soon.
+                </h2>
+                <p className="text-text-secondary text-base leading-relaxed max-w-[52ch] mx-auto">
+                  We publish fresh writing every Monday on practical AI,
+                  analytics, and how real businesses are using data to win.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        )}
+
         {/* Featured Post */}
+        {featuredPost && (
         <ScrollReveal>
           <Link
             to={`/blog/${featuredPost.slug}`}
@@ -132,6 +160,7 @@ export default function Blog() {
             </div>
           </Link>
         </ScrollReveal>
+        )}
 
         {/* Post Grid — 2 column asymmetric */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

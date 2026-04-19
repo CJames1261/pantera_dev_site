@@ -2,58 +2,62 @@
   "schedule": "weekly",
   "publishDay": "Monday",
   "publishTime": "08:00",
-  "outputDir": "src/pages/blog",
-  "routesFile": "src/App.tsx",
-  "blogIndexPage": "src/pages/Blog.tsx",
+  "timezone": "America/Denver",
+  "model": "claude-sonnet-4-6",
+  "contentDir": "src/content/posts",
   "author": "Pantera Claw",
-  "targetAudiences": ["business owners", "data engineers", "technical leads"],
+  "targetAudiences": ["small and mid sized business owners", "operations leaders", "marketing and sales leaders who are not technical"],
+  "audienceVoice": "Write for a busy business owner who is curious about AI and data but does not write code. Assume they care about revenue, customer experience, time saved, and competitive advantage. Avoid jargon; when a technical term is necessary, explain it in one short sentence.",
   "seoKeywords": {
-    "target": ["data consulting services", "data strategy consulting", "business intelligence solutions", "business analytics consulting", "analytics & ai consulting", "data consulting firm", "machine learning consulting", "raw data", "data into actionable insights", "deep technical expertise"],
-    "recommended": ["business goal", "informed decision", "supply chain", "competitive advantage", "data visualization", "data management", "data governance", "data analysis", "data sources", "business objectives", "data quality", "data driven decisions", "consulting firms", "business processes", "customer satisfaction", "strategic decisions", "data processing", "analyzed data", "data preparation", "predictive analytics"],
+    "target": ["AI for small business", "business AI plan", "AI automation for business", "AI customer service", "AI marketing", "AI competitive analysis", "AI Overviews SEO", "citation ready content", "local SEO AI", "search everywhere optimization", "AI agents for business", "multimodal AI", "AI powered customer experience", "data consulting services", "business intelligence solutions"],
+    "recommended": ["business goal", "competitive advantage", "customer experience", "customer satisfaction", "time savings", "ROI", "workflow automation", "content generation", "market trends", "pricing strategy", "Google Business Profile", "AI search", "ChatGPT", "Perplexity", "agentic AI", "informed decision", "strategic decisions", "revenue growth"],
     "instructions": "Naturally incorporate 3 to 5 of these keywords into every blog post. Do not force them; only use them where they fit the topic organically."
   },
   "topicPool": [
-    "How to know if your business is ready for a data analyst",
-    "What is a KPI dashboard and does your business need one?",
-    "5 signs your business is leaving money on the table with its data",
-    "The difference between a report and a dashboard — and why it matters",
-    "What is ETL and why should non-technical business owners care?",
-    "How AI can automate your most repetitive business tasks",
-    "Customer segmentation: how to stop sending the same email to everyone",
-    "What is business intelligence and how much does it cost?",
-    "How to choose the right database for your growing business",
-    "Agentic AI explained for business owners — no jargon",
-    "Why your Excel spreadsheets are slowing your business down",
-    "How to measure the ROI of a data analytics project",
-    "What is causal inference and why it beats correlation for business decisions",
-    "LangGraph and agentic workflows — a technical deep dive",
-    "How Databricks, Snowflake, and PostgreSQL compare for enterprise data"
+    "A six step AI plan for small businesses that have never used AI before",
+    "Which parts of your business should you automate with AI first, and which to leave alone",
+    "How AI customer service is changing in 2026, and what your business should do about it",
+    "Using AI to write your marketing copy without sounding like a robot",
+    "How to run a competitive analysis in an afternoon using AI",
+    "What AI Overviews in Google means for small businesses, and how to show up in them",
+    "Citation ready content: how to write so AI tools quote your business",
+    "Local SEO in the AI era: getting found when customers ask ChatGPT for recommendations",
+    "Search everywhere optimization: why keyword ranking is no longer enough",
+    "Multimodal AI explained for business owners: why it matters that AI can see, hear, and read",
+    "AI agents vs chatbots: the practical difference for your business",
+    "Building an AI powered customer experience that does not feel automated",
+    "How to measure whether an AI tool is actually saving your team time",
+    "The five AI mistakes small business owners make in year one, and how to avoid them",
+    "How AI is changing pricing decisions for small and mid sized businesses",
+    "What a realistic AI budget looks like for a ten person company",
+    "How to brief an AI tool so it writes in your brand voice",
+    "The quiet revolution in email and newsletters thanks to AI",
+    "When an AI agent is the right tool, and when a spreadsheet still wins",
+    "Three questions to ask any vendor selling you an AI solution"
   ],
   "style": {
-    "tone": "professional but approachable",
-    "minWords": 600,
-    "maxWords": 1200,
+    "tone": "professional but approachable, plain spoken, confident without hype",
+    "minWords": 700,
+    "maxWords": 1100,
     "includeCallToAction": true,
     "ctaLink": "/contact",
     "ctaText": "Schedule a Free Consultation",
     "formatting": {
       "noDashes": true,
-      "noDashesNote": "Never use hyphens or dashes (-) in post content. Use commas, semicolons, or rewrite the sentence instead."
+      "noDashesNote": "Never use hyphens or dashes (-) in post content. Use commas, semicolons, or rewrite the sentence instead.",
+      "headings": "Use 3 to 5 h2 headings to break the post into scannable sections. Do not use h1 in the body; the page renders the title separately.",
+      "lists": "Use short bulleted lists where they genuinely help a business reader scan. Do not list for the sake of it."
     },
     "images": {
       "enabled": true,
       "source": "unsplash",
       "heroImage": {
         "required": true,
-        "instructions": "Every post must have a heroImage in PostMeta. Search Unsplash for a relevant photo, use the full CDN URL format: https://images.unsplash.com/photo-{ID}?w=1200&q=80, include the photographer name and profile URL for credit."
+        "instructions": "Every post must have a heroImage. Use a Picsum seed URL in the format https://picsum.photos/seed/<slug>/1200/675 so posts always render; a human can replace with a curated Unsplash image later."
       },
       "inlineImages": {
-        "enabled": true,
-        "perPost": "1-3 inline images where a visual genuinely helps explain the concept",
-        "format": "Use <figure><img src='...' alt='...' /><figcaption>Caption text</figcaption></figure> in JSX",
-        "instructions": "Add inline images at natural breakpoints in the article where a chart, screenshot, or photo adds value. Always include descriptive alt text."
-      },
-      "unsplashSearchTips": "Search unsplash.com for the topic, pick a high-quality photo, copy the photo ID from the URL (e.g. unsplash.com/photos/abc123 -> photo ID is abc123), build the CDN URL as shown above."
+        "enabled": false
+      }
     }
   }
 }

@@ -3,7 +3,8 @@
     "allow": [
       "mcp__Claude_Preview__preview_start",
       "Bash(npx tsc *)",
-      "Bash(echo \"EXIT=$?\")"
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(schtasks /query /fo LIST)"
     ]
   }
 }
