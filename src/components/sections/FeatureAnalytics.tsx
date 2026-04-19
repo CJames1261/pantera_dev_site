@@ -55,7 +55,7 @@ export default function FeatureAnalytics() {
             <ScrollReveal delay={0.25}>
               <div className="flex flex-col gap-3">
                 {[
-                  "98%+ accuracy ML models trained on your actual business data",
+                  "Custom AI and machine learning models fine-tuned to your industry and data",
                   "Causal inference that isolates what truly moves the needle",
                   "Forecasts and recommendations your team can act on immediately",
                 ].map((item) => (
