@@ -30,10 +30,10 @@ export default function Navbar() {
         >
           {/* Logo + Brand */}
           <Link to="/" className="flex items-center gap-2.5 pl-2 pr-1 no-underline">
-            <div className="w-9 h-9 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
               <img src={logo} alt="Pantera Claw" className="w-full h-full object-contain scale-125" />
             </div>
-            <span className="font-display font-semibold text-text-primary text-sm tracking-tight whitespace-nowrap">
+            <span className="font-display font-semibold text-text-primary text-sm md:text-base tracking-tight whitespace-nowrap">
               Pantera Claw
             </span>
           </Link>
@@ -44,7 +44,7 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-full text-sm font-medium no-underline transition-all duration-500 ${
+                className={`px-5 py-2.5 rounded-full text-base font-medium no-underline transition-all duration-500 ${
                   location.pathname === link.path
                     ? "text-canvas bg-accent"
                     : "text-text-secondary hover:text-text-primary"
@@ -59,7 +59,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Link
             to="/contact"
-            className="hidden md:flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-5 pr-1.5 py-1.5 rounded-full no-underline transition-all duration-500 group"
+            className="hidden md:flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-5 pr-1.5 py-1.5 rounded-full no-underline transition-all duration-500 group"
             style={{ transitionTimingFunction: ease }}
           >
             Get in touch
