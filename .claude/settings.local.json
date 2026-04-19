@@ -4,7 +4,11 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(npx tsc *)",
       "Bash(echo \"EXIT=$?\")",
-      "Bash(schtasks /query /fo LIST)"
+      "Bash(schtasks /query /fo LIST)",
+      "Bash(npm install *)",
+      "Bash(node -e \"const sharp = require\\('sharp'\\); \\(async \\(\\) => { const meta = await sharp\\('src/assets/Pantera_Claw.webp'\\).metadata\\(\\); console.log\\('Pantera_Claw.webp:', meta.width, 'x', meta.height\\); const meta2 = await sharp\\('public/Pantera_Claw_hero.webp'\\).metadata\\(\\); console.log\\('Pantera_Claw_hero.webp:', meta2.width, 'x', meta2.height\\); }\\)\\(\\);\")",
+      "Bash(node -e ' *)",
+      "Bash(npm run *)"
     ]
   }
 }

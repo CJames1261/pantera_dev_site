@@ -12,7 +12,8 @@ import {
 import { Link } from "react-router-dom";
 import ScrollReveal from "../components/ScrollReveal";
 import Seo from "../components/Seo";
-import logo from "../assets/Pantera_Claw.webp";
+import logoLarge from "../assets/Pantera_Claw.webp";
+const logo = "/Pantera_Claw_hero.webp";
 
 const services = [
   {
@@ -110,8 +111,12 @@ export default function About() {
                   >
                     <img
                       src={logo}
+                      srcSet={`${logo} 480w, ${logoLarge} 1024w`}
+                      sizes="(max-width: 768px) 90vw, 480px"
                       alt="Pantera Claw logo"
                       className="relative z-10 w-full aspect-square object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>

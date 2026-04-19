@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { List, X, ArrowUpRight } from "@phosphor-icons/react";
-import logo from "../assets/Pantera_Claw.webp";
+import logo from "../assets/Pantera_Claw_small.webp";
 
 const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 

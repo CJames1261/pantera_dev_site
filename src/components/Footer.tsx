@@ -5,7 +5,7 @@ import {
   MapPin,
   ArrowUpRight,
 } from "@phosphor-icons/react";
-import logo from "../assets/Pantera_Claw.webp";
+import logo from "../assets/Pantera_Claw_small.webp";
 
 const services = [
   "Data Pipelines",
