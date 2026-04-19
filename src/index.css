@@ -13,8 +13,8 @@
   --color-border: rgba(255, 255, 255, 0.07);
   --color-border-light: rgba(255, 255, 255, 0.12);
   --color-text-primary: #F4F4F5;
-  --color-text-secondary: #A1A1AA;
-  --color-text-tertiary: #8A8A93; /* Bumped from #71717A for WCAG AA (4.5:1) on #09090B */
+  --color-text-secondary: #D4D4D8;
+  --color-text-tertiary: #B5B5BD;
 
   --font-display: "Outfit", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
