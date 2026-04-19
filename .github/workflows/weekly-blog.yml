@@ -37,4 +37,9 @@ jobs:
             exit 0
           fi
           git commit -m "blog: weekly auto post"
-          git push
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Push attempt $i failed, retrying..."
+            sleep 3
+          done
+          echo "Push failed after 5 attempts" && exit 1
