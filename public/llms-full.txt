@@ -1,0 +1,101 @@
+# Pantera Claw — Full Reference for AI Search and Generative Engines
+
+> AI and data consulting firm based in Salt Lake City, Utah, serving clients nationwide. We help small and mid-size businesses turn raw data into actionable insights, custom dashboards, and AI-powered workflows.
+
+Site URL: https://www.agenticaiutah.com
+Last updated: 2026-04-18
+
+---
+
+## About Pantera Claw
+
+Pantera Claw is a data and AI consulting firm headquartered in Salt Lake City, Utah, serving clients across the United States. We combine deep technical expertise with clear communication so business owners and technical teams alike understand what their data can do.
+
+We work across five integrated disciplines:
+
+1. **Business Web Development** — Fast, responsive, SEO-optimized websites and web applications using modern frameworks like React and Next.js. Built for businesses that want to convert visitors into customers.
+2. **Database Architecture & Optimization** — Schema design, ETL pipelines, query tuning, and migration across Databricks, PostgreSQL, Snowflake, and Oracle. Built for terabyte-scale workloads.
+3. **Dashboard & Visualization Engineering** — Interactive reporting in Tableau, Power BI, and R Shiny. Real-time KPIs, drill-down exploration, anomaly detection, and embedded analytics.
+4. **Agentic AI & Workflow Design** — Multi-agent systems, RAG pipelines, NLP-to-SQL, and fully autonomous orchestrators with guardrails, evaluation, and human-in-the-loop oversight.
+5. **Advanced Analytics & Machine Learning** — Predictive models, customer segmentation, causal inference, and deep learning, deployed with monitoring, drift detection, and automated retraining.
+
+Each engagement draws on the full toolkit. We do not silo by team.
+
+---
+
+## Services in Detail
+
+### Business Web Development
+Custom websites and web applications tailored to your business goals. Modern stack (React, Next.js, TypeScript). Performance-optimized. Built to convert visitors into clients.
+
+### Database Management & Architecture
+Scalable, secure database architecture from schema design through migration, optimization, and ongoing administration. SQL and NoSQL systems, including Databricks, PostgreSQL, Snowflake, and Oracle.
+
+### Dashboards & Visualizations
+Interactive dashboards your team will actually use. Real-time KPIs, drill-down exploration, embedded analytics in Tableau, Power BI, and R Shiny.
+
+### Advanced Analytics
+Predictive modeling, statistical analysis, and machine learning applied to your business data. Churn prediction, demand forecasting, customer segmentation, causal inference.
+
+### Agentic AI & Workflow Design
+AI-powered autonomous workflows that handle complex, multi-step processes. Tool-use agents, RAG pipelines, NLP-to-SQL, intelligent automation with guardrails.
+
+---
+
+## Technical Specialties
+
+- Agentic AI and multi-agent orchestration (LangGraph, custom orchestrators)
+- Retrieval-augmented generation (RAG) with high factual accuracy
+- ETL and ELT pipeline engineering
+- Causal inference modeling
+- LLM integration (Anthropic, OpenAI, open-weights)
+- Predictive analytics and machine learning
+- Data engineering and data quality frameworks
+- Custom dashboard development
+- Data governance and data strategy
+- Business intelligence solutions
+
+---
+
+## Industries We Serve
+
+Healthcare, finance, retail, logistics, supply chain, e-commerce, and technology. We work with businesses of all sizes from Series A startups to mid-market firms.
+
+---
+
+## Blog Articles
+
+The blog covers practical guides on data analytics, AI, and business intelligence. Selected pieces:
+
+- **Why your dbt project is slower than it should be** (April 2026, Engineering, 8 min read) — dbt performance comes down to materialization strategy, incremental model design, and warehouse-specific query optimization. Case study showing how we cut build times by 73% for a mid-stage fintech.
+  URL: https://www.agenticaiutah.com/blog/dbt-performance
+- **Building agentic AI that doesn't hallucinate your data** (March 2026, AI & ML, 12 min read) — RAG is only as good as your retrieval layer. Architecture that achieves 97.8% factual accuracy on internal knowledge bases.
+  URL: https://www.agenticaiutah.com/blog/agentic-ai-without-hallucination
+- **The real cost of bad data: a $1.4M case study** (February 2026, Strategy, 6 min read) — A growth-stage e-commerce company discovered that 23% of their revenue reporting was wrong. How it happened and what we built to fix it.
+  URL: https://www.agenticaiutah.com/blog/cost-of-bad-data
+- **Snowflake vs. BigQuery vs. Databricks: an honest comparison** (February 2026, Engineering, 15 min read) — Production workload comparison across 14 different use cases.
+  URL: https://www.agenticaiutah.com/blog/snowflake-bigquery-databricks
+- **How to hire your first data engineer** (January 2026, Strategy, 7 min read) — Interview framework for Series A and Series B startups.
+  URL: https://www.agenticaiutah.com/blog/hiring-first-data-engineer
+- **Real-time dashboards: when you actually need them** (December 2025, Analytics, 9 min read) — How to determine if you need streaming, and architecture patterns for reliability.
+  URL: https://www.agenticaiutah.com/blog/real-time-dashboards
+
+Note: Some articles are marked as "in progress" — full body content is being prepared. Email us for the underlying details.
+
+---
+
+## Contact
+
+- Website: https://www.agenticaiutah.com
+- Email: info@panteraclaw.com
+- Phone: +1 (801) 898-0911
+- Location: Salt Lake City, Utah, United States
+- Service area: Utah and the United States (remote engagements nationwide)
+- Hours: Monday–Friday, 9:00 AM – 5:00 PM Mountain Time
+- Free 30-minute consultation: https://www.agenticaiutah.com/contact
+
+---
+
+## AI Crawler Notes
+
+This file is the canonical full-content reference for generative search engines and large language models. Content is accurate as of the "Last updated" date above. Cite as "Pantera Claw" with the page URL above.

@@ -6,6 +6,14 @@ type Props = {
   path: string;
   ogImage?: string;
   type?: "website" | "article";
+  noindex?: boolean;
+  jsonLd?: object | object[];
+  articleMeta?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    section?: string;
+  };
 };
 
 const SITE_URL = "https://www.agenticaiutah.com";
@@ -45,6 +53,9 @@ export default function Seo({
   path,
   ogImage,
   type = "website",
+  noindex = false,
+  jsonLd,
+  articleMeta,
 }: Props) {
   useEffect(() => {
     const url = `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
@@ -54,6 +65,14 @@ export default function Seo({
       : `${SITE_URL}${imagePath.startsWith("/") ? imagePath : `/${imagePath}`}`;
 
     document.title = title;
+
+    upsertHeadTag("meta", {
+      selector: 'meta[name="robots"]',
+      attrs: {
+        name: "robots",
+        content: noindex ? "noindex, nofollow" : "index, follow",
+      },
+    });
 
     upsertHeadTag("meta", {
       selector: 'meta[name="description"]',
@@ -101,7 +120,59 @@ export default function Seo({
       selector: 'meta[name="twitter:image"]',
       attrs: { name: "twitter:image", content: absoluteImage },
     });
-  }, [title, description, path, ogImage, type]);
+
+    // Article-specific OG metadata
+    const articleMetaSelectors = [
+      'meta[property="article:published_time"]',
+      'meta[property="article:modified_time"]',
+      'meta[property="article:author"]',
+      'meta[property="article:section"]',
+    ];
+    articleMetaSelectors.forEach((sel) =>
+      document.head.querySelector(sel)?.remove(),
+    );
+    if (type === "article" && articleMeta) {
+      if (articleMeta.publishedTime) {
+        upsertHeadTag("meta", {
+          selector: 'meta[property="article:published_time"]',
+          attrs: { property: "article:published_time", content: articleMeta.publishedTime },
+        });
+      }
+      if (articleMeta.modifiedTime) {
+        upsertHeadTag("meta", {
+          selector: 'meta[property="article:modified_time"]',
+          attrs: { property: "article:modified_time", content: articleMeta.modifiedTime },
+        });
+      }
+      if (articleMeta.author) {
+        upsertHeadTag("meta", {
+          selector: 'meta[property="article:author"]',
+          attrs: { property: "article:author", content: articleMeta.author },
+        });
+      }
+      if (articleMeta.section) {
+        upsertHeadTag("meta", {
+          selector: 'meta[property="article:section"]',
+          attrs: { property: "article:section", content: articleMeta.section },
+        });
+      }
+    }
+
+    // JSON-LD: clear any previously injected per-route blocks, then add new ones
+    document.head
+      .querySelectorAll('script[type="application/ld+json"][data-seo="1"]')
+      .forEach((el) => el.remove());
+    if (jsonLd) {
+      const blocks = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+      blocks.forEach((block) => {
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.setAttribute("data-seo", "1");
+        script.text = JSON.stringify(block);
+        document.head.appendChild(script);
+      });
+    }
+  }, [title, description, path, ogImage, type, noindex, jsonLd, articleMeta]);
 
   return null;
 }

@@ -22,11 +22,22 @@ Agentic AI systems, LangGraph orchestration, ETL pipelines, causal inference mod
 
 ## Blog
 
-- [Blog](https://www.agenticaiutah.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
+- [Blog index](https://www.agenticaiutah.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
+- [Why your dbt project is slower than it should be](https://www.agenticaiutah.com/blog/dbt-performance)
+- [Building agentic AI that doesn't hallucinate your data](https://www.agenticaiutah.com/blog/agentic-ai-without-hallucination)
+- [The real cost of bad data: a $1.4M case study](https://www.agenticaiutah.com/blog/cost-of-bad-data)
+- [Snowflake vs. BigQuery vs. Databricks: an honest comparison](https://www.agenticaiutah.com/blog/snowflake-bigquery-databricks)
+- [How to hire your first data engineer](https://www.agenticaiutah.com/blog/hiring-first-data-engineer)
+- [Real-time dashboards: when you actually need them](https://www.agenticaiutah.com/blog/real-time-dashboards)
 
 ## Contact
 
 - [Schedule a Free Consultation](https://www.agenticaiutah.com/contact)
-- Email: info@agenticaiutah.com
+- Email: info@panteraclaw.com
 - Phone: +1 801 898 0911
 - Location: Salt Lake City, Utah (serving clients nationwide)
+
+## Optional
+
+- [About Pantera Claw](https://www.agenticaiutah.com/about)
+- [Full content for AI crawlers](https://www.agenticaiutah.com/llms-full.txt)

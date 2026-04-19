@@ -2,7 +2,42 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, CalendarBlank, Clock, Tag } from "@phosphor-icons/react";
 import ScrollReveal from "../components/ScrollReveal";
 import Seo from "../components/Seo";
-import { featuredPost, posts } from "../lib/posts";
+import { featuredPost, posts, allPosts } from "../lib/posts";
+
+const SITE_URL = "https://www.agenticaiutah.com";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+  ],
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Pantera Claw Blog",
+  url: `${SITE_URL}/blog`,
+  description:
+    "Technical deep-dives, case studies, and honest takes on data infrastructure, analytics, and AI.",
+  publisher: {
+    "@type": "Organization",
+    name: "Pantera Claw",
+    url: SITE_URL,
+  },
+  blogPost: allPosts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.title,
+    url: `${SITE_URL}/blog/${p.slug}`,
+    datePublished: p.isoDate,
+    dateModified: p.isoDate,
+    author: { "@type": "Organization", name: p.author ?? "Pantera Claw" },
+    articleSection: p.category,
+    description: p.excerpt,
+  })),
+};
 
 export default function Blog() {
   return (
@@ -11,13 +46,15 @@ export default function Blog() {
         title="Blog | Pantera Claw — Data Engineering, AI, and Analytics"
         description="Technical deep-dives, case studies, and honest takes on data infrastructure from the engineers who build it."
         path="/blog"
+        jsonLd={[blogSchema, breadcrumbSchema]}
       />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Page Header */}
         <ScrollReveal>
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-border-light bg-surface mb-6">
-              <span className="font-mono text-xs text-text-secondary tracking-wide uppercase">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1 h-6 bg-yellow-400" />
+              <span className="text-sm uppercase tracking-widest text-yellow-400">
                 Blog
               </span>
             </div>
@@ -55,7 +92,10 @@ export default function Blog() {
                   <div className="hidden sm:block lg:col-span-2 aspect-[16/10] lg:aspect-auto overflow-hidden">
                     <img
                       src={featuredPost.image}
-                      alt=""
+                      alt={featuredPost.imageAlt ?? featuredPost.title}
+                      width={1200}
+                      height={750}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                     />

@@ -92,7 +92,7 @@ const serviceAreas = [
     icon: Brain,
     title: "AI & ML",
     description: "Agents, RAG, model deployment",
-    color: "#F59E0B",
+    color: "#FACC15",
   },
   {
     icon: CloudArrowUp,
@@ -157,11 +157,9 @@ export default function Contact() {
         {/* Page Header */}
         <ScrollReveal>
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-border-light bg-surface mb-6">
-              <span className="font-mono text-xs text-text-secondary tracking-wide uppercase">
-                Contact
-              </span>
-            </div>
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-base font-medium text-white bg-white/15 border border-white/25 mb-6">
+              Contact
+            </span>
             <h1
               className="font-display font-bold tracking-tighter text-text-primary mb-4 max-w-[600px]"
               style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}

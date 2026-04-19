@@ -23,16 +23,14 @@ export default function CTASection() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%)",
+                    "radial-gradient(ellipse at 50% 0%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
                 }}
               />
               <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-8">
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  <span className="font-mono text-xs text-accent tracking-wide uppercase">
-                    Ready to start?
-                  </span>
-                </div>
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium text-white bg-white/15 border border-white/25 mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" aria-hidden />
+                  Ready to start?
+                </span>
                 <h2
                   className="font-display font-bold tracking-tighter text-text-primary mb-6 max-w-[640px] mx-auto"
                   style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}

@@ -23,7 +23,7 @@ const pipelineStages = [
     icon: Funnel,
     label: "Clean & Model",
     subtitle: "Transform",
-    color: "#F59E0B",
+    color: "#FACC15",
     items: ["Deduplication", "Schema mapping", "Business logic"],
   },
   {
@@ -141,8 +141,9 @@ export default function FeaturePipelines() {
           {/* Copy — left on desktop */}
           <div className="lg:order-1">
             <ScrollReveal delay={0.1}>
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
-                <span className="font-mono text-xs text-accent tracking-wide uppercase">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
                   End-to-End Solutions
                 </span>
               </div>

@@ -13,9 +13,9 @@ export default function Hero() {
           {/* Left — Copy */}
           <div>
             <ScrollReveal delay={0}>
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-8">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="font-mono text-xs text-accent tracking-wide uppercase">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
                   Data & AI Consulting
                 </span>
               </div>
@@ -56,10 +56,16 @@ export default function Hero() {
                 </Link>
                 <Link
                   to="/services"
-                  className="inline-flex items-center gap-2 border border-border-light hover:border-text-tertiary text-text-secondary hover:text-text-primary font-medium text-base px-7 py-3 rounded-full no-underline transition-all duration-500"
+                  className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
                   Explore services
+                  <span
+                    className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
+                    style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+                  >
+                    <ArrowUpRight size={16} weight="bold" className="text-canvas" />
+                  </span>
                 </Link>
               </div>
             </ScrollReveal>
@@ -88,7 +94,7 @@ export default function Hero() {
                   className="absolute inset-0 opacity-20"
                   style={{
                     background:
-                      "radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.3), transparent 70%)",
+                      "radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.3), transparent 70%)",
                   }}
                 />
                 <img

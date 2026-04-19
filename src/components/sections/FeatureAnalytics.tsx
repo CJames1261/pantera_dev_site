@@ -1,4 +1,4 @@
-import { ChartLineUp, CheckCircle } from "@phosphor-icons/react";
+import { CheckCircle } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
 import { useInView } from "../../hooks/useInView";
 
@@ -29,9 +29,9 @@ export default function FeatureAnalytics() {
           {/* Left — Copy */}
           <div>
             <ScrollReveal delay={0.1}>
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
-                <ChartLineUp size={14} className="text-accent" weight="fill" />
-                <span className="font-mono text-xs text-accent tracking-wide uppercase">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
                   Advanced Analytics & ML
                 </span>
               </div>
@@ -141,7 +141,7 @@ export default function FeatureAnalytics() {
                             className="h-full rounded-md"
                             style={{
                               background:
-                                "linear-gradient(90deg, rgba(245, 158, 11, 0.4), rgba(245, 158, 11, 0.7))",
+                                "linear-gradient(90deg, rgba(250, 204, 21, 0.4), rgba(250, 204, 21, 0.7))",
                               width: barsInView ? `${f.importance}%` : "0",
                               transition: `width 0.7s ${ease} ${i * 0.1}s`,
                             }}

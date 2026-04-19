@@ -1,4 +1,4 @@
-import { Brain, CheckCircle } from "@phosphor-icons/react";
+import { CheckCircle } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
 import { useInView } from "../../hooks/useInView";
 
@@ -9,9 +9,9 @@ const codeLines = [
   { indent: 0, tokens: [{ text: "from", color: "#C084FC" }, { text: " pantera.tools ", color: "#F4F4F5" }, { text: "import", color: "#C084FC" }, { text: " sql_query, summarize", color: "#60A5FA" }] },
   { indent: 0, tokens: [] },
   { indent: 0, tokens: [{ text: "agent", color: "#F4F4F5" }, { text: " = ", color: "#A1A1AA" }, { text: "Agent", color: "#60A5FA" }, { text: "(", color: "#A1A1AA" }] },
-  { indent: 1, tokens: [{ text: "model", color: "#F59E0B" }, { text: "=", color: "#A1A1AA" }, { text: '"claude-sonnet-4-20250514"', color: "#4ADE80" }] },
-  { indent: 1, tokens: [{ text: "tools", color: "#F59E0B" }, { text: "=[sql_query, summarize],", color: "#A1A1AA" }] },
-  { indent: 1, tokens: [{ text: "memory", color: "#F59E0B" }, { text: "=", color: "#A1A1AA" }, { text: "True", color: "#C084FC" }] },
+  { indent: 1, tokens: [{ text: "model", color: "#FACC15" }, { text: "=", color: "#A1A1AA" }, { text: '"claude-sonnet-4-20250514"', color: "#4ADE80" }] },
+  { indent: 1, tokens: [{ text: "tools", color: "#FACC15" }, { text: "=[sql_query, summarize],", color: "#A1A1AA" }] },
+  { indent: 1, tokens: [{ text: "memory", color: "#FACC15" }, { text: "=", color: "#A1A1AA" }, { text: "True", color: "#C084FC" }] },
   { indent: 0, tokens: [{ text: ")", color: "#A1A1AA" }] },
   { indent: 0, tokens: [] },
   { indent: 0, tokens: [{ text: "result", color: "#F4F4F5" }, { text: " = ", color: "#A1A1AA" }, { text: "agent", color: "#F4F4F5" }, { text: ".run(", color: "#A1A1AA" }] },
@@ -81,9 +81,9 @@ export default function FeatureAI() {
           {/* Copy — left on desktop */}
           <div className="lg:order-1">
             <ScrollReveal delay={0.1}>
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
-                <Brain size={14} className="text-accent" weight="fill" />
-                <span className="font-mono text-xs text-accent tracking-wide uppercase">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
                   AI & Agents
                 </span>
               </div>

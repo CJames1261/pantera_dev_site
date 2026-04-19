@@ -68,7 +68,7 @@ function WebDevContent() {
             SEO & AI-Search Optimized
           </h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Built for both Google and the next generation of AI search engines.
+            Built for both Google and the new wave of AI search engines.
             Structured data, semantic HTML, and content architecture designed so
             both humans and LLMs understand exactly what you offer.
           </p>
@@ -242,7 +242,7 @@ function DatabaseContent() {
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">Cross-Platform Expertise</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Databricks, PostgreSQL, Snowflake, Oracle -- we're fluent in all of them. Whether you're migrating between platforms or optimizing your current stack, we've done it at scale.
+            Databricks, PostgreSQL, Snowflake, Oracle: we're fluent in all of them. Whether you're migrating between platforms or optimizing your current stack, we've built production workloads on each.
           </p>
         </div>
       </div>
@@ -488,9 +488,9 @@ function AnalyticsContent() {
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
           </div>
-          <h4 className="font-display font-bold text-text-primary text-base mb-2">98% Classification Accuracy</h4>
+          <h4 className="font-display font-bold text-text-primary text-base mb-2">Built for Production</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Our deep learning models achieve production-grade accuracy. From drone sound classification to lane detection, we build models that perform in the real world, not just on test sets.
+            Our deep learning models are designed to hold up once they leave the notebook. From drone sound classification to lane detection, we build models that perform in the real world, not just on test sets.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -547,7 +547,7 @@ function AnalyticsContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Achieved 98% accuracy on drone sound classification, 90% lane detection accuracy, and Air Force policy causal inference analyses that quantified multi-million dollar cost savings.
+          Achieved 98% accuracy on drone sound classification, 90% lane detection accuracy, and Air Force policy causal inference analyses that quantified multi-million dollar cost savings. (Artificial data.)
         </p>
       </div>
 
@@ -613,10 +613,49 @@ const servicePills: ServicePill[] = [
     icon: Brain,
     color: "#FB7185",
     title: "Advanced Analytics & Machine Learning",
-    subtitle: "98% drone classification accuracy. Causal policy analysis.",
+    subtitle: "98% drone classification accuracy. Causal policy analysis. (Artificial data.)",
     description:
       "Predictive models, customer segmentation, causal inference, and deep learning -- deployed with monitoring, drift detection, and automated retraining. Models that ship to production, not just notebooks.",
     content: <AnalyticsContent />,
+  },
+];
+
+/* ─── Schema.org JSON-LD ─── */
+
+const SERVICES_SITE_URL = "https://www.agenticaiutah.com";
+
+const servicesJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SERVICES_SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SERVICES_SITE_URL}/services` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Pantera Claw Consulting Services",
+    itemListElement: servicePills.map((pill, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: pill.title,
+        description: pill.description,
+        url: `${SERVICES_SITE_URL}/services#${pill.id}`,
+        provider: {
+          "@type": "Organization",
+          name: "Pantera Claw",
+          url: SERVICES_SITE_URL,
+        },
+        areaServed: [
+          { "@type": "State", name: "Utah" },
+          { "@type": "Country", name: "United States" },
+        ],
+      },
+    })),
   },
 ];
 
@@ -644,15 +683,16 @@ export default function Services() {
         title="Services | Pantera Claw — Data Consulting, AI Automation, Dashboards"
         description="Our services: business web development, database management, custom dashboards, AI workflow automation, business analytics, data strategy, BI solutions, and machine learning consulting."
         path="/services"
+        jsonLd={servicesJsonLd}
       />
       {/* Hero */}
       <section className="relative z-10 pt-36 pb-12 md:pt-44 md:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
           <ScrollReveal>
             <div className="max-w-[680px]">
-              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
-                <Gear size={12} weight="bold" className="text-accent" />
-                <span className="font-mono text-xs text-accent tracking-wide uppercase">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
                   Our capabilities
                 </span>
               </div>
@@ -787,7 +827,7 @@ export default function Services() {
                     className="absolute inset-0 pointer-events-none"
                     style={{
                       background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
                     }}
                   />
                   <div className="relative z-10 max-w-[580px] mx-auto">

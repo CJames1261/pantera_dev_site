@@ -8,16 +8,15 @@ export default function NotFound() {
       <Seo
         title="Page not found | Pantera Claw"
         description="The page you're looking for doesn't exist or has moved."
-        path="/404"
+        path={typeof window !== "undefined" ? window.location.pathname : "/"}
+        noindex
       />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1fr] gap-12 lg:gap-20 items-end">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-border-light bg-surface mb-6">
-              <span className="font-mono text-xs text-text-secondary tracking-wide uppercase">
-                404 · Not found
-              </span>
-            </div>
+            <span className="inline-flex items-center px-4 py-2 rounded-full text-base font-medium text-white bg-white/15 border border-white/25 mb-6">
+              404 · Not found
+            </span>
             <p
               className="font-mono font-bold text-accent tracking-tighter leading-none"
               style={{ fontSize: "clamp(4rem, 18vw, 12rem)" }}

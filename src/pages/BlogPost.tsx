@@ -26,6 +26,54 @@ export default function BlogPostPage() {
       ? allPosts[currentIndex + 1]
       : undefined;
 
+  const SITE_URL = "https://www.agenticaiutah.com";
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+  const author = post.author ?? "Pantera Claw";
+  const absoluteImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `${SITE_URL}${post.image}`
+    : `${SITE_URL}/Pantera_Claw_hero.webp`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: absoluteImage,
+    datePublished: post.isoDate,
+    dateModified: post.isoDate,
+    author: {
+      "@type": "Organization",
+      name: author,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pantera Claw",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/favicon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    articleSection: post.category,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
   return (
     <main className="relative z-10 pt-32 lg:pt-40 pb-24">
       <Seo
@@ -34,6 +82,13 @@ export default function BlogPostPage() {
         path={`/blog/${post.slug}`}
         type="article"
         ogImage={post.image}
+        articleMeta={{
+          publishedTime: post.isoDate,
+          modifiedTime: post.isoDate,
+          author,
+          section: post.category,
+        }}
+        jsonLd={[articleSchema, breadcrumbSchema]}
       />
       <article className="max-w-[820px] mx-auto px-4 md:px-8">
         <ScrollReveal>
@@ -89,9 +144,12 @@ export default function BlogPostPage() {
               >
                 <img
                   src={post.image}
-                  alt=""
+                  alt={post.imageAlt ?? post.title}
+                  width={1200}
+                  height={675}
                   className="w-full h-full object-cover"
                   loading="eager"
+                  fetchPriority="high"
                 />
               </div>
             </div>

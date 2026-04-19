@@ -5,7 +5,6 @@ import {
   ChartBar,
   ChartLineUp,
   Brain,
-  Lightbulb,
   ArrowUpRight,
 } from "@phosphor-icons/react";
 import ScrollReveal from "../ScrollReveal";
@@ -32,7 +31,7 @@ const servicesRow1 = [
     title: "Dashboards & Visualizations",
     description:
       "Interactive dashboards and data visualizations your team will actually use. Real-time KPIs, drill-down exploration, and embedded analytics.",
-    color: "#F59E0B",
+    color: "#FACC15",
     hash: "dashboards",
   },
 ];
@@ -64,9 +63,9 @@ export default function ServicesBento() {
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
           <div className="mb-12">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-accent/20 bg-accent/5 mb-6">
-              <Lightbulb size={14} className="text-accent" weight="fill" />
-              <span className="font-mono text-xs text-accent tracking-wide uppercase">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-1 h-6 bg-yellow-400" />
+              <span className="text-sm uppercase tracking-widest text-yellow-400">
                 What we do
               </span>
             </div>
@@ -74,11 +73,11 @@ export default function ServicesBento() {
               className="font-display font-bold tracking-tighter text-text-primary mb-4"
               style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
             >
-              Full-stack data expertise
+              AI Consulting, Data Analytics & Business Intelligence Solutions
             </h2>
             <p className="text-text-secondary text-lg max-w-[560px] leading-relaxed">
-              Five disciplines, one unified team. We cover every layer from
-              web presence to autonomous AI workflows.
+              We provide web development, data analytics, and AI services for
+              growing businesses — delivered through five integrated disciplines.
             </p>
           </div>
         </ScrollReveal>
