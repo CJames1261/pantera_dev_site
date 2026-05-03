@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SkipLink from "@/components/SkipLink";
@@ -6,6 +7,20 @@ import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 const SITE_URL = "https://www.agenticaiutah.com";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,7 +43,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/Pantera_Claw_hero.webp",
-        alt: "Pantera Claw — AI and data consulting",
+        width: 480,
+        height: 480,
+        alt: "Pantera Claw — AI and data consulting logo",
       },
     ],
   },
@@ -41,7 +58,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: [{ url: "/Pantera_Claw_hero.webp", type: "image/webp" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/Pantera_Claw_hero.webp", type: "image/webp" },
+    ],
     apple: [{ url: "/Pantera_Claw_hero.webp" }],
   },
   other: {
@@ -58,13 +78,37 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#business`,
+  name: "Pantera Claw",
+  alternateName: "Pantera Claw AI & Data Consulting",
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/Pantera_Claw_hero.webp`,
+    width: 480,
+    height: 480,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-801-898-0911",
+    email: "info@panteraclaw.com",
+    contactType: "customer service",
+    areaServed: "US",
+    availableLanguage: ["en"],
+  },
+  sameAs: ["https://github.com/CJames1261"],
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${outfit.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* Preload LCP hero image so the browser fetches it before JS executes */}
         <link
@@ -74,22 +118,9 @@ export default function RootLayout({
           type="image/webp"
           fetchPriority="high"
         />
-
-        {/* Fonts (non-render-blocking) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body style={{ background: "#000" }}>

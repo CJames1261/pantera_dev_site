@@ -101,7 +101,7 @@ export default function Hero() {
                   src={logoSmall}
                   srcSet={`${logoSmall} 480w, ${logo} 1024w`}
                   sizes="(max-width: 768px) 362px, 480px"
-                  alt="Pantera Claw"
+                  alt="Pantera Claw — black panther logomark on dark background"
                   width={480}
                   height={480}
                   className="relative z-10 w-full aspect-square object-cover"

@@ -3,15 +3,30 @@ import { allPosts } from "@/lib/posts";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 
+const SITE_LAST_UPDATED = "2026-04-27";
+const STATIC_LAST_UPDATED: Record<string, string> = {
+  "/": SITE_LAST_UPDATED,
+  "/services": "2026-04-27",
+  "/about": "2026-04-27",
+  "/contact": "2026-04-27",
+  "/blog": SITE_LAST_UPDATED,
+  "/privacy": "2026-05-03",
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const core = ["", "/services", "/about", "/contact", "/blog"].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
+  const core: MetadataRoute.Sitemap = (
+    Object.keys(STATIC_LAST_UPDATED) as Array<keyof typeof STATIC_LAST_UPDATED>
+  ).map((path) => ({
+    url: `${SITE_URL}${path === "/" ? "" : path}`,
+    lastModified: new Date(STATIC_LAST_UPDATED[path]),
   }));
 
-  const blog = allPosts.map((p) => ({
+  const blog: MetadataRoute.Sitemap = allPosts.map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,
     lastModified: new Date(p.isoDate),
+    images: p.image
+      ? [p.image.startsWith("http") ? p.image : `${SITE_URL}${p.image}`]
+      : undefined,
   }));
 
   return [...core, ...blog];

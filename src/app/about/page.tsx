@@ -33,6 +33,18 @@ const aboutBreadcrumb = {
   ],
 };
 
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${SITE_URL}/about#page`,
+  url: `${SITE_URL}/about`,
+  name: "About Pantera Claw",
+  description:
+    "Pantera Claw is a Salt Lake City AI and data consulting firm. Learn about our story, our standard, and our mission to bring enterprise-grade technology to small and mid-size businesses.",
+  inLanguage: "en-US",
+  mainEntity: { "@id": `${SITE_URL}/#business` },
+};
+
 const services = [
   {
     icon: Globe,
@@ -90,6 +102,10 @@ const standard = [
 export default function About() {
   return (
     <div className="relative z-10 pt-32 lg:pt-40 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumb) }}

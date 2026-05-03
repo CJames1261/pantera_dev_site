@@ -541,7 +541,7 @@ function AnalyticsContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Achieved 98% accuracy on drone sound classification, 90% lane detection accuracy, and Air Force policy causal inference analyses that quantified multi-million dollar cost savings. (Artificial data.)
+          Production deep learning across drone signal classification and computer vision lane detection, plus Air Force policy causal inference that quantified multi-million dollar cost trade-offs.
         </p>
       </div>
 
@@ -605,7 +605,7 @@ const servicePills: ServicePill[] = [
     icon: Brain,
     color: "#FB7185",
     title: "Advanced Analytics & Machine Learning",
-    subtitle: "98% drone classification accuracy. Causal policy analysis. (Artificial data.)",
+    subtitle: "Causal inference. Production deep learning across signal and image domains.",
     description:
       "Predictive models, customer segmentation, causal inference, and deep learning -- deployed with monitoring, drift detection, and automated retraining. Models that ship to production, not just notebooks.",
     content: <AnalyticsContent />,

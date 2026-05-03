@@ -37,7 +37,7 @@ export const servicePillsMeta: ServicePillMeta[] = [
   {
     id: "analytics",
     title: "Advanced Analytics & Machine Learning",
-    subtitle: "98% drone classification accuracy. Causal policy analysis. (Artificial data.)",
+    subtitle: "Causal inference. Production deep learning across signal and image domains.",
     description:
       "Predictive models, customer segmentation, causal inference, and deep learning -- deployed with monitoring, drift detection, and automated retraining. Models that ship to production, not just notebooks.",
   },

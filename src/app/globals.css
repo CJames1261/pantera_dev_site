@@ -16,8 +16,8 @@
   --color-text-secondary: #D4D4D8;
   --color-text-tertiary: #B5B5BD;
 
-  --font-display: "Outfit", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", monospace;
 
   --ease-out-expo: cubic-bezier(0.32, 0.72, 0, 1);
 

@@ -80,7 +80,7 @@ export default async function BlogPostPage({
       : undefined;
 
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
-  const author = post.author ?? "Pantera Claw";
+  const author = post.author ?? "Chris James";
   const absoluteImage = post.image
     ? post.image.startsWith("http")
       ? post.image
@@ -96,9 +96,9 @@ export default async function BlogPostPage({
     datePublished: post.isoDate,
     dateModified: post.isoDate,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: author,
-      url: SITE_URL,
+      url: `${SITE_URL}/about`,
     },
     publisher: {
       "@type": "Organization",
@@ -106,7 +106,9 @@ export default async function BlogPostPage({
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.svg`,
+        url: `${SITE_URL}/Pantera_Claw_hero.webp`,
+        width: 480,
+        height: 480,
       },
     },
     mainEntityOfPage: {

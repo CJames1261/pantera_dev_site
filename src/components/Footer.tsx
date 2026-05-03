@@ -131,9 +131,17 @@ export default function Footer() {
           <p className="text-text-secondary text-xs">
             © {new Date().getFullYear()} Pantera Claw. All rights reserved.
           </p>
-          <p className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider">
-            Salt Lake City, UT · Serving clients nationwide
-          </p>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy"
+              className="text-text-tertiary text-xs hover:text-text-secondary transition-colors duration-300 no-underline"
+            >
+              Privacy
+            </Link>
+            <p className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider">
+              Salt Lake City, UT · Serving clients nationwide
+            </p>
+          </div>
         </div>
       </div>
     </footer>

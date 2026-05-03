@@ -7,7 +7,7 @@ import { featuredPost, posts, allPosts } from "@/lib/posts";
 const SITE_URL = "https://www.agenticaiutah.com";
 
 export const metadata: Metadata = {
-  title: { absolute: "Blog | Pantera Claw — Data Engineering, AI, and Analytics" },
+  title: { absolute: "Pantera Claw Blog | Data Engineering, AI & Analytics" },
   description:
     "Technical deep-dives, case studies, and honest takes on data infrastructure from the engineers who build it.",
   alternates: { canonical: "/blog" },

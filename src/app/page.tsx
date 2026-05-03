@@ -19,10 +19,19 @@ export const metadata: Metadata = {
 const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#business`,
   name: "Pantera Claw",
+  alternateName: "Pantera Claw AI & Data Consulting",
   description:
     "AI and data consulting firm that helps businesses add analytics, custom dashboards, and AI capabilities to their operations. We turn your raw data into insights that drive real business decisions.",
   url: SITE_URL,
+  image: `${SITE_URL}/Pantera_Claw_hero.webp`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/Pantera_Claw_hero.webp`,
+    width: 480,
+    height: 480,
+  },
   telephone: "+1-801-898-0911",
   email: "info@panteraclaw.com",
   address: {
@@ -66,12 +75,26 @@ const professionalServiceSchema = {
   sameAs: ["https://github.com/CJames1261"],
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: "Pantera Claw",
+  publisher: { "@id": `${SITE_URL}/#business` },
+  inLanguage: "en-US",
+};
+
 export default function HomePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Hero />
       <ServicesBento />

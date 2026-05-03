@@ -32,7 +32,34 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto:",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https: blob:; connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto:",
+          },
+        ],
+      },
+      {
+        source: "/:file(Pantera_Claw|Pantera_Claw_hero|Pantera_Claw_small).webp",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=60, stale-while-revalidate=600",
+          },
+        ],
+      },
+      {
+        source: "/:path((?!_next|api|.*\\..*).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=60, stale-while-revalidate=600",
           },
         ],
       },
