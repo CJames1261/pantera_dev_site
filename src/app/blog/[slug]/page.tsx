@@ -356,9 +356,60 @@ export default async function BlogPostPage({
           </ScrollReveal>
         )}
 
+        <ScrollReveal delay={0.14}>
+          <section className="mt-16 pt-10 border-t border-border" aria-labelledby="post-services">
+            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-text-tertiary mb-4">
+              Work with us on this
+            </div>
+            <h2
+              id="post-services"
+              className="font-display font-bold text-text-primary text-xl lg:text-2xl tracking-tight mb-5"
+            >
+              Related services
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                {
+                  href: "/services",
+                  title: "All services",
+                  body: "Web, databases, dashboards, agentic AI, and analytics — the full toolkit.",
+                },
+                {
+                  href: "/ai-consulting-salt-lake-city",
+                  title: "AI consulting in Salt Lake City",
+                  body: "On-site discovery for Utah businesses. Remote build for everyone else.",
+                },
+                {
+                  href: "/contact",
+                  title: "Free 30-min call",
+                  body: "Tell us the workflow you want to automate. We reply within one business day.",
+                },
+              ].map(({ href, title, body }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="group rounded-2xl border border-border hover:border-border-light p-5 no-underline transition-colors duration-500"
+                  style={{
+                    backgroundColor: "rgba(19, 19, 22, 0.4)",
+                    boxShadow: "var(--shadow-inner-highlight)",
+                    transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
+                  }}
+                >
+                  <h3 className="font-display font-semibold text-text-primary text-base mb-1 tracking-tight group-hover:text-accent transition-colors duration-300">
+                    {title}
+                  </h3>
+                  <p className="text-text-secondary text-xs leading-relaxed">
+                    {body}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </ScrollReveal>
+
         {nextPost && (
-          <ScrollReveal delay={0.15}>
-            <div className="mt-20 pt-10 border-t border-border">
+          <ScrollReveal delay={0.16}>
+            <div className="mt-12 pt-8 border-t border-border">
               <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-text-tertiary mb-4">
                 Next read
               </div>

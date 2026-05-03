@@ -93,7 +93,7 @@ const organizationSchema = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-801-898-0911",
+    telephone: "+18018980911",
     email: "info@panteraclaw.com",
     contactType: "customer service",
     areaServed: "US",

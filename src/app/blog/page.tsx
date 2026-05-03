@@ -9,7 +9,7 @@ const SITE_URL = "https://www.agenticaiutah.com";
 export const metadata: Metadata = {
   title: { absolute: "Pantera Claw Blog | Data Engineering, AI & Analytics" },
   description:
-    "Technical deep-dives, case studies, and honest takes on data infrastructure from the engineers who build it.",
+    "Practical guides on AI, data analytics, and business intelligence written for small and mid-size business owners and the engineers who support them. Salt Lake City based, weekly cadence.",
   alternates: { canonical: "/blog" },
 };
 

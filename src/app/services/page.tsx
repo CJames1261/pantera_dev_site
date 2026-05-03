@@ -5,9 +5,9 @@ import { servicePillsMeta } from "./data";
 const SITE_URL = "https://www.agenticaiutah.com";
 
 export const metadata: Metadata = {
-  title: { absolute: "Data Consulting & AI Services | Pantera Claw" },
+  title: { absolute: "AI & Data Consulting Services in Salt Lake City | Pantera Claw" },
   description:
-    "Our services: business web development, database management, custom dashboards, AI workflow automation, business analytics, data strategy, BI solutions, and machine learning consulting.",
+    "Five services from a Salt Lake City consultancy: web development, database architecture, dashboard engineering, agentic AI workflows, and advanced analytics for growing businesses.",
   alternates: { canonical: "/services" },
 };
 

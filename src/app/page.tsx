@@ -35,7 +35,7 @@ const professionalServiceSchema = {
     height: 480,
   },
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
-  telephone: "+1-801-898-0911",
+  telephone: "+18018980911",
   email: "info@panteraclaw.com",
   address: {
     "@type": "PostalAddress",

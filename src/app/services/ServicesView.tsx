@@ -24,6 +24,7 @@ import {
   CloudArrowUp,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import { servicePillsMeta } from "./data";
 
 interface ServicePill {
   id: string;
@@ -50,9 +51,10 @@ function WebDevContent() {
             Performance-First Architecture
           </h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Every site we build scores 90+ on Google Lighthouse out of the box.
-            Faster load times mean higher search rankings and lower bounce rates.
-            Speed isn&apos;t an afterthought; it&apos;s the foundation.
+            Every site we build is performance-first: server-side rendering,
+            edge caching, and aggressive image optimization come standard.
+            Faster load times mean higher search rankings and lower bounce
+            rates. Speed isn&apos;t an afterthought; it&apos;s the foundation.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -224,9 +226,9 @@ function DatabaseContent() {
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
           </div>
-          <h4 className="font-display font-bold text-text-primary text-base mb-2">Terabyte-Scale Performance</h4>
+          <h4 className="font-display font-bold text-text-primary text-base mb-2">Built to Scale</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            We&apos;ve optimized PySpark ETL pipelines handling terabyte-scale data for DoD compliance. Our schemas don&apos;t buckle under growth -- they&apos;re designed for it from day one.
+            We&apos;ve optimized PySpark ETL pipelines handling large-scale data for compliance-heavy environments. Our schemas don&apos;t buckle under growth -- they&apos;re designed for it from day one.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -283,7 +285,7 @@ function DatabaseContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Optimized PySpark ETL pipelines in Databricks for DoD compliance, handling terabyte-scale data processing with measurable latency reductions.
+          Optimized PySpark ETL pipelines in Databricks for compliance-heavy environments, handling large-scale data processing with measurable latency reductions.
         </p>
       </div>
 
@@ -369,7 +371,7 @@ function DashboardContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Built cost prediction dashboards for Air Force leadership and causal analysis dashboards in R Shiny for retention KPI drivers with measurable policy impact.
+          Built ML-powered cost prediction dashboards for leadership teams and R Shiny causal-analysis dashboards that surfaced retention KPI drivers used in policy decisions.
         </p>
       </div>
 
@@ -455,7 +457,7 @@ function AIContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Deployed LLM-integrated systems within Air Force environments using LangChain and LangGraph, including NLP-to-SQL agents and secure local inference servers.
+          Deployed LLM-integrated systems within secure on-premises environments using LangChain and LangGraph, including NLP-to-SQL agents and local inference servers.
         </p>
       </div>
 
@@ -484,7 +486,7 @@ function AnalyticsContent() {
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">Built for Production</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Our deep learning models are designed to hold up once they leave the notebook. From drone sound classification to lane detection, we build models that perform in the real world, not just on test sets.
+            Our deep learning models are designed to hold up once they leave the notebook. We build for the real world (changing data, edge cases, latency budgets), not just for clean test sets.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -541,7 +543,7 @@ function AnalyticsContent() {
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
         </div>
         <p className="text-text-secondary text-sm leading-relaxed">
-          Production deep learning across drone signal classification and computer vision lane detection, plus Air Force policy causal inference that quantified multi-million dollar cost trade-offs.
+          Production deep learning across signal classification and computer vision tasks, plus causal inference work used to inform policy and pricing decisions.
         </p>
       </div>
 
@@ -559,56 +561,42 @@ function AnalyticsContent() {
   );
 }
 
-const servicePills: ServicePill[] = [
+const servicePillExtras: Record<
+  string,
+  { icon: React.ElementType; color: string; content: React.ReactNode }
+> = {
+  web: { icon: Globe, color: "#38BDF8", content: <WebDevContent /> },
+  database: { icon: Database, color: "#3B82F6", content: <DatabaseContent /> },
+  dashboards: { icon: ChartBar, color: "#10B981", content: <DashboardContent /> },
+  ai: { icon: Robot, color: "#A78BFA", content: <AIContent /> },
+  analytics: { icon: Brain, color: "#FB7185", content: <AnalyticsContent /> },
+};
+
+const servicePills: ServicePill[] = servicePillsMeta.map((meta) => ({
+  ...meta,
+  ...servicePillExtras[meta.id],
+}));
+
+const howWeWork = [
   {
-    id: "web",
-    icon: Globe,
-    color: "#38BDF8",
-    title: "Business Web Development",
-    subtitle: "High-converting websites and web apps built with the same technology powering Silicon Valley",
-    description:
-      "Your website is your hardest-working salesperson. It should look the part. We design and build fast, responsive, SEO-optimized websites and web applications using modern frameworks like React and Next.js, tailored for businesses that want to convert visitors into customers.",
-    content: <WebDevContent />,
+    step: "01",
+    title: "Discovery sprint",
+    body: "A 1–2 week paid engagement where we map your existing data, identify the highest-leverage problem, and produce a written scope and fixed-price proposal. No commitment to continue.",
   },
   {
-    id: "database",
-    icon: Database,
-    color: "#3B82F6",
-    title: "Database Architecture & Optimization",
-    subtitle: "Schema design that won't buckle under growth",
-    description:
-      "We design, build, and optimize databases across Databricks, PostgreSQL, Snowflake, and Oracle. From data modeling and ETL pipelines to query performance tuning and migration -- built for terabyte-scale workloads.",
-    content: <DatabaseContent />,
+    step: "02",
+    title: "Build sprints",
+    body: "Two-week iterations with a working demo at the end of each. You see real progress on your real data, not a Gantt chart. You can adjust scope between sprints.",
   },
   {
-    id: "dashboards",
-    icon: ChartBar,
-    color: "#10B981",
-    title: "Dashboard & Visualization Engineering",
-    subtitle: "AI-powered cost prediction. Causal analysis visualizations.",
-    description:
-      "Interactive reporting surfaces in Tableau, Power BI, and R Shiny. We build dashboards that drive strategic decisions, detect anomalies in real time, and surface root causes -- not just pretty charts.",
-    content: <DashboardContent />,
+    step: "03",
+    title: "Calibration",
+    body: "We run the deliverable against actual users and real workloads for two weeks. We tune, fix, and retrain until it holds up under daily use.",
   },
   {
-    id: "ai",
-    icon: Robot,
-    color: "#A78BFA",
-    title: "Agentic AI & Workflow Design",
-    subtitle: "Natural language to SQL. Air-gapped deployments.",
-    description:
-      "Multi-agent systems that route, decide, and execute. From RAG pipelines and NLP-to-SQL agents to fully autonomous orchestrators with guardrails, evaluation, and human-in-the-loop oversight.",
-    content: <AIContent />,
-  },
-  {
-    id: "analytics",
-    icon: Brain,
-    color: "#FB7185",
-    title: "Advanced Analytics & Machine Learning",
-    subtitle: "Causal inference. Production deep learning across signal and image domains.",
-    description:
-      "Predictive models, customer segmentation, causal inference, and deep learning -- deployed with monitoring, drift detection, and automated retraining. Models that ship to production, not just notebooks.",
-    content: <AnalyticsContent />,
+    step: "04",
+    title: "Handover",
+    body: "Your team receives the source code, infrastructure, and runbooks, plus a 30-day stabilization window included at no additional cost. Optional retainer afterward.",
   },
 ];
 
@@ -655,6 +643,51 @@ export default function ServicesView() {
               </p>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="relative z-10 pb-12 md:pb-16" aria-labelledby="how-we-work">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
+          <ScrollReveal>
+            <div className="max-w-[680px] mb-8">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-3">
+                How we work
+              </div>
+              <h2
+                id="how-we-work"
+                className="font-display font-bold tracking-tighter text-text-primary mb-3"
+                style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
+              >
+                A four-step engagement, not a black box
+              </h2>
+              <p className="text-text-secondary text-base md:text-lg leading-relaxed">
+                Every project, regardless of discipline, runs on the same shape.
+                You see real work each sprint and can stop or change scope at
+                any point.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+            {howWeWork.map(({ step, title, body }, i) => (
+              <ScrollReveal key={step} delay={i * 0.08}>
+                <li
+                  className="rounded-2xl border border-border p-6 h-full"
+                  style={{
+                    backgroundColor: "rgba(19, 19, 22, 0.4)",
+                    boxShadow: "var(--shadow-inner-highlight)",
+                  }}
+                >
+                  <div className="font-mono text-xs text-accent mb-3">{step}</div>
+                  <h3 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
+                    {title}
+                  </h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {body}
+                  </p>
+                </li>
+              </ScrollReveal>
+            ))}
+          </ol>
         </div>
       </section>
 

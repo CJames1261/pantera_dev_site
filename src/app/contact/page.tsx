@@ -35,7 +35,7 @@ const contactPageSchema = {
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#localbusiness`,
     name: "Pantera Claw",
-    telephone: "+1-801-898-0911",
+    telephone: "+18018980911",
     email: "info@panteraclaw.com",
     address: {
       "@type": "PostalAddress",

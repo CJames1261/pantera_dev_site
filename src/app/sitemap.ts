@@ -6,11 +6,12 @@ const SITE_URL = "https://www.agenticaiutah.com";
 const SITE_LAST_UPDATED = "2026-04-27";
 const STATIC_LAST_UPDATED: Record<string, string> = {
   "/": SITE_LAST_UPDATED,
-  "/services": "2026-04-27",
+  "/services": "2026-05-03",
   "/about": "2026-04-27",
-  "/contact": "2026-04-27",
+  "/contact": "2026-05-03",
   "/blog": SITE_LAST_UPDATED,
   "/privacy": "2026-05-03",
+  "/ai-consulting-salt-lake-city": "2026-05-03",
 };
 
 const HERO_IMAGE = `${SITE_URL}/Pantera_Claw_hero.webp`;
@@ -23,6 +24,7 @@ const CORE_IMAGES: Record<string, string[]> = {
   "/contact": [HERO_IMAGE],
   "/blog": [HERO_IMAGE],
   "/privacy": [],
+  "/ai-consulting-salt-lake-city": [HERO_IMAGE],
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
