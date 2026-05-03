@@ -1,34 +1,12 @@
-"use client";
-
 import { CheckCircle } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
-import { useInView } from "../../hooks/useInView";
-
-const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
-
-const codeLines = [
-  { indent: 0, tokens: [{ text: "from", color: "#C084FC" }, { text: " pantera ", color: "#F4F4F5" }, { text: "import", color: "#C084FC" }, { text: " Agent", color: "#60A5FA" }] },
-  { indent: 0, tokens: [{ text: "from", color: "#C084FC" }, { text: " pantera.tools ", color: "#F4F4F5" }, { text: "import", color: "#C084FC" }, { text: " sql_query, summarize", color: "#60A5FA" }] },
-  { indent: 0, tokens: [] },
-  { indent: 0, tokens: [{ text: "agent", color: "#F4F4F5" }, { text: " = ", color: "#A1A1AA" }, { text: "Agent", color: "#60A5FA" }, { text: "(", color: "#A1A1AA" }] },
-  { indent: 1, tokens: [{ text: "model", color: "#FACC15" }, { text: "=", color: "#A1A1AA" }, { text: '"claude-sonnet-4-20250514"', color: "#4ADE80" }] },
-  { indent: 1, tokens: [{ text: "tools", color: "#FACC15" }, { text: "=[sql_query, summarize],", color: "#A1A1AA" }] },
-  { indent: 1, tokens: [{ text: "memory", color: "#FACC15" }, { text: "=", color: "#A1A1AA" }, { text: "True", color: "#C084FC" }] },
-  { indent: 0, tokens: [{ text: ")", color: "#A1A1AA" }] },
-  { indent: 0, tokens: [] },
-  { indent: 0, tokens: [{ text: "result", color: "#F4F4F5" }, { text: " = ", color: "#A1A1AA" }, { text: "agent", color: "#F4F4F5" }, { text: ".run(", color: "#A1A1AA" }] },
-  { indent: 1, tokens: [{ text: '"Analyze Q1 churn and suggest retention plays"', color: "#4ADE80" }] },
-  { indent: 0, tokens: [{ text: ")", color: "#A1A1AA" }] },
-];
 
 export default function FeatureAI() {
-  const [codeRef, codeInView] = useInView();
-
   return (
     <section className="relative z-10 py-16 lg:py-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Code Terminal Visual — right on desktop, below text on mobile. */}
+          {/* Visual — right on desktop, below text on mobile. */}
           <ScrollReveal className="order-2">
             <div
               className="p-2 rounded-[2rem] border border-border"
@@ -38,44 +16,18 @@ export default function FeatureAI() {
               }}
             >
               <div
-                className="rounded-[calc(2rem-0.5rem)] bg-[#0D0D10] overflow-hidden"
+                className="rounded-[calc(2rem-0.5rem)] bg-surface overflow-hidden aspect-square"
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
-                {/* Terminal header */}
-                <div className="flex items-center gap-2 px-5 py-3 border-b border-border">
-                  <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                  <span className="ml-3 font-mono text-xs text-text-tertiary">
-                    agent.py
-                  </span>
-                </div>
-                {/* Code block */}
-                <div ref={codeRef} className="p-5 lg:p-6 overflow-x-auto">
-                  <pre className="m-0">
-                    <code className="font-mono text-sm leading-6">
-                      {codeLines.map((line, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            paddingLeft: `${line.indent * 1.5}rem`,
-                            opacity: codeInView ? 1 : 0,
-                            transform: codeInView ? "translateX(0)" : "translateX(-10px)",
-                            transition: `opacity 0.4s ${ease} ${i * 0.06}s, transform 0.4s ${ease} ${i * 0.06}s`,
-                          }}
-                          className="min-h-[1.5rem]"
-                        >
-                          {line.tokens.map((token, j) => (
-                            <span key={j} style={{ color: token.color }}>
-                              {token.text}
-                            </span>
-                          ))}
-                        </div>
-                      ))}
-                      <span className="inline-block w-2 h-4 bg-accent ml-0.5 mt-1 animate-cursor-blink" />
-                    </code>
-                  </pre>
-                </div>
+                <img
+                  src="/sections/agentic_viz.png"
+                  alt="A friendly glowing AI orb at the center managing parallel work in the background: a replied email envelope, a sent invoice, a booked calendar meeting, and an answered chat bubble — illustrating an AI assistant handling repetitive tasks so the business owner is freed up."
+                  width={1200}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </ScrollReveal>

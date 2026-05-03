@@ -1,57 +1,12 @@
-"use client";
-
-import {
-  ArrowRight,
-  CheckCircle,
-  FileText,
-  Funnel,
-  Database,
-  ChartBar,
-} from "@phosphor-icons/react/ssr";
+import { CheckCircle } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
-import { useInView } from "../../hooks/useInView";
-
-const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
-
-const pipelineStages = [
-  {
-    icon: FileText,
-    label: "Ingest",
-    subtitle: "Raw sources",
-    color: "#3B82F6",
-    items: ["CSVs & APIs", "SaaS exports", "Event streams"],
-  },
-  {
-    icon: Funnel,
-    label: "Clean & Model",
-    subtitle: "Transform",
-    color: "#FACC15",
-    items: ["Deduplication", "Schema mapping", "Business logic"],
-  },
-  {
-    icon: Database,
-    label: "Store",
-    subtitle: "Warehouse",
-    color: "#10B981",
-    items: ["Scalable DB", "Version controlled", "Automated loads"],
-  },
-  {
-    icon: ChartBar,
-    label: "Deliver",
-    subtitle: "Dashboards",
-    color: "#E11D48",
-    items: ["Live KPIs", "Self-serve BI", "Scheduled reports"],
-  },
-];
 
 export default function FeaturePipelines() {
-  const [stagesRef, stagesInView] = useInView();
-
   return (
     <section className="relative z-10 py-16 lg:py-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Visual — right on desktop, and below text on mobile. */}
+          {/* Visual — right on desktop, below text on mobile. */}
           <ScrollReveal className="order-2">
             <div
               className="p-2 rounded-[2rem] border border-border"
@@ -61,81 +16,18 @@ export default function FeaturePipelines() {
               }}
             >
               <div
-                className="rounded-[calc(2rem-0.5rem)] bg-surface p-6 lg:p-8"
+                className="rounded-[calc(2rem-0.5rem)] bg-surface overflow-hidden aspect-square"
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
-                {/* Header */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider">
-                    End-to-end pipeline
-                  </span>
-                </div>
-
-                {/* Pipeline flow */}
-                <div ref={stagesRef} className="flex flex-col gap-2">
-                  {pipelineStages.map((stage, i) => (
-                    <div key={stage.label}>
-                      <div
-                        className="flex items-start gap-4 rounded-xl bg-surface-light border border-border p-4"
-                        style={{
-                          opacity: stagesInView ? 1 : 0,
-                          transform: stagesInView ? "translateX(0)" : "translateX(-20px)",
-                          transition: `opacity 0.5s ${ease} ${i * 0.12}s, transform 0.5s ${ease} ${i * 0.12}s`,
-                        }}
-                      >
-                        <div
-                          className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                          style={{ backgroundColor: `${stage.color}15` }}
-                        >
-                          <stage.icon
-                            size={20}
-                            weight="duotone"
-                            style={{ color: stage.color }}
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="font-display font-semibold text-sm text-text-primary">
-                              {stage.label}
-                            </span>
-                            <span className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider">
-                              {stage.subtitle}
-                            </span>
-                          </div>
-                          <div className="flex flex-wrap gap-1.5">
-                            {stage.items.map((item) => (
-                              <span
-                                key={item}
-                                className="font-mono text-[11px] text-text-tertiary bg-surface rounded-md px-2 py-0.5 border border-border"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Connector arrow */}
-                      {i < pipelineStages.length - 1 && (
-                        <div className="flex justify-center py-1">
-                          <div
-                            style={{
-                              opacity: stagesInView ? 1 : 0,
-                              transition: `opacity 0.4s ${ease} ${i * 0.12 + 0.3}s`,
-                            }}
-                          >
-                            <ArrowRight
-                              size={14}
-                              className="text-text-tertiary rotate-90"
-                              weight="bold"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <img
+                  src="/sections/data_pipeline_viz.png"
+                  alt="Scattered raw spreadsheets, sticky notes, and tangled wires flowing through a glowing yellow funnel into clean dashboard cards: Sales Growth chart, Revenue plus 28 percent, Data Quality all good, Clear answers and confident decisions."
+                  width={1200}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </ScrollReveal>
