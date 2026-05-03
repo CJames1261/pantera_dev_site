@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { List, X, ArrowUpRight } from "@phosphor-icons/react";
-import logo from "../assets/Pantera_Claw_small.webp";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { List, X, ArrowUpRight } from "@phosphor-icons/react/ssr";
 
 const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
 
@@ -14,7 +16,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   return (
     <>
@@ -29,9 +31,9 @@ export default function Navbar() {
           }}
         >
           {/* Logo + Brand */}
-          <Link to="/" className="flex items-center gap-2.5 pl-2 pr-1 no-underline">
+          <Link href="/" className="flex items-center gap-2.5 pl-2 pr-1 no-underline">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
-              <img src={logo} alt="Pantera Claw" className="w-full h-full object-contain scale-125" />
+              <img src="/Pantera_Claw_small.webp" alt="Pantera Claw" width={40} height={40} className="w-full h-full object-contain scale-125" />
             </div>
             <span className="font-display font-semibold text-text-primary text-sm md:text-base tracking-tight whitespace-nowrap">
               Pantera Claw
@@ -43,9 +45,9 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.path}
-                to={link.path}
+                href={link.path}
                 className={`px-5 py-2.5 rounded-full text-base font-medium no-underline transition-all duration-500 ${
-                  location.pathname === link.path
+                  pathname === link.path
                     ? "text-canvas bg-accent"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
@@ -58,7 +60,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <Link
-            to="/contact"
+            href="/contact"
             className="hidden md:flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-5 pr-1.5 py-1.5 rounded-full no-underline transition-all duration-500 group"
             style={{ transitionTimingFunction: ease }}
           >
@@ -122,10 +124,10 @@ export default function Navbar() {
             }}
           >
             <Link
-              to={link.path}
+              href={link.path}
               onClick={() => setMobileOpen(false)}
               className={`text-3xl font-semibold tracking-tight no-underline transition-colors duration-300 ${
-                location.pathname === link.path
+                pathname === link.path
                   ? "text-accent"
                   : "text-text-primary"
               }`}
@@ -142,7 +144,7 @@ export default function Navbar() {
           }}
         >
           <Link
-            to="/contact"
+            href="/contact"
             onClick={() => setMobileOpen(false)}
             className="mt-4 inline-flex items-center gap-2 bg-accent text-canvas font-semibold text-lg px-8 py-3 rounded-full no-underline"
           >

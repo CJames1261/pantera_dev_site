@@ -1,13 +1,20 @@
-import Seo from "../components/Seo";
-import Hero from "../components/sections/Hero";
-import ServicesBento from "../components/sections/ServicesBento";
-import FeaturePipelines from "../components/sections/FeaturePipelines";
-import FeatureDashboards from "../components/sections/FeatureDashboards";
-import FeatureAI from "../components/sections/FeatureAI";
-import FeatureAnalytics from "../components/sections/FeatureAnalytics";
-import CTASection from "../components/sections/CTASection";
+import type { Metadata } from "next";
+import Hero from "@/components/sections/Hero";
+import ServicesBento from "@/components/sections/ServicesBento";
+import FeaturePipelines from "@/components/sections/FeaturePipelines";
+import FeatureDashboards from "@/components/sections/FeatureDashboards";
+import FeatureAI from "@/components/sections/FeatureAI";
+import FeatureAnalytics from "@/components/sections/FeatureAnalytics";
+import CTASection from "@/components/sections/CTASection";
 
 const SITE_URL = "https://www.agenticaiutah.com";
+
+export const metadata: Metadata = {
+  title: { absolute: "Pantera Claw | AI & Data Consulting for Growing Businesses" },
+  description:
+    "Salt Lake City AI and data consulting. Custom dashboards, AI workflows, data pipelines, and analytics for small and mid-size businesses.",
+  alternates: { canonical: "/" },
+};
 
 const professionalServiceSchema = {
   "@context": "https://schema.org",
@@ -56,19 +63,15 @@ const professionalServiceSchema = {
   ],
   priceRange: "$$",
   openingHours: "Mo-Fr 09:00-17:00",
-  sameAs: [
-    "https://github.com/CJames1261",
-  ],
+  sameAs: ["https://github.com/CJames1261"],
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Seo
-        title="Pantera Claw | AI & Data Consulting for Growing Businesses"
-        description="Salt Lake City AI and data consulting. Custom dashboards, AI workflows, data pipelines, and analytics for small and mid-size businesses."
-        path="/"
-        jsonLd={professionalServiceSchema}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
       />
       <Hero />
       <ServicesBento />

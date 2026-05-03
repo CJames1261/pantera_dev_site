@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useState, type ReactNode } from "react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 

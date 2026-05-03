@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useState } from "react";
 
 export function useInView(rootMargin = "-60px") {

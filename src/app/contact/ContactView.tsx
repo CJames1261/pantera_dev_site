@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type FormEvent } from "react";
 import {
   EnvelopeSimple,
@@ -11,9 +13,8 @@ import {
   CheckCircle,
   WarningCircle,
   CircleNotch,
-} from "@phosphor-icons/react";
-import ScrollReveal from "../components/ScrollReveal";
-import Seo from "../components/Seo";
+} from "@phosphor-icons/react/ssr";
+import ScrollReveal from "@/components/ScrollReveal";
 
 type FormState = {
   name: string;
@@ -40,13 +41,8 @@ function validate(data: FormState): FormErrors {
   return errors;
 }
 
-/**
- * Submits the contact form. If VITE_CONTACT_ENDPOINT is set (e.g. a Formspree
- * or Resend webhook URL), we POST there. Otherwise we build a mailto: link
- * so users can still reach info@panteraclaw.com via their email client.
- */
 async function submitForm(data: FormState): Promise<void> {
-  const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined;
+  const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
 
   if (endpoint) {
     const res = await fetch(endpoint, {
@@ -58,7 +54,6 @@ async function submitForm(data: FormState): Promise<void> {
     return;
   }
 
-  // Fallback: open the user's mail client with a prefilled message.
   const subject = `Project inquiry from ${data.name}`;
   const body = [
     `Name: ${data.name}`,
@@ -102,18 +97,7 @@ const serviceAreas = [
   },
 ];
 
-const SITE_URL = "https://www.agenticaiutah.com";
-
-const contactBreadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Contact", item: `${SITE_URL}/contact` },
-  ],
-};
-
-export default function Contact() {
+export default function ContactView() {
   const [formData, setFormData] = useState<FormState>({
     name: "",
     email: "",
@@ -136,7 +120,6 @@ export default function Contact() {
     const v = validate(formData);
     if (Object.keys(v).length > 0) {
       setErrors(v);
-      // Focus the first field with an error
       const firstKey = Object.keys(v)[0] as keyof FormState;
       const el = document.querySelector<HTMLElement>(`[name="${firstKey}"]`);
       el?.focus();
@@ -158,15 +141,8 @@ export default function Contact() {
   };
 
   return (
-    <main className="relative z-10 pt-32 lg:pt-40 pb-24">
-      <Seo
-        title="Contact | Pantera Claw — Start a Data & AI Conversation"
-        description="Tell us about your data project. We start with a free 30-minute call. Salt Lake City based, serving clients nationwide. info@panteraclaw.com · +1 (801) 898-0911."
-        path="/contact"
-        jsonLd={contactBreadcrumb}
-      />
+    <div className="relative z-10 pt-32 lg:pt-40 pb-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
-        {/* Page Header */}
         <ScrollReveal>
           <div className="mb-16">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-base font-medium text-white bg-white/15 border border-white/25 mb-6">
@@ -176,7 +152,7 @@ export default function Contact() {
               className="font-display font-bold tracking-tighter text-text-primary mb-4 max-w-[600px]"
               style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}
             >
-              Let's figure out what your data needs
+              Let&apos;s figure out what your data needs
             </h1>
             <p className="text-text-secondary text-lg leading-relaxed max-w-[520px]">
               Whether you need a full data platform or help with a single pipeline,
@@ -186,7 +162,6 @@ export default function Contact() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Left — Form (takes 3 cols) */}
           <ScrollReveal className="lg:col-span-3">
             <div
               className="p-1.5 rounded-[2rem] border border-border"
@@ -217,14 +192,14 @@ export default function Contact() {
                         Thanks, your message is on its way.
                       </h3>
                       <p className="text-text-secondary text-sm leading-relaxed max-w-[48ch]">
-                        If your email client didn't open automatically, write to{" "}
+                        If your email client didn&apos;t open automatically, write to{" "}
                         <a
                           href="mailto:info@panteraclaw.com"
                           className="text-accent hover:text-accent-hover underline underline-offset-2"
                         >
                           info@panteraclaw.com
                         </a>{" "}
-                        directly. We'll reply within one business day.
+                        directly. We&apos;ll reply within one business day.
                       </p>
                     </div>
                     <button
@@ -373,7 +348,7 @@ export default function Contact() {
                         />
                         <div>
                           <p className="text-text-primary font-medium">
-                            We couldn't send that.
+                            We couldn&apos;t send that.
                           </p>
                           <p className="text-text-secondary text-xs mt-1">
                             {errorMessage || "Please try again, or email us directly at info@panteraclaw.com."}
@@ -419,7 +394,6 @@ export default function Contact() {
             </div>
           </ScrollReveal>
 
-          {/* Right — Contact Info (takes 2 cols) */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <ScrollReveal delay={0.1}>
               <div
@@ -484,7 +458,6 @@ export default function Contact() {
               </div>
             </ScrollReveal>
 
-            {/* Service Area Cards */}
             <ScrollReveal delay={0.2}>
               <div
                 className="p-1.5 rounded-[2rem] border border-border"
@@ -530,6 +503,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

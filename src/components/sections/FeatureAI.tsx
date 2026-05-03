@@ -1,4 +1,6 @@
-import { CheckCircle } from "@phosphor-icons/react";
+"use client";
+
+import { CheckCircle } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
 import { useInView } from "../../hooks/useInView";
 

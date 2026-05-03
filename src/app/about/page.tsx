@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Lightning,
   Target,
@@ -8,12 +10,28 @@ import {
   DeviceMobile,
   Brain,
   ArrowUpRight,
-} from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
-import ScrollReveal from "../components/ScrollReveal";
-import Seo from "../components/Seo";
-import logoLarge from "../assets/Pantera_Claw.webp";
+} from "@phosphor-icons/react/ssr";
+import ScrollReveal from "@/components/ScrollReveal";
+
+const SITE_URL = "https://www.agenticaiutah.com";
 const logo = "/Pantera_Claw_hero.webp";
+const logoLarge = "/Pantera_Claw.webp";
+
+export const metadata: Metadata = {
+  title: { absolute: "About Pantera Claw | Our story, standard, and mission" },
+  description:
+    "Pantera Claw brings enterprise-grade AI, data infrastructure, and digital solutions to small and mid-size businesses. Precise, adaptive, and built to last.",
+  alternates: { canonical: "/about" },
+};
+
+const aboutBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/about` },
+  ],
+};
 
 const services = [
   {
@@ -69,29 +87,15 @@ const standard = [
   },
 ];
 
-const SITE_URL = "https://www.agenticaiutah.com";
-
-const aboutBreadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/about` },
-  ],
-};
-
 export default function About() {
   return (
-    <main className="relative z-10 pt-32 lg:pt-40 pb-24">
-      <Seo
-        title="About Pantera Claw | Our story, standard, and mission"
-        description="Pantera Claw brings enterprise-grade AI, data infrastructure, and digital solutions to small and mid-size businesses. Precise, adaptive, and built to last."
-        path="/about"
-        jsonLd={aboutBreadcrumb}
+    <div className="relative z-10 pt-32 lg:pt-40 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumb) }}
       />
-
       <div>
-        {/* Why the Panther — now the page opener */}
+        {/* Why the Panther */}
         <section className="pb-12 lg:pb-16">
           <div className="max-w-5xl mx-auto px-4 md:px-8">
             <ScrollReveal>
@@ -126,6 +130,8 @@ export default function About() {
                       srcSet={`${logo} 480w, ${logoLarge} 1024w`}
                       sizes="(max-width: 768px) 90vw, 480px"
                       alt="Pantera Claw logo"
+                      width={480}
+                      height={480}
                       className="relative z-10 w-full aspect-square object-cover"
                       loading="lazy"
                       decoding="async"
@@ -152,7 +158,7 @@ export default function About() {
                     with solutions that are fast, sharp, and built to last.
                   </p>
                   <p className="text-text-primary text-lg leading-relaxed font-medium">
-                    We don't just build software. We help businesses hunt
+                    We don&apos;t just build software. We help businesses hunt
                     smarter.
                   </p>
                 </div>
@@ -183,7 +189,6 @@ export default function About() {
                 className="rounded-[1.75rem] overflow-hidden border border-border"
                 style={{ backgroundColor: "rgba(255, 255, 255, 0.07)" }}
               >
-                {/* gap-px + hairline bg renders 1px dividers between cells */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px">
                   {standard.map((item) => (
                     <div
@@ -210,10 +215,9 @@ export default function About() {
           </div>
         </section>
 
-        {/* Mission + How We Help (combined) */}
+        {/* Mission + How We Help */}
         <section className="py-16 lg:py-24">
           <div className="max-w-6xl mx-auto px-4 md:px-8">
-            {/* Mission intro */}
             <ScrollReveal>
               <div className="max-w-5xl mx-auto text-center mb-14 lg:mb-16">
                 <span className="inline-block border border-yellow-400 px-4 py-1.5 text-sm uppercase tracking-wide text-yellow-400 mb-8">
@@ -235,25 +239,23 @@ export default function About() {
                 </p>
                 <p className="text-text-secondary text-xl leading-relaxed">
                   We bring the same caliber of AI systems, data infrastructure,
-                  and digital solutions used by the world's largest organizations,
+                  and digital solutions used by the world&apos;s largest organizations,
                   and we make them accessible, affordable, and actionable for
                   businesses ready to grow.
                 </p>
               </div>
             </ScrollReveal>
 
-            {/* Transition into the HOW */}
             <ScrollReveal>
               <div className="text-center mb-10">
                 <div>
                   <span className="inline-block border border-yellow-400 px-4 py-1.5 text-sm uppercase tracking-wide text-yellow-400">
-                    Here's how
+                    Here&apos;s how
                   </span>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Service cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, i) => (
                 <ScrollReveal key={service.title} delay={i * 0.08}>
@@ -308,11 +310,11 @@ export default function About() {
                 Ready to work with us?
               </h2>
               <p className="text-text-secondary text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-                Let's talk about where your business is headed and how we can
+                Let&apos;s talk about where your business is headed and how we can
                 help you get there faster.
               </p>
               <Link
-                to="/contact"
+                href="/contact"
                 className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-8 pr-2 py-2.5 rounded-full no-underline transition-all duration-700"
                 style={{
                   transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
@@ -332,6 +334,6 @@ export default function About() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

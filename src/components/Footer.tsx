@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import {
   EnvelopeSimple,
   Phone,
   MapPin,
   ArrowUpRight,
-} from "@phosphor-icons/react";
-import logo from "../assets/Pantera_Claw_small.webp";
+} from "@phosphor-icons/react/ssr";
 
 const services = [
   "Data Pipelines",
@@ -31,9 +32,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 py-12 sm:py-16 lg:py-20">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 no-underline mb-5">
+            <Link href="/" className="flex items-center gap-3 no-underline mb-5">
               <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light bg-surface-light">
-                <img src={logo} alt="" aria-hidden="true" className="w-full h-full object-contain scale-125" />
+                <img src="/Pantera_Claw_small.webp" alt="" aria-hidden="true" width={40} height={40} className="w-full h-full object-contain scale-125" />
               </div>
               <span className="font-display font-bold text-text-primary text-lg tracking-tight">
                 Pantera Claw
@@ -45,8 +46,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services Column (hidden on mobile; duplicates main nav + service
-              cards on home. Shows at sm: and up.) */}
+          {/* Services Column */}
           <div className="hidden sm:block">
             <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Services
@@ -55,7 +55,7 @@ export default function Footer() {
               {services.map((service) => (
                 <li key={service}>
                   <Link
-                    to="/services"
+                    href="/services"
                     className="text-text-secondary text-sm hover:text-text-primary transition-colors duration-300 no-underline"
                   >
                     {service}
@@ -65,8 +65,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company Column (hidden on mobile; main nav already exposes all
-              these links. Shows at sm: and up.) */}
+          {/* Company Column */}
           <div className="hidden sm:block">
             <h3 className="font-display font-semibold text-text-primary text-sm uppercase tracking-widest mb-5">
               Company
@@ -75,7 +74,7 @@ export default function Footer() {
               {company.map((item) => (
                 <li key={item.path}>
                   <Link
-                    to={item.path}
+                    href={item.path}
                     className="text-text-secondary text-sm hover:text-text-primary transition-colors duration-300 no-underline"
                   >
                     {item.label}
@@ -117,7 +116,7 @@ export default function Footer() {
               </li>
             </ul>
             <Link
-              to="/contact"
+              href="/contact"
               className="mt-6 inline-flex items-center gap-2 text-accent text-sm font-semibold hover:gap-3 transition-all duration-500 no-underline"
               style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
             >

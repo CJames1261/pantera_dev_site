@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Globe,
   Database,
@@ -6,7 +6,7 @@ import {
   ChartLineUp,
   Brain,
   ArrowUpRight,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
 
 const servicesRow1 = [
@@ -110,7 +110,7 @@ export default function ServicesBento() {
                     {service.description}
                   </p>
                   <Link
-                    to={`/services#${service.hash}`}
+                    href={`/services#${service.hash}`}
                     className="mt-auto inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline hover:gap-2.5 transition-all duration-500 group/link"
                     style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                   >
@@ -155,7 +155,7 @@ export default function ServicesBento() {
                     {service.description}
                   </p>
                   <Link
-                    to={`/services#${service.hash}`}
+                    href={`/services#${service.hash}`}
                     className="mt-auto inline-flex items-center gap-1.5 text-accent font-semibold text-sm no-underline hover:gap-2.5 transition-all duration-500 group/link"
                     style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                   >

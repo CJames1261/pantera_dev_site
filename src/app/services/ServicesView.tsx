@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe,
@@ -20,11 +22,8 @@ import {
   Cpu,
   ChartLineUp,
   CloudArrowUp,
-} from "@phosphor-icons/react";
-import ScrollReveal from "../components/ScrollReveal";
-import Seo from "../components/Seo";
-
-/* ─── Service Data ─── */
+} from "@phosphor-icons/react/ssr";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface ServicePill {
   id: string;
@@ -39,7 +38,6 @@ interface ServicePill {
 function WebDevContent() {
   return (
     <div className="flex flex-col gap-10">
-      {/* Key Differentiators */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-xl bg-surface-light border border-border p-6">
           <div className="flex items-center gap-2 mb-3">
@@ -54,7 +52,7 @@ function WebDevContent() {
           <p className="text-text-secondary text-sm leading-relaxed">
             Every site we build scores 90+ on Google Lighthouse out of the box.
             Faster load times mean higher search rankings and lower bounce rates.
-            Speed isn't an afterthought; it's the foundation.
+            Speed isn&apos;t an afterthought; it&apos;s the foundation.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -65,7 +63,7 @@ function WebDevContent() {
             </span>
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">
-            SEO & AI-Search Optimized
+            SEO &amp; AI-Search Optimized
           </h4>
           <p className="text-text-secondary text-sm leading-relaxed">
             Built for both Google and the new wave of AI search engines.
@@ -75,7 +73,6 @@ function WebDevContent() {
         </div>
       </div>
 
-      {/* What We Build */}
       <div>
         <h3 className="font-display font-bold text-text-primary text-xl mb-2">
           What We Build
@@ -156,7 +153,6 @@ function WebDevContent() {
         </div>
       </div>
 
-      {/* Tech Stack */}
       <div>
         <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">
           Technology Stack
@@ -177,7 +173,6 @@ function WebDevContent() {
         </div>
       </div>
 
-      {/* Proof */}
       <div className="rounded-xl bg-surface-light border border-border p-5">
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
@@ -189,23 +184,22 @@ function WebDevContent() {
           This very website, PanteraClaw.com, is built with React, TypeScript,
           and Tailwind CSS, demonstrating the same modern tech stack, responsive
           design, and SEO-optimized architecture we deliver to every client. What
-          you're browsing right now is our proof of work.
+          you&apos;re browsing right now is our proof of work.
         </p>
       </div>
 
-      {/* CTA */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
         <div className="flex-1">
           <h4 className="font-display font-bold text-text-primary text-base mb-1">
             Need a website that actually converts?
           </h4>
           <p className="text-text-secondary text-sm">
-            Whether it's a consulting site, a web app, or a complete redesign,
-            let's build something that works as hard as you do.
+            Whether it&apos;s a consulting site, a web app, or a complete redesign,
+            let&apos;s build something that works as hard as you do.
           </p>
         </div>
         <Link
-          to="/contact"
+          href="/contact"
           className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0"
           style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
         >
@@ -232,7 +226,7 @@ function DatabaseContent() {
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">Terabyte-Scale Performance</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            We've optimized PySpark ETL pipelines handling terabyte-scale data for DoD compliance. Our schemas don't buckle under growth -- they're designed for it from day one.
+            We&apos;ve optimized PySpark ETL pipelines handling terabyte-scale data for DoD compliance. Our schemas don&apos;t buckle under growth -- they&apos;re designed for it from day one.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -242,7 +236,7 @@ function DatabaseContent() {
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">Cross-Platform Expertise</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Databricks, PostgreSQL, Snowflake, Oracle: we're fluent in all of them. Whether you're migrating between platforms or optimizing your current stack, we've built production workloads on each.
+            Databricks, PostgreSQL, Snowflake, Oracle: we&apos;re fluent in all of them. Whether you&apos;re migrating between platforms or optimizing your current stack, we&apos;ve built production workloads on each.
           </p>
         </div>
       </div>
@@ -298,7 +292,7 @@ function DatabaseContent() {
           <h4 className="font-display font-bold text-text-primary text-base mb-1">Need a database that scales?</h4>
           <p className="text-text-secondary text-sm">From schema design to migration, we build data infrastructure that grows with you.</p>
         </div>
-        <Link to="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
+        <Link href="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
           Discuss Your Database Project
           <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}><ArrowUpRight size={14} weight="bold" className="text-canvas" /></span>
         </Link>
@@ -318,7 +312,7 @@ function DashboardContent() {
           </div>
           <h4 className="font-display font-bold text-text-primary text-base mb-2">AI-Powered Cost Prediction</h4>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Our dashboards don't just show what happened -- they predict what will happen next. ML-powered forecasting views give your leadership real decision-making leverage.
+            Our dashboards don&apos;t just show what happened -- they predict what will happen next. ML-powered forecasting views give your leadership real decision-making leverage.
           </p>
         </div>
         <div className="rounded-xl bg-surface-light border border-border p-6">
@@ -384,7 +378,7 @@ function DashboardContent() {
           <h4 className="font-display font-bold text-text-primary text-base mb-1">Need dashboards your team will trust?</h4>
           <p className="text-text-secondary text-sm">From executive reporting to embedded analytics, we build visualizations that drive action.</p>
         </div>
-        <Link to="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
+        <Link href="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
           Discuss Your Dashboard Project
           <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}><ArrowUpRight size={14} weight="bold" className="text-canvas" /></span>
         </Link>
@@ -470,7 +464,7 @@ function AIContent() {
           <h4 className="font-display font-bold text-text-primary text-base mb-1">Ready to deploy AI that actually works?</h4>
           <p className="text-text-secondary text-sm">From RAG pipelines to autonomous agents, we build AI systems for production.</p>
         </div>
-        <Link to="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
+        <Link href="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
           Discuss Your AI Project
           <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}><ArrowUpRight size={14} weight="bold" className="text-canvas" /></span>
         </Link>
@@ -556,7 +550,7 @@ function AnalyticsContent() {
           <h4 className="font-display font-bold text-text-primary text-base mb-1">Need models that perform in production?</h4>
           <p className="text-text-secondary text-sm">From prediction to causal analysis, we build ML that drives real business outcomes.</p>
         </div>
-        <Link to="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
+        <Link href="/contact" className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-6 pr-1.5 py-2 rounded-full no-underline transition-all duration-700 flex-shrink-0" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}>
           Discuss Your ML Project
           <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px" style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}><ArrowUpRight size={14} weight="bold" className="text-canvas" /></span>
         </Link>
@@ -564,8 +558,6 @@ function AnalyticsContent() {
     </div>
   );
 }
-
-/* ─── Pill Data ─── */
 
 const servicePills: ServicePill[] = [
   {
@@ -620,72 +612,24 @@ const servicePills: ServicePill[] = [
   },
 ];
 
-/* ─── Schema.org JSON-LD ─── */
-
-const SERVICES_SITE_URL = "https://www.agenticaiutah.com";
-
-const servicesJsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SERVICES_SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${SERVICES_SITE_URL}/services` },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Pantera Claw Consulting Services",
-    itemListElement: servicePills.map((pill, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Service",
-        name: pill.title,
-        description: pill.description,
-        url: `${SERVICES_SITE_URL}/services#${pill.id}`,
-        provider: {
-          "@type": "Organization",
-          name: "Pantera Claw",
-          url: SERVICES_SITE_URL,
-        },
-        areaServed: [
-          { "@type": "State", name: "Utah" },
-          { "@type": "Country", name: "United States" },
-        ],
-      },
-    })),
-  },
-];
-
-/* ─── Page ─── */
-
-export default function Services() {
-  const location = useLocation();
+export default function ServicesView() {
   const [openId, setOpenId] = useState<string | null>(null);
   const pillRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
-    const hash = location.hash.replace("#", "");
+    const hash = typeof window !== "undefined"
+      ? window.location.hash.replace("#", "")
+      : "";
     if (hash && servicePills.some((p) => p.id === hash)) {
       setOpenId(hash);
-      // Scroll to the pill after a short delay to let the DOM settle
       setTimeout(() => {
         pillRefs.current[hash]?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 300);
     }
-  }, [location.hash]);
+  }, []);
 
   return (
     <>
-      <Seo
-        title="Services | Pantera Claw — Data Consulting, AI Automation, Dashboards"
-        description="Our services: business web development, database management, custom dashboards, AI workflow automation, business analytics, data strategy, BI solutions, and machine learning consulting."
-        path="/services"
-        jsonLd={servicesJsonLd}
-      />
-      {/* Hero */}
       <section className="relative z-10 pt-36 pb-12 md:pt-44 md:pb-16">
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
           <ScrollReveal>
@@ -714,7 +658,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Accordion Pills */}
       <section className="relative z-10 pb-24 md:pb-32">
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
           <div className="flex flex-col gap-4">
@@ -739,7 +682,6 @@ export default function Services() {
                       className="rounded-[calc(2rem-0.375rem)] bg-surface overflow-hidden"
                       style={{ boxShadow: "var(--shadow-inner-highlight)" }}
                     >
-                      {/* Pill Header — always visible */}
                       <button
                         onClick={() => setOpenId(isOpen ? null : pill.id)}
                         className="w-full text-left px-6 py-6 lg:px-10 lg:py-8 flex items-start gap-5 cursor-pointer border-none bg-transparent group"
@@ -784,7 +726,6 @@ export default function Services() {
                         </motion.div>
                       </button>
 
-                      {/* Expandable Content */}
                       <AnimatePresence initial={false}>
                         {isOpen && (
                           <motion.div
@@ -810,7 +751,6 @@ export default function Services() {
             })}
           </div>
 
-          {/* Bottom CTA */}
           <ScrollReveal delay={0.1}>
             <div className="mt-16">
               <div
@@ -844,7 +784,7 @@ export default function Services() {
                       commitment.
                     </p>
                     <Link
-                      to="/contact"
+                      href="/contact"
                       className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-8 pr-2 py-2.5 rounded-full no-underline transition-all duration-700"
                       style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                     >

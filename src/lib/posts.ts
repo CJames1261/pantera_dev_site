@@ -1,3 +1,6 @@
+import fs from "node:fs"
+import path from "node:path"
+
 export type BlogPost = {
   slug: string
   title: string
@@ -23,26 +26,23 @@ export type BlogPost = {
 
 const DEFAULT_AUTHOR = "Pantera Claw"
 
-type GeneratedPost = Omit<BlogPost, "author" | "ready"> & {
-  author?: string
-  ready?: boolean
+const POSTS_DIR = path.join(process.cwd(), "src", "content", "posts")
+
+function loadAll(): BlogPost[] {
+  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".json"))
+  const posts = files.map((file) => {
+    const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8")
+    const data = JSON.parse(raw) as Partial<BlogPost>
+    return {
+      author: DEFAULT_AUTHOR,
+      ready: true,
+      ...data,
+    } as BlogPost
+  })
+  return posts.sort((a, b) => b.isoDate.localeCompare(a.isoDate))
 }
 
-const modules = import.meta.glob<{ default: GeneratedPost }>(
-  "../content/posts/*.json",
-  { eager: true }
-)
-
-const generated: BlogPost[] = Object.values(modules).map((m) => ({
-  author: DEFAULT_AUTHOR,
-  ready: true,
-  ...m.default,
-}))
-
-export const allPosts: BlogPost[] = generated.sort((a, b) =>
-  b.isoDate.localeCompare(a.isoDate)
-)
-
+export const allPosts: BlogPost[] = loadAll()
 export const featuredPost: BlogPost | undefined = allPosts[0]
 export const posts: BlogPost[] = allPosts.slice(1)
 

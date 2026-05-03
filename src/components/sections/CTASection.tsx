@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
+import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 import ScrollReveal from "../ScrollReveal";
 
 export default function CTASection() {
@@ -42,7 +42,7 @@ export default function CTASection() {
                   looks like for your company.
                 </p>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-8 pr-2 py-2.5 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >

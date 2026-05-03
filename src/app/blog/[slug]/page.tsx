@@ -1,4 +1,6 @@
-import { Link, useParams } from "react-router-dom";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
   ArrowLeft,
@@ -6,18 +8,69 @@ import {
   Clock,
   Tag,
   EnvelopeSimple,
-} from "@phosphor-icons/react";
-import ScrollReveal from "../components/ScrollReveal";
-import Seo from "../components/Seo";
-import NotFound from "./NotFound";
-import { getPostBySlug, allPosts, type BlogPost } from "../lib/posts";
+} from "@phosphor-icons/react/ssr";
+import ScrollReveal from "@/components/ScrollReveal";
+import { getPostBySlug, allPosts, type BlogPost } from "@/lib/posts";
 
-export default function BlogPostPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
+const SITE_URL = "https://www.agenticaiutah.com";
+
+export function generateStaticParams() {
+  return allPosts.map((p) => ({ slug: p.slug }));
+}
+
+type Params = { slug: string };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) {
+    return { title: { absolute: "Page not found | Pantera Claw" } };
+  }
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  const absoluteImage = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `${SITE_URL}${post.image}`
+    : `${SITE_URL}/Pantera_Claw_hero.webp`;
+
+  return {
+    title: { absolute: `${post.title} | Pantera Claw Blog` },
+    description: post.excerpt.slice(0, 160),
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt.slice(0, 160),
+      url,
+      images: [{ url: absoluteImage }],
+      publishedTime: post.isoDate,
+      modifiedTime: post.isoDate,
+      authors: [post.author ?? "Pantera Claw"],
+      section: post.category,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt.slice(0, 160),
+      images: [absoluteImage],
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
-    return <NotFound />;
+    notFound();
   }
 
   const currentIndex = allPosts.findIndex((p) => p.slug === post.slug);
@@ -26,7 +79,6 @@ export default function BlogPostPage() {
       ? allPosts[currentIndex + 1]
       : undefined;
 
-  const SITE_URL = "https://www.agenticaiutah.com";
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
   const author = post.author ?? "Pantera Claw";
   const absoluteImage = post.image
@@ -75,33 +127,25 @@ export default function BlogPostPage() {
   };
 
   return (
-    <main className="relative z-10 pt-32 lg:pt-40 pb-24">
-      <Seo
-        title={`${post.title} | Pantera Claw Blog`}
-        description={post.excerpt.slice(0, 160)}
-        path={`/blog/${post.slug}`}
-        type="article"
-        ogImage={post.image}
-        articleMeta={{
-          publishedTime: post.isoDate,
-          modifiedTime: post.isoDate,
-          author,
-          section: post.category,
-        }}
-        jsonLd={[articleSchema, breadcrumbSchema]}
+    <div className="relative z-10 pt-32 lg:pt-40 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <article className="max-w-[820px] mx-auto px-4 md:px-8">
         <ScrollReveal>
-          {/* Back link */}
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-1.5 text-text-secondary hover:text-accent text-sm font-mono mb-8 no-underline transition-colors duration-300"
           >
             <ArrowLeft size={14} weight="bold" />
             All posts
           </Link>
 
-          {/* Category pill */}
           <div className="flex items-center gap-3 mb-6">
             <span className="font-mono text-xs text-accent bg-accent/10 px-3 py-1 rounded-full flex items-center gap-1.5">
               <Tag size={12} weight="bold" />
@@ -113,7 +157,6 @@ export default function BlogPostPage() {
             </span>
           </div>
 
-          {/* Title */}
           <h1
             className="font-display font-bold tracking-tighter text-text-primary leading-[1.08] mb-5"
             style={{ fontSize: "clamp(1.875rem, 4.5vw, 3rem)" }}
@@ -121,18 +164,15 @@ export default function BlogPostPage() {
             {post.title}
           </h1>
 
-          {/* Date */}
           <div className="flex items-center gap-2 text-text-tertiary font-mono text-sm mb-10">
             <CalendarBlank size={14} />
             {post.date}
           </div>
 
-          {/* Excerpt block */}
           <p className="text-text-primary text-xl lg:text-2xl leading-relaxed font-light tracking-tight mb-12 max-w-[64ch]">
             {post.excerpt}
           </p>
 
-          {/* Featured image if present */}
           {post.image && (
             <div
               className="p-1.5 rounded-[2rem] border border-border mb-12"
@@ -156,7 +196,6 @@ export default function BlogPostPage() {
           )}
         </ScrollReveal>
 
-        {/* Article body — "being prepared" state when ready === false */}
         <ScrollReveal delay={0.1}>
           {post.ready ? (
             post.bodyHtml ? (
@@ -184,12 +223,12 @@ export default function BlogPostPage() {
                 <p className="text-text-secondary text-base leading-relaxed mb-8 max-w-[58ch]">
                   We publish these carefully and test every claim against real
                   client engagements before it ships. If you want the detail now,
-                  we're happy to walk you through the specifics on a call, or
+                  we&apos;re happy to walk you through the specifics on a call, or
                   email us the question directly.
                 </p>
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
-                    to="/contact"
+                    href="/contact"
                     className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-sm pl-5 pr-2 py-2 rounded-full transition-all duration-700 no-underline"
                     style={{
                       transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
@@ -220,7 +259,6 @@ export default function BlogPostPage() {
           )}
         </ScrollReveal>
 
-        {/* Next post pager */}
         {nextPost && (
           <ScrollReveal delay={0.15}>
             <div className="mt-20 pt-10 border-t border-border">
@@ -228,7 +266,7 @@ export default function BlogPostPage() {
                 Next read
               </div>
               <Link
-                to={`/blog/${nextPost.slug}`}
+                href={`/blog/${nextPost.slug}`}
                 className="group flex items-start justify-between gap-6 no-underline"
               >
                 <div>
@@ -252,6 +290,6 @@ export default function BlogPostPage() {
           </ScrollReveal>
         )}
       </article>
-    </main>
+    </div>
   );
 }

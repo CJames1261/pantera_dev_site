@@ -1,4 +1,6 @@
-import { ChartBar, TrendUp, ArrowUpRight } from "@phosphor-icons/react";
+"use client";
+
+import { ChartBar, TrendUp, ArrowUpRight } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
 import { useInView } from "../../hooks/useInView";
 

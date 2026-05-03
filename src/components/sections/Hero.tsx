@@ -1,8 +1,8 @@
-import { ArrowUpRight } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
-import logo from "../../assets/Pantera_Claw.webp";
+import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 import ScrollReveal from "../ScrollReveal";
 
+const logo = "/Pantera_Claw.webp";
 const logoSmall = "/Pantera_Claw_hero.webp";
 
 export default function Hero() {
@@ -43,7 +43,7 @@ export default function Hero() {
             <ScrollReveal delay={0.3}>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
@@ -55,7 +55,7 @@ export default function Hero() {
                   </span>
                 </Link>
                 <Link
-                  to="/services"
+                  href="/services"
                   className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
@@ -102,6 +102,8 @@ export default function Hero() {
                   srcSet={`${logoSmall} 480w, ${logo} 1024w`}
                   sizes="(max-width: 768px) 362px, 480px"
                   alt="Pantera Claw"
+                  width={480}
+                  height={480}
                   className="relative z-10 w-full aspect-square object-cover"
                   fetchPriority="high"
                 />

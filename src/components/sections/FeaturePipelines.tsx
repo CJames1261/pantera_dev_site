@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowRight,
   CheckCircle,
@@ -5,7 +7,7 @@ import {
   Funnel,
   Database,
   ChartBar,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import ScrollReveal from "../ScrollReveal";
 import { useInView } from "../../hooks/useInView";
 

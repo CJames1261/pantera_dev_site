@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight, CalendarBlank, Clock, Tag } from "@phosphor-icons/react";
-import ScrollReveal from "../components/ScrollReveal";
-import Seo from "../components/Seo";
-import { featuredPost, posts, allPosts } from "../lib/posts";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, CalendarBlank, Clock, Tag } from "@phosphor-icons/react/ssr";
+import ScrollReveal from "@/components/ScrollReveal";
+import { featuredPost, posts, allPosts } from "@/lib/posts";
 
 const SITE_URL = "https://www.agenticaiutah.com";
+
+export const metadata: Metadata = {
+  title: { absolute: "Blog | Pantera Claw — Data Engineering, AI, and Analytics" },
+  description:
+    "Technical deep-dives, case studies, and honest takes on data infrastructure from the engineers who build it.",
+  alternates: { canonical: "/blog" },
+};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -41,15 +48,16 @@ const blogSchema = {
 
 export default function Blog() {
   return (
-    <main className="relative z-10 pt-32 lg:pt-40 pb-24">
-      <Seo
-        title="Blog | Pantera Claw — Data Engineering, AI, and Analytics"
-        description="Technical deep-dives, case studies, and honest takes on data infrastructure from the engineers who build it."
-        path="/blog"
-        jsonLd={[blogSchema, breadcrumbSchema]}
+    <div className="relative z-10 pt-32 lg:pt-40 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
-        {/* Page Header */}
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
@@ -71,7 +79,6 @@ export default function Blog() {
           </div>
         </ScrollReveal>
 
-        {/* Empty state */}
         {!featuredPost && (
           <ScrollReveal>
             <div
@@ -98,11 +105,10 @@ export default function Blog() {
           </ScrollReveal>
         )}
 
-        {/* Featured Post */}
         {featuredPost && (
         <ScrollReveal>
           <Link
-            to={`/blog/${featuredPost.slug}`}
+            href={`/blog/${featuredPost.slug}`}
             className="block mb-8 no-underline rounded-[2rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-canvas"
           >
             <div
@@ -162,12 +168,11 @@ export default function Blog() {
         </ScrollReveal>
         )}
 
-        {/* Post Grid — 2 column asymmetric */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {posts.map((post, i) => (
             <ScrollReveal key={post.slug} delay={i * 0.08}>
               <Link
-                to={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="block h-full no-underline rounded-[2rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-canvas"
               >
                 <div
@@ -212,6 +217,6 @@ export default function Blog() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }
