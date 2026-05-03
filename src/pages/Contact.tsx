@@ -102,6 +102,17 @@ const serviceAreas = [
   },
 ];
 
+const SITE_URL = "https://www.agenticaiutah.com";
+
+const contactBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Contact", item: `${SITE_URL}/contact` },
+  ],
+};
+
 export default function Contact() {
   const [formData, setFormData] = useState<FormState>({
     name: "",
@@ -152,6 +163,7 @@ export default function Contact() {
         title="Contact | Pantera Claw — Start a Data & AI Conversation"
         description="Tell us about your data project. We start with a free 30-minute call. Salt Lake City based, serving clients nationwide. info@panteraclaw.com · +1 (801) 898-0911."
         path="/contact"
+        jsonLd={contactBreadcrumb}
       />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Page Header */}

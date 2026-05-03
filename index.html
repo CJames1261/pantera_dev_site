@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="485ePLmmCK7L3oTn3v1I3Mdmbff22nzYKVR4a8DuhEo" />
 
     <!-- SEO (fallbacks; React 19 replaces per-page title, description, canonical, OG, Twitter) -->
-    <meta name="description" content="Pantera Claw is a Salt Lake City data consulting firm. Business analytics, AI automation, custom dashboards, and data infrastructure for small and mid-size businesses." />
+    <meta name="description" content="Salt Lake City AI and data consulting. Analytics, dashboards, AI automation, and data infrastructure for growing businesses." />
     <meta name="author" content="Pantera Claw" />
 
     <!-- Local SEO -->
@@ -41,55 +41,12 @@
     <!-- Apple touch icon -->
     <link rel="apple-touch-icon" href="/Pantera_Claw_hero.webp" />
 
-    <!-- Static fallback canonical (per-route canonical set by <Seo />) -->
-    <link rel="canonical" href="https://www.agenticaiutah.com/" />
+    <!-- Canonical is set per-route by <Seo /> — no static fallback -->
 
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
 
-    <!-- Resource hints for blog placeholder image host -->
-    <link rel="dns-prefetch" href="https://picsum.photos" />
-    <link rel="dns-prefetch" href="https://fastly.picsum.photos" />
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Pantera Claw",
-      "description": "AI and data consulting firm that helps businesses add analytics, custom dashboards, and AI capabilities to their operations. We turn your raw data into insights that drive real business decisions.",
-      "url": "https://www.agenticaiutah.com",
-      "telephone": "+1-801-898-0911",
-      "email": "info@panteraclaw.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Salt Lake City",
-        "addressRegion": "UT",
-        "addressCountry": "US"
-      },
-      "areaServed": [
-        { "@type": "State", "name": "Utah" },
-        { "@type": "Country", "name": "United States" }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Data & AI Consulting Services",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Analytics Consulting", "description": "Custom analytics solutions that help businesses make data driven decisions" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Dashboard Development", "description": "Interactive dashboards built to visualize your key performance indicators" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Workflow Automation", "description": "Agentic AI systems that automate repetitive business processes" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Database Management", "description": "Scalable database architecture and data pipeline engineering" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Strategy Consulting", "description": "Strategic roadmaps for becoming a data driven organization" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Intelligence Solutions", "description": "End to end BI platforms for reporting and operational insights" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Machine Learning Consulting", "description": "Custom ML models for prediction, segmentation, and classification" } }
-        ]
-      },
-      "knowsAbout": ["Business Analytics", "Artificial Intelligence", "Data Engineering", "Machine Learning", "ETL Pipelines", "LangGraph", "Agentic AI", "Custom Dashboards", "Causal Inference", "Predictive Analytics", "Data Visualization", "Data Governance", "Data Management", "Data Quality", "Data Strategy", "Business Intelligence", "Supply Chain Analytics"],
-      "priceRange": "$$",
-      "openingHours": "Mo-Fr 09:00-17:00",
-      "sameAs": []
-    }
-    </script>
+    <!-- ProfessionalService schema injected per-route by <Seo /> on homepage only -->
 
     <!-- Preload LCP hero image so the browser fetches it before JS executes -->
     <link rel="preload" as="image" href="/Pantera_Claw_hero.webp" type="image/webp" fetchpriority="high" />

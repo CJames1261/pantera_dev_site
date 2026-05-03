@@ -1,43 +1,39 @@
 # Pantera Claw
 
-> AI and data consulting firm based in Salt Lake City, Utah. We help businesses make smarter decisions by turning raw data into actionable insights, custom dashboards, and AI powered workflows.
+> AI and data consulting firm based in Salt Lake City, Utah. We help small and mid-size businesses turn raw data into actionable insights, custom dashboards, and AI-powered workflows.
 
-## About
+Site: https://www.agenticaiutah.com
+Contact: info@panteraclaw.com · +1 (801) 898-0911
+Hours: Mon–Fri, 9:00 AM – 5:00 PM Mountain Time
 
-Pantera Claw is a consulting firm that specializes in business analytics, data engineering, and artificial intelligence. We work with businesses of all sizes to build scalable data infrastructure, automate reporting, and integrate AI into everyday operations. Our team combines deep technical expertise with clear communication so every stakeholder understands the value of their data.
+## Core Pages
 
-## Services
+- [Home](https://www.agenticaiutah.com/): Overview of Pantera Claw — AI and data consulting for growing businesses.
+- [Services](https://www.agenticaiutah.com/services): Five disciplines — business web development, database architecture, dashboard engineering, agentic AI, and advanced analytics.
+- [About](https://www.agenticaiutah.com/about): Company story, the Pantera Claw standard (agility, precision, reliability, innovation), and mission.
+- [Contact](https://www.agenticaiutah.com/contact): Free 30-minute consultation request form. Salt Lake City, UT — serves clients nationwide.
 
-- [Business Analytics Consulting](https://www.agenticaiutah.com/services): Custom analytics solutions that help businesses make data driven decisions.
-- [Custom Dashboard Development](https://www.agenticaiutah.com/services): Interactive dashboards built to visualize your key performance indicators.
-- [AI Workflow Automation](https://www.agenticaiutah.com/services): Agentic AI systems that automate repetitive business processes.
-- [Database Management](https://www.agenticaiutah.com/services): Scalable database architecture and data pipeline engineering.
-- [Data Strategy Consulting](https://www.agenticaiutah.com/services): Strategic roadmaps for becoming a data driven organization.
-- [Business Intelligence Solutions](https://www.agenticaiutah.com/services): End to end BI platforms for reporting and operational insights.
-- [Machine Learning Consulting](https://www.agenticaiutah.com/services): Custom ML models for prediction, segmentation, and classification.
+## Services in Detail
 
-## Technical Specialties
-
-Agentic AI systems, LangGraph orchestration, ETL pipelines, causal inference modeling, LLM integration, advanced analytics, data engineering, and custom dashboard development.
+- Business Analytics Consulting — Custom analytics solutions that help businesses make data-driven decisions.
+- Custom Dashboard Development — Interactive dashboards built to visualize your key performance indicators.
+- AI Workflow Automation — Agentic AI systems that automate repetitive business processes.
+- Database Management — Scalable database architecture and data pipeline engineering.
+- Data Strategy Consulting — Strategic roadmaps for becoming a data-driven organization.
+- Business Intelligence Solutions — End-to-end BI platforms for reporting and operational insights.
+- Machine Learning Consulting — Custom ML models for prediction, segmentation, and classification.
 
 ## Blog
 
-- [Blog index](https://www.agenticaiutah.com/blog): Practical guides on data analytics, AI, and business intelligence written for business owners and technical teams.
-- [Why your dbt project is slower than it should be](https://www.agenticaiutah.com/blog/dbt-performance)
-- [Building agentic AI that doesn't hallucinate your data](https://www.agenticaiutah.com/blog/agentic-ai-without-hallucination)
-- [The real cost of bad data: a $1.4M case study](https://www.agenticaiutah.com/blog/cost-of-bad-data)
-- [Snowflake vs. BigQuery vs. Databricks: an honest comparison](https://www.agenticaiutah.com/blog/snowflake-bigquery-databricks)
-- [How to hire your first data engineer](https://www.agenticaiutah.com/blog/hiring-first-data-engineer)
-- [Real-time dashboards: when you actually need them](https://www.agenticaiutah.com/blog/real-time-dashboards)
-
-## Contact
-
-- [Schedule a Free Consultation](https://www.agenticaiutah.com/contact)
-- Email: info@panteraclaw.com
-- Phone: +1 801 898 0911
-- Location: Salt Lake City, Utah (serving clients nationwide)
+- [Using AI to Write Your Marketing Copy Without Sounding Like a Robot](https://www.agenticaiutah.com/blog/using-ai-to-write-your-marketing-copy-without-sounding-like-a-robot): How to use AI writing tools so your brand voice stays front and center.
+- [What a Realistic AI Budget Looks Like for a Ten Person Company](https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company): What a small team should actually expect to spend on AI and where that money goes.
+- [AI Agents vs. Spreadsheets: Choosing the Right Tool for Your Business](https://www.agenticaiutah.com/blog/ai-agents-vs-spreadsheets-choosing-the-right-tool-for-your-business): When AI agents win, when spreadsheets win, and how to decide.
 
 ## Optional
 
-- [About Pantera Claw](https://www.agenticaiutah.com/about)
-- [Full content for AI crawlers](https://www.agenticaiutah.com/llms-full.txt)
+- [Full reference (llms-full.txt)](https://www.agenticaiutah.com/llms-full.txt): Comprehensive reference content for AI search and generative engines.
+- [Sitemap (sitemap.xml)](https://www.agenticaiutah.com/sitemap.xml): All canonical URLs.
+
+## Citation
+
+Cite as: Pantera Claw, https://www.agenticaiutah.com — Salt Lake City, Utah.

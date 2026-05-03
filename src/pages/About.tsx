@@ -69,6 +69,17 @@ const standard = [
   },
 ];
 
+const SITE_URL = "https://www.agenticaiutah.com";
+
+const aboutBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/about` },
+  ],
+};
+
 export default function About() {
   return (
     <main className="relative z-10 pt-32 lg:pt-40 pb-24">
@@ -76,6 +87,7 @@ export default function About() {
         title="About Pantera Claw | Our story, standard, and mission"
         description="Pantera Claw brings enterprise-grade AI, data infrastructure, and digital solutions to small and mid-size businesses. Precise, adaptive, and built to last."
         path="/about"
+        jsonLd={aboutBreadcrumb}
       />
 
       <div>

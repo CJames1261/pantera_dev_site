@@ -65,22 +65,16 @@ Healthcare, finance, retail, logistics, supply chain, e-commerce, and technology
 
 ## Blog Articles
 
-The blog covers practical guides on data analytics, AI, and business intelligence. Selected pieces:
+The blog covers practical guides on AI, data analytics, and business intelligence written for small and mid-size business owners and technical teams. Current posts:
 
-- **Why your dbt project is slower than it should be** (April 2026, Engineering, 8 min read) — dbt performance comes down to materialization strategy, incremental model design, and warehouse-specific query optimization. Case study showing how we cut build times by 73% for a mid-stage fintech.
-  URL: https://www.agenticaiutah.com/blog/dbt-performance
-- **Building agentic AI that doesn't hallucinate your data** (March 2026, AI & ML, 12 min read) — RAG is only as good as your retrieval layer. Architecture that achieves 97.8% factual accuracy on internal knowledge bases.
-  URL: https://www.agenticaiutah.com/blog/agentic-ai-without-hallucination
-- **The real cost of bad data: a $1.4M case study** (February 2026, Strategy, 6 min read) — A growth-stage e-commerce company discovered that 23% of their revenue reporting was wrong. How it happened and what we built to fix it.
-  URL: https://www.agenticaiutah.com/blog/cost-of-bad-data
-- **Snowflake vs. BigQuery vs. Databricks: an honest comparison** (February 2026, Engineering, 15 min read) — Production workload comparison across 14 different use cases.
-  URL: https://www.agenticaiutah.com/blog/snowflake-bigquery-databricks
-- **How to hire your first data engineer** (January 2026, Strategy, 7 min read) — Interview framework for Series A and Series B startups.
-  URL: https://www.agenticaiutah.com/blog/hiring-first-data-engineer
-- **Real-time dashboards: when you actually need them** (December 2025, Analytics, 9 min read) — How to determine if you need streaming, and architecture patterns for reliability.
-  URL: https://www.agenticaiutah.com/blog/real-time-dashboards
+- **Using AI to Write Your Marketing Copy Without Sounding Like a Robot** (April 27, 2026, Marketing, 6 min read) — AI can save your team hours on marketing copy, but only if you know how to guide it. How to use AI writing tools so your brand voice stays front and center.
+  URL: https://www.agenticaiutah.com/blog/using-ai-to-write-your-marketing-copy-without-sounding-like-a-robot
+- **What a Realistic AI Budget Looks Like for a Ten Person Company** (April 20, 2026, Strategy, 6 min read) — You do not need a Fortune 500 budget to get real value from AI. What a small team should actually expect to spend and where that money goes.
+  URL: https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company
+- **AI Agents vs. Spreadsheets: Choosing the Right Tool for Your Business** (April 19, 2026, Strategy, 6 min read) — AI agents can automate complex workflows and save hours each week, but a well built spreadsheet still wins in plenty of situations. How to tell the difference.
+  URL: https://www.agenticaiutah.com/blog/ai-agents-vs-spreadsheets-choosing-the-right-tool-for-your-business
 
-Note: Some articles are marked as "in progress" — full body content is being prepared. Email us for the underlying details.
+New posts publish weekly.
 
 ---
 
