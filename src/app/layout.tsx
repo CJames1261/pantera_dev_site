@@ -81,7 +81,7 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#business`,
+  "@id": `${SITE_URL}/#organization`,
   name: "Pantera Claw",
   alternateName: "Pantera Claw AI & Data Consulting",
   url: SITE_URL,

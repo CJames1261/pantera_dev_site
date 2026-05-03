@@ -19,9 +19,11 @@ export const metadata: Metadata = {
 const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": `${SITE_URL}/#business`,
+  "@id": `${SITE_URL}/#localbusiness`,
+  additionalType: "https://www.wikidata.org/wiki/Q1662773",
   name: "Pantera Claw",
   alternateName: "Pantera Claw AI & Data Consulting",
+  slogan: "We build the data systems that power your decisions.",
   description:
     "AI and data consulting firm that helps businesses add analytics, custom dashboards, and AI capabilities to their operations. We turn your raw data into insights that drive real business decisions.",
   url: SITE_URL,
@@ -32,6 +34,7 @@ const professionalServiceSchema = {
     width: 480,
     height: 480,
   },
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
   telephone: "+1-801-898-0911",
   email: "info@panteraclaw.com",
   address: {
@@ -42,8 +45,8 @@ const professionalServiceSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 40.7608,
-    longitude: -111.891,
+    latitude: 40.76080,
+    longitude: -111.89100,
   },
   areaServed: [
     { "@type": "State", name: "Utah" },
@@ -72,6 +75,14 @@ const professionalServiceSchema = {
   ],
   priceRange: "$$",
   openingHours: "Mo-Fr 09:00-17:00",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
   sameAs: ["https://github.com/CJames1261"],
 };
 
@@ -81,7 +92,7 @@ const websiteSchema = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: "Pantera Claw",
-  publisher: { "@id": `${SITE_URL}/#business` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-US",
 };
 

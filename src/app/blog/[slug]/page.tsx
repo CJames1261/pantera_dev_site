@@ -14,6 +14,59 @@ import { getPostBySlug, allPosts, type BlogPost } from "@/lib/posts";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 
+const POST_FAQS: Record<string, { q: string; a: string }[]> = {
+  "ai-agents-vs-spreadsheets-choosing-the-right-tool-for-your-business": [
+    {
+      q: "When should I use an AI agent instead of a spreadsheet?",
+      a: "Use an AI agent when the workflow involves multiple steps, decisions based on natural language, or pulling data from several systems. Use a spreadsheet when the calculation is well-defined, the data is structured, and the result is read by humans rather than triggered automatically.",
+    },
+    {
+      q: "How much does it cost to replace a spreadsheet with an AI agent?",
+      a: "A simple agent that automates a recurring spreadsheet task typically runs $300-1,500 per month in API and infrastructure costs, plus 20-60 hours of one-time engineering. Compare that against the labor hours the spreadsheet currently consumes weekly.",
+    },
+    {
+      q: "Can AI agents make spreadsheets obsolete?",
+      a: "No. Spreadsheets remain the right tool for ad-hoc analysis, financial modeling with version control, and any workflow where a human needs to see the entire calculation. AI agents replace the repetitive tasks built around spreadsheets, not the spreadsheets themselves.",
+    },
+  ],
+  "using-ai-to-write-your-marketing-copy-without-sounding-like-a-robot": [
+    {
+      q: "How can I tell if marketing copy was written by AI?",
+      a: "Common tells: parallel sentence structures, hedging phrases like 'in today's landscape,' generic adjectives ('robust,' 'comprehensive'), and an absence of specific examples or numbers. Add concrete details, named clients, and unusual phrasings during human review to break the AI cadence.",
+    },
+    {
+      q: "What is the best AI tool for writing marketing copy?",
+      a: "There is no single best tool. Claude tends to handle longer-form content with brand voice constraints well; ChatGPT is faster for short-form social posts; specialized tools like Copy.ai or Jasper add brand-voice memory features. Pick based on the length of content and how much voice consistency you need.",
+    },
+    {
+      q: "Should I disclose that I used AI to write marketing copy?",
+      a: "Disclosure is rarely required for marketing copy that has been edited by a human. Most platforms (Google, LinkedIn) only require disclosure for synthetic media or for fully unedited AI output. When in doubt, treat the copy as a draft - the final voice and accuracy are yours.",
+    },
+  ],
+  "what-a-realistic-ai-budget-looks-like-for-a-ten-person-company": [
+    {
+      q: "How much should a 10-person company spend on AI per month?",
+      a: "A reasonable starting range is $500-3,000 per month covering AI tool subscriptions (Claude, ChatGPT, niche tools), API usage for any custom integrations, and a small reserve for experiments. Larger budgets only make sense once you have a specific workflow paying back the spend.",
+    },
+    {
+      q: "What are the main AI cost buckets for a small business?",
+      a: "Three buckets: tool subscriptions (per-seat SaaS like Claude Pro, ChatGPT Team, Microsoft Copilot), API consumption (pay-per-token costs for any custom apps or agents), and consulting or integration work (one-time projects to wire AI into existing systems).",
+    },
+    {
+      q: "Is it cheaper to build custom AI or buy off-the-shelf tools?",
+      a: "Buying off-the-shelf tools is almost always cheaper for the first year. Custom builds become cost-effective when (a) the workflow is specific to your industry and no SaaS exists, or (b) per-seat licensing gets expensive past 50-100 users. Start with off-the-shelf, build custom only after the use case is proven.",
+    },
+  ],
+};
+
+function countWords(html: string): number {
+  return html
+    .replace(/<[^>]+>/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
 export function generateStaticParams() {
   return allPosts.map((p) => ({ slug: p.slug }));
 }
@@ -87,6 +140,9 @@ export default async function BlogPostPage({
       : `${SITE_URL}${post.image}`
     : `${SITE_URL}/Pantera_Claw_hero.webp`;
 
+  const wordCount = post.bodyHtml ? countWords(post.bodyHtml) : undefined;
+  const faqs = POST_FAQS[post.slug];
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -95,22 +151,15 @@ export default async function BlogPostPage({
     image: absoluteImage,
     datePublished: post.isoDate,
     dateModified: post.isoDate,
+    ...(wordCount ? { wordCount } : {}),
+    keywords: [post.category, "AI consulting", "data consulting", "Pantera Claw"].join(", "),
+    inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: author,
       url: `${SITE_URL}/about`,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Pantera Claw",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/Pantera_Claw_hero.webp`,
-        width: 480,
-        height: 480,
-      },
-    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": postUrl,
@@ -128,6 +177,18 @@ export default async function BlogPostPage({
     ],
   };
 
+  const faqSchema = faqs
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map(({ q, a }) => ({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        })),
+      }
+    : null;
+
   return (
     <div className="relative z-10 pt-32 lg:pt-40 pb-24">
       <script
@@ -138,6 +199,12 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <article className="max-w-[820px] mx-auto px-4 md:px-8">
         <ScrollReveal>
           <Link
@@ -260,6 +327,34 @@ export default async function BlogPostPage({
             </div>
           )}
         </ScrollReveal>
+
+        {faqs && (
+          <ScrollReveal delay={0.12}>
+            <section className="mt-16 pt-10 border-t border-border" aria-labelledby="post-faq">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-3">
+                Frequently asked
+              </div>
+              <h2
+                id="post-faq"
+                className="font-display font-bold text-text-primary text-2xl lg:text-3xl tracking-tight mb-8"
+              >
+                Quick answers
+              </h2>
+              <div className="flex flex-col gap-6">
+                {faqs.map(({ q, a }) => (
+                  <div key={q}>
+                    <h3 className="font-display font-semibold text-text-primary text-lg mb-2 leading-snug">
+                      {q}
+                    </h3>
+                    <p className="text-text-secondary text-base leading-relaxed max-w-[64ch]">
+                      {a}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </ScrollReveal>
+        )}
 
         {nextPost && (
           <ScrollReveal delay={0.15}>

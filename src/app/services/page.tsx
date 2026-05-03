@@ -56,7 +56,7 @@ const servicesJsonLd = [
         description: pill.description,
         serviceType: pill.title,
         url: `${SITE_URL}/services#${pill.id}`,
-        provider: { "@id": `${SITE_URL}/#business` },
+        provider: { "@id": `${SITE_URL}/#localbusiness` },
         areaServed: [
           { "@type": "State", name: "Utah" },
           { "@type": "Country", name: "United States" },

@@ -42,7 +42,7 @@ const aboutPageSchema = {
   description:
     "Pantera Claw is a Salt Lake City AI and data consulting firm. Learn about our story, our standard, and our mission to bring enterprise-grade technology to small and mid-size businesses.",
   inLanguage: "en-US",
-  mainEntity: { "@id": `${SITE_URL}/#business` },
+  mainEntity: { "@id": `${SITE_URL}/#organization` },
 };
 
 const services = [

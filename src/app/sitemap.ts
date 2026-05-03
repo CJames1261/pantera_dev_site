@@ -13,13 +13,29 @@ const STATIC_LAST_UPDATED: Record<string, string> = {
   "/privacy": "2026-05-03",
 };
 
+const HERO_IMAGE = `${SITE_URL}/Pantera_Claw_hero.webp`;
+const LOGO_FULL = `${SITE_URL}/Pantera_Claw.webp`;
+
+const CORE_IMAGES: Record<string, string[]> = {
+  "/": [HERO_IMAGE],
+  "/services": [HERO_IMAGE],
+  "/about": [LOGO_FULL, HERO_IMAGE],
+  "/contact": [HERO_IMAGE],
+  "/blog": [HERO_IMAGE],
+  "/privacy": [],
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = (
     Object.keys(STATIC_LAST_UPDATED) as Array<keyof typeof STATIC_LAST_UPDATED>
-  ).map((path) => ({
-    url: `${SITE_URL}${path === "/" ? "" : path}`,
-    lastModified: new Date(STATIC_LAST_UPDATED[path]),
-  }));
+  ).map((path) => {
+    const images = CORE_IMAGES[path];
+    return {
+      url: `${SITE_URL}${path === "/" ? "" : path}`,
+      lastModified: new Date(STATIC_LAST_UPDATED[path]),
+      ...(images && images.length > 0 ? { images } : {}),
+    };
+  });
 
   const blog: MetadataRoute.Sitemap = allPosts.map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,

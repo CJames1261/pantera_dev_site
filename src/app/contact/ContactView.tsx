@@ -144,7 +144,7 @@ export default function ContactView() {
     <div className="relative z-10 pt-32 lg:pt-40 pb-24">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
-          <div className="mb-16">
+          <div className="mb-12">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-base font-medium text-white bg-white/15 border border-white/25 mb-6">
               Contact
             </span>
@@ -154,10 +154,54 @@ export default function ContactView() {
             >
               Let&apos;s figure out what your data needs
             </h1>
-            <p className="text-text-secondary text-lg leading-relaxed max-w-[520px]">
-              Whether you need a full data platform or help with a single pipeline,
-              we start with a free 30-minute conversation.
+            <p className="text-text-secondary text-lg leading-relaxed max-w-[600px]">
+              Whether you need a full data platform, an AI agent for a specific
+              workflow, or help with a single pipeline, we start with a free
+              30-minute conversation. Salt Lake City based, serving clients
+              nationwide. We typically reply within one business day.
             </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.05}>
+          <div className="mb-16">
+            <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-5">
+              What happens next
+            </div>
+            <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 list-none p-0 m-0">
+              {[
+                {
+                  step: "01",
+                  title: "We reply within one business day",
+                  body: "A real person reads every message. We confirm we&apos;re a good fit before you book any time, or recommend someone better if we&apos;re not.",
+                },
+                {
+                  step: "02",
+                  title: "30-minute discovery call",
+                  body: "Free, no slides. We discuss your data sources, the decisions you&apos;re trying to make, and the rough shape of the engagement.",
+                },
+                {
+                  step: "03",
+                  title: "Fixed scope and timeline",
+                  body: "Within 3 business days you receive a written scope, milestones, and a fixed price. No commitment until you sign.",
+                },
+              ].map(({ step, title, body }) => (
+                <li
+                  key={step}
+                  className="rounded-2xl border border-border p-6"
+                  style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+                >
+                  <div className="font-mono text-xs text-accent mb-2">{step}</div>
+                  <h2 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
+                    {title}
+                  </h2>
+                  <p
+                    className="text-text-secondary text-sm leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: body }}
+                  />
+                </li>
+              ))}
+            </ol>
           </div>
         </ScrollReveal>
 
