@@ -112,7 +112,7 @@ body {
 }
 
 /* ─── Noise Overlay (fixed, pointer-events-none) ─── */
-#root::after {
+body::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -125,7 +125,7 @@ body {
 }
 
 /* ─── Grid Pattern Overlay ─── */
-#root::before {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
