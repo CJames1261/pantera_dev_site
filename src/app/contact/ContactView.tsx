@@ -454,7 +454,7 @@ export default function ContactView() {
           </div>
 
           {/* Aerial Salt Lake City */}
-          <div className="aspect-video w-full border border-white/10 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 overflow-hidden rounded-lg">
+          <div className="aspect-video w-full border border-white/10 overflow-hidden rounded-lg">
             <img
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuIbry7ajCBgUbuEwtM_jcbxCcBH0Iyi-IjkL8Vucl3h_xoM3ruqET_rHuTY09Ele-KGFiT_zlRYtUBz5OnwZikGh8D6XPs_j-oAAPv2WopOhvkYutzyNEbRbjdTBF7F1x7CB-ixuqsALqv0HH0MZaHgsttNB6SEFjQS30LMe8_ZXgf7zaIFMGcPATO8c4Z5_mKCnerup6pcwQwp1PGH_CERTAeUak8cSvm8Rd14PwFluGi3vPMMvjFyGjL4ViqH38EMEbRaDFzyM"
