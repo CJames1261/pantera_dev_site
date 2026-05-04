@@ -58,6 +58,27 @@
       "inlineImages": {
         "enabled": false
       }
+    },
+    "citations": {
+      "required": true,
+      "minimum": 1,
+      "instructions": "Every post MUST contain at least one inline <a> link that cites a real, verifiable, currently-existing source supporting a specific factual claim, statistic, or definition in the post. Do NOT invent URLs. Use ONLY URLs from the approvedDomains list below; pick the root or a well-known evergreen index/section URL on that domain (do not guess deep article paths). Place the citation inside a paragraph that makes a specific claim, with natural anchor text (e.g. 'Anthropic published a useful guide on this in their research notes'). The cited claim must be one that genuinely needs sourcing (a statistic, a definition, a third-party finding) and not a generic statement. NEVER fabricate a URL or cite a domain not on this list. If you cannot find a real claim that needs sourcing, add a brief sentence such as 'For background on this, the team at Anthropic publishes their research notes openly' and link to the relevant approved domain root.",
+      "approvedDomains": [
+        "https://www.anthropic.com/research",
+        "https://www.anthropic.com/news",
+        "https://openai.com/blog",
+        "https://ai.googleblog.com",
+        "https://blog.google/technology/ai",
+        "https://developers.google.com/search/docs",
+        "https://www.microsoft.com/en-us/research",
+        "https://hbr.org/topic/subject/artificial-intelligence",
+        "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
+        "https://aiindex.stanford.edu/report",
+        "https://www.bls.gov",
+        "https://www.census.gov/topics/business-economy.html",
+        "https://www.sba.gov",
+        "https://www.gartner.com/en/insights/artificial-intelligence"
+      ]
     }
   }
 }

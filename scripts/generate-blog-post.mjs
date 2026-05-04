@@ -59,6 +59,11 @@ console.log(`Chosen topic: ${topic}`)
 const targetKeywords = config.seoKeywords?.target?.join(", ") || ""
 const recommendedKeywords = config.seoKeywords?.recommended?.join(", ") || ""
 
+const citations = config.style.citations
+const citationsRule = citations?.required
+  ? `\nCITATIONS (MANDATORY):\n- ${citations.instructions}\n- Approved domains (use ONLY these for external citations):\n${citations.approvedDomains.map((d) => `  * ${d}`).join("\n")}\n- Minimum citations per post: ${citations.minimum || 1}.\n- The internal CTA link to ${config.style.ctaLink} does NOT count as a citation.`
+  : ""
+
 const systemPrompt = `You are a senior content writer for Pantera Claw, a data and AI consulting firm. You write for ${config.targetAudiences.join(", ")}.
 
 ${config.audienceVoice || ""}
@@ -77,7 +82,7 @@ SEO GUIDANCE:
 - Priority keywords to weave in where natural: ${targetKeywords}.
 - Supporting keywords: ${recommendedKeywords}.
 - Use 3 to 5 total; never force them.
-
+${citationsRule}
 CTA:
 - End the post with a short closing section that naturally invites the reader to ${config.style.ctaText} via the link ${config.style.ctaLink}. Render it as <p><a href="${config.style.ctaLink}">${config.style.ctaText}</a></p> at the end.
 
@@ -188,6 +193,21 @@ const post = {
 
 const outPath = join(contentDir, `${uniqueSlug}.json`)
 await writeFile(outPath, JSON.stringify(post, null, 2) + "\n", "utf8")
+
+// Surface external citations so a human can spot-check them.
+const externalLinks = [...post.bodyHtml.matchAll(/<a\s+[^>]*href="(https?:\/\/[^"]+)"/gi)]
+  .map((m) => m[1])
+  .filter((href) => !href.startsWith("https://www.agenticaiutah.com") && href !== config.style.ctaLink)
+
+const minCitations = config.style.citations?.minimum ?? 0
+if (config.style.citations?.required && externalLinks.length < minCitations) {
+  console.warn(
+    `⚠ Citation rule not satisfied: found ${externalLinks.length} external link(s), expected at least ${minCitations}.`,
+  )
+} else if (externalLinks.length > 0) {
+  console.log(`  Citations (${externalLinks.length}):`)
+  externalLinks.forEach((url) => console.log(`    - ${url}`))
+}
 
 console.log(`✓ Wrote ${outPath}`)
 console.log(`  Title: ${post.title}`)
