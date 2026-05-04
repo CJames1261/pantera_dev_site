@@ -100,7 +100,7 @@ const websiteSchema = {
 const homeFaqs = [
   {
     q: "What does Pantera Claw do?",
-    a: "Pantera Claw is a Salt Lake City AI and data consulting firm. We build production-grade data pipelines, interactive dashboards, agentic AI workflows, and machine-learning systems for small and mid-size businesses. Most engagements run 4–12 weeks and ship as production-ready code with documentation and a 30-day stabilization window.",
+    a: "Pantera Claw is a Salt Lake City AI and data consulting firm. We build production-grade data pipelines, interactive dashboards, agentic AI workflows, machine-learning systems, modern websites and web applications, and SEO and AI-search optimization for small and mid-size businesses. Most engagements run 4–12 weeks and ship as production-ready code with documentation and a 30-day stabilization window.",
   },
   {
     q: "Where is Pantera Claw based?",
