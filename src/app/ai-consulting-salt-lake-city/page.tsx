@@ -124,7 +124,7 @@ const faqSchema = {
       name: "How much does AI consulting cost in Salt Lake City?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A typical engagement at Pantera Claw runs $8,000–$60,000 depending on scope. Discovery sprints (1–2 weeks, fixed scope) start around $4,000. Full agentic AI builds with monitoring and handover usually land between $25,000 and $60,000. We share a fixed price before any commitment.",
+        text: "Pricing for an AI consulting engagement depends on the scope of the project, the depth of discovery and research required, the technical complexity of the build, and how long the engagement runs. Every project is different. We share a fixed scope and a fixed price in writing after a free consultation meeting and a brief discovery phase, well before any commitment. You will know exactly what you are paying and what you are getting before signing anything.",
       },
     },
     {
@@ -178,6 +178,14 @@ const offerings = [
   {
     title: "Data infrastructure to support AI",
     body: "Snowflake, Databricks, BigQuery, PostgreSQL. ETL and ELT pipelines in dbt and Airflow. Schema design and migrations built to scale alongside the AI systems they support.",
+  },
+  {
+    title: "Website development",
+    body: "Fast, responsive marketing sites and web applications built in React, Next.js, and TypeScript. Production hosting on Vercel, accessibility baked in, and a handover guide so your team can keep updating the site without us.",
+  },
+  {
+    title: "SEO and AI search readiness",
+    body: "Technical SEO, structured data, content architecture, and AI-search optimization (AI Overviews, ChatGPT search, Perplexity). Built so both Google and the new wave of AI engines understand and cite your business.",
   },
 ];
 

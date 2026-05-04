@@ -26,9 +26,9 @@ export default function Hero() {
                 className="font-display font-bold tracking-tighter leading-[1.05] text-text-primary mb-6"
                 style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
               >
-                AI consulting in Salt Lake City
-                <br />
-                <span className="text-accent">that powers your decisions</span>
+                We build the data systems
+                <span className="text-accent"> that power </span>
+                your decisions
               </h1>
             </ScrollReveal>
 

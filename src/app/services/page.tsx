@@ -64,12 +64,12 @@ const servicesJsonLd = [
         ],
         offers: {
           "@type": "Offer",
+          priceCurrency: "USD",
           priceSpecification: {
             "@type": "PriceSpecification",
             priceCurrency: "USD",
-            minPrice: 4000,
-            maxPrice: 60000,
-            description: "Project pricing depends on scope. Discovery sprints start around $4,000; full builds typically $25,000–$60,000.",
+            description:
+              "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment.",
           },
         },
       },
