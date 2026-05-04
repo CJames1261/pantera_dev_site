@@ -275,20 +275,16 @@ export default async function BlogPostPage({
             ) : null
           ) : (
             <div
-              className="p-1.5 rounded-[2rem] border border-border"
-              style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+              className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-8 lg:p-12 transition-all duration-300 hover:border-yellow-400/40"
+              style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
             >
-              <div
-                className="rounded-[calc(2rem-0.375rem)] bg-surface p-8 lg:p-12"
-                style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-              >
-                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  Article in progress
-                </div>
-                <h2 className="font-display font-bold text-text-primary text-2xl mb-4 tracking-tight">
-                  The full write-up is being prepared.
-                </h2>
+              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-yellow-400 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+                Article in progress
+              </div>
+              <h2 className="font-display font-bold text-text-primary text-2xl mb-4 tracking-tight">
+                The full write-up is being prepared.
+              </h2>
                 <p className="text-text-secondary text-base leading-relaxed mb-8 max-w-[58ch]">
                   We publish these carefully and test every claim against real
                   client engagements before it ships. If you want the detail now,
@@ -323,7 +319,6 @@ export default async function BlogPostPage({
                     Email us
                   </a>
                 </div>
-              </div>
             </div>
           )}
         </ScrollReveal>
@@ -367,7 +362,7 @@ export default async function BlogPostPage({
             >
               Related services
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 auto-rows-fr gap-4">
               {[
                 {
                   href: "/services",
@@ -388,17 +383,13 @@ export default async function BlogPostPage({
                 <Link
                   key={href}
                   href={href}
-                  className="group rounded-2xl border border-border hover:border-border-light p-5 no-underline transition-colors duration-500"
-                  style={{
-                    backgroundColor: "rgba(19, 19, 22, 0.4)",
-                    boxShadow: "var(--shadow-inner-highlight)",
-                    transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
-                  }}
+                  className="group/card rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 no-underline h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                  style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
                 >
-                  <h3 className="font-display font-semibold text-text-primary text-base mb-1 tracking-tight group-hover:text-accent transition-colors duration-300">
+                  <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-3 group-hover/card:text-yellow-400 transition-colors duration-300">
                     {title}
                   </h3>
-                  <p className="text-text-secondary text-xs leading-relaxed">
+                  <p className="text-text-secondary text-[16px] leading-6">
                     {body}
                   </p>
                 </Link>

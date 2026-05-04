@@ -6,7 +6,7 @@ interface HomeFAQProps {
 
 export default function HomeFAQ({ faqs }: HomeFAQProps) {
   return (
-    <section className="relative z-10 py-16 lg:py-24" aria-labelledby="home-faq">
+    <section className="relative z-10 py-12 lg:py-24" aria-labelledby="home-faq">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
           <div className="max-w-[680px] mb-10">
@@ -29,16 +29,13 @@ export default function HomeFAQ({ faqs }: HomeFAQProps) {
           {faqs.map(({ q, a }, i) => (
             <ScrollReveal key={q} delay={i * 0.06}>
               <div
-                className="rounded-2xl border border-border-light p-6 h-full"
-                style={{
-                  backgroundColor: "rgba(19, 19, 22, 0.55)",
-                  boxShadow: "var(--shadow-inner-highlight)",
-                }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
-                <h3 className="font-display font-semibold text-text-primary text-lg mb-3 tracking-tight">
+                <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-3">
                   {q}
                 </h3>
-                <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                <p className="text-text-secondary text-[16px] leading-6">
                   {a}
                 </p>
               </div>

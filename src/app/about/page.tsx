@@ -200,34 +200,26 @@ export default function About() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal>
-              <div
-                className="rounded-[1.75rem] overflow-hidden border border-border"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.07)" }}
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px">
-                  {standard.map((item) => (
-                    <div
-                      key={item.title}
-                      className="bg-canvas p-6 sm:p-8 text-center flex flex-col items-center"
-                    >
-                      <div
-                        className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-canvas/80 border border-border-light mb-5"
-                        style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-                      >
-                        <item.icon size={24} className="text-accent" weight="duotone" />
-                      </div>
-                      <h3 className="font-display font-bold text-text-primary text-xl tracking-tight mb-3">
-                        {item.title}
-                      </h3>
-                      <p className="text-text-secondary text-sm leading-relaxed">
-                        {item.description}
-                      </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-4">
+              {standard.map((item, i) => (
+                <ScrollReveal key={item.title} delay={i * 0.08}>
+                  <div
+                    className="group/card relative h-full rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                    style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
+                  >
+                    <div className="flex h-[72px] w-[72px] items-center justify-center rounded-[22px] border border-white/10 bg-yellow-400/10 mb-5">
+                      <item.icon size={32} className="text-yellow-400" weight="duotone" />
                     </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
+                    <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-text-secondary text-[16px] leading-6">
+                      {item.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -272,42 +264,24 @@ export default function About() {
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-4">
               {services.map((service, i) => (
                 <ScrollReveal key={service.title} delay={i * 0.08}>
                   <div
-                    className="group p-1.5 rounded-[1.75rem] border border-border hover:border-accent/40 transition-all duration-700 h-full"
-                    style={{
-                      backgroundColor: "rgba(19, 19, 22, 0.4)",
-                      transitionTimingFunction:
-                        "cubic-bezier(0.32, 0.72, 0, 1)",
-                    }}
+                    className="group/card relative h-full rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                    style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
                   >
-                    <div
-                      className="rounded-[calc(1.75rem-0.375rem)] bg-surface p-8 h-full"
-                      style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-                    >
-                      <div className="flex items-center mb-5">
-                        <div className="w-12 h-12 rounded-xl bg-canvas/80 border border-border-light flex items-center justify-center mr-4 transition-transform duration-700 group-hover:scale-105"
-                          style={{
-                            transitionTimingFunction:
-                              "cubic-bezier(0.32, 0.72, 0, 1)",
-                          }}
-                        >
-                          <service.icon
-                            size={22}
-                            className="text-accent"
-                            weight="duotone"
-                          />
-                        </div>
-                        <h3 className="font-display font-bold text-text-primary text-xl tracking-tight">
-                          {service.title}
-                        </h3>
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="flex h-[72px] w-[72px] flex-shrink-0 items-center justify-center rounded-[22px] border border-white/10 bg-yellow-400/10">
+                        <service.icon size={32} className="text-yellow-400" weight="duotone" />
                       </div>
-                      <p className="text-text-secondary leading-relaxed">
-                        {service.description}
-                      </p>
+                      <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary">
+                        {service.title}
+                      </h3>
                     </div>
+                    <p className="text-text-secondary text-[16px] leading-6">
+                      {service.description}
+                    </p>
                   </div>
                 </ScrollReveal>
               ))}

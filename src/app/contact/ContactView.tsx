@@ -168,7 +168,7 @@ export default function ContactView() {
             <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-5">
               What happens next
             </div>
-            <ol className="grid grid-cols-1 md:grid-cols-3 gap-4 list-none p-0 m-0">
+            <ol className="grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-4 list-none p-0 m-0">
               {[
                 {
                   step: "01",
@@ -188,15 +188,15 @@ export default function ContactView() {
               ].map(({ step, title, body }) => (
                 <li
                   key={step}
-                  className="rounded-2xl border border-border p-6"
-                  style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+                  className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                  style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
                 >
-                  <div className="font-mono text-xs text-accent mb-2">{step}</div>
-                  <h2 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
+                  <div className="font-mono font-bold text-yellow-400 leading-none mb-4 tracking-tighter text-3xl">{step}</div>
+                  <h2 className="font-display text-[20px] font-extrabold tracking-[-0.02em] leading-tight text-text-primary mb-3">
                     {title}
                   </h2>
                   <p
-                    className="text-text-secondary text-sm leading-relaxed"
+                    className="text-text-secondary text-[16px] leading-6"
                     dangerouslySetInnerHTML={{ __html: body }}
                   />
                 </li>
@@ -208,19 +208,12 @@ export default function ContactView() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           <ScrollReveal className="lg:col-span-3">
             <div
-              className="p-1.5 rounded-[2rem] border border-border"
-              style={{
-                backgroundColor: "rgba(19, 19, 22, 0.4)",
-                boxShadow: "var(--shadow-card)",
-              }}
+              className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 lg:p-10 transition-all duration-300 hover:border-yellow-400/40"
+              style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
             >
-              <div
-                className="rounded-[calc(2rem-0.375rem)] bg-surface p-6 lg:p-10"
-                style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-              >
-                <h2 className="font-display font-bold text-text-primary text-xl mb-8">
-                  Send us a message
-                </h2>
+              <h2 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-8">
+                Send us a message
+              </h2>
 
                 {status === "success" ? (
                   <div
@@ -434,68 +427,62 @@ export default function ContactView() {
                     </button>
                   </form>
                 )}
-              </div>
             </div>
           </ScrollReveal>
 
           <div className="lg:col-span-2 flex flex-col gap-6">
             <ScrollReveal delay={0.1}>
               <div
-                className="p-1.5 rounded-[2rem] border border-border"
-                style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 lg:p-8 transition-all duration-300 hover:border-yellow-400/40"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
-                <div
-                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-6 lg:p-8"
-                  style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-                >
-                  <h3 className="font-display font-bold text-text-primary text-lg mb-6">
-                    Get in touch directly
-                  </h3>
-                  <div className="flex flex-col gap-5">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <EnvelopeSimple size={18} className="text-accent" />
-                      </div>
-                      <div>
-                        <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                          Email
-                        </div>
-                        <a
-                          href="mailto:info@panteraclaw.com"
-                          className="text-text-primary text-sm hover:text-accent transition-colors duration-300 no-underline"
-                        >
-                          info@panteraclaw.com
-                        </a>
-                      </div>
+                <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-6">
+                  Get in touch directly
+                </h3>
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl border border-white/10 bg-yellow-400/10 flex items-center justify-center flex-shrink-0">
+                      <EnvelopeSimple size={18} className="text-yellow-400" />
                     </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Phone size={18} className="text-accent" />
+                    <div>
+                      <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                        Email
                       </div>
-                      <div>
-                        <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                          Phone
-                        </div>
-                        <a
-                          href="tel:+18018980911"
-                          className="text-text-primary text-sm hover:text-accent transition-colors duration-300 no-underline"
-                        >
-                          +1 (801) 898-0911
-                        </a>
-                      </div>
+                      <a
+                        href="mailto:info@panteraclaw.com"
+                        className="text-text-primary text-sm hover:text-accent transition-colors duration-300 no-underline"
+                      >
+                        info@panteraclaw.com
+                      </a>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <MapPin size={18} className="text-accent" />
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl border border-white/10 bg-yellow-400/10 flex items-center justify-center flex-shrink-0">
+                      <Phone size={18} className="text-yellow-400" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                        Phone
                       </div>
-                      <div>
-                        <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                          Location
-                        </div>
-                        <span className="text-text-primary text-sm">
-                          Salt Lake City, Utah
-                        </span>
+                      <a
+                        href="tel:+18018980911"
+                        className="text-text-primary text-sm hover:text-accent transition-colors duration-300 no-underline"
+                      >
+                        +1 (801) 898-0911
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl border border-white/10 bg-yellow-400/10 flex items-center justify-center flex-shrink-0">
+                      <MapPin size={18} className="text-yellow-400" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-[11px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                        Location
                       </div>
+                      <span className="text-text-primary text-sm">
+                        Salt Lake City, Utah
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -504,43 +491,38 @@ export default function ContactView() {
 
             <ScrollReveal delay={0.2}>
               <div
-                className="p-1.5 rounded-[2rem] border border-border"
-                style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 lg:p-8 transition-all duration-300 hover:border-yellow-400/40"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
-                <div
-                  className="rounded-[calc(2rem-0.375rem)] bg-surface p-6 lg:p-8"
-                  style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-                >
-                  <h3 className="font-display font-bold text-text-primary text-lg mb-5">
-                    What we help with
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {serviceAreas.map((area) => (
+                <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-5">
+                  What we help with
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-3">
+                  {serviceAreas.map((area) => (
+                    <div
+                      key={area.title}
+                      className="flex items-center gap-3 p-3 rounded-2xl border border-white/10 bg-[#0e0e10]/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-yellow-400/40 hover:bg-[#151515]"
+                    >
                       <div
-                        key={area.title}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-surface-light border border-border"
+                        className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: `${area.color}15` }}
                       >
-                        <div
-                          className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={{ backgroundColor: `${area.color}15` }}
-                        >
-                          <area.icon
-                            size={18}
-                            weight="duotone"
-                            style={{ color: area.color }}
-                          />
+                        <area.icon
+                          size={18}
+                          weight="duotone"
+                          style={{ color: area.color }}
+                        />
+                      </div>
+                      <div>
+                        <div className="font-display text-sm font-semibold text-text-primary">
+                          {area.title}
                         </div>
-                        <div>
-                          <div className="font-display text-sm font-semibold text-text-primary">
-                            {area.title}
-                          </div>
-                          <div className="font-mono text-[10px] text-text-tertiary">
-                            {area.description}
-                          </div>
+                        <div className="font-mono text-[10px] text-text-tertiary">
+                          {area.description}
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>

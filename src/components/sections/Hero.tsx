@@ -54,14 +54,15 @@ export default function Hero() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.3}>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
+                  className="group inline-flex items-center justify-between sm:justify-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2.5 sm:py-2 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
                   Start a project
-                  <span className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
+                  <span
+                    className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
                     style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                   >
                     <ArrowUpRight size={16} weight="bold" className="text-canvas" />
@@ -69,7 +70,7 @@ export default function Hero() {
                 </Link>
                 <Link
                   href="/services"
-                  className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
+                  className="group inline-flex items-center justify-between sm:justify-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2.5 sm:py-2 rounded-full no-underline transition-all duration-700"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
                   Explore services

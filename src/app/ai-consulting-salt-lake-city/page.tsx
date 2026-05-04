@@ -284,48 +284,49 @@ export default function AIConsultingSaltLakeCity() {
 
             {/* NAP block - above the fold */}
             <div
-              className="mt-8 p-1.5 rounded-2xl border border-border inline-block w-full max-w-[640px]"
-              style={{ backgroundColor: "rgba(19, 19, 22, 0.4)" }}
+              className="mt-8 rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 grid grid-cols-1 sm:grid-cols-3 gap-4 inline-block w-full max-w-[640px] transition-all duration-300 hover:border-yellow-400/40"
+              style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
             >
-              <div
-                className="rounded-[calc(1rem-0.375rem)] bg-surface p-5 grid grid-cols-1 sm:grid-cols-3 gap-4"
-                style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-              >
-                <div className="flex items-start gap-3">
-                  <MapPin size={18} className="text-accent flex-shrink-0 mt-0.5" weight="duotone" />
-                  <div>
-                    <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                      Location
-                    </div>
-                    <span className="text-text-primary text-sm">
-                      Salt Lake City, Utah
-                    </span>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-yellow-400/10 flex-shrink-0">
+                  <MapPin size={18} className="text-yellow-400" weight="duotone" />
                 </div>
-                <div className="flex items-start gap-3">
-                  <Phone size={18} className="text-accent flex-shrink-0 mt-0.5" weight="duotone" />
-                  <div>
-                    <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                      Phone
-                    </div>
-                    <a
-                      href="tel:+18018980911"
-                      className="text-text-primary text-sm hover:text-accent transition-colors no-underline"
-                    >
-                      +1 (801) 898-0911
-                    </a>
+                <div>
+                  <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                    Location
                   </div>
+                  <span className="text-text-primary text-sm">
+                    Salt Lake City, Utah
+                  </span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Clock size={18} className="text-accent flex-shrink-0 mt-0.5" weight="duotone" />
-                  <div>
-                    <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
-                      Hours
-                    </div>
-                    <span className="text-text-primary text-sm">
-                      Mon–Fri 9–5 MT
-                    </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-yellow-400/10 flex-shrink-0">
+                  <Phone size={18} className="text-yellow-400" weight="duotone" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                    Phone
                   </div>
+                  <a
+                    href="tel:+18018980911"
+                    className="text-text-primary text-sm hover:text-accent transition-colors no-underline"
+                  >
+                    +1 (801) 898-0911
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-yellow-400/10 flex-shrink-0">
+                  <Clock size={18} className="text-yellow-400" weight="duotone" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-0.5">
+                    Hours
+                  </div>
+                  <span className="text-text-primary text-sm">
+                    Mon–Fri 9–5 MT
+                  </span>
                 </div>
               </div>
             </div>
@@ -345,29 +346,26 @@ export default function AIConsultingSaltLakeCity() {
               start with a one-week discovery sprint to map your data and pick
               the highest-leverage problem first.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-4">
               {offerings.map(({ title, body, bullets }) => (
                 <div
                   key={title}
-                  className="rounded-2xl border border-border p-5 flex flex-col"
-                  style={{
-                    backgroundColor: "rgba(19, 19, 22, 0.4)",
-                    boxShadow: "var(--shadow-inner-highlight)",
-                  }}
+                  className="group/card rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                  style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
                 >
-                  <h3 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
+                  <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-3">
                     {title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                  <p className="text-text-secondary text-[16px] leading-6 mb-4">
                     {body}
                   </p>
-                  <ul className="flex flex-col gap-2 list-none p-0 m-0 mt-auto pt-3 border-t border-border">
+                  <ul className="flex flex-col gap-2 list-none p-0 m-0 mt-auto pt-4 border-t border-white/10">
                     {bullets.map((line) => (
                       <li key={line} className="flex items-start gap-2">
                         <CheckCircle
                           size={14}
                           weight="fill"
-                          className="text-accent flex-shrink-0 mt-0.5"
+                          className="text-yellow-400 flex-shrink-0 mt-0.5"
                         />
                         <span className="text-text-secondary text-xs leading-relaxed">
                           {line}
@@ -406,18 +404,15 @@ export default function AIConsultingSaltLakeCity() {
               for is a workflow that takes too much time. Automation pays
               back fastest there.
             </p>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-fr gap-4 lg:gap-6">
               <div
-                className="rounded-2xl border border-border-light p-6"
-                style={{
-                  backgroundColor: "rgba(19, 19, 22, 0.55)",
-                  boxShadow: "var(--shadow-inner-highlight)",
-                }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
-                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-3">
+                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-yellow-400 mb-3">
                   Local trades & small business
                 </div>
-                <h3 className="font-display font-semibold text-text-primary text-lg mb-4 tracking-tight">
+                <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-4">
                   Where automation removes the most manual time
                 </h3>
                 <ul className="flex flex-col gap-3 list-none p-0 m-0">
@@ -426,7 +421,7 @@ export default function AIConsultingSaltLakeCity() {
                       <CheckCircle
                         size={18}
                         weight="fill"
-                        className="text-accent flex-shrink-0 mt-0.5"
+                        className="text-yellow-400 flex-shrink-0 mt-0.5"
                       />
                       <span className="text-text-secondary text-sm leading-relaxed">
                         {line}
@@ -436,16 +431,13 @@ export default function AIConsultingSaltLakeCity() {
                 </ul>
               </div>
               <div
-                className="rounded-2xl border border-border-light p-6"
-                style={{
-                  backgroundColor: "rgba(19, 19, 22, 0.55)",
-                  boxShadow: "var(--shadow-inner-highlight)",
-                }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
-                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-3">
+                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-yellow-400 mb-3">
                   Tech-heavy & data-intensive
                 </div>
-                <h3 className="font-display font-semibold text-text-primary text-lg mb-4 tracking-tight">
+                <h3 className="font-display text-[20px] font-extrabold leading-tight tracking-[-0.02em] text-text-primary mb-4">
                   Where AI and analytics unlock product and operations
                 </h3>
                 <ul className="flex flex-col gap-3 list-none p-0 m-0">
@@ -454,7 +446,7 @@ export default function AIConsultingSaltLakeCity() {
                       <CheckCircle
                         size={18}
                         weight="fill"
-                        className="text-accent flex-shrink-0 mt-0.5"
+                        className="text-yellow-400 flex-shrink-0 mt-0.5"
                       />
                       <span className="text-text-secondary text-sm leading-relaxed">
                         {line}
@@ -496,48 +488,40 @@ export default function AIConsultingSaltLakeCity() {
 
         <ScrollReveal delay={0.25}>
           <section
-            className="p-2 rounded-[2rem] border border-border max-w-[820px]"
-            style={{
-              backgroundColor: "rgba(19, 19, 22, 0.4)",
-              boxShadow: "var(--shadow-card)",
-            }}
+            className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-8 lg:p-12 text-center max-w-[820px] transition-all duration-300 hover:border-yellow-400/40"
+            style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
           >
-            <div
-              className="rounded-[calc(2rem-0.5rem)] bg-surface p-8 lg:p-12 text-center"
-              style={{ boxShadow: "var(--shadow-inner-highlight)" }}
+            <h2
+              className="font-display font-bold tracking-tighter text-text-primary mb-4"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)" }}
             >
-              <h2
-                className="font-display font-bold tracking-tighter text-text-primary mb-4"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)" }}
+              Ready to talk?
+            </h2>
+            <p className="text-text-secondary text-base leading-relaxed mb-8 max-w-[480px] mx-auto">
+              Free consultation meeting. Salt Lake City based, replies within one
+              business day. Tell us what you&apos;re working on.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
+                style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
               >
-                Ready to talk?
-              </h2>
-              <p className="text-text-secondary text-base leading-relaxed mb-8 max-w-[480px] mx-auto">
-                Free consultation meeting. Salt Lake City based, replies within one
-                business day. Tell us what you&apos;re working on.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-7 pr-2 py-2 rounded-full no-underline transition-all duration-700"
+                Start a conversation
+                <span
+                  className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
                   style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                 >
-                  Start a conversation
-                  <span
-                    className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
-                    style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
-                  >
-                    <ArrowUpRight size={16} weight="bold" className="text-canvas" />
-                  </span>
-                </Link>
-                <a
-                  href="mailto:info@panteraclaw.com"
-                  className="inline-flex items-center gap-2 bg-surface-light border border-border hover:border-border-light text-text-primary font-medium text-sm px-5 py-2 rounded-full no-underline transition-colors duration-300"
-                >
-                  <EnvelopeSimple size={14} weight="bold" />
-                  Email us
-                </a>
-              </div>
+                  <ArrowUpRight size={16} weight="bold" className="text-canvas" />
+                </span>
+              </Link>
+              <a
+                href="mailto:info@panteraclaw.com"
+                className="inline-flex items-center gap-2 bg-surface-light border border-border hover:border-border-light text-text-primary font-medium text-sm px-5 py-2 rounded-full no-underline transition-colors duration-300"
+              >
+                <EnvelopeSimple size={14} weight="bold" />
+                Email us
+              </a>
             </div>
           </section>
         </ScrollReveal>

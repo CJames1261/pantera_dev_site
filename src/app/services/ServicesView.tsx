@@ -40,7 +40,7 @@ function WebDevContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">
@@ -57,7 +57,7 @@ function WebDevContent() {
             rates. Speed isn&apos;t an afterthought; it&apos;s the foundation.
           </p>
         </div>
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <MagnifyingGlass size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">
@@ -131,7 +131,7 @@ function WebDevContent() {
           ].map((card) => (
             <div
               key={card.title}
-              className="rounded-xl bg-surface-light border border-border p-6"
+              className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
             >
               <card.icon size={20} weight="duotone" className="text-[#38BDF8] mb-3" />
               <h4 className="font-display font-semibold text-text-primary text-sm mb-1">
@@ -175,7 +175,7 @@ function WebDevContent() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface-light border border-border p-5">
+      <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">
@@ -221,7 +221,7 @@ function DatabaseContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -231,7 +231,7 @@ function DatabaseContent() {
             We&apos;ve optimized PySpark ETL pipelines handling large-scale data for compliance-heavy environments. Our schemas don&apos;t buckle under growth -- they&apos;re designed for it from day one.
           </p>
         </div>
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <ShieldCheck size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -253,7 +253,7 @@ function DatabaseContent() {
             { icon: Lightning, title: "Query Optimization & Indexing", tagline: "Sub-second responses on billion-row tables", items: ["Execution plan analysis", "Index strategy and partitioning", "Materialized views and caching", "Cost-based optimizer tuning"] },
             { icon: CloudArrowUp, title: "Migration & Platform Design", tagline: "Move fast without breaking data", items: ["Zero-downtime migration planning", "On-prem to cloud transitions", "Multi-cloud data strategies", "Backup, recovery, and access control"] },
           ].map((card) => (
-            <div key={card.title} className="rounded-xl bg-surface-light border border-border p-6">
+            <div key={card.title} className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
               <card.icon size={20} weight="duotone" className="text-[#3B82F6] mb-3" />
               <h4 className="font-display font-semibold text-text-primary text-sm mb-1">{card.title}</h4>
               <p className="text-text-tertiary text-xs italic mb-3">{card.tagline}</p>
@@ -279,7 +279,7 @@ function DatabaseContent() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface-light border border-border p-5">
+      <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
@@ -307,7 +307,7 @@ function DashboardContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -317,7 +317,7 @@ function DashboardContent() {
             Our dashboards don&apos;t just show what happened -- they predict what will happen next. ML-powered forecasting views give your leadership real decision-making leverage.
           </p>
         </div>
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <ChartLineUp size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -339,7 +339,7 @@ function DashboardContent() {
             { icon: Cpu, title: "Embedded Analytics", tagline: "Analytics inside your product", items: ["Customer-facing data portals", "White-label reporting for clients", "API-driven chart components", "Interactive data exploration"] },
             { icon: TreeStructure, title: "ETL Integration & Wiring", tagline: "The pipeline behind the dashboard", items: ["Automated data refresh pipelines", "Multi-source data blending", "Data quality monitoring", "Change data capture (CDC)"] },
           ].map((card) => (
-            <div key={card.title} className="rounded-xl bg-surface-light border border-border p-6">
+            <div key={card.title} className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
               <card.icon size={20} weight="duotone" className="text-[#10B981] mb-3" />
               <h4 className="font-display font-semibold text-text-primary text-sm mb-1">{card.title}</h4>
               <p className="text-text-tertiary text-xs italic mb-3">{card.tagline}</p>
@@ -365,7 +365,7 @@ function DashboardContent() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface-light border border-border p-5">
+      <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
@@ -393,7 +393,7 @@ function AIContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -403,7 +403,7 @@ function AIContent() {
             Our NLP-to-SQL agents let non-technical stakeholders query databases in plain English. No SQL knowledge required -- the agent writes, validates, and executes the query.
           </p>
         </div>
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <ShieldCheck size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -425,7 +425,7 @@ function AIContent() {
             { icon: Cpu, title: "Local LLM Deployment", tagline: "On-prem AI for sensitive environments", items: ["Air-gapped inference servers", "Model quantization and optimization", "GPU cluster configuration", "Secure API gateway setup"] },
             { icon: Gear, title: "Guardrails & Evaluation", tagline: "AI you can trust in production", items: ["Output validation and filtering", "Automated evaluation frameworks", "Prompt injection protection", "Performance monitoring and logging"] },
           ].map((card) => (
-            <div key={card.title} className="rounded-xl bg-surface-light border border-border p-6">
+            <div key={card.title} className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
               <card.icon size={20} weight="duotone" className="text-[#A78BFA] mb-3" />
               <h4 className="font-display font-semibold text-text-primary text-sm mb-1">{card.title}</h4>
               <p className="text-text-tertiary text-xs italic mb-3">{card.tagline}</p>
@@ -451,7 +451,7 @@ function AIContent() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface-light border border-border p-5">
+      <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
@@ -479,7 +479,7 @@ function AnalyticsContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Lightning size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -489,7 +489,7 @@ function AnalyticsContent() {
             Our deep learning models are designed to hold up once they leave the notebook. We build for the real world (changing data, edge cases, latency budgets), not just for clean test sets.
           </p>
         </div>
-        <div className="rounded-xl bg-surface-light border border-border p-6">
+        <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
           <div className="flex items-center gap-2 mb-3">
             <Brain size={14} weight="fill" className="text-accent" />
             <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Key Differentiator</span>
@@ -511,7 +511,7 @@ function AnalyticsContent() {
             { icon: Cpu, title: "Deep Learning", tagline: "Neural networks for complex problems", items: ["CNN for image and signal processing", "RNN and transformers for sequences", "Transfer learning and fine-tuning", "Custom architecture design"] },
             { icon: Gear, title: "MLOps & Deployment", tagline: "Models that stay accurate over time", items: ["Automated training pipelines", "Drift detection and monitoring", "Model versioning and rollback", "A/B testing in production"] },
           ].map((card) => (
-            <div key={card.title} className="rounded-xl bg-surface-light border border-border p-6">
+            <div key={card.title} className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
               <card.icon size={20} weight="duotone" className="text-[#FB7185] mb-3" />
               <h4 className="font-display font-semibold text-text-primary text-sm mb-1">{card.title}</h4>
               <p className="text-text-tertiary text-xs italic mb-3">{card.tagline}</p>
@@ -537,7 +537,7 @@ function AnalyticsContent() {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface-light border border-border p-5">
+      <div className="rounded-[28px] border border-white/10 bg-[#111214]/90 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]" style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}>
         <div className="flex items-center gap-2 mb-2">
           <ShieldCheck size={14} weight="fill" className="text-accent" />
           <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">Proof of Work</span>
@@ -665,27 +665,23 @@ export default function ServicesView() {
               </h2>
             </div>
           </ScrollReveal>
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-4 list-none p-0 m-0">
             {howWeWork.map(({ step, title, body }, i) => (
               <ScrollReveal key={step} delay={i * 0.08}>
                 <li
-                  className="group rounded-2xl border border-border-light hover:border-accent/40 p-6 h-full transition-all duration-700"
-                  style={{
-                    backgroundColor: "rgba(19, 19, 22, 0.65)",
-                    boxShadow: "var(--shadow-card)",
-                    transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
-                  }}
+                  className="group rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                  style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
                 >
                   <div
-                    className="font-mono font-bold text-accent leading-none mb-4 tracking-tighter"
+                    className="font-mono font-bold text-yellow-400 leading-none mb-4 tracking-tighter"
                     style={{ fontSize: "clamp(2.25rem, 4vw, 3rem)" }}
                   >
                     {step}
                   </div>
-                  <h3 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
+                  <h3 className="font-display text-[20px] font-extrabold tracking-[-0.02em] leading-tight text-text-primary mb-3">
                     {title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">
+                  <p className="text-text-secondary text-[16px] leading-6">
                     {body}
                   </p>
                 </li>
@@ -706,82 +702,70 @@ export default function ServicesView() {
                 <ScrollReveal key={pill.id} delay={i * 0.06}>
                   <div
                     ref={(el) => { pillRefs.current[pill.id] = el; }}
-                    className="p-1.5 rounded-[2rem] border transition-all duration-700"
+                    className="rounded-[28px] border bg-[#111214]/90 overflow-hidden transition-all duration-300 hover:border-yellow-400/40"
                     style={{
-                      backgroundColor: "rgba(19, 19, 22, 0.4)",
                       borderColor: isOpen
-                        ? `${pill.color}40`
-                        : "rgba(255, 255, 255, 0.07)",
-                      transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
+                        ? `${pill.color}55`
+                        : "rgba(255, 255, 255, 0.10)",
+                      boxShadow: "0 18px 50px rgba(0,0,0,0.45)",
                     }}
                   >
-                    <div
-                      className="rounded-[calc(2rem-0.375rem)] bg-surface overflow-hidden"
-                      style={{ boxShadow: "var(--shadow-inner-highlight)" }}
+                    <button
+                      onClick={() => setOpenId(isOpen ? null : pill.id)}
+                      className="w-full text-left px-6 py-6 lg:px-8 lg:py-7 flex items-start gap-5 cursor-pointer border-none bg-transparent group/pill"
                     >
-                      <button
-                        onClick={() => setOpenId(isOpen ? null : pill.id)}
-                        className="w-full text-left px-6 py-6 lg:px-10 lg:py-8 flex items-start gap-5 cursor-pointer border-none bg-transparent group"
+                      <div
+                        className="flex h-[72px] w-[72px] items-center justify-center rounded-[22px] border border-white/10 flex-shrink-0 mt-1 transition-all duration-300"
+                        style={{ backgroundColor: `${pill.color}15` }}
                       >
-                        <div
-                          className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1 transition-all duration-500"
-                          style={{
-                            backgroundColor: `${pill.color}15`,
-                            transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
-                          }}
-                        >
-                          <IconComp
-                            size={24}
-                            weight="duotone"
-                            style={{ color: pill.color }}
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h2 className="font-display font-bold text-text-primary text-xl lg:text-2xl tracking-tight mb-1">
-                            {pill.title}
-                          </h2>
-                          <p className="text-text-tertiary text-sm italic mb-2">
-                            {pill.subtitle}
-                          </p>
-                          <p className="text-text-secondary text-sm leading-relaxed max-w-[640px]">
-                            {pill.description}
-                          </p>
-                        </div>
-                        <motion.div
-                          animate={{ rotate: isOpen ? 180 : 0 }}
-                          transition={{
-                            duration: 0.4,
-                            ease: [0.32, 0.72, 0, 1],
-                          }}
-                          className="flex-shrink-0 mt-2"
-                        >
-                          <CaretDown
-                            size={20}
-                            weight="bold"
-                            className="text-text-tertiary"
-                          />
-                        </motion.div>
-                      </button>
+                        <IconComp
+                          size={32}
+                          weight="duotone"
+                          style={{ color: pill.color }}
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h2 className="font-display text-[22px] lg:text-[26px] font-extrabold tracking-[-0.02em] leading-tight text-text-primary mb-1">
+                          {pill.title}
+                        </h2>
+                        <p className="text-text-tertiary text-sm italic mb-2">
+                          {pill.subtitle}
+                        </p>
+                        <p className="text-text-secondary text-[16px] leading-6 max-w-[640px]">
+                          {pill.description}
+                        </p>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.32, 0.72, 0, 1],
+                        }}
+                        className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400 text-black transition-transform duration-300 group-hover/pill:translate-y-0.5 flex-shrink-0 mt-1"
+                        aria-hidden="true"
+                      >
+                        <CaretDown size={20} weight="bold" />
+                      </motion.div>
+                    </button>
 
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                              height: { duration: 0.5, ease: [0.32, 0.72, 0, 1] },
-                              opacity: { duration: 0.3, delay: 0.1 },
-                            }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-6 pb-8 lg:px-10 lg:pb-10 pt-2 border-t border-border">
-                              {pill.content}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            height: { duration: 0.5, ease: [0.32, 0.72, 0, 1] },
+                            opacity: { duration: 0.3, delay: 0.1 },
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-8 lg:px-8 lg:pb-10 pt-2 border-t border-white/10">
+                            {pill.content}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </ScrollReveal>
               );
@@ -791,49 +775,41 @@ export default function ServicesView() {
           <ScrollReveal delay={0.1}>
             <div className="mt-16">
               <div
-                className="p-2 rounded-[2rem] border border-border"
-                style={{
-                  backgroundColor: "rgba(19, 19, 22, 0.4)",
-                  boxShadow: "var(--shadow-card)",
-                }}
+                className="rounded-[28px] border border-white/10 bg-[#111214]/90 relative overflow-hidden px-6 py-14 lg:px-16 lg:py-16 text-center transition-all duration-300 hover:border-yellow-400/40"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
               >
                 <div
-                  className="rounded-[calc(2rem-0.5rem)] bg-surface relative overflow-hidden px-6 py-14 lg:px-16 lg:py-16 text-center"
-                  style={{ boxShadow: "var(--shadow-inner-highlight)" }}
-                >
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
-                    }}
-                  />
-                  <div className="relative z-10 max-w-[580px] mx-auto">
-                    <h2
-                      className="font-display font-bold tracking-tighter text-text-primary mb-5"
-                      style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)" }}
-                    >
-                      Not sure which service fits?
-                    </h2>
-                    <p className="text-text-secondary text-base leading-relaxed mb-8">
-                      Describe the problem. We will map it to the right
-                      combination of skills and give you a clear scope before any
-                      commitment.
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-8 pr-2 py-2.5 rounded-full no-underline transition-all duration-700"
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 50% 0%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
+                  }}
+                />
+                <div className="relative z-10 max-w-[580px] mx-auto">
+                  <h2
+                    className="font-display font-bold tracking-tighter text-text-primary mb-5"
+                    style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)" }}
+                  >
+                    Not sure which service fits?
+                  </h2>
+                  <p className="text-text-secondary text-base leading-relaxed mb-8">
+                    Describe the problem. We will map it to the right
+                    combination of skills and give you a clear scope before any
+                    commitment.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-8 pr-2 py-2.5 rounded-full no-underline transition-all duration-700"
+                    style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+                  >
+                    Talk to us
+                    <span
+                      className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105"
                       style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
                     >
-                      Talk to us
-                      <span
-                        className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105"
-                        style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
-                      >
-                        <ArrowUpRight size={16} weight="bold" className="text-canvas" />
-                      </span>
-                    </Link>
-                  </div>
+                      <ArrowUpRight size={16} weight="bold" className="text-canvas" />
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
