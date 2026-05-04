@@ -62,7 +62,7 @@ export default function FeatureDashboards() {
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
                 <img
-                  src="/sections/dashboard_viz.png"
+                  src="/sections/dashboard_viz.webp"
                   alt="A clean tablet-style business dashboard showing a large revenue figure with an upward arrow, a trending line chart, and three KPI tiles, surrounded by a coffee cup, clipboard with a checkmark, and a calm smiling face icon to suggest stress-free clarity."
                   width={1200}
                   height={1200}

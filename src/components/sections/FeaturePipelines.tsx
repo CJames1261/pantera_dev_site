@@ -20,7 +20,7 @@ export default function FeaturePipelines() {
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
                 <img
-                  src="/sections/data_pipeline_viz.png"
+                  src="/sections/data_pipeline_viz.webp"
                   alt="Scattered raw spreadsheets, sticky notes, and tangled wires flowing through a glowing yellow funnel into clean dashboard cards: Sales Growth chart, Revenue plus 28 percent, Data Quality all good, Clear answers and confident decisions."
                   width={1200}
                   height={1200}

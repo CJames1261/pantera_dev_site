@@ -33,7 +33,7 @@ export default function Navbar() {
           {/* Logo + Brand */}
           <Link href="/" className="flex items-center gap-2.5 pl-2 pr-1 no-underline">
             <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
-              <img src="/Pantera_Claw_small.webp" alt="" aria-hidden="true" width={40} height={40} className="w-full h-full object-contain scale-125" />
+              <img src="/Pantera_Claw_icon.webp" alt="" aria-hidden="true" width={40} height={40} className="w-full h-full object-cover" />
             </div>
             <span className="font-display font-semibold text-text-primary text-sm md:text-base tracking-tight whitespace-nowrap">
               Pantera Claw

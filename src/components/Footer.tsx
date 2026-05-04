@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 no-underline mb-5">
               <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light bg-surface-light">
-                <img src="/Pantera_Claw_small.webp" alt="" aria-hidden="true" width={40} height={40} className="w-full h-full object-contain scale-125" />
+                <img src="/Pantera_Claw_icon.webp" alt="" aria-hidden="true" width={40} height={40} className="w-full h-full object-cover" />
               </div>
               <span className="font-display font-bold text-text-primary text-lg tracking-tight">
                 Pantera Claw

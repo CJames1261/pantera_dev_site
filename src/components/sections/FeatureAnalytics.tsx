@@ -62,7 +62,7 @@ export default function FeatureAnalytics() {
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
                 <img
-                  src="/sections/advanced_analytics_viz.png"
+                  src="/sections/advanced_analytics_viz.webp"
                   alt="A clean line chart with a solid history curve transitioning into a glowing yellow dotted forecast line, with floating bubbles for revenue, customer, and risk indicators above the forecast zone, and a magnifying glass examining the historical curve."
                   width={1200}
                   height={1200}

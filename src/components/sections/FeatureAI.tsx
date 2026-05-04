@@ -20,7 +20,7 @@ export default function FeatureAI() {
                 style={{ boxShadow: "var(--shadow-inner-highlight)" }}
               >
                 <img
-                  src="/sections/agentic_viz.png"
+                  src="/sections/agentic_viz.webp"
                   alt="A friendly glowing AI orb at the center managing parallel work in the background: a replied email envelope, a sent invoice, a booked calendar meeting, and an answered chat bubble — illustrating an AI assistant handling repetitive tasks so the business owner is freed up."
                   width={1200}
                   height={1200}
