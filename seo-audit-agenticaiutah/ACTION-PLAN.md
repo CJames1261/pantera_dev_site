@@ -1,131 +1,193 @@
 # Action Plan — agenticaiutah.com
 
-Prioritized fixes from the 2026-05-04 audit. Effort: S = <1h, M = 1–4h, L = 1–2 days.
+Prioritized recommendations from the 2026-05-04 full SEO audit.
+**Overall health:** 89/100 (Strong).
+**Effort key:** S = under 1 hour · M = 1–4 hours · L = 1–2 days · XL = 1+ week.
 
-## Critical (fix this week)
-
-### 1. Replace blog picsum placeholders with real hero images
-- **What:** Every `/blog/*` page uses `https://picsum.photos/seed/<slug>/1200/675` as hero AND in `BlogPosting.image` JSON-LD.
-- **Why:** Random lorem images destroy E-E-A-T, will fail Google Rich Results validation, and break entirely if picsum goes down. AI assistants pull schema images for citations.
-- **Fix:** Generate per-post WebP heroes (1200×675), self-host under `/blog/<slug>/hero.webp`, update `BlogPosting.image` to the canonical owned URL. Backfill all 4 existing posts.
-- **Effort:** M (per post) — or auto-generate via the existing weekly blog-gen pipeline.
-- **Files likely involved:** the Next.js blog generator + sitemap builder (also referenced by `/sitemap.xml` `image:image`).
-
-### 2. Fix H1 whitespace bug on home + services
-- **What:** `<h1>` renders as `"We build the data systemsthat poweryour decisions"` (home) and `"From AI agentsto predictive dashboards"` (services). Words concatenated.
-- **Why:** H1 is the highest-weighted on-page element. Two top pages both broken.
-- **Fix:** Add a literal space inside the styled `<span>` boundaries or wrap whitespace in a non-collapsing element. Validate visually + view source.
-- **Effort:** S.
-
-### 3. Remove ~80-char slug + meta-description truncation in blog generator
-- **What:** `/blog/local-seo-…recommendat` (slug cut), `meta_description` cut at "show".
-- **Why:** Permanent URL ugliness + truncated SERP snippets. Every long-titled future post will hit the same cap.
-- **Fix:** Lift slug max-length (or implement smart trim that ends on a word boundary + keyword priority). Lift meta description max-length to 200 chars or trim to last full word ≤ 160.
-- **Effort:** S.
-
-### 4. Patch heading hierarchy on /blog index
-- **What:** Most recent post is `<h2>`, the other three are `<h3>`. Should be parallel.
-- **Why:** Confuses crawlers about sibling vs. featured relationships.
-- **Fix:** Either render all article cards as `<h2>` (simplest), or keep one `<h2>` for "Featured" and put the others under a separate `<h2>Recent posts</h2>` section with `<h3>` cards.
-- **Effort:** S.
-
-### 5. Self-host the SLC skyline image on /contact
-- **What:** Contact page references `https://lh3.googleusercontent.com/aida-public/AB6AXuD…` (Google AI Studio CDN).
-- **Why:** Unowned URL — could 404 at any time. Recent commit "render SLC image at full color by default" confirms this is intentional UI but the asset isn't owned.
-- **Fix:** Download, optimize (WebP + AVIF), self-host under `/sections/slc_skyline.webp`. Ensure license/attribution if needed.
-- **Effort:** S.
-
-## High (fix within 2 weeks)
-
-### 6. Add real Person author schema on blog posts
-- **What:** Author currently `{ "@type": "Person", "name": "Pantera Claw" }` — type/name mismatch.
-- **Why:** AI engines and Google E-E-A-T weighting favor named human authors with credentials. Mismatched type may also flag in Rich Results test.
-- **Fix:** Either (a) switch author to `Organization` (`@id` of the existing org), OR (b) introduce a `Person` author per post with `name`, `image`, `jobTitle`, `description`, `url`, `sameAs` (LinkedIn). Option (b) is preferred for a consulting firm — buyers want to know who's writing.
-- **Effort:** M.
-
-### 7. Expand Organization.sameAs
-- **What:** Currently only `https://github.com/CJames1261`.
-- **Why:** AI engines verify entity identity by cross-referencing sameAs links. More reputable platforms = more confident citations.
-- **Fix:** Add (in priority order): LinkedIn company page, Google Business Profile (after claiming), X/Twitter, Facebook page, Crunchbase, Clutch.
-- **Effort:** S.
-
-### 8. Deepen the About page
-- **What:** Only 405 words; no founder bio, no credentials, no proof.
-- **Why:** Highest-trust page on a consulting site. Buyers compare consultants by who, not what.
-- **Fix:** Add: founder bio + photo, formal credentials, years of experience, signature projects (anonymized OK), values, what makes Pantera Claw different, hiring philosophy. Aim for 800–1200 words. Add a `Person` schema for the founder.
-- **Effort:** L.
-
-### 9. Add at least one case study
-- **What:** No portfolio / case studies / proof of work on the site.
-- **Why:** Consulting buyers need evidence. Case studies are also ideal AI citation fodder ("Pantera Claw helped a Utah powder coating shop cut quoting time 60%…").
-- **Fix:** Publish one anonymized case study with: client problem, approach, tools used, measurable outcome. Add `Article` schema.
-- **Effort:** L.
-
-### 10. Align ContactPoint.areaServed with ProfessionalService.areaServed
-- **What:** `ContactPoint.areaServed = "US"`, but `ProfessionalService.areaServed` lists Utah/SLC/Provo/Ogden.
-- **Why:** Inconsistent geographic signals.
-- **Fix:** Make `ContactPoint.areaServed` an array matching the service-level coverage, or at minimum keep them coherent.
-- **Effort:** S.
-
-## Medium (fix within a month)
-
-### 11. Per-page OG images
-- Currently every page shares `/og-image.webp`.
-- Add per-page variants for /services, /about, /contact, /ai-consulting-salt-lake-city, and per-post for blog articles. Use the existing `seo-image-gen` skill to generate.
-- **Effort:** M.
-
-### 12. Add a real PostalAddress
-- `addressLocality`, `addressRegion`, `addressCountry` only — no `streetAddress`/`postalCode`. If you don't have a public office, register as a service-area business in Google Business Profile and update schema accordingly.
-- **Effort:** S (schema), M (decide on real address strategy).
-
-### 13. Improve Contact H1
-- "Initiate High-Fidelity Engagement." has zero search relevance.
-- Change to: "Contact Pantera Claw — Free AI & Data Consulting Conversation" or similar. Keep brand voice in the H2 ("Briefing Details" can stay).
-- **Effort:** S.
-
-### 14. Fix sitemap lastmod consistency
-- Home shows `2026-04-27` while children show `2026-05-03`. Either auto-bump home on any child change, or pin home to the most recent child-page lastmod.
-- **Effort:** S.
-
-### 15. Add testimonial/Review schema once you have client permissions
-- Even one or two `Review` items on the home page move the trust needle and unlock review-snippet rich results.
-- **Effort:** M.
-
-### 16. Add visible breadcrumbs UI
-- Schema is present, but the visual breadcrumb component isn't visible on most pages. Adds clarity for users + crawlers.
-- **Effort:** M.
-
-### 17. Tighten CSP
-- `script-src 'self' 'unsafe-inline' 'unsafe-eval'` — long-term, move to nonce-based CSP. Lower priority since this is the Next.js norm.
-- **Effort:** L.
-
-## Low (backlog)
-
-- Add `fetchpriority="high"` to LCP hero image on blog posts.
-- Add AVIF variants for hero/section images (WebP fallback).
-- Add `twitter:site` handle once the X/Twitter account exists.
-- Configure IndexNow ping (Bing) on publish.
-- Add `Article.speakable` annotations on blog posts.
-- List `/ai-consulting-salt-lake-city` under "Core Pages" in `llms.txt`.
+> The site is technically excellent. Most of the lift from here is **content breadth** and **off-page authority** — not on-page fixes.
 
 ---
 
-## Suggested 30-day roadmap
+## Critical (fix this week)
 
-| Week | Focus |
-|---|---|
-| **Week 1** | Critical fixes #1–5 (blog images, H1 spacing, slug/desc truncation, /blog hierarchy, self-host skyline) |
-| **Week 2** | High fixes #6–10 (author schema, sameAs, /about deepening, case study draft, areaServed alignment) |
-| **Week 3** | Per-page OG images, PostalAddress decision, Contact H1, sitemap lastmod, breadcrumbs UI |
-| **Week 4** | Publish first case study, claim Google Business Profile + add to sameAs, run `seo-google` audit with PSI/CrUX credentials, run `seo-backlinks` to set baseline |
+*No blockers found. The site indexes cleanly, redirects correctly, and serves a complete crawl.*
 
-## Suggested next audit subcommands
+---
+
+## High (fix within 2 weeks)
+
+### H1. Make the apex → www redirect permanent (308 instead of 307) — S
+- **Issue:** `https://agenticaiutah.com/` returns `307 Temporary Redirect` to `https://www.agenticaiutah.com/`. Search engines treat 307 as a hint, not a canonical move, so link equity from anyone linking to the apex may not consolidate fully on `www`.
+- **Fix:** in `vercel.json` (or `next.config.ts`), declare a permanent redirect:
+  ```json
+  // vercel.json
+  {
+    "redirects": [
+      { "source": "/(.*)", "has": [{ "type": "host", "value": "agenticaiutah.com" }],
+        "destination": "https://www.agenticaiutah.com/$1", "permanent": true }
+    ]
+  }
+  ```
+  Or in `next.config.ts`:
+  ```ts
+  redirects: async () => [{ source: '/:path*',
+    has: [{ type: 'host', value: 'agenticaiutah.com' }],
+    destination: 'https://www.agenticaiutah.com/:path*', permanent: true }]
+  ```
+- **Verify:** `curl -sI https://agenticaiutah.com/` should return `308`.
+
+### H2. Build off-page authority — XL (90-day workstream)
+- **Issue:** domain not yet in Common Crawl web graph; no DA/PA signals. This is the single biggest growth lever.
+- **Plan (90 days):**
+  - **Month 1 — citations & directories.** Create / claim Google Business Profile (Salt Lake City, UT), Bing Places, Apple Maps Connect, Yelp, Clutch (B2B services), GoodFirms, UpCity, LinkedIn Company Page, Crunchbase, Yellowpages, Brownbook, Cylex, Hotfrog. Verify every listing matches NAP exactly: *Pantera Claw / Salt Lake City, UT / +1 (801) 898-0911 / info@panteraclaw.com / Mon–Fri 9–5 MT*.
+  - **Month 2 — local + niche.** Utah-specific: Silicon Slopes member listing, Utah Tech Council, World Trade Center Utah, Utah Business magazine directory, KSL classifieds business listings. AI/data niche: AI Tool Hub, Built In Utah, Product Hunt (if a product launches), GitHub org page.
+  - **Month 3 — earned links.** 2 guest posts on local SLC tech blogs / Silicon Slopes news; 1 podcast (Silicon Slopes Podcast or similar); a HARO/Connectively response cadence (3/week) on AI/data topics; LinkedIn thought-leadership cadence weekly.
+- **Track in:** Search Console "Links" report once it populates, plus a quarterly Common Crawl re-check.
+
+### H3. Tighten oversized titles and descriptions — S
+Three descriptions and two titles exceed Google's SERP truncation thresholds. Recommended rewrites:
+
+| Page | Field | Current → Suggested |
+|---|---|---|
+| `/blog/local-seo-in-the-ai-era…` | title | (100c) → `Local SEO in the AI Era: Getting Found via ChatGPT \| Pantera Claw` (62c) |
+| `/blog/using-ai-to-write-your-marketing-copy…` | title | (67c) → `AI Marketing Copy Without Sounding Robotic \| Pantera Claw` (57c) |
+| `/services` | description | (180c) → `AI consulting, custom dashboards, data pipelines, and analytics for SLC and Utah businesses. Five disciplines, one accountable partner.` (~150c) |
+| `/blog` | description | (186c) → `Practical writing on AI consulting, data engineering, dashboards, and analytics — from a Salt Lake City team that ships these systems for clients.` (~150c) |
+| `/contact` | description | (167c) → `Book a free 30-minute consultation with Pantera Claw. Salt Lake City based; Utah and nationwide remote engagements welcome.` (~135c) |
+
+---
+
+## Medium (fix within 30 days)
+
+### M1. Enable real CWV measurement — S setup, ongoing
+- Provision a Google Cloud project, enable **PageSpeed Insights API** + **CrUX API**, store the key at `~/.config/claude-seo/google-api.json`:
+  ```json
+  { "api_key": "AIza…" }
+  ```
+- Re-run: `python scripts/pagespeed_check.py https://www.agenticaiutah.com/ -s both --json`.
+- Then verify Search Console (`google_auth.py --auth`) and ingest GSC + GA4 to enrich future audits.
+
+### M2. Add `sameAs` array to Organization / ProfessionalService schema — S
+The schema is otherwise excellent, but the missing `sameAs` is the highest-leverage tweak for entity disambiguation in AI search.
+
+```json
+"sameAs": [
+  "https://www.linkedin.com/company/pantera-claw",
+  "https://www.linkedin.com/in/<founder>",
+  "https://github.com/<org>",
+  "https://g.page/pantera-claw",
+  "https://clutch.co/profile/pantera-claw"
+]
+```
+
+### M3. Add author bylines + `Person` schema on blog posts — M
+- Render an "About the author" block on each post with name, headshot, 2-line bio, and link to a `/team/<slug>` page.
+- Add `BlogPosting.author` referencing a sitewide `Person` JSON-LD with `jobTitle`, `worksFor` (link to `Organization` `@id`), `sameAs` (LinkedIn, X, GitHub).
+- Lift in E-E-A-T (Experience + Expertise) is meaningful for both Google and AI-Overview citation selection.
+
+### M4. Verify and enrich `BlogPosting` JSON-LD fields — S
+Confirm each blog post's `BlogPosting` block includes:
+- `headline` (≤110 chars), `image` (1200×630), `datePublished`, `dateModified`, `author` (`@type: Person`), `publisher` (`@type: Organization`, with `logo`), `mainEntityOfPage`, `wordCount`, `inLanguage: "en-US"`, optionally `articleSection` and `keywords`.
+- This is the schema set Google rewards with rich-result eligibility for articles.
+
+### M5. Beef up the `/blog` index — S
+- Currently 269 words. Add a 200–300 word intro section ("What you'll find here") + a category/tag list ("AI Consulting · Data · Dashboards · Local SEO · Budgeting"). Wire the categories to filterable pages later.
+- Goal: give the `/blog` URL its own keyword target ("Pantera Claw blog", "AI data consulting blog Utah").
+
+### M6. Tighten short / long titles + duplicate H2 — S
+- Lengthen `/privacy` title to ~45–55 chars (e.g. `Privacy Policy & Data Practices | Pantera Claw`).
+- Investigate duplicate `"AI Consulting, Data Analytics & Business Intelligence Solutions"` H2 on the homepage — likely a layout component rendered twice; remove one or differentiate.
+- Make the homepage canonical match the rest of the site's pattern (decide trailing-slash policy and apply uniformly).
+
+### M7. Make the decorative nav logo's alt text explicit — S
+The 40×40 nav logo (`Pantera_Claw_icon.webp`) currently has no `alt` attribute. The visible brand text "Pantera Claw" sits next to it, so an empty alt is correct — but make it explicit:
+```jsx
+<Image src="/Pantera_Claw_icon.webp" alt="" role="presentation" width={40} height={40} />
+```
+
+### M8. Capture a drift baseline — S
+```
+python scripts/drift_baseline.py https://www.agenticaiutah.com/
+python scripts/drift_baseline.py https://www.agenticaiutah.com/services
+python scripts/drift_baseline.py https://www.agenticaiutah.com/ai-consulting-salt-lake-city
+python scripts/drift_baseline.py https://www.agenticaiutah.com/contact
+```
+Future audits will surface regressions automatically.
+
+---
+
+## Low (backlog / nice-to-have)
+
+### L1. Tighten CSP — M
+Move toward nonce-based or hash-based `script-src` and remove `'unsafe-inline'` / `'unsafe-eval'` once the Next.js build supports it. Not an SEO issue; security maturity.
+
+### L2. Add `speakable` markup to blog posts — S
+For voice-search optimization:
+```json
+"speakable": { "@type": "SpeakableSpecification",
+  "cssSelector": ["article h1", "article p:first-of-type"] }
+```
+
+### L3. Publish a `humans.txt` — S
+Tiny file, but a minor authenticity / transparency signal that some AI assistants surface.
+
+### L4. Verify `srcset` / responsive variants — S
+Check the deployed HTML to confirm Next.js `<Image>` is producing AVIF + WebP responsive sets for the hero image (declared 480×480 but likely renders larger on desktop). If not, switch to `<Image>` from `next/image` for those assets.
+
+### L5. CCPA / GDPR section in privacy policy — M
+Add jurisdiction-specific subsections (CCPA rights, GDPR rights, data retention schedule, cookie disclosure for Vercel Analytics). Lifts trust signal and reduces legal risk.
+
+---
+
+## Content Strategy (60–90 days)
+
+The site has 4 published posts. To compete for "AI consulting Salt Lake City" / "data consulting Utah" / "agentic AI Utah" you need topical depth. Suggested editorial calendar (1 post / week, ~1,200–1,500 words each, FAQ block on each):
+
+**Local + B2B SaaS theme:**
+1. *AI Consultants in Utah: How to Choose a Local Partner vs. an Agency*
+2. *What Salt Lake City Businesses Are Actually Spending on AI in 2026*
+3. *5 Industries in Utah Where Agentic AI Is Already Paying Back* (real estate, legal, accounting, healthcare ops, construction)
+4. *The Provo & Orem Tech Boom: A Data Consultant's Read*
+
+**Implementation depth (citation magnets):**
+5. *RAG Pipeline Architecture for a Mid-Size Business: A Reference Diagram*
+6. *Custom Dashboards vs. Out-of-the-Box BI: A Decision Tree*
+7. *How We Build a Database Schema for an SMB in 30 Days*
+8. *From Spreadsheet Chaos to a Single Source of Truth: A Migration Playbook*
+
+**Buyer-journey:**
+9. *AI Consulting Pricing: What Pantera Claw Charges and Why*
+10. *The 6 Questions to Ask Before Hiring an AI Consultant*
+11. *Build vs. Buy: When a Custom AI Workflow Beats a SaaS Subscription*
+12. *Common AI Project Failures and How to Avoid Them*
+
+**Each post should include:**
+- One real (or anonymized) example
+- A FAQ block (3–5 Q&A) → `FAQPage` schema
+- Internal links to `/services`, `/ai-consulting-salt-lake-city`, `/contact`
+- A clear CTA to "Book a free 30-minute consultation"
+- Author byline → `Person` schema
+
+---
+
+## Local SEO sprint (parallel to content)
+
+1. **Claim and fully optimize Google Business Profile.** Add 10+ photos, services list (mirror site's 5 disciplines), Q&A seeded with the same FAQ as `/ai-consulting-salt-lake-city`, weekly posts.
+2. **Request 5 client reviews on GBP** as initial seed. Respond to each.
+3. **Add `aggregateRating`** to `ProfessionalService` schema *only after* reviews are publicly visible on the page.
+4. **Build a `/locations/` micro-landing page** for Provo and Ogden once the SLC LP starts ranking, mirroring the SLC LP structure with city-specific content (each ≥800 words).
+5. **Citations** (NAP) on the directories listed in H2 above, all matching exactly.
+
+---
+
+## Measurement
+
+After H1–H3 ship and M1 is wired up, run:
 
 ```
-/claude-seo:seo-drift baseline https://www.agenticaiutah.com   # snapshot now, compare after fixes
-/claude-seo:seo-local https://www.agenticaiutah.com            # GBP + NAP + citation deep-dive
-/claude-seo:seo-google                                         # if Google API creds are configured
-/claude-seo:seo-backlinks https://www.agenticaiutah.com        # link profile baseline
+python scripts/pagespeed_check.py https://www.agenticaiutah.com/ -s both --json
+python scripts/gsc_query.py https://www.agenticaiutah.com/ --days 28
+python scripts/drift_compare.py https://www.agenticaiutah.com/
 ```
 
-All output for this audit lives in `pantera_dev_site\seo-audit-agenticaiutah\`.
+Re-audit cadence: monthly for the first 6 months, then quarterly.

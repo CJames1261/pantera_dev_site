@@ -10,6 +10,7 @@ Hours: Mon–Fri, 9:00 AM – 5:00 PM Mountain Time
 
 - [Home](https://www.agenticaiutah.com/): Overview of Pantera Claw — AI and data consulting for growing businesses.
 - [Services](https://www.agenticaiutah.com/services): Five disciplines — business web development, database architecture, dashboard engineering, agentic AI, and advanced analytics.
+- [AI Consulting in Salt Lake City](https://www.agenticaiutah.com/ai-consulting-salt-lake-city): Local landing page — agentic AI, RAG pipelines, and ML systems for Utah businesses across Salt Lake, Provo, Ogden, and the Wasatch Front.
 - [About](https://www.agenticaiutah.com/about): Company story, the Pantera Claw standard (agility, precision, reliability, innovation), and mission.
 - [Contact](https://www.agenticaiutah.com/contact): Free consultation meeting request form. Salt Lake City, UT — serves clients nationwide.
 
@@ -25,6 +26,7 @@ Hours: Mon–Fri, 9:00 AM – 5:00 PM Mountain Time
 
 ## Blog
 
+- [Local SEO in the AI Era: Getting Found When Customers Ask ChatGPT for Recommendations](https://www.agenticaiutah.com/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendations): How to make your business visible when customers skip Google and ask ChatGPT, Perplexity, and AI Overviews.
 - [Using AI to Write Your Marketing Copy Without Sounding Like a Robot](https://www.agenticaiutah.com/blog/using-ai-to-write-your-marketing-copy-without-sounding-like-a-robot): How to use AI writing tools so your brand voice stays front and center.
 - [What a Realistic AI Budget Looks Like for a Ten Person Company](https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company): What a small team should actually expect to spend on AI and where that money goes.
 - [AI Agents vs. Spreadsheets: Choosing the Right Tool for Your Business](https://www.agenticaiutah.com/blog/ai-agents-vs-spreadsheets-choosing-the-right-tool-for-your-business): When AI agents win, when spreadsheets win, and how to decide.

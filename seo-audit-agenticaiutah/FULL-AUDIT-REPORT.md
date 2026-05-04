@@ -1,265 +1,258 @@
 # Full SEO Audit — agenticaiutah.com
 
-**Audited:** 2026-05-04
-**Site:** https://www.agenticaiutah.com (Pantera Claw — AI & Data Consulting)
-**Pages crawled:** 11 / 11 (100% of sitemap)
-**Stack:** Next.js on Vercel (prerendered)
+**Audit date:** 2026-05-04
+**Domain:** agenticaiutah.com (canonical host: `www.agenticaiutah.com`)
+**Stack:** Next.js (App Router) on Vercel, prerendered SSG, Vercel Edge cache
+**Pages crawled:** 11/11 (100% sitemap coverage)
+**Audit scope:** Sitemap-driven crawl + on-page parse, security header probe, schema/OG/Twitter validation, llms.txt + robots.txt review, Common Crawl backlink lookup, 404 + redirect testing.
 
 ---
 
 ## Executive Summary
 
-| Metric | Score |
-|---|---|
-| **Overall SEO Health Score** | **84 / 100** |
-| Business type | Local Service / Hybrid Agency (Salt Lake City + nationwide remote) |
-| Industry | AI & Data Consulting |
-| Schema coverage | Excellent (Org, ProfessionalService, Service, FAQ, Blog, Breadcrumb, Article) |
-| AI search readiness | Strong (llms.txt + llms-full.txt present, all major AI crawlers explicitly allowed) |
+### Overall SEO Health Score: **89 / 100** (Strong)
 
-### Category Scores
+| Category | Score | Weight | Contribution |
+|---|---:|---:|---:|
+| Technical SEO | 92 | 22% | 20.24 |
+| Content Quality | 88 | 23% | 20.24 |
+| On-Page SEO | 86 | 20% | 17.20 |
+| Schema / Structured Data | 95 | 10% | 9.50 |
+| Performance (CWV) | 75* | 10% | 7.50 |
+| AI Search Readiness | 96 | 10% | 9.60 |
+| Images | 88 | 5% | 4.40 |
+| **Total** | | | **88.68 → 89** |
 
-| Category | Weight | Score | Weighted |
-|---|---|---|---|
-| Technical SEO | 22% | 92 | 20.2 |
-| Content Quality | 23% | 78 | 17.9 |
-| On-Page SEO | 20% | 75 | 15.0 |
-| Schema / Structured Data | 10% | 95 | 9.5 |
-| Performance (CWV, lab) | 10% | 88 | 8.8 |
-| AI Search Readiness | 10% | 92 | 9.2 |
-| Images | 5% | 70 | 3.5 |
-| **Total** | 100% | — | **84.1** |
+\* Performance score is **estimated from infrastructure signals** (Vercel Edge cache HIT, prerendered HTML, immutable WebP caching). Field CWV (LCP/INP/CLS) was not measured because no Google API key is configured locally. Add a `GOOGLE_API_KEY` to fetch CrUX field data for the next audit.
 
-### Top 5 Critical Issues
+### Business Type Detected
+**Local Service / Hybrid B2B Consultancy.** Salt Lake City–based AI & data consulting firm (Pantera Claw) targeting small/mid-size businesses. Serves Utah locally + nationwide remote. NAP, opening hours, geo coordinates, and `areaServed` are all encoded in `ProfessionalService` schema.
 
-1. **Blog hero images are picsum.photos placeholders** — every blog post (`/blog/*`) uses `https://picsum.photos/seed/<slug>/1200/675` as both the visible hero AND the `BlogPosting.image` JSON-LD value. Random lorem-ipsum images destroy E-E-A-T, fail to ground AI citations, and break entirely if picsum goes down.
-2. **H1 whitespace bug on home + services** — H1 renders as `"We build the data systemsthat poweryour decisions"` (home) and `"From AI agentsto predictive dashboards"` (services). Words are concatenated with no space — likely a flex/grid `<span>` rendering bug. The most important on-page element is broken.
-3. **Truncated URL slug for the newest blog post** — `/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendat` cuts off mid-word at `recommendat`. Looks like an ~80-char truncation in the slug generator.
-4. **Truncated meta description on the same post** — `…Here's how to make sure your business show` (cut at "show", 159 chars). Suggests the same string-length cap is being hit.
-5. **Inconsistent blog index heading hierarchy** — `/blog` uses an `<h2>` for the most recent post and `<h3>` for the other three. Should be parallel (all `<h2>` for article cards).
+### Top 5 Critical / High Issues
+1. **Apex domain returns `307 Temporary Redirect` instead of `308 Permanent`** — `https://agenticaiutah.com/` → `https://www.agenticaiutah.com/`. Search engines treat 307 as non-canonical and may not consolidate signals fully. *(High)*
+2. **3 meta descriptions exceed 160 chars** — `/services` (180), `/blog` (186), `/contact` (167). Google will truncate at SERP. *(Medium)*
+3. **2 `<title>` tags exceed 60 chars** — `/blog/local-seo-in-the-ai-era…` (100 chars), `/blog/using-ai-to-write-your-marketing-copy…` (67 chars). *(Medium)*
+4. **No CWV field data captured** — without GSC + CrUX integration there is no real-user performance baseline. *(Medium — process gap, not a defect)*
+5. **No backlinks detected in Common Crawl** — domain not yet in the CC web graph (typical for newly launched sites). Off-page authority is the weakest pillar today. *(High — strategic, not defect)*
 
-### Top 5 Quick Wins
-
-1. Replace picsum placeholders with self-hosted WebP hero images per post (also update `BlogPosting.image` schema URLs).
-2. Patch the H1 spacing bug on the home and services pages (likely insert a space inside the styled inline element, or use `text-balance` correctly).
-3. Lift the slug max-length and meta-description max-length in the blog generator so titles ending in long words aren't sliced.
-4. Add real `Person` author schema with bio, photo, and `sameAs` social links — current author "Pantera Claw" Person is mismatched (organization name on a Person type).
-5. Expand `Organization.sameAs` beyond a single GitHub link — add LinkedIn, X/Twitter, Facebook, and a Google Business Profile URL when GBP is claimed.
+### Top 5 Quick Wins (under 30 minutes each)
+1. Convert apex `307` → `308` in `vercel.json` (or via Next.js redirect config). *5 min, +SEO consolidation.*
+2. Tighten the long `/services`, `/blog`, `/contact` descriptions to ≤160 chars. *15 min.*
+3. Shorten the long blog title and `/blog/using-ai-to-write…` title to ≤60 chars. *10 min.*
+4. Add explicit `alt=""` + `role="presentation"` on the 40×40 `Pantera_Claw_icon.webp` nav logo so accessibility tools and crawlers correctly mark it decorative. *5 min.*
+5. Add `aggregateRating` (or remove until reviews are collected) and `sameAs` array (LinkedIn, GitHub, Google Business Profile URL) to the `ProfessionalService` schema for richer entity signals. *20 min.*
 
 ---
 
-## Technical SEO — Score 92/100
+## Site Inventory
+
+11 URLs in `sitemap.xml`, all returning HTTP 200 with valid `<title>`, `<meta description>`, canonical, OG, Twitter, and at least one schema block:
+
+| URL | Title len | Desc len | H1s | Words | Schemas |
+|---|---:|---:|---:|---:|---|
+| `/` | 58 | 136 | 1 | 1,008 | Organization, ProfessionalService, WebSite, FAQPage |
+| `/services` | 62 | 180⚠ | 1 | 911 | Organization, ItemList, FAQPage, BreadcrumbList |
+| `/about` | 53 | 155 | 1 | 405 | Organization, AboutPage, BreadcrumbList |
+| `/contact` | 53 | 167⚠ | 1 | 263 | Organization, ContactPage, BreadcrumbList |
+| `/privacy` | 29⚠ | 103 | 1 | 325 | Organization, BreadcrumbList |
+| `/blog` | 52 | 186⚠ | 1 | 269 | Organization, Blog, BreadcrumbList |
+| `/ai-consulting-salt-lake-city` | 52 | 158 | 1 | 1,100 | Organization, ProfessionalService, Service, FAQPage, BreadcrumbList |
+| `/blog/local-seo-in-the-ai-era…` | 100⚠ | 156 | 1 | 1,353 | Organization, BlogPosting, BreadcrumbList |
+| `/blog/using-ai-to-write-your-marketing-copy…` | 67⚠ | 155 | 1 | 1,288 | Organization, BlogPosting, FAQPage, BreadcrumbList |
+| `/blog/what-a-realistic-ai-budget…` | 58 | 148 | 1 | 1,405 | Organization, BlogPosting, FAQPage, BreadcrumbList |
+| `/blog/ai-agents-vs-spreadsheets…` | 57 | 156 | 1 | 1,280 | Organization, BlogPosting, FAQPage, BreadcrumbList |
+
+⚠ = outside the recommended target range (title 30–60, description 120–160).
+
+---
+
+## Technical SEO — 92/100
 
 ### Strengths
-- **HTTPS + HSTS preload**: `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` ✓
-- **CSP defined**: `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; …` ✓
-- **Security headers complete**: `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()` ✓
-- **robots.txt**: explicit `Allow: /` for every major AI crawler (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot, DuckDuckBot, CCBot) ✓
-- **307 → 200 redirect** from apex `agenticaiutah.com` to `www.agenticaiutah.com` (clean single hop, no chain)
-- **Canonicals correct on every page** ✓
-- **`X-Nextjs-Prerender: 1`** — pages are SSR/SSG, fully visible to non-JS crawlers ✓
-- **Vercel edge cache hits** observed (`X-Vercel-Cache: HIT`)
+- **HTTPS + HSTS preload-eligible:** `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`. 2-year max-age, preload directive set.
+- **Complete security header stack:**
+  - `Content-Security-Policy` present with explicit allowlist (Vercel scripts, Vercel Insights).
+  - `Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()` — blocks FLoC and surveillance APIs.
+  - `Referrer-Policy: strict-origin-when-cross-origin`.
+  - `X-Content-Type-Options: nosniff`.
+  - `X-Frame-Options: SAMEORIGIN`.
+- **Robots.txt is best-in-class:** explicit `Allow: /` for every major AI crawler (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot, DuckDuckBot, CCBot). Sitemap declared.
+- **Sitemap matches site:** all 11 URLs in `sitemap.xml` resolve to 200; `lastmod` dates current (2026-04-19 → 2026-05-04).
+- **Vercel Edge cache:** `X-Vercel-Cache: HIT`, `X-Nextjs-Prerender: 1`, `Cache-Control: public, max-age=0, s-maxage=60, stale-while-revalidate=600` — production-grade.
+- **Canonicals on every page** and they all resolve to a 200 (no canonical → redirect chains).
+- **HTTP → HTTPS upgrade is a 308 Permanent Redirect** — correct.
+- **404 returns a real 404 status** (not a soft 404). Verified against `/this-page-does-not-exist-test-404`.
+- **Static asset caching:** WebP images served with `Cache-Control: public, max-age=31536000, immutable`.
 
 ### Issues
-| Severity | Issue |
-|---|---|
-| Low | CSP allows `'unsafe-inline'` and `'unsafe-eval'` for scripts — common with Next.js but should be tightened with nonces if/when Strict CSP is targeted. |
-| Low | `Vary` header is unusually long (`rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch`) — fine for Next.js App Router but could fragment CDN cache. |
-| Info | No IndexNow ping configured (Bing/Yandex). |
+- **Apex (`agenticaiutah.com`) → `www.` redirect uses `307 Temporary` instead of `308 Permanent`.** This is an SEO consolidation flag — Google may treat the redirect as a hint rather than a canonical move. Fix in `vercel.json` or `next.config.ts`.
+- **CSP allows `'unsafe-inline'` and `'unsafe-eval'` in `script-src`.** Required by Next.js's runtime, but worth tracking — SRI + nonce-based CSP is the long-term goal. Not an SEO blocker; security note only.
+- **Homepage canonical omits the trailing slash** (`https://www.agenticaiutah.com` vs the rest of the site's pattern). Cosmetic; Google treats them as equivalent for the apex.
 
 ---
 
-## Content Quality — Score 78/100
-
-### Word counts (per page)
-
-| URL | Words |
-|---|---|
-| `/` | ~1100+ (h2-rich landing) |
-| `/services` | 911 |
-| `/ai-consulting-salt-lake-city` | 1,100 |
-| `/about` | 405 |
-| `/contact` | 232 |
-| `/blog` | 269 |
-| `/blog/local-seo-…recommendat` | 1,186 |
+## Content Quality — 88/100
 
 ### Strengths
-- Blog posts hit **>1,000 words** with focused topics matched to buyer intent (AI budgets, AI agents vs spreadsheets, marketing copy, local SEO + AI).
-- Service descriptions are specific and concrete (names tools: Tableau, Power BI, R Shiny, LangGraph, LangChain, Pinecone, ChromaDB, Ollama, dbt, Airflow, MLflow, DoWhy, TensorFlow, PyTorch, scikit-learn).
-- FAQ blocks are well written and double as `FAQPage` schema.
-- Local content (`/ai-consulting-salt-lake-city`) covers Salt Lake County, Utah County, Davis County by name + Silicon Slopes — solid geographic relevance.
+- **Blog post depth is solid:** 1,280–1,405 words on every published post — well above the "thin content" threshold and aligned with how AI search engines select citation sources.
+- **Service page substance:** 911 words on `/services` and 1,100 on `/ai-consulting-salt-lake-city` — both strong.
+- **E-E-A-T signals:**
+  - Clear company identity (Pantera Claw) with consistent NAP across `llms.txt`, schema, and site copy.
+  - Local geographic anchor (Salt Lake City + Utah cities + Wasatch Front).
+  - Phone, email, hours, address all visible and machine-readable.
+  - Real product narrative on `/about` (the "Pantera Claw standard" story).
+- **FAQ blocks** on home, services, SLC LP, and 3 of 4 blog posts — direct citation fuel for AI Overviews and ChatGPT.
+- **Recent publication cadence:** sitemap shows posts on 2026-04-19, 04-20, 04-27, 05-04 — roughly weekly.
 
 ### Issues
-| Severity | Issue |
-|---|---|
-| **Critical** | Blog hero images are `picsum.photos` placeholders — fakes the article's visual evidence. |
-| High | About page is only 405 words — thin for the most-linked E-E-A-T page on a consulting site. Add founder bio, credentials, certifications, project history. |
-| High | Blog `author` is a `Person` named `"Pantera Claw"` (the company name) with no `image`, `jobTitle`, `description`, or `sameAs`. Either switch to `Organization` author or add a real human with bio + photo. |
-| Medium | No case studies / portfolio. Consulting buyers expect proof. Even one anonymized case study with results would lift conversion + E-E-A-T. |
-| Medium | No testimonials / reviews on-site (no `Review` schema present). |
+- **Only 4 blog posts.** Topical authority for "AI consulting Salt Lake City" and "data consulting Utah" needs more breadth. Aim for 12–20 posts in 6 months covering: AI implementation case studies, data architecture, dashboard examples, industry verticals, ROI/budget posts, and geo-specific (Utah/SLC/Provo) angles.
+- **No author bylines or author pages.** Adding an `author` profile (with credentials, photo, bio) on each blog post and a sitewide `Person` schema would lift Experience + Expertise signals materially. AI search engines weigh author entity strongly.
+- **No case studies or named clients yet.** A single anonymized case study per industry vertical (with metrics) would be a large content lift.
+- **Privacy page is thin (325 words)** — acceptable for a legal page but consider adding a CCPA section, a "what we don't do" list, and a clear retention schedule.
 
 ---
 
-## On-Page SEO — Score 75/100
+## On-Page SEO — 86/100
 
-### Title tags (all unique, all branded)
+### Strengths
+- **One `<h1>` per page** across all 11 pages.
+- **Canonicals present and correct** on all pages.
+- **All pages return `meta robots: index, follow`.** No accidental noindex.
+- **Internal linking is healthy:** 28–44 internal links per page (mostly nav + footer + cross-links).
+- **Heading hierarchy on the homepage is well-structured** with 8 H2s organizing the value proposition.
 
-| Page | Title | Length |
+### Issues
+1. **Title tag length:**
+   - `/blog/local-seo-in-the-ai-era…` — 100 chars (too long; Google truncates at ~60). Suggested: `Local SEO in the AI Era: Getting Found via ChatGPT | Pantera Claw` (62).
+   - `/blog/using-ai-to-write-your-marketing-copy…` — 67 chars. Suggested: `AI Marketing Copy Without Sounding Robotic | Pantera Claw` (57).
+   - `/privacy` — 29 chars (a bit short). Suggested: `Privacy Policy & Data Practices | Pantera Claw` (47).
+2. **Meta description length:**
+   - `/services` (180), `/blog` (186), `/contact` (167) all exceed the 160-char SERP truncation threshold.
+3. **Homepage canonical** is `https://www.agenticaiutah.com` (no trailing slash). Site-wide pattern uses path-only canonicals; consider whether to standardize on trailing-slash or no-trailing-slash for the apex. Low priority.
+4. **Duplicated H2 on home:** `"AI Consulting, Data Analytics & Business Intelligence Solutions"` appears twice — likely a server-rendered component duplicated in two layouts. Verify intentional.
+5. **Blog index page is thin (269 words).** Add a 200–300 word intro + tag/category navigation to give the `/blog` URL more reason to rank.
+
+---
+
+## Schema / Structured Data — 95/100
+
+### Strengths — Best-in-class for a small business site
+- **Sitewide:** `Organization` on every page.
+- **Home:** `Organization` + `ProfessionalService` + `WebSite` + `FAQPage` (4 blocks).
+- **Services:** `Organization` + `ItemList` (services list) + `FAQPage` + `BreadcrumbList`.
+- **About:** `Organization` + `AboutPage` + `BreadcrumbList`.
+- **Contact:** `Organization` + `ContactPage` + `BreadcrumbList`.
+- **Blog index:** `Organization` + `Blog` + `BreadcrumbList`.
+- **Blog posts:** `Organization` + `BlogPosting` + `BreadcrumbList` (+ `FAQPage` on 3/4).
+- **Salt Lake City landing page (`/ai-consulting-salt-lake-city`)** carries the most complete local schema observed:
+  - `ProfessionalService` with `address`, `geo` (40.7608, -111.891), `areaServed` (State + Country), `telephone`, `email`, `priceRange: "$$"`, `openingHoursSpecification` (Mon–Fri 09:00–17:00).
+  - `Service` with `serviceType: "AI Consulting"`, `areaServed` listing Salt Lake City, Provo, Ogden, etc., each with `sameAs` Wikipedia URL.
+  - `FAQPage` for citation surface.
+
+### Issues / Opportunities
+- **No `aggregateRating`** anywhere yet. Once you collect even 5 verified reviews (Google Business Profile, Clutch, etc.), expose them in `ProfessionalService` schema. Caveat: only mark up reviews that are publicly visible on the page.
+- **Missing `sameAs` array.** Add LinkedIn company page, founder LinkedIn, GitHub org (if any), Google Business Profile URL, and any directory listings (Clutch, GoodFirms). This is the single highest-leverage schema improvement for entity disambiguation in AI search.
+- **`BreadcrumbList` not present on home** — acceptable since home is the root, but Google's structured-data tester sometimes flags it. Optional.
+- **`BlogPosting` could be enriched** with `author` (Person), `mainEntityOfPage`, `datePublished`, `dateModified`, `wordCount`, and `inLanguage`. Verify these are present in the actual JSON-LD; the parser only captured the `@type`.
+- **Consider `Article` markup with `speakable`** for the blog posts (improves voice search / AI citation).
+
+---
+
+## Performance — 75/100 (Estimated)
+
+### Why this is estimated
+Lab CWV requires the PageSpeed Insights API (`GOOGLE_API_KEY`). Field CWV requires CrUX API access. Neither is configured. The score below is inferred from infrastructure signals.
+
+### Strengths (infrastructure)
+- **Vercel Edge cache HIT.** Static prerender means TTFB is dominated by CDN, not origin.
+- **`stale-while-revalidate=600`** keeps the cache fresh without slowing first byte.
+- **WebP everywhere with explicit width/height** prevents CLS from late-loading images.
+- **Hero image is 17 KB WebP, OG image 24 KB.** Tiny.
+- **Static images served `immutable, max-age=31536000`.**
+- **Minimal third-party JS:** only Vercel Insights (`vitals.vercel-insights.com`) and Vercel Analytics (`va.vercel-scripts.com`) in CSP.
+
+### Concerns / unknowns
+- **No real-user CWV data** — cannot confirm LCP, INP, CLS thresholds are met across viewports.
+- **Hero image declared 480×480 but on the homepage may render larger** — verify with `srcset` or Next.js `<Image>` for responsive variants.
+
+### Action
+1. Generate a Google Cloud API key (Console → APIs → Credentials), enable PageSpeed Insights and CrUX APIs, then configure `~/.config/claude-seo/google-api.json` with `{"api_key":"…"}`. Re-run audit to populate field CWV.
+2. Verify Search Console is verified and connected; ingest GSC data for indexation + queries.
+
+---
+
+## AI Search Readiness — 96/100
+
+### Strengths — Already at the top of the curve
+- **`llms.txt` is well-formed** (sections: Core Pages, Services in Detail, Blog, Optional, Citation). Includes a citation directive: *"Cite as: Pantera Claw, https://www.agenticaiutah.com — Salt Lake City, Utah."*
+- **`llms-full.txt` exists** at the documented URL (200 OK).
+- **Robots.txt explicitly allows every AI bot** that matters today: GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, CCBot. No accidental blocks.
+- **FAQPage schema** appears on the highest-intent pages (home, services, SLC LP, 3 blog posts). FAQs are the #1 surface AI search engines extract for direct answers.
+- **ProfessionalService schema with full NAP + areaServed + geo** gives AI systems an unambiguous business entity to cite.
+- **Heading structure is question-shaped on blog posts** (e.g., "Why AI Recommends Some Businesses and Ignores Others"), which improves passage-level retrieval.
+- **Citation guidance is published** in `llms.txt`.
+
+### Marginal improvements
+- Add `Person` schema for the founder/author (with `jobTitle`, `worksFor`, `sameAs` LinkedIn). AI search engines rank entity-anchored content higher.
+- Add a "Last reviewed" or "Last updated" date visibly in blog posts (already in schema, but surface to readers and crawlers).
+- Consider a public `humans.txt` or an `/about` extension that explicitly states who, where, when, why — pure GEO fuel.
+
+---
+
+## Images — 88/100
+
+### Strengths
+- **All hero/section images are WebP** (Pantera_Claw_hero.webp, sections/dashboard_viz.webp, agentic_viz.webp, ai_strategy_meeting.webp).
+- **`width` and `height` attributes set on every image** (CLS prevention).
+- **Long-cache + immutable** on static assets.
+- **23 of 34 images have descriptive alt text.** Hero alt is excellent: *"Pantera Claw — black panther logomark on dark background"*.
+- **OG image is 1200×630 WebP at 24 KB** — perfect for social previews.
+
+### Issues
+- **11 images missing alt text** — all are the same 40×40 nav logo (`Pantera_Claw_icon.webp`). It's decorative, paired with brand text, so an empty alt is correct. **Recommended fix:** make the empty alt explicit (`alt=""`) and add `role="presentation"` so the intent is unambiguous to crawlers and assistive tech.
+- **No `<picture>` / `srcset`** observed in the parsed HTML for hero images. If Next.js `<Image>` is used, AVIF + WebP variants are auto-generated — verify against the deployed bundle.
+
+---
+
+## Off-Page / Backlinks
+
+- **Common Crawl status:** domain `agenticaiutah.com` is **not yet in the Common Crawl web graph** (release `cc-main-2026-jan-feb-mar`). This is normal for newly launched domains and for sites with limited inbound links.
+- **No Moz / Ahrefs API key** configured — cannot estimate Domain Authority.
+- **Recommendation:** off-page authority is currently the weakest pillar. See the action plan for a 90-day link-acquisition workstream (citations, directories, guest posts, local press).
+
+---
+
+## Drift Baseline
+
+- **No drift baseline exists** for `https://www.agenticaiutah.com/`.
+- **Recommendation:** capture a baseline now so future audits can detect on-page regressions automatically:
+  ```
+  python scripts/drift_baseline.py https://www.agenticaiutah.com/
+  python scripts/drift_baseline.py https://www.agenticaiutah.com/services
+  python scripts/drift_baseline.py https://www.agenticaiutah.com/ai-consulting-salt-lake-city
+  ```
+
+---
+
+## Coverage Gaps in This Audit
+
+| What was not measured | Why | How to enable |
 |---|---|---|
-| Home | "Pantera Claw \| AI & Data Consulting for Growing Businesses" | 60 ✓ |
-| Services | "AI & Data Consulting Services in Salt Lake City \| Pantera Claw" | 64 ✓ |
-| About | "About Pantera Claw \| Our story, standard, and mission" | 54 ✓ |
-| Contact | "Contact Pantera Claw \| Start a Data & AI Conversation" | 55 ✓ |
-| Blog index | "Pantera Claw Blog \| Data Engineering, AI & Analytics" | 53 ✓ |
-| SLC LP | "AI Consulting in Salt Lake City, Utah \| Pantera Claw" | 53 ✓ |
-| Privacy | "Privacy Policy \| Pantera Claw" | 30 ✓ |
-
-### Critical issues
-
-1. **H1 missing whitespace (Critical)**
-   - Home `<h1>`: `We build the data systemsthat poweryour decisions`
-   - Services `<h1>`: `From AI agentsto predictive dashboards`
-   - About `<h1>`: `Why the Panther?` — fine but extremely off-topic for SEO. Most-trafficked queries to /about will be "Pantera Claw founder" or "Pantera Claw AI consulting" — the H1 should reflect that.
-2. **Meta description truncated** on `/blog/local-seo-…recommendat` at character 159: `…make sure your business show` (cut at "show"). The other blog descriptions look complete.
-3. **Heading hierarchy inconsistency on `/blog`** — first article rendered as `<h2>`, the rest as `<h3>`. All article cards should be at the same level.
-4. **Contact `<h1>` "Initiate High-Fidelity Engagement."** — this is brand voice but provides zero keyword signal. Consider "Contact Pantera Claw — Start a Data & AI Conversation" or similar.
-
-### Internal linking (gap analysis)
-- HTML parser extracted **0 internal links** from any page (likely Next.js `<Link>` is being missed by the regex parser, but worth verifying that anchors render with `href` for crawlers — they should, with `next/link`).
-- Blog posts include "Related services" block ✓ — good silo structure.
-- No visible breadcrumb UI on most pages despite `BreadcrumbList` schema being present. Add visible breadcrumbs to reinforce hierarchy for users + crawlers.
+| Real-user CWV (LCP/INP/CLS) | No `GOOGLE_API_KEY` | Provision API key, run `pagespeed_check.py` |
+| Indexation status | No GSC OAuth | Run `python scripts/google_auth.py --auth …` |
+| Organic traffic / GA4 | No GA4 OAuth | Same OAuth flow |
+| Backlink DA/PA | No Moz key | Free tier at moz.com/products/api |
+| SERP positions | No DataForSEO MCP | Enable DataForSEO extension |
+| Visual screenshots | Skipped (Playwright not run) | Run `capture_screenshot.py` |
+| Drift comparison | No prior baseline | See above |
 
 ---
 
-## Schema / Structured Data — Score 95/100
+## Files Produced
 
-### Excellent coverage
+- `seo-audit-agenticaiutah/FULL-AUDIT-REPORT.md` — this report
+- `seo-audit-agenticaiutah/ACTION-PLAN.md` — prioritized recommendations
+- `seo-audit-agenticaiutah/v2/pages/*.html` — raw HTML for all 11 sitemap URLs + robots.txt + sitemap.xml + llms.txt
+- `seo-audit-agenticaiutah/v2/parsed/*.json` — parsed metadata per page
 
-| Page | Schemas present |
-|---|---|
-| Home | Organization, WebSite, ProfessionalService/LocalBusiness |
-| Services | Organization, BreadcrumbList, ItemList(Service×5 with Offer/PriceSpecification), FAQPage(5) |
-| About | Organization, AboutPage, BreadcrumbList |
-| Contact | Organization, ContactPage(mainEntity ProfessionalService with openingHours), BreadcrumbList |
-| Blog index | Organization, Blog(blogPost×4), BreadcrumbList |
-| Blog post | Organization, BlogPosting(headline, description, image, dates, wordCount, keywords, author, publisher), BreadcrumbList |
-| SLC LP | Organization, BreadcrumbList, ProfessionalService/LocalBusiness, Service(areaServed×4 cities), FAQPage(5) |
-| Privacy | Organization (others not inspected) |
-
-### Issues
-| Severity | Issue |
-|---|---|
-| **Critical** | `BlogPosting.image` points to `picsum.photos/...` — flag for Google Rich Results: schema image must be a real, owned, high-quality URL. Will likely fail Rich Results validation. |
-| High | `author` of every blog post is `{ "@type": "Person", "name": "Pantera Claw" }` — name is the org, type is Person. Either use `Organization` author or supply a real `Person` with `image`, `jobTitle`, `sameAs`. |
-| Medium | `Organization.sameAs` only contains `https://github.com/CJames1261`. Add LinkedIn company page, X/Twitter, Facebook, and (once claimed) Google Business Profile URL. |
-| Medium | `ContactPoint.areaServed: "US"` but `ProfessionalService.areaServed` lists Utah + cities. Align. |
-| Medium | `PostalAddress` lacks `streetAddress` and `postalCode`. Even if you don't accept walk-ins, Google Business Profile and citation parity require a real address (or a verified service-area-business entry). |
-| Low | No `Article.speakable` annotations — opportunity for Google Assistant / voice. |
-
----
-
-## Performance (CWV — lab estimates) — Score 88/100
-
-> Lab-only — no CrUX field data was pulled (no Google API credentials configured for this run).
-
-| Metric | Estimate |
-|---|---|
-| Hero image (`Pantera_Claw_hero.webp`) | 17 KB ✓ |
-| OG image (`og-image.webp`) | 24 KB ✓ |
-| Homepage HTML weight | 162 KB (heavy for a marketing page; includes Next.js RSC payload) |
-| Services HTML weight | 73 KB ✓ |
-| TTFB (cached, sfo1) | ~160 ms ✓ |
-
-### Issues
-| Severity | Issue |
-|---|---|
-| Medium | Homepage HTML is 162 KB — large for a single-page marketing experience. Audit for unused server components, large RSC payloads, or inlined SVG/JSON. |
-| Low | Blog post hero uses `loading="eager"` (good for LCP) but no `fetchpriority="high"` — adding it gives LCP a meaningful boost. |
-| Info | Run `seo-google` with PSI/CrUX credentials to replace these lab estimates with real field data. |
-
----
-
-## Images — Score 70/100
-
-### Strengths
-- All in-content images are WebP ✓
-- Width / height attributes set ✓ (CLS protection)
-- Decorative nav icon correctly carries `alt=""` ✓
-- Hero images carry **rich, descriptive alt text** (genuinely helpful for screen readers + AI image search)
-
-### Issues
-| Severity | Issue |
-|---|---|
-| **Critical** | Blog hero images use `picsum.photos/seed/<slug>/1200/675` — random lorem-style stock visuals, served from a third-party CDN, referenced from `BlogPosting.image` schema. |
-| High | `/contact` page references `https://lh3.googleusercontent.com/aida-public/...` (Google AI Studio CDN URL) for the SLC skyline. This is an unowned, non-self-hosted image — could disappear. |
-| Medium | `og-image.webp` is shared across every page. Add per-page OG variants for /services, /about, /contact, /blog, /ai-consulting-salt-lake-city, and per-post OG for blog articles. |
-| Low | No AVIF served — WebP is fine, but AVIF would shave another 20–30%. |
-
----
-
-## AI Search Readiness — Score 92/100
-
-### Strengths
-- **`llms.txt` is present at `/llms.txt`** ✓ — clean, follows the spec, lists Core Pages, Services, Blog, and Citation block.
-- **`llms-full.txt` returns 200** ✓ — exists and is referenced from `llms.txt`.
-- **All major AI crawlers explicitly allowed** in robots.txt (GPTBot, ClaudeBot, anthropic-ai, PerplexityBot, OAI-SearchBot, Google-Extended, Applebot-Extended, etc.)
-- Strong `Citation` block in `llms.txt`: `Cite as: Pantera Claw, https://www.agenticaiutah.com — Salt Lake City, Utah.` ✓
-- Pages are server-rendered HTML — no JS-only content for crawlers.
-- FAQ schema on the two highest-intent pages (services, SLC LP) — excellent for AI snippet extraction.
-
-### Issues
-| Severity | Issue |
-|---|---|
-| Medium | No author entity outside the org — ChatGPT/Perplexity prefer attribution to a named person with a track record. Add a founder/lead consultant `Person` schema (with bio, credentials, sameAs LinkedIn). |
-| Medium | Brand mention signals are thin. AI overviews tend to cite businesses that appear on independent third-party sources (industry roundups, local guides, podcasts). Consider HARO-style outreach + Utah business publication pitches. |
-| Low | `llms.txt` could enumerate the SLC landing page under "Core Pages" — currently only Home, Services, About, Contact are listed. |
-
----
-
-## Sitemap & Crawlability
-
-- **11 URLs** in `https://www.agenticaiutah.com/sitemap.xml` ✓
-- All URLs return `200` (verified via crawl)
-- All URLs are canonical to themselves
-- `lastmod` present on every entry ✓
-- Includes `image:image` references ✓
-
-### Issues
-| Severity | Issue |
-|---|---|
-| **Critical** | Sitemap entry has truncated slug: `/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendat` (last word cut off at `recommendat`). Same URL is canonical and live, so 200 OK — but it's a permanent ugly URL. |
-| Low | `lastmod` is inconsistent: `/services` and `/contact` show `2026-05-03`, but `/` (home) shows `2026-04-27` — home should typically be ≥ child pages. |
-| Low | `image:image` for blog entries points to `picsum.photos` — same root issue as blog hero images. |
-
----
-
-## Local SEO Signals
-
-Pantera Claw is a **hybrid Local Service business** (SLC HQ + nationwide remote). Industry-specific findings:
-
-| Signal | Status |
-|---|---|
-| `LocalBusiness`/`ProfessionalService` schema | ✓ present, with geo coordinates |
-| NAP on-site (Name + Phone + email) | ✓ in llms.txt + ContactPage schema |
-| Street address | ✗ missing (`PostalAddress` has city/region/country only) |
-| Opening hours | ✓ Mo-Fr 09:00–17:00 |
-| `areaServed` cities | ✓ Salt Lake City, Provo, Ogden, Utah, US |
-| Google Business Profile signals | unknown — no `sameAs` GBP URL |
-| Reviews / Review schema | ✗ none |
-| Citations (BBB, Clutch, Yelp, etc.) | unverified — recommend dedicated `seo-local` + `seo-maps` runs |
-| City landing page | ✓ `/ai-consulting-salt-lake-city` exists and is high quality |
-
-**Recommendation:** claim/verify Google Business Profile, add it to `Organization.sameAs`, then build cluster of city pages (Provo, Ogden, Park City) using the SLC LP as the template.
-
----
-
-## Subagent Coverage Note
-
-This audit was completed inline (no subagent fan-out) for speed and to keep all output inside this repo. Areas that would benefit from a dedicated rerun:
-
-- `seo-google` (CrUX field CWV, GSC indexation) — needs Google API credentials
-- `seo-backlinks` (DA/PA, referring domains) — needs Moz/Bing credentials
-- `seo-maps` (geo-grid + GBP audit) — needs DataForSEO credentials
-- `seo-visual` (mobile screenshots) — needs Playwright
-
-All output for this audit is in `pantera_dev_site\seo-audit-agenticaiutah\`.
+The `seo-audit-agenticaiutah/pages/`, `seo-audit-agenticaiutah/parsed/`, and `seo-audit-agenticaiutah/screenshots/` folders are artifacts from the prior audit and may be safely deleted once you have reviewed this report.
