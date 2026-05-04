@@ -86,23 +86,58 @@ ${citationsRule}
 CTA:
 - End the post with a short closing section that naturally invites the reader to ${config.style.ctaText} via the link ${config.style.ctaLink}. Render it as <p><a href="${config.style.ctaLink}">${config.style.ctaText}</a></p> at the end.
 
-You will respond with a single JSON object and nothing else. No markdown fences, no prose around it.`
+You return the post by calling the publish_blog_post tool. Do not respond with prose.`
 
 const userPrompt = `Write this week's blog post.
 
 Topic: "${topic}"
 
-Return a JSON object with exactly these fields:
-{
-  "title": "string, compelling, under 90 chars, no dashes",
-  "excerpt": "string, 1 to 2 sentences, under 220 chars, no dashes, summarizes the post for the blog index card",
-  "category": "one of: Strategy, AI & ML, Analytics, Engineering, Marketing",
-  "readTime": "string like '7 min'",
-  "imageAlt": "string, one short sentence describing a suitable hero image",
-  "bodyHtml": "string, the full article as clean HTML using <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <blockquote>, <a>. No <h1>. No dashes anywhere. Must be within the target word count."
-}
+Call the publish_blog_post tool with the finished article. Use clean HTML
+in the bodyHtml field with <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>,
+<blockquote>, and <a>. Never include <h1> in the body — the page renders
+the title separately. Stay within the target word count.`
 
-Do not include any text outside the JSON object.`
+// Tool-use forces the model to return structured JSON validated by the
+// API itself. This avoids the JSON.parse failures we used to see when
+// the model embedded raw double-quoted HTML attributes inside a string.
+const blogTool = {
+  name: "publish_blog_post",
+  description:
+    "Publish the finished weekly blog post. The runtime stores each field on disk and renders the post on the blog.",
+  input_schema: {
+    type: "object",
+    additionalProperties: false,
+    required: ["title", "excerpt", "category", "readTime", "imageAlt", "bodyHtml"],
+    properties: {
+      title: {
+        type: "string",
+        description: "Compelling article title, under 90 characters, no dashes.",
+      },
+      excerpt: {
+        type: "string",
+        description:
+          "One to two sentences, under 220 characters, no dashes. Summarizes the post for the blog index card.",
+      },
+      category: {
+        type: "string",
+        enum: ["Strategy", "AI & ML", "Analytics", "Engineering", "Marketing"],
+      },
+      readTime: {
+        type: "string",
+        description: "Reading time label like '7 min'.",
+      },
+      imageAlt: {
+        type: "string",
+        description: "One short sentence describing a suitable hero image.",
+      },
+      bodyHtml: {
+        type: "string",
+        description:
+          "Full article as clean HTML. Allowed tags: h2, h3, p, ul, ol, li, strong, blockquote, a. No h1. No dashes anywhere.",
+      },
+    },
+  },
+}
 
 console.log(`Calling Anthropic API (${model})...`)
 
@@ -118,6 +153,8 @@ const response = await fetch("https://api.anthropic.com/v1/messages", {
     max_tokens: 4096,
     system: systemPrompt,
     messages: [{ role: "user", content: userPrompt }],
+    tools: [blogTool],
+    tool_choice: { type: "tool", name: "publish_blog_post" },
   }),
 })
 
@@ -128,25 +165,33 @@ if (!response.ok) {
 }
 
 const apiResult = await response.json()
-const rawText = apiResult.content?.[0]?.text
-if (!rawText) {
-  console.error("No content in API response:", JSON.stringify(apiResult, null, 2))
-  process.exit(1)
-}
 
-// Strip accidental code fences if the model wrapped the JSON.
-const cleaned = rawText
-  .trim()
-  .replace(/^```(?:json)?\s*/i, "")
-  .replace(/\s*```$/i, "")
+// With forced tool_use, the structured JSON arrives pre-parsed in the
+// tool_use block's `input` field, so we never have to JSON.parse a string.
+const toolUseBlock = apiResult.content?.find((b) => b.type === "tool_use")
+let parsed = toolUseBlock?.input
 
-let parsed
-try {
-  parsed = JSON.parse(cleaned)
-} catch (err) {
-  console.error("Failed to parse model output as JSON:")
-  console.error(cleaned)
-  throw err
+if (!parsed) {
+  // Fallback: some older model behaviors may still emit a raw text JSON
+  // block. Try to recover so we don't lose the run.
+  const textBlock = apiResult.content?.find((b) => b.type === "text")
+  const rawText = textBlock?.text
+  if (!rawText) {
+    console.error("No tool_use or text content in API response:")
+    console.error(JSON.stringify(apiResult, null, 2))
+    process.exit(1)
+  }
+  const cleaned = rawText
+    .trim()
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/i, "")
+  try {
+    parsed = JSON.parse(cleaned)
+  } catch (err) {
+    console.error("Failed to parse model fallback text as JSON:")
+    console.error(cleaned)
+    throw err
+  }
 }
 
 // Strip any dashes that slipped past the prompt rules.
