@@ -632,7 +632,7 @@ export default function ServicesView() {
                 className="font-display font-bold tracking-tighter text-text-primary mb-5"
                 style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}
               >
-                From AI agents
+                From AI agents{" "}
                 <br />
                 to predictive dashboards
               </h1>

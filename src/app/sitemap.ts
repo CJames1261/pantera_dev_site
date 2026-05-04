@@ -34,14 +34,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const images = CORE_IMAGES[path];
     return {
       url: `${SITE_URL}${path === "/" ? "" : path}`,
-      lastModified: new Date(STATIC_LAST_UPDATED[path]),
+      // Date-only string (YYYY-MM-DD); avoids fabricated millisecond precision.
+      lastModified: STATIC_LAST_UPDATED[path],
       ...(images && images.length > 0 ? { images } : {}),
     };
   });
 
   const blog: MetadataRoute.Sitemap = allPosts.map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,
-    lastModified: new Date(p.isoDate),
+    lastModified: p.isoDate,
     images: p.image
       ? [p.image.startsWith("http") ? p.image : `${SITE_URL}${p.image}`]
       : undefined,

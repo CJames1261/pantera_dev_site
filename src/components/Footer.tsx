@@ -20,6 +20,7 @@ const services = [
 const company = [
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
+  { label: "AI Consulting in SLC", path: "/ai-consulting-salt-lake-city" },
   { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];

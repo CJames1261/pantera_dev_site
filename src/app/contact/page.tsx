@@ -28,13 +28,12 @@ const contactPageSchema = {
   description:
     "Get in touch with Pantera Claw. Free consultation meeting for AI and data consulting projects. Salt Lake City based, serving clients nationwide.",
   inLanguage: "en-US",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
   mainEntity: {
-    "@id": `${SITE_URL}/#localbusiness`,
-  },
-  about: {
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}/#localbusiness`,
     name: "Pantera Claw",
+    url: SITE_URL,
     telephone: "+18018980911",
     email: "info@panteraclaw.com",
     address: {
@@ -44,6 +43,7 @@ const contactPageSchema = {
       addressCountry: "US",
     },
     openingHours: "Mo-Fr 09:00-17:00",
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
   },
 };
 

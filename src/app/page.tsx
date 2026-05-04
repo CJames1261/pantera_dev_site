@@ -30,9 +30,9 @@ const professionalServiceSchema = {
   image: `${SITE_URL}/Pantera_Claw_hero.webp`,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/Pantera_Claw_hero.webp`,
-    width: 480,
-    height: 480,
+    url: `${SITE_URL}/Pantera_Claw_icon.webp`,
+    width: 192,
+    height: 192,
   },
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
   telephone: "+18018980911",

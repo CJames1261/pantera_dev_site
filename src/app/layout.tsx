@@ -87,9 +87,9 @@ const organizationSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/Pantera_Claw_hero.webp`,
-    width: 480,
-    height: 480,
+    url: `${SITE_URL}/Pantera_Claw_icon.webp`,
+    width: 192,
+    height: 192,
   },
   contactPoint: {
     "@type": "ContactPoint",

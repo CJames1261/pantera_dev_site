@@ -136,7 +136,14 @@ export default function ServicesBento() {
                   <p className="text-text-tertiary text-xs md:text-sm leading-relaxed mb-6">
                     You leave with a clear picture of which of the services on
                     the right apply to you, a rough budget range, and a written
-                    summary you can keep whether or not you work with us.
+                    summary you can keep whether or not you work with us.{" "}
+                    <Link
+                      href="/ai-consulting-salt-lake-city"
+                      className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors duration-300"
+                    >
+                      Based in Salt Lake City
+                    </Link>
+                    {" "}— happy to meet on-site if you are local.
                   </p>
                   <div className="mt-auto">
                     <Link
