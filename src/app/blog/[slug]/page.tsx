@@ -381,7 +381,7 @@ export default async function BlogPostPage({
                 },
                 {
                   href: "/contact",
-                  title: "Free 30-min call",
+                  title: "Free consultation",
                   body: "Tell us the workflow you want to automate. We reply within one business day.",
                 },
               ].map(({ href, title, body }) => (

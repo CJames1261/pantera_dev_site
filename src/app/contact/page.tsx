@@ -6,7 +6,7 @@ const SITE_URL = "https://www.agenticaiutah.com";
 export const metadata: Metadata = {
   title: { absolute: "Contact Pantera Claw | Start a Data & AI Conversation" },
   description:
-    "Tell us about your data project. We start with a free 30-minute call. Salt Lake City based, serving clients nationwide. info@panteraclaw.com · +1 (801) 898-0911.",
+    "Tell us about your data project. We start with a free consultation meeting. Salt Lake City based, serving clients nationwide. info@panteraclaw.com · +1 (801) 898-0911.",
   alternates: { canonical: "/contact" },
 };
 
@@ -26,7 +26,7 @@ const contactPageSchema = {
   url: `${SITE_URL}/contact`,
   name: "Contact Pantera Claw",
   description:
-    "Get in touch with Pantera Claw. Free 30-minute consultation for AI and data consulting projects. Salt Lake City based, serving clients nationwide.",
+    "Get in touch with Pantera Claw. Free consultation meeting for AI and data consulting projects. Salt Lake City based, serving clients nationwide.",
   inLanguage: "en-US",
   mainEntity: {
     "@id": `${SITE_URL}/#localbusiness`,

@@ -17,7 +17,7 @@ const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 export const metadata: Metadata = {
   title: { absolute: "AI Consulting in Salt Lake City, Utah | Pantera Claw" },
   description:
-    "Salt Lake City AI consulting firm building agentic AI workflows, RAG pipelines, and machine-learning systems for Utah businesses. Free 30-minute call. Serving SLC, Provo, Ogden, and remote nationwide.",
+    "Salt Lake City AI consulting firm building agentic AI workflows, RAG pipelines, and machine-learning systems for Utah businesses. Free consultation meeting. Serving SLC, Provo, Ogden, and remote nationwide.",
   alternates: { canonical: PAGE_PATH },
 };
 
@@ -342,7 +342,7 @@ export default function AIConsultingSaltLakeCity() {
                 Ready to talk?
               </h2>
               <p className="text-text-secondary text-base leading-relaxed mb-8 max-w-[480px] mx-auto">
-                Free 30-minute call. Salt Lake City based, replies within one
+                Free consultation meeting. Salt Lake City based, replies within one
                 business day. Tell us what you&apos;re working on.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3">

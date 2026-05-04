@@ -157,7 +157,7 @@ export default function ContactView() {
             <p className="text-text-secondary text-lg leading-relaxed max-w-[600px]">
               Whether you need a full data platform, an AI agent for a specific
               workflow, or help with a single pipeline, we start with a free
-              30-minute conversation. Salt Lake City based, serving clients
+              consultation meeting. Salt Lake City based, serving clients
               nationwide. We typically reply within one business day.
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function ContactView() {
                 },
                 {
                   step: "02",
-                  title: "30-minute discovery call",
+                  title: "Free consultation meeting",
                   body: "Free, no slides. We discuss your data sources, the decisions you&apos;re trying to make, and the rough shape of the engagement.",
                 },
                 {
