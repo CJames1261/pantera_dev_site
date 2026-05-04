@@ -650,8 +650,11 @@ export default function ServicesView() {
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
           <ScrollReveal>
             <div className="max-w-[680px] mb-8">
-              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-3">
-                How we work
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 bg-yellow-400" />
+                <span className="text-sm uppercase tracking-widest text-yellow-400">
+                  How we work
+                </span>
               </div>
               <h2
                 id="how-we-work"
@@ -660,24 +663,25 @@ export default function ServicesView() {
               >
                 A four-step engagement, not a black box
               </h2>
-              <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-                Every project, regardless of discipline, runs on the same shape.
-                You see real work each sprint and can stop or change scope at
-                any point.
-              </p>
             </div>
           </ScrollReveal>
           <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
             {howWeWork.map(({ step, title, body }, i) => (
               <ScrollReveal key={step} delay={i * 0.08}>
                 <li
-                  className="rounded-2xl border border-border p-6 h-full"
+                  className="group rounded-2xl border border-border-light hover:border-accent/40 p-6 h-full transition-all duration-700"
                   style={{
-                    backgroundColor: "rgba(19, 19, 22, 0.4)",
-                    boxShadow: "var(--shadow-inner-highlight)",
+                    backgroundColor: "rgba(19, 19, 22, 0.65)",
+                    boxShadow: "var(--shadow-card)",
+                    transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)",
                   }}
                 >
-                  <div className="font-mono text-xs text-accent mb-3">{step}</div>
+                  <div
+                    className="font-mono font-bold text-accent leading-none mb-4 tracking-tighter"
+                    style={{ fontSize: "clamp(2.25rem, 4vw, 3rem)" }}
+                  >
+                    {step}
+                  </div>
                   <h3 className="font-display font-semibold text-text-primary text-base mb-2 tracking-tight">
                     {title}
                   </h3>
