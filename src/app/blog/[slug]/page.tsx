@@ -59,62 +59,6 @@ const POST_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
 };
 
-const POST_HOWTOS: Record<
-  string,
-  {
-    name: string;
-    description: string;
-    steps: { name: string; text: string }[];
-  }
-> = {
-  "using-ai-to-write-your-marketing-copy-without-sounding-like-a-robot": {
-    name: "How to write an AI prompt that produces usable marketing copy",
-    description:
-      "A four-part briefing pattern that gets reliably on-brand AI-generated marketing copy on the first or second draft.",
-    steps: [
-      {
-        name: "State the goal",
-        text: "Decide what the piece should accomplish: drive clicks, book appointments, announce a promotion, recover a lapsed customer. The AI cannot write toward an outcome you haven't named.",
-      },
-      {
-        name: "Define the audience",
-        text: "Tell the model exactly who is reading the copy. Age, role, pain point, location, and what they care about. A 55-year-old contractor and a 28-year-old boutique owner want very different language.",
-      },
-      {
-        name: "Set the tone",
-        text: "Give the AI three adjectives that describe how your brand should sound (e.g. warm, direct, no-nonsense) plus a paste-in example of one or two pieces of your best existing copy.",
-      },
-      {
-        name: "Add the constraints",
-        text: "Length, format, must-include details, phrases to avoid, and platform requirements. The more specific the constraints, the less editing the first draft will need.",
-      },
-    ],
-  },
-  "ai-agents-vs-spreadsheets-choosing-the-right-tool-for-your-business": {
-    name: "How to decide between an AI agent and a spreadsheet",
-    description:
-      "A four-question evaluation for picking the right tool, scoped to small and mid-size business workflows.",
-    steps: [
-      {
-        name: "Count task frequency",
-        text: "Ask: how many times per week does this task happen? Daily and multiple-times-daily tasks tilt toward an agent; weekly or monthly tasks usually do not justify the build cost.",
-      },
-      {
-        name: "Count systems and data sources",
-        text: "Ask: how many tools or data sources does completing it require? Workflows that span CRM, inbox, inventory, and a calendar are where agents pay back fastest.",
-      },
-      {
-        name: "Estimate the cost of slowness",
-        text: "Ask: what does it cost in time or lost revenue when this task is slow or inconsistent? Customer-facing tasks where delay costs money are strong agent candidates.",
-      },
-      {
-        name: "Confirm the process is stable",
-        text: "Ask: is the underlying process well understood and unlikely to change every quarter? Agents are best deployed on stable workflows; experimental processes belong in spreadsheets first.",
-      },
-    ],
-  },
-};
-
 function countWords(html: string): number {
   return html
     .replace(/<[^>]+>/g, " ")
@@ -144,7 +88,7 @@ export async function generateMetadata({
     ? post.image.startsWith("http")
       ? post.image
       : `${SITE_URL}${post.image}`
-    : `${SITE_URL}/Pantera_Claw_hero.webp`;
+    : `${SITE_URL}/og-image.webp`;
 
   return {
     title: { absolute: `${post.title} | Pantera Claw` },
@@ -194,11 +138,10 @@ export default async function BlogPostPage({
     ? post.image.startsWith("http")
       ? post.image
       : `${SITE_URL}${post.image}`
-    : `${SITE_URL}/Pantera_Claw_hero.webp`;
+    : `${SITE_URL}/og-image.webp`;
 
   const wordCount = post.bodyHtml ? countWords(post.bodyHtml) : undefined;
   const faqs = POST_FAQS[post.slug];
-  const howTo = POST_HOWTOS[post.slug];
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -246,21 +189,6 @@ export default async function BlogPostPage({
       }
     : null;
 
-  const howToSchema = howTo
-    ? {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        name: howTo.name,
-        description: howTo.description,
-        step: howTo.steps.map((s, i) => ({
-          "@type": "HowToStep",
-          position: i + 1,
-          name: s.name,
-          text: s.text,
-        })),
-      }
-    : null;
-
   return (
     <div className="relative z-10 pt-32 lg:pt-40 pb-24">
       <script
@@ -275,12 +203,6 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      {howToSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       )}
       <article className="max-w-[820px] mx-auto px-4 md:px-8">

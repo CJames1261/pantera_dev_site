@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:file(Pantera_Claw|Pantera_Claw_hero|Pantera_Claw_icon).webp",
+        source: "/:file(Pantera_Claw|Pantera_Claw_hero|Pantera_Claw_icon|og-image).webp",
         headers: [
           {
             key: "Cache-Control",

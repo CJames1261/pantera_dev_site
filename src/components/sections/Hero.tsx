@@ -16,7 +16,7 @@ export default function Hero() {
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-1 h-6 bg-yellow-400" />
                 <span className="text-sm uppercase tracking-widest text-yellow-400">
-                  Data & AI Consulting
+                  AI & Data Consulting · Salt Lake City
                 </span>
               </div>
             </ScrollReveal>
@@ -26,17 +26,30 @@ export default function Hero() {
                 className="font-display font-bold tracking-tighter leading-[1.05] text-text-primary mb-6"
                 style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
               >
-                We build the data systems
-                <span className="text-accent"> that power </span>
-                your decisions
+                AI consulting in Salt Lake City
+                <br />
+                <span className="text-accent">that powers your decisions</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <p className="text-text-secondary text-lg leading-relaxed max-w-[540px] mb-10">
-                Production-grade pipelines, real-time dashboards, and agentic AI
-                for growth-stage companies ready to treat their data as
-                infrastructure, not an afterthought.
+              <p className="text-text-secondary text-lg leading-relaxed max-w-[540px] mb-4">
+                <strong className="text-text-primary font-medium">Pantera Claw is a Salt Lake City AI and data consulting firm.</strong>{" "}
+                We build production-grade pipelines, real-time dashboards, and
+                agentic AI systems for growing businesses ready to treat their
+                data as infrastructure, not an afterthought. See how our{" "}
+                <Link
+                  href="/ai-consulting-salt-lake-city"
+                  className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors duration-300"
+                >
+                  AI consulting in Salt Lake City
+                </Link>
+                {" "}engagements work.
+              </p>
+              <p className="text-text-tertiary text-base leading-relaxed max-w-[540px] mb-10">
+                Most clients see meaningful payback within their first year.
+                We start with a free consultation meeting to map where AI
+                actually fits in your business before recommending a single tool.
               </p>
             </ScrollReveal>
 

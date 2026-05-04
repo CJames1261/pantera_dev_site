@@ -42,10 +42,10 @@ export const metadata: Metadata = {
       "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, custom dashboards, AI workflow automation, and data infrastructure.",
     images: [
       {
-        url: "/Pantera_Claw_hero.webp",
-        width: 480,
-        height: 480,
-        alt: "Pantera Claw — AI and data consulting logo",
+        url: "/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Pantera Claw — AI and data consulting in Salt Lake City",
       },
     ],
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Pantera Claw | AI & Data Consulting",
     description:
       "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, dashboards, AI automation, and data infrastructure.",
-    images: ["/Pantera_Claw_hero.webp"],
+    images: ["/og-image.webp"],
   },
   robots: { index: true, follow: true },
   icons: {
@@ -99,6 +99,7 @@ const organizationSchema = {
     areaServed: "US",
     availableLanguage: ["en"],
   },
+  knowsLanguage: ["en"],
   sameAs: ["https://github.com/CJames1261"],
 };
 

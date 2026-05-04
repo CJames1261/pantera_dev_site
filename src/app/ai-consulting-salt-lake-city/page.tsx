@@ -45,16 +45,74 @@ const localServicePageSchema = {
     "Agentic AI, RAG pipelines, NLP-to-SQL agents, and machine-learning systems for businesses headquartered in or operating across Utah.",
   url: PAGE_URL,
   areaServed: [
-    { "@type": "City", name: "Salt Lake City" },
-    { "@type": "City", name: "Provo" },
-    { "@type": "City", name: "Ogden" },
-    { "@type": "State", name: "Utah" },
+    {
+      "@type": "City",
+      name: "Salt Lake City",
+      sameAs: "https://en.wikipedia.org/wiki/Salt_Lake_City",
+    },
+    {
+      "@type": "City",
+      name: "Provo",
+      sameAs: "https://en.wikipedia.org/wiki/Provo,_Utah",
+    },
+    {
+      "@type": "City",
+      name: "Ogden",
+      sameAs: "https://en.wikipedia.org/wiki/Ogden,_Utah",
+    },
+    {
+      "@type": "State",
+      name: "Utah",
+      sameAs: "https://en.wikipedia.org/wiki/Utah",
+    },
   ],
   provider: { "@id": `${SITE_URL}/#localbusiness` },
   audience: {
     "@type": "BusinessAudience",
     name: "Small and mid-size businesses in Utah",
   },
+};
+
+const localBusinessOnPage = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#localbusiness`,
+  name: "Pantera Claw",
+  url: SITE_URL,
+  telephone: "+18018980911",
+  email: "info@panteraclaw.com",
+  image: `${SITE_URL}/Pantera_Claw_hero.webp`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/Pantera_Claw_icon.webp`,
+    width: 192,
+    height: 192,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Salt Lake City",
+    addressRegion: "UT",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.76080,
+    longitude: -111.89100,
+  },
+  areaServed: [
+    { "@type": "State", name: "Utah" },
+    { "@type": "Country", name: "United States" },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
+  priceRange: "$$",
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
 };
 
 const faqSchema = {
@@ -137,6 +195,10 @@ export default function AIConsultingSaltLakeCity() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessOnPage) }}
       />
       <script
         type="application/ld+json"

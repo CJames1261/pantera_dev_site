@@ -52,6 +52,7 @@ const servicesJsonLd = [
       position: i + 1,
       item: {
         "@type": "Service",
+        "@id": `${SITE_URL}/services#${pill.id}`,
         name: pill.title,
         description: pill.description,
         serviceType: pill.title,
@@ -61,6 +62,16 @@ const servicesJsonLd = [
           { "@type": "State", name: "Utah" },
           { "@type": "Country", name: "United States" },
         ],
+        offers: {
+          "@type": "Offer",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            priceCurrency: "USD",
+            minPrice: 4000,
+            maxPrice: 60000,
+            description: "Project pricing depends on scope. Discovery sprints start around $4,000; full builds typically $25,000–$60,000.",
+          },
+        },
       },
     })),
   },

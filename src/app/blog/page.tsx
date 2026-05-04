@@ -25,22 +25,27 @@ const breadcrumbSchema = {
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
+  "@id": `${SITE_URL}/blog#blog`,
   name: "Pantera Claw Blog",
   url: `${SITE_URL}/blog`,
   description:
     "Technical deep-dives, case studies, and honest takes on data infrastructure, analytics, and AI.",
-  publisher: {
-    "@type": "Organization",
-    name: "Pantera Claw",
-    url: SITE_URL,
-  },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   blogPost: allPosts.map((p) => ({
     "@type": "BlogPosting",
     headline: p.title,
     url: `${SITE_URL}/blog/${p.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${p.slug}`,
+    },
     datePublished: p.isoDate,
     dateModified: p.isoDate,
-    author: { "@type": "Organization", name: p.author ?? "Pantera Claw" },
+    author: {
+      "@type": "Person",
+      name: p.author ?? "Chris James",
+      url: `${SITE_URL}/about`,
+    },
     articleSection: p.category,
     description: p.excerpt,
   })),
@@ -72,9 +77,17 @@ export default function Blog() {
             >
               Thinking, shipped
             </h1>
-            <p className="text-text-secondary text-lg leading-relaxed max-w-[520px]">
-              Technical deep-dives, case studies, and honest takes on data
-              infrastructure from the engineers who build it.
+            <p className="text-text-secondary text-lg leading-relaxed max-w-[640px] mb-3">
+              Practical writing on AI, data analytics, and business
+              intelligence for owners and operators of small and mid-size
+              businesses. Every post answers a question we actually get asked
+              on discovery calls — what AI costs, when an agent beats a
+              spreadsheet, how to brief AI tools so the output sounds like you.
+            </p>
+            <p className="text-text-tertiary text-sm leading-relaxed max-w-[640px]">
+              {allPosts.length} posts published so far. New writing lands
+              roughly every Monday, drafted on real client problems and
+              edited by humans before publishing.
             </p>
           </div>
         </ScrollReveal>

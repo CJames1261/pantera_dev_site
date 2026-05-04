@@ -4,7 +4,7 @@
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "agenticaiutah.com" }],
       "destination": "https://www.agenticaiutah.com/$1",
-      "statusCode": 301
+      "statusCode": 308
     }
   ]
 }
