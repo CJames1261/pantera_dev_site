@@ -16,6 +16,7 @@ import {
   CircleNotch,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type FormState = {
   name: string;
@@ -194,6 +195,10 @@ export default function ContactView() {
       {/* Hero */}
       <section className="pt-32 max-w-[1280px] mx-auto px-8 mb-24">
         <ScrollReveal>
+          <Breadcrumbs
+            className="mb-6"
+            items={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+          />
           <div className="flex items-center gap-3 mb-8">
             <div className="w-1 h-6 bg-yellow-400" />
             <span className="text-sm uppercase tracking-widest text-yellow-400">
@@ -201,7 +206,7 @@ export default function ContactView() {
             </span>
           </div>
           <h1 className="font-display font-black uppercase tracking-tighter text-white max-w-3xl text-4xl md:text-6xl leading-[1.05]">
-            Initiate High-Fidelity Engagement.
+            Contact Pantera Claw — AI &amp; Data Consulting in Salt Lake City.
           </h1>
         </ScrollReveal>
       </section>
@@ -453,17 +458,27 @@ export default function ContactView() {
             </div>
           </div>
 
-          {/* Aerial Salt Lake City */}
-          <div className="aspect-video w-full border border-white/10 overflow-hidden rounded-lg">
-            <img
-              className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuIbry7ajCBgUbuEwtM_jcbxCcBH0Iyi-IjkL8Vucl3h_xoM3ruqET_rHuTY09Ele-KGFiT_zlRYtUBz5OnwZikGh8D6XPs_j-oAAPv2WopOhvkYutzyNEbRbjdTBF7F1x7CB-ixuqsALqv0HH0MZaHgsttNB6SEFjQS30LMe8_ZXgf7zaIFMGcPATO8c4Z5_mKCnerup6pcwQwp1PGH_CERTAeUak8cSvm8Rd14PwFluGi3vPMMvjFyGjL4ViqH38EMEbRaDFzyM"
-              alt="Aerial night view of Salt Lake City's downtown grid against the Wasatch mountains."
-              loading="lazy"
-              decoding="async"
-              width={1280}
-              height={720}
-            />
+          {/* Service Area Card — replaces an externally hosted skyline image
+              that depended on a Google CDN URL we don't own. */}
+          <div
+            className="aspect-video w-full border border-white/10 overflow-hidden rounded-lg flex items-center justify-center relative"
+            style={{
+              background:
+                "radial-gradient(circle at 30% 20%, rgba(250,204,21,0.18), transparent 55%), radial-gradient(circle at 80% 80%, rgba(250,204,21,0.08), transparent 60%), #0a0a0c",
+            }}
+          >
+            <div className="text-center px-8">
+              <div className="font-mono text-[10px] uppercase text-yellow-400 tracking-[0.22em] mb-3">
+                Service Area
+              </div>
+              <p className="font-display text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
+                Salt Lake County · Utah County · Davis County
+              </p>
+              <p className="text-zinc-400 text-sm mt-3">
+                On-site discovery in the Wasatch Front. Remote build for the
+                rest of the United States.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
       </section>

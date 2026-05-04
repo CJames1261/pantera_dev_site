@@ -96,7 +96,7 @@ const organizationSchema = {
     telephone: "+18018980911",
     email: "info@panteraclaw.com",
     contactType: "customer service",
-    areaServed: "US",
+    areaServed: ["US-UT", "US"],
     availableLanguage: ["en"],
   },
   knowsLanguage: ["en"],

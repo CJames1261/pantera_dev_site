@@ -1,0 +1,136 @@
+{
+  "title": "About Pantera Claw | Our story, standard, and mission",
+  "meta_description": "Pantera Claw brings enterprise-grade AI, data infrastructure, and digital solutions to small and mid-size businesses. Precise, adaptive, and built to last.",
+  "meta_robots": "index, follow",
+  "canonical": "https://www.agenticaiutah.com/about",
+  "h1": [
+    "Why the Panther?"
+  ],
+  "h2": [
+    "The Pantera Claw standard.",
+    "Help businesses win.",
+    "Ready to work with us?"
+  ],
+  "h3": [
+    "Agility",
+    "Precision",
+    "Reliability",
+    "Innovation",
+    "Web Development",
+    "Database Management",
+    "App Development",
+    "AI Integration",
+    "Services",
+    "Company",
+    "Contact"
+  ],
+  "images": [
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    },
+    {
+      "src": "/Pantera_Claw_hero.webp",
+      "alt": "Pantera Claw logo",
+      "width": "480",
+      "height": "480",
+      "loading": "lazy"
+    },
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "Pantera Claw logomark",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    }
+  ],
+  "links": {
+    "internal": [],
+    "external": []
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.agenticaiutah.com/#organization",
+      "name": "Pantera Claw",
+      "alternateName": "Pantera Claw AI & Data Consulting",
+      "url": "https://www.agenticaiutah.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.agenticaiutah.com/Pantera_Claw_icon.webp",
+        "width": 192,
+        "height": 192
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+18018980911",
+        "email": "info@panteraclaw.com",
+        "contactType": "customer service",
+        "areaServed": "US",
+        "availableLanguage": [
+          "en"
+        ]
+      },
+      "knowsLanguage": [
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/CJames1261"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "@id": "https://www.agenticaiutah.com/about#page",
+      "url": "https://www.agenticaiutah.com/about",
+      "name": "About Pantera Claw",
+      "description": "Pantera Claw is a Salt Lake City AI and data consulting firm. Learn about our story, our standard, and our mission to bring enterprise-grade technology to small and mid-size businesses.",
+      "inLanguage": "en-US",
+      "mainEntity": {
+        "@id": "https://www.agenticaiutah.com/#organization"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.agenticaiutah.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://www.agenticaiutah.com/about"
+        }
+      ]
+    }
+  ],
+  "open_graph": {
+    "og:title": "Pantera Claw | AI & Data Consulting",
+    "og:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, custom dashboards, AI workflow automation, and data infrastructure.",
+    "og:url": "https://www.agenticaiutah.com",
+    "og:site_name": "Pantera Claw",
+    "og:locale": "en_US",
+    "og:image": "https://www.agenticaiutah.com/og-image.webp",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Pantera Claw \u2014 AI and data consulting in Salt Lake City",
+    "og:type": "website"
+  },
+  "twitter_card": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Pantera Claw | AI & Data Consulting",
+    "twitter:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, dashboards, AI automation, and data infrastructure.",
+    "twitter:image": "https://www.agenticaiutah.com/og-image.webp"
+  },
+  "word_count": 405,
+  "hreflang": []
+}

@@ -10,6 +10,7 @@ import {
   EnvelopeSimple,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { getPostBySlug, allPosts, type BlogPost } from "@/lib/posts";
 
 const SITE_URL = "https://www.agenticaiutah.com";
@@ -67,6 +68,16 @@ function countWords(html: string): number {
     .filter(Boolean).length;
 }
 
+// Trim text to a max length on a word boundary so SERP snippets never end
+// mid-word. Falls back to a hard cut if the first word is already too long.
+function trimToWordBoundary(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const window = text.slice(0, max + 1);
+  const lastSpace = window.lastIndexOf(" ");
+  const cut = lastSpace > 0 ? window.slice(0, lastSpace) : text.slice(0, max);
+  return cut.replace(/[\s.,;:!?]+$/, "") + "…";
+}
+
 export function generateStaticParams() {
   return allPosts.map((p) => ({ slug: p.slug }));
 }
@@ -92,12 +103,12 @@ export async function generateMetadata({
 
   return {
     title: { absolute: `${post.title} | Pantera Claw` },
-    description: post.excerpt.slice(0, 160),
+    description: trimToWordBoundary(post.excerpt, 160),
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
       title: post.title,
-      description: post.excerpt.slice(0, 160),
+      description: trimToWordBoundary(post.excerpt, 160),
       url,
       images: [{ url: absoluteImage }],
       publishedTime: post.isoDate,
@@ -108,7 +119,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.excerpt.slice(0, 160),
+      description: trimToWordBoundary(post.excerpt, 160),
       images: [absoluteImage],
     },
   };
@@ -133,7 +144,7 @@ export default async function BlogPostPage({
       : undefined;
 
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
-  const author = post.author ?? "Chris James";
+  const author = post.author ?? "Pantera Claw";
   const absoluteImage = post.image
     ? post.image.startsWith("http")
       ? post.image
@@ -155,9 +166,9 @@ export default async function BlogPostPage({
     keywords: [post.category, "AI consulting", "data consulting", "Pantera Claw"].join(", "),
     inLanguage: "en-US",
     author: {
-      "@type": "Person",
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: author,
-      url: `${SITE_URL}/about`,
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: {
@@ -165,6 +176,10 @@ export default async function BlogPostPage({
       "@id": postUrl,
     },
     articleSection: post.category,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".blog-body p"],
+    },
   };
 
   const breadcrumbSchema = {
@@ -207,6 +222,14 @@ export default async function BlogPostPage({
       )}
       <article className="max-w-[820px] mx-auto px-4 md:px-8">
         <ScrollReveal>
+          <Breadcrumbs
+            className="mb-4"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Blog", href: "/blog" },
+              { label: post.title },
+            ]}
+          />
           <Link
             href="/blog"
             className="inline-flex items-center gap-1.5 text-text-secondary hover:text-accent text-sm font-mono mb-8 no-underline transition-colors duration-300"

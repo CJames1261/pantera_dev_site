@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 const logo = "/Pantera_Claw_hero.webp";
@@ -115,6 +116,10 @@ export default function About() {
         <section className="pb-12 lg:pb-16">
           <div className="max-w-5xl mx-auto px-4 md:px-8">
             <ScrollReveal>
+              <Breadcrumbs
+                className="mb-8 justify-center [&>ol]:justify-center"
+                items={[{ label: "Home", href: "/" }, { label: "About" }]}
+              />
               <div className="text-center mb-12">
                 <span className="inline-block border border-yellow-400 px-4 py-1.5 text-sm uppercase tracking-wide text-yellow-400 mb-7">
                   Our Story

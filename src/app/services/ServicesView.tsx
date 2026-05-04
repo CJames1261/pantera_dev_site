@@ -24,6 +24,7 @@ import {
   CloudArrowUp,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { servicePillsMeta } from "./data";
 
 interface ServicePill {
@@ -622,6 +623,13 @@ export default function ServicesView() {
         <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
           <ScrollReveal>
             <div className="max-w-[680px]">
+              <Breadcrumbs
+                className="mb-6"
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Services" },
+                ]}
+              />
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-1 h-6 bg-yellow-400" />
                 <span className="text-sm uppercase tracking-widest text-yellow-400">

@@ -50,10 +50,10 @@
     },
     "images": {
       "enabled": true,
-      "source": "unsplash",
+      "source": "self-hosted",
       "heroImage": {
         "required": true,
-        "instructions": "Every post must have a heroImage. Use a Picsum seed URL in the format https://picsum.photos/seed/<slug>/1200/675 so posts always render; a human can replace with a curated Unsplash image later."
+        "instructions": "The generator selects a self-hosted hero from public/sections/ keyed off the post category. To override, edit the post JSON's `image` field with a path under public/. Never reference third-party CDNs (picsum, unsplash, googleusercontent) since those are unowned and break Rich Results validation."
       },
       "inlineImages": {
         "enabled": false

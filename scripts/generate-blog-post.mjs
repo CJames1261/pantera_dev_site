@@ -29,13 +29,46 @@ const existingSlugs = new Set(
   existingFiles.filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""))
 )
 
+// Trim a hyphen-delimited slug to a maximum length without cutting a word in
+// half. We split on the existing dashes and rebuild while we have budget.
+function smartTrimSlug(slug, max) {
+  if (slug.length <= max) return slug
+  const parts = slug.split("-")
+  const out = []
+  let len = 0
+  for (const part of parts) {
+    const next = len === 0 ? part.length : len + 1 + part.length
+    if (next > max) break
+    out.push(part)
+    len = next
+  }
+  // Fallback: if a single first word already blows the budget, hard-cut it
+  // rather than emit an empty slug.
+  return out.length > 0 ? out.join("-") : slug.slice(0, max)
+}
+
 function slugify(text) {
-  return text
+  const raw = text
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-")
-    .slice(0, 80)
+  return smartTrimSlug(raw, 100)
+}
+
+// Map post categories to existing self-hosted section illustrations so we
+// never ship a third-party placeholder URL. Authors can replace these with
+// per-post artwork later by editing the JSON.
+const CATEGORY_HERO_IMAGE = {
+  "Strategy": "/sections/ai_strategy_meeting.webp",
+  "AI & ML": "/sections/agentic_viz.webp",
+  "Analytics": "/sections/advanced_analytics_viz.webp",
+  "Engineering": "/sections/data_pipeline_viz.webp",
+  "Marketing": "/sections/dashboard_viz.webp",
+}
+
+function pickHeroImage(category) {
+  return CATEGORY_HERO_IMAGE[category] ?? "/Pantera_Claw_hero.webp"
 }
 
 // Load already-used topics so we rotate through the pool.
@@ -226,7 +259,7 @@ const post = {
   isoDate,
   readTime: parsed.readTime,
   category: parsed.category,
-  image: `https://picsum.photos/seed/${uniqueSlug}/1200/675`,
+  image: pickHeroImage(parsed.category),
   imageAlt: parsed.imageAlt,
   author: config.author,
   bodyHtml: parsed.bodyHtml,

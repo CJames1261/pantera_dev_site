@@ -1,0 +1,340 @@
+{
+  "title": "AI & Data Consulting Services in Salt Lake City | Pantera Claw",
+  "meta_description": "Five services from a Salt Lake City consultancy: web development, database architecture, dashboard engineering, agentic AI workflows, and advanced analytics for growing businesses.",
+  "meta_robots": "index, follow",
+  "canonical": "https://www.agenticaiutah.com/services",
+  "h1": [
+    "From AI agentsto predictive dashboards"
+  ],
+  "h2": [
+    "A four-step engagement, not a black box",
+    "Business Web Development",
+    "Database Architecture & Optimization",
+    "Dashboard & Visualization Engineering",
+    "Agentic AI & Workflow Design",
+    "Advanced Analytics & Machine Learning",
+    "Not sure which service fits?"
+  ],
+  "h3": [
+    "Discovery sprint",
+    "Build sprints",
+    "Calibration",
+    "Handover",
+    "Services",
+    "Company",
+    "Contact"
+  ],
+  "images": [
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    },
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "Pantera Claw logomark",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    }
+  ],
+  "links": {
+    "internal": [],
+    "external": []
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.agenticaiutah.com/#organization",
+      "name": "Pantera Claw",
+      "alternateName": "Pantera Claw AI & Data Consulting",
+      "url": "https://www.agenticaiutah.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.agenticaiutah.com/Pantera_Claw_icon.webp",
+        "width": 192,
+        "height": 192
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+18018980911",
+        "email": "info@panteraclaw.com",
+        "contactType": "customer service",
+        "areaServed": "US",
+        "availableLanguage": [
+          "en"
+        ]
+      },
+      "knowsLanguage": [
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/CJames1261"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.agenticaiutah.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://www.agenticaiutah.com/services"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Pantera Claw Consulting Services",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.agenticaiutah.com/services#web",
+            "name": "Business Web Development",
+            "description": "Your website is your hardest-working salesperson, so it should look the part. We design and build fast, responsive, SEO-optimized websites and web applications using modern frameworks like React, Next.js, and TypeScript, deployed on Vercel for global edge performance. Engagements typically run 4 to 10 weeks: a discovery sprint to map your conversion goals, two to four design and build sprints, then a content and SEO finalization pass. We deliver working code (not slide decks), production hosting, and a handover guide so your team can update the site without us. Common projects include marketing sites for B2B services firms, internal portals and admin dashboards for operations teams, AI-powered chat or search interfaces wired into your data, and complete redesigns for businesses outgrowing a templated builder.",
+            "serviceType": "Business Web Development",
+            "url": "https://www.agenticaiutah.com/services#web",
+            "provider": {
+              "@id": "https://www.agenticaiutah.com/#localbusiness"
+            },
+            "areaServed": [
+              {
+                "@type": "State",
+                "name": "Utah"
+              },
+              {
+                "@type": "Country",
+                "name": "United States"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "description": "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment."
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.agenticaiutah.com/services#database",
+            "name": "Database Architecture & Optimization",
+            "description": "We design, build, and optimize databases across Databricks, PostgreSQL, Snowflake, BigQuery, and Oracle. From data modeling and ETL pipeline architecture to query performance tuning and zero-downtime migration, every project is built to scale from day one. Typical engagements run 6 to 12 weeks and ship as a production-ready warehouse with documented schema, automated dbt or Airflow pipelines, monitoring dashboards, and a runbook your engineers can extend. We work most often on three problem shapes: clean-up projects (migrating off a legacy database that buckles under analytical load), greenfield builds (companies operationalizing data for the first time), and performance triage (existing warehouses returning slow queries). We have shipped pipelines for compliance-heavy environments, so security-sensitive workloads are familiar territory.",
+            "serviceType": "Database Architecture & Optimization",
+            "url": "https://www.agenticaiutah.com/services#database",
+            "provider": {
+              "@id": "https://www.agenticaiutah.com/#localbusiness"
+            },
+            "areaServed": [
+              {
+                "@type": "State",
+                "name": "Utah"
+              },
+              {
+                "@type": "Country",
+                "name": "United States"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "description": "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment."
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.agenticaiutah.com/services#dashboards",
+            "name": "Dashboard & Visualization Engineering",
+            "description": "We build interactive reporting platforms in Tableau, Power BI, R Shiny, and custom React applications. Real-time KPI monitoring, drill-down exploration, anomaly detection, and embedded analytics that your stakeholders actually trust. Engagements typically run 3 to 8 weeks per dashboard surface, with a discovery phase to identify the decisions the dashboard needs to drive, a build phase, and a calibration phase against real users. We deliver the live dashboards, the underlying data wiring (refresh pipelines, materialized views, change-data-capture where needed), and a maintenance guide. Three common shapes: executive dashboards aimed at leadership teams, operational dashboards used hourly by ops teams, and embedded analytics shipped inside SaaS products. ML-powered forecasting views and causal-analysis dashboards that surface KPI drivers (not just trends) are areas we have repeated experience in.",
+            "serviceType": "Dashboard & Visualization Engineering",
+            "url": "https://www.agenticaiutah.com/services#dashboards",
+            "provider": {
+              "@id": "https://www.agenticaiutah.com/#localbusiness"
+            },
+            "areaServed": [
+              {
+                "@type": "State",
+                "name": "Utah"
+              },
+              {
+                "@type": "Country",
+                "name": "United States"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "description": "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment."
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.agenticaiutah.com/services#ai",
+            "name": "Agentic AI & Workflow Design",
+            "description": "We build multi-agent systems that route, decide, and execute autonomously, plus the supporting infrastructure that keeps them safe in production. Tools include LangGraph and LangChain for orchestration, vector databases like Pinecone or ChromaDB for retrieval, and Ollama for air-gapped local inference. Engagements run 4 to 12 weeks: a one-week feasibility sprint that benchmarks performance on your data before scope is set, then iterative build and evaluation sprints with human-in-the-loop checkpoints. We ship working agents, evaluation harnesses with automated test suites, monitoring and prompt-injection protection, and runbooks for retraining and prompt updates. Common project shapes are NLP-to-SQL agents that let non-technical staff query databases in plain English, RAG pipelines over internal docs, and fully autonomous orchestrators replacing repetitive multi-step workflows. Air-gapped deployments inside classified on-premises environments are part of our background.",
+            "serviceType": "Agentic AI & Workflow Design",
+            "url": "https://www.agenticaiutah.com/services#ai",
+            "provider": {
+              "@id": "https://www.agenticaiutah.com/#localbusiness"
+            },
+            "areaServed": [
+              {
+                "@type": "State",
+                "name": "Utah"
+              },
+              {
+                "@type": "Country",
+                "name": "United States"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "description": "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment."
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Service",
+            "@id": "https://www.agenticaiutah.com/services#analytics",
+            "name": "Advanced Analytics & Machine Learning",
+            "description": "Predictive models, customer segmentation, causal inference, and deep learning, deployed with monitoring, drift detection, and automated retraining. We use TensorFlow, PyTorch, scikit-learn, MLflow for experiment tracking, and DoWhy for causal inference. Engagements run 6 to 14 weeks: a feasibility study that explores what is achievable on your actual data, a build phase, and a deployment phase that wires the model into your business workflow with monitoring. We deliver the trained model, a serving endpoint, an evaluation framework, drift alerts, and a retraining schedule. Three common project shapes: prediction and forecasting (churn, demand, revenue, risk scoring), causal inference for policy and pricing decisions where correlation alone is not enough, and deep learning for signal and image domains where rule-based approaches fall short.",
+            "serviceType": "Advanced Analytics & Machine Learning",
+            "url": "https://www.agenticaiutah.com/services#analytics",
+            "provider": {
+              "@id": "https://www.agenticaiutah.com/#localbusiness"
+            },
+            "areaServed": [
+              {
+                "@type": "State",
+                "name": "Utah"
+              },
+              {
+                "@type": "Country",
+                "name": "United States"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD",
+                "description": "Project-based pricing scoped per engagement. Final cost depends on scope, depth of discovery and research, technical complexity, and engagement length. Fixed price shared in writing after a free consultation meeting and a brief discovery phase, before any commitment."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a typical AI or data consulting engagement take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most engagements run 4\u201312 weeks. A focused data audit or dashboard build is usually 2\u20134 weeks. A full data pipeline plus analytics layer typically lands at 8\u201312 weeks. We share a fixed scope and timeline before any commitment, and we publish weekly progress notes so you always know where the project stands."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with small businesses, or only enterprise clients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Small and mid-size businesses are our primary focus. We bring enterprise-grade AI, data, and analytics tools to companies that historically could not afford them. Most of our clients are between 10 and 200 employees, often with no dedicated data team yet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between BI consulting and AI consulting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Business intelligence consulting focuses on dashboards, reporting, and explaining what already happened in your data. AI consulting layers on predictive models, automation, and agentic workflows that make decisions or take actions. Most clients need both; we deliver them as one integrated solution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer ongoing support after the project ends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every engagement ends with a 30-day stabilization window included at no additional cost. After that, we offer monthly retainers for monitoring, model retraining, dashboard updates, and continued development. You own all the code and data we build."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we start with a small pilot before committing to a full project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We strongly recommend it. Most clients begin with a paid 1\u20132 week discovery sprint that produces a working prototype, a fixed-scope plan, and a budget for the full engagement. There is no obligation to continue past the pilot."
+          }
+        }
+      ]
+    }
+  ],
+  "open_graph": {
+    "og:title": "Pantera Claw | AI & Data Consulting",
+    "og:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, custom dashboards, AI workflow automation, and data infrastructure.",
+    "og:url": "https://www.agenticaiutah.com",
+    "og:site_name": "Pantera Claw",
+    "og:locale": "en_US",
+    "og:image": "https://www.agenticaiutah.com/og-image.webp",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Pantera Claw \u2014 AI and data consulting in Salt Lake City",
+    "og:type": "website"
+  },
+  "twitter_card": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Pantera Claw | AI & Data Consulting",
+    "twitter:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, dashboards, AI automation, and data infrastructure.",
+    "twitter:image": "https://www.agenticaiutah.com/og-image.webp"
+  },
+  "word_count": 911,
+  "hreflang": []
+}

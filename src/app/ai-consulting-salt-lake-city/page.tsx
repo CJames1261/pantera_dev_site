@@ -9,6 +9,7 @@ import {
   Clock,
 } from "@phosphor-icons/react/ssr";
 import ScrollReveal from "@/components/ScrollReveal";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 const PAGE_PATH = "/ai-consulting-salt-lake-city";
@@ -261,6 +262,13 @@ export default function AIConsultingSaltLakeCity() {
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
           <div className="mb-12 max-w-[820px]">
+            <Breadcrumbs
+              className="mb-6"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "AI Consulting in Salt Lake City" },
+              ]}
+            />
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1 h-6 bg-yellow-400" />
               <span className="text-sm uppercase tracking-widest text-yellow-400">

@@ -1,0 +1,184 @@
+{
+  "title": "Realistic AI Budget for a 10-Person Company | Pantera Claw",
+  "meta_description": "You do not need a Fortune 500 budget to get real value from AI. Here is what a small team should actually expect to spend and where that money goes.",
+  "meta_robots": "index, follow",
+  "canonical": "https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company",
+  "h1": [
+    "Realistic AI Budget for a 10-Person Company"
+  ],
+  "h2": [
+    "How Do You Start Building an AI Budget for a Small Team?",
+    "What Are the Three Main AI Cost Buckets for a Ten Person Company?",
+    "What Is a Realistic Monthly AI Budget for a Ten Person Company?",
+    "Where Does AI ROI Actually Come From for Small Teams?",
+    "What Should You Avoid When Building Your First AI Budget?",
+    "Where Can You Get Help Setting Up Your AI Budget?",
+    "Quick answers",
+    "Related services"
+  ],
+  "h3": [
+    "How much should a 10-person company spend on AI per month?",
+    "What are the main AI cost buckets for a small business?",
+    "Is it cheaper to build custom AI or buy off-the-shelf tools?",
+    "All services",
+    "AI consulting in Salt Lake City",
+    "Free consultation",
+    "AI Agents vs Spreadsheets: Which Tool Wins",
+    "Services",
+    "Company",
+    "Contact"
+  ],
+  "images": [
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    },
+    {
+      "src": "https://picsum.photos/seed/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company/1200/675",
+      "alt": "A small business owner reviewing a simple budget spreadsheet on a laptop in a bright modern office",
+      "width": "1200",
+      "height": "675",
+      "loading": "eager"
+    },
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "Pantera Claw logomark",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    }
+  ],
+  "links": {
+    "internal": [],
+    "external": []
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.agenticaiutah.com/#organization",
+      "name": "Pantera Claw",
+      "alternateName": "Pantera Claw AI & Data Consulting",
+      "url": "https://www.agenticaiutah.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.agenticaiutah.com/Pantera_Claw_icon.webp",
+        "width": 192,
+        "height": 192
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+18018980911",
+        "email": "info@panteraclaw.com",
+        "contactType": "customer service",
+        "areaServed": "US",
+        "availableLanguage": [
+          "en"
+        ]
+      },
+      "knowsLanguage": [
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/CJames1261"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Realistic AI Budget for a 10-Person Company",
+      "description": "You do not need a Fortune 500 budget to get real value from AI. Here is what a small team should actually expect to spend and where that money goes.",
+      "image": "https://picsum.photos/seed/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company/1200/675",
+      "datePublished": "2026-04-20",
+      "dateModified": "2026-04-20",
+      "wordCount": 1067,
+      "keywords": "Strategy, AI consulting, data consulting, Pantera Claw",
+      "inLanguage": "en-US",
+      "author": {
+        "@type": "Person",
+        "name": "Pantera Claw",
+        "url": "https://www.agenticaiutah.com/about"
+      },
+      "publisher": {
+        "@id": "https://www.agenticaiutah.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company"
+      },
+      "articleSection": "Strategy"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.agenticaiutah.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.agenticaiutah.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Realistic AI Budget for a 10-Person Company",
+          "item": "https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much should a 10-person company spend on AI per month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A reasonable starting range is $500-3,000 per month covering AI tool subscriptions (Claude, ChatGPT, niche tools), API usage for any custom integrations, and a small reserve for experiments. Larger budgets only make sense once you have a specific workflow paying back the spend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main AI cost buckets for a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three buckets: tool subscriptions (per-seat SaaS like Claude Pro, ChatGPT Team, Microsoft Copilot), API consumption (pay-per-token costs for any custom apps or agents), and consulting or integration work (one-time projects to wire AI into existing systems)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it cheaper to build custom AI or buy off-the-shelf tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buying off-the-shelf tools is almost always cheaper for the first year. Custom builds become cost-effective when (a) the workflow is specific to your industry and no SaaS exists, or (b) per-seat licensing gets expensive past 50-100 users. Start with off-the-shelf, build custom only after the use case is proven."
+          }
+        }
+      ]
+    }
+  ],
+  "open_graph": {
+    "og:title": "Realistic AI Budget for a 10-Person Company",
+    "og:description": "You do not need a Fortune 500 budget to get real value from AI. Here is what a small team should actually expect to spend and where that money goes.",
+    "og:url": "https://www.agenticaiutah.com/blog/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company",
+    "og:image": "https://picsum.photos/seed/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company/1200/675",
+    "og:type": "article"
+  },
+  "twitter_card": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Realistic AI Budget for a 10-Person Company",
+    "twitter:description": "You do not need a Fortune 500 budget to get real value from AI. Here is what a small team should actually expect to spend and where that money goes.",
+    "twitter:image": "https://picsum.photos/seed/what-a-realistic-ai-budget-looks-like-for-a-ten-person-company/1200/675"
+  },
+  "word_count": 1405,
+  "hreflang": []
+}

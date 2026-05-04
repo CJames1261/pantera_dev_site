@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 
@@ -28,6 +29,10 @@ export default function Privacy() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       <article className="max-w-[820px] mx-auto px-4 md:px-8 blog-body text-text-secondary text-base lg:text-lg leading-relaxed">
+        <Breadcrumbs
+          className="mb-6"
+          items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]}
+        />
         <h1
           className="font-display font-bold tracking-tighter text-text-primary leading-[1.08] mb-4"
           style={{ fontSize: "clamp(1.875rem, 4.5vw, 3rem)" }}

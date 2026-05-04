@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         destination: "https://www.agenticaiutah.com/:path*",
         permanent: true,
       },
+      // The local-SEO post originally shipped with a slug truncated mid-word
+      // ("...recommendat"). The slug now ends on "recommendations"; this 301
+      // catches anything that linked to the old URL while it was live.
+      {
+        source: "/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendat",
+        destination: "/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendations",
+        permanent: true,
+      },
     ];
   },
   async headers() {

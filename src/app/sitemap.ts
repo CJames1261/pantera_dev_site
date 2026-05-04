@@ -3,15 +3,32 @@ import { allPosts } from "@/lib/posts";
 
 const SITE_URL = "https://www.agenticaiutah.com";
 
-const SITE_LAST_UPDATED = "2026-04-27";
 const STATIC_LAST_UPDATED: Record<string, string> = {
-  "/": SITE_LAST_UPDATED,
   "/services": "2026-05-03",
   "/about": "2026-04-27",
   "/contact": "2026-05-03",
-  "/blog": SITE_LAST_UPDATED,
   "/privacy": "2026-05-03",
   "/ai-consulting-salt-lake-city": "2026-05-03",
+};
+
+// Home and /blog should never appear stale relative to their child pages.
+// Home tracks the most recent change anywhere on the site; /blog tracks the
+// most recent post.
+const NEWEST_POST_DATE = allPosts.reduce(
+  (max, p) => (p.isoDate > max ? p.isoDate : max),
+  "1970-01-01",
+);
+const NEWEST_STATIC_DATE = Object.values(STATIC_LAST_UPDATED).reduce(
+  (max, d) => (d > max ? d : max),
+  "1970-01-01",
+);
+const SITE_LAST_UPDATED =
+  NEWEST_POST_DATE > NEWEST_STATIC_DATE ? NEWEST_POST_DATE : NEWEST_STATIC_DATE;
+
+const ROOT_LAST_UPDATED: Record<string, string> = {
+  "/": SITE_LAST_UPDATED,
+  "/blog": NEWEST_POST_DATE,
+  ...STATIC_LAST_UPDATED,
 };
 
 const HERO_IMAGE = `${SITE_URL}/Pantera_Claw_hero.webp`;
@@ -29,13 +46,13 @@ const CORE_IMAGES: Record<string, string[]> = {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = (
-    Object.keys(STATIC_LAST_UPDATED) as Array<keyof typeof STATIC_LAST_UPDATED>
+    Object.keys(ROOT_LAST_UPDATED) as Array<keyof typeof ROOT_LAST_UPDATED>
   ).map((path) => {
     const images = CORE_IMAGES[path];
     return {
       url: `${SITE_URL}${path === "/" ? "" : path}`,
       // Date-only string (YYYY-MM-DD); avoids fabricated millisecond precision.
-      lastModified: STATIC_LAST_UPDATED[path],
+      lastModified: ROOT_LAST_UPDATED[path],
       ...(images && images.length > 0 ? { images } : {}),
     };
   });

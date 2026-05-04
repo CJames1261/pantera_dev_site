@@ -1,0 +1,346 @@
+{
+  "title": "Pantera Claw | AI & Data Consulting for Growing Businesses",
+  "meta_description": "Salt Lake City AI and data consulting. Custom dashboards, AI workflows, data pipelines, and analytics for small and mid-size businesses.",
+  "meta_robots": "index, follow",
+  "canonical": "https://www.agenticaiutah.com",
+  "h1": [
+    "We build the data systemsthat poweryour decisions"
+  ],
+  "h2": [
+    "AI Consulting, Data Analytics & Business Intelligence Solutions",
+    "AI Consulting, Data Analytics & Business Intelligence Solutions",
+    "We own the entire pipeline, from raw data to business intelligence",
+    "Dashboards your team will actually use",
+    "AI that works in production, not just demos",
+    "Predictive models that reveal what's truly driving your business",
+    "Common questions",
+    "Your data should be your competitive advantage"
+  ],
+  "h3": [
+    "Let\u2019s start with a conversation",
+    "Business Web Development",
+    "Database Management",
+    "Dashboards & Visualizations",
+    "Advanced Analytics",
+    "Agentic Workflow Design",
+    "Business Web Development",
+    "Database Management",
+    "Dashboards & Visualizations",
+    "Advanced Analytics",
+    "Agentic Workflow Design",
+    "What does Pantera Claw do?",
+    "Where is Pantera Claw based?",
+    "What size companies do you work with?",
+    "How do projects typically start?",
+    "Services",
+    "Company",
+    "Contact"
+  ],
+  "images": [
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    },
+    {
+      "src": "/Pantera_Claw_hero.webp",
+      "alt": "Pantera Claw \u2014 black panther logomark on dark background",
+      "width": "480",
+      "height": "480",
+      "loading": null
+    },
+    {
+      "src": "/sections/ai_strategy_meeting.webp",
+      "alt": "Two business owners sitting across a table with a laptop between them, friendly conversation atmosphere with floating AI and dashboard concept icons above the laptop, illustrating a discovery conversation about where AI fits in the business.",
+      "width": "1200",
+      "height": "1200",
+      "loading": "lazy"
+    },
+    {
+      "src": "/sections/data_pipeline_viz.webp",
+      "alt": "Scattered raw spreadsheets, sticky notes, and tangled wires flowing through a glowing yellow funnel into clean dashboard cards: Sales Growth chart, Revenue plus 28 percent, Data Quality all good, Clear answers and confident decisions.",
+      "width": "1200",
+      "height": "1200",
+      "loading": "lazy"
+    },
+    {
+      "src": "/sections/dashboard_viz.webp",
+      "alt": "A clean tablet-style business dashboard showing a large revenue figure with an upward arrow, a trending line chart, and three KPI tiles, surrounded by a coffee cup, clipboard with a checkmark, and a calm smiling face icon to suggest stress-free clarity.",
+      "width": "1200",
+      "height": "1200",
+      "loading": "lazy"
+    },
+    {
+      "src": "/sections/agentic_viz.webp",
+      "alt": "A friendly glowing AI orb at the center managing parallel work in the background: a replied email envelope, a sent invoice, a booked calendar meeting, and an answered chat bubble \u2014 illustrating an AI assistant handling repetitive tasks so the business owner is freed up.",
+      "width": "1200",
+      "height": "1200",
+      "loading": "lazy"
+    },
+    {
+      "src": "/sections/advanced_analytics_viz.webp",
+      "alt": "A clean line chart with a solid history curve transitioning into a glowing yellow dotted forecast line, with floating bubbles for revenue, customer, and risk indicators above the forecast zone, and a magnifying glass examining the historical curve.",
+      "width": "1200",
+      "height": "1200",
+      "loading": "lazy"
+    },
+    {
+      "src": "/Pantera_Claw_icon.webp",
+      "alt": "Pantera Claw logomark",
+      "width": "40",
+      "height": "40",
+      "loading": null
+    }
+  ],
+  "links": {
+    "internal": [],
+    "external": []
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.agenticaiutah.com/#organization",
+      "name": "Pantera Claw",
+      "alternateName": "Pantera Claw AI & Data Consulting",
+      "url": "https://www.agenticaiutah.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.agenticaiutah.com/Pantera_Claw_icon.webp",
+        "width": 192,
+        "height": 192
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+18018980911",
+        "email": "info@panteraclaw.com",
+        "contactType": "customer service",
+        "areaServed": "US",
+        "availableLanguage": [
+          "en"
+        ]
+      },
+      "knowsLanguage": [
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/CJames1261"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://www.agenticaiutah.com/#localbusiness",
+      "additionalType": "https://www.wikidata.org/wiki/Q1662773",
+      "name": "Pantera Claw",
+      "alternateName": "Pantera Claw AI & Data Consulting",
+      "slogan": "We build the data systems that power your decisions.",
+      "description": "AI and data consulting firm that helps businesses add analytics, custom dashboards, and AI capabilities to their operations. We turn your raw data into insights that drive real business decisions.",
+      "url": "https://www.agenticaiutah.com",
+      "image": "https://www.agenticaiutah.com/Pantera_Claw_hero.webp",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.agenticaiutah.com/Pantera_Claw_icon.webp",
+        "width": 192,
+        "height": 192
+      },
+      "parentOrganization": {
+        "@id": "https://www.agenticaiutah.com/#organization"
+      },
+      "telephone": "+18018980911",
+      "email": "info@panteraclaw.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Salt Lake City",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7608,
+        "longitude": -111.891
+      },
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Utah"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Data & AI Consulting Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Analytics Consulting",
+              "description": "Custom analytics solutions that help businesses make data driven decisions"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Dashboard Development",
+              "description": "Interactive dashboards built to visualize your key performance indicators"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Workflow Automation",
+              "description": "Agentic AI systems that automate repetitive business processes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Database Management",
+              "description": "Scalable database architecture and data pipeline engineering"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data Strategy Consulting",
+              "description": "Strategic roadmaps for becoming a data driven organization"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Intelligence Solutions",
+              "description": "End to end BI platforms for reporting and operational insights"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Machine Learning Consulting",
+              "description": "Custom ML models for prediction, segmentation, and classification"
+            }
+          }
+        ]
+      },
+      "knowsAbout": [
+        "Business Analytics",
+        "Artificial Intelligence",
+        "Data Engineering",
+        "Machine Learning",
+        "ETL Pipelines",
+        "LangGraph",
+        "Agentic AI",
+        "Custom Dashboards",
+        "Causal Inference",
+        "Predictive Analytics",
+        "Data Visualization",
+        "Data Governance",
+        "Data Management",
+        "Data Quality",
+        "Data Strategy",
+        "Business Intelligence",
+        "Supply Chain Analytics"
+      ],
+      "priceRange": "$$",
+      "openingHours": "Mo-Fr 09:00-17:00",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/CJames1261"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.agenticaiutah.com/#website",
+      "url": "https://www.agenticaiutah.com",
+      "name": "Pantera Claw",
+      "publisher": {
+        "@id": "https://www.agenticaiutah.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Pantera Claw do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pantera Claw is a Salt Lake City AI and data consulting firm. We build production-grade data pipelines, interactive dashboards, agentic AI workflows, machine-learning systems, modern websites and web applications, and SEO and AI-search optimization for small and mid-size businesses. Most engagements run 4\u201312 weeks and ship as production-ready code with documentation and a 30-day stabilization window."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Pantera Claw based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are based in Salt Lake City, Utah. We work in person with Utah clients across the Wasatch Front (Salt Lake, Provo, Ogden) and remote with clients across the United States. Most build work happens remotely so we can move fast; in-person discovery and go-live checkpoints are part of how we work locally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What size companies do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We focus on small and mid-size businesses, typically 10 to 200 employees. Many of our clients are operationalizing data and AI for the first time and don't yet have a dedicated data team. We are intentionally not an enterprise-only firm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do projects typically start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every engagement starts with a free consultation meeting where we walk through your data, your daily workflows, and the decisions you spend the most time on. From there we share a fixed scope, timeline, and price before any commitment. The first paid step is usually a 1\u20132 week discovery sprint that produces a working prototype and a written plan."
+          }
+        }
+      ]
+    }
+  ],
+  "open_graph": {
+    "og:title": "Pantera Claw | AI & Data Consulting",
+    "og:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, custom dashboards, AI workflow automation, and data infrastructure.",
+    "og:url": "https://www.agenticaiutah.com",
+    "og:site_name": "Pantera Claw",
+    "og:locale": "en_US",
+    "og:image": "https://www.agenticaiutah.com/og-image.webp",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Pantera Claw \u2014 AI and data consulting in Salt Lake City",
+    "og:type": "website"
+  },
+  "twitter_card": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Pantera Claw | AI & Data Consulting",
+    "twitter:description": "Salt Lake City data and AI consulting for small and mid-size businesses. Analytics, dashboards, AI automation, and data infrastructure.",
+    "twitter:image": "https://www.agenticaiutah.com/og-image.webp"
+  },
+  "word_count": 1008,
+  "hreflang": []
+}
