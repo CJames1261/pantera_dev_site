@@ -3,156 +3,123 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { List, X, ArrowUpRight } from "@phosphor-icons/react/ssr";
-
-const ease = "cubic-bezier(0.32, 0.72, 0, 1)";
+import { ArrowRight, List, X } from "@phosphor-icons/react/ssr";
 
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Blog", path: "/blog" },
   { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   return (
-    <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[calc(100%-2rem)]">
-        <div
-          className="flex items-center gap-1 rounded-full px-2 py-2 border border-border-light"
-          style={{
-            backgroundColor: "rgba(19, 19, 22, 0.8)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            boxShadow: "var(--shadow-card)",
-          }}
+    <header className="fixed top-0 w-full z-50 bg-[#0A0A0B]/90 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/50">
+      <div className="flex justify-between items-center h-20 w-full px-6 md:px-8">
+        <Link
+          href="/"
+          aria-label="Pantera Claw home"
+          className="group/brand flex items-center gap-3 text-xl font-black tracking-tighter text-white uppercase font-display hover:text-accent transition-colors no-underline"
         >
-          {/* Logo + Brand */}
-          <Link href="/" className="flex items-center gap-2.5 pl-2 pr-1 no-underline">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-border-light flex-shrink-0 bg-surface-light">
-              <img src="/Pantera_Claw_icon.webp" alt="Pantera Claw logomark" width={40} height={40} className="w-full h-full object-cover" />
-            </div>
-            <span className="font-display font-semibold text-text-primary text-sm md:text-base tracking-tight whitespace-nowrap">
-              Pantera Claw
-            </span>
-          </Link>
+          <span className="whitespace-nowrap">
+            Pantera <span className="text-accent">Claw</span>
+          </span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full overflow-hidden border border-white/15 bg-surface-light flex-shrink-0">
+            <img
+              src="/Pantera_Claw_icon.webp"
+              alt=""
+              width={40}
+              height={40}
+              className="w-full h-full object-cover"
+            />
+          </span>
+        </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+        <nav
+          className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1.5 backdrop-blur-xl"
+          aria-label="Primary"
+        >
+          {navLinks.map((link) => {
+            const active = isActive(pathname, link.path);
+            return (
               <Link
                 key={link.path}
                 href={link.path}
-                className={`px-5 py-2.5 rounded-full text-base font-medium no-underline transition-all duration-500 ${
-                  pathname === link.path
-                    ? "text-canvas bg-accent"
-                    : "text-text-secondary hover:text-text-primary"
+                aria-current={active ? "page" : undefined}
+                className={`font-display text-sm tracking-wide transition-all duration-300 px-5 py-2 rounded-full no-underline ${
+                  active
+                    ? "bg-accent text-canvas font-bold"
+                    : "font-medium text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
-                style={{ transitionTimingFunction: ease }}
               >
                 {link.label}
               </Link>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
 
-          {/* Desktop CTA */}
-          <Link
-            href="/contact"
-            className="hidden md:flex items-center gap-2 bg-accent hover:bg-accent-hover text-canvas font-semibold text-base pl-5 pr-1.5 py-1.5 rounded-full no-underline transition-all duration-500 group"
-            style={{ transitionTimingFunction: ease }}
-          >
-            Get in touch
-            <span className="w-7 h-7 rounded-full bg-canvas/20 flex items-center justify-center transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px"
-              style={{ transitionTimingFunction: ease }}
-            >
-              <ArrowUpRight size={14} weight="bold" className="text-canvas" />
-            </span>
-          </Link>
-
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-11 h-11 rounded-full bg-surface-light flex items-center justify-center border-none cursor-pointer relative"
-            aria-label="Toggle menu"
-          >
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{
-                opacity: mobileOpen ? 0 : 1,
-                transform: mobileOpen ? "rotate(-90deg)" : "rotate(0)",
-                transition: `opacity 0.3s ${ease}, transform 0.3s ${ease}`,
-              }}
-            >
-              <List size={20} weight="bold" className="text-text-primary" />
-            </div>
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{
-                opacity: mobileOpen ? 1 : 0,
-                transform: mobileOpen ? "rotate(0)" : "rotate(90deg)",
-                transition: `opacity 0.3s ${ease}, transform 0.3s ${ease}`,
-              }}
-            >
-              <X size={20} weight="bold" className="text-text-primary" />
-            </div>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Overlay */}
-      <div
-        className="fixed inset-0 z-30 md:hidden flex flex-col items-center justify-center gap-6"
-        style={{
-          backgroundColor: "rgba(9, 9, 11, 0.95)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          opacity: mobileOpen ? 1 : 0,
-          pointerEvents: mobileOpen ? "auto" : "none",
-          transition: `opacity 0.4s ${ease}`,
-        }}
-      >
-        {navLinks.map((link, i) => (
-          <div
-            key={link.path}
-            style={{
-              opacity: mobileOpen ? 1 : 0,
-              transform: mobileOpen ? "translateY(0)" : "translateY(30px)",
-              transition: `opacity 0.5s ${ease} ${mobileOpen ? i * 0.08 : 0}s, transform 0.5s ${ease} ${mobileOpen ? i * 0.08 : 0}s`,
-            }}
-          >
-            <Link
-              href={link.path}
-              onClick={() => setMobileOpen(false)}
-              className={`text-3xl font-semibold tracking-tight no-underline transition-colors duration-300 ${
-                pathname === link.path
-                  ? "text-accent"
-                  : "text-text-primary"
-              }`}
-            >
-              {link.label}
-            </Link>
-          </div>
-        ))}
-        <div
-          style={{
-            opacity: mobileOpen ? 1 : 0,
-            transform: mobileOpen ? "translateY(0)" : "translateY(30px)",
-            transition: `opacity 0.5s ${ease} ${mobileOpen ? navLinks.length * 0.08 : 0}s, transform 0.5s ${ease} ${mobileOpen ? navLinks.length * 0.08 : 0}s`,
-          }}
+        <Link
+          href="/contact"
+          className="hidden sm:inline-flex bg-accent text-canvas px-6 py-3 rounded-full font-semibold text-sm items-center gap-2 group/cta active:scale-95 hover:brightness-110 transition-all no-underline"
         >
+          Get in touch
+          <ArrowRight
+            size={16}
+            weight="bold"
+            className="transition-transform group-hover/cta:translate-x-1"
+          />
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden text-white p-2 bg-transparent border-none cursor-pointer"
+          aria-label="Toggle navigation"
+          aria-expanded={mobileOpen}
+        >
+          {mobileOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
+        </button>
+      </div>
+
+      <div
+        className={`md:hidden ${mobileOpen ? "block" : "hidden"} border-t border-white/10 bg-[#0A0A0B]/95 backdrop-blur-xl`}
+      >
+        <nav className="flex flex-col gap-1 px-8 py-6" aria-label="Mobile">
+          {navLinks.map((link) => {
+            const active = isActive(pathname, link.path);
+            return (
+              <Link
+                key={link.path}
+                href={link.path}
+                onClick={() => setMobileOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={`font-display text-base tracking-wide py-3 border-b border-white/5 no-underline ${
+                  active ? "text-accent font-bold" : "text-zinc-300"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 inline-flex items-center gap-2 bg-accent text-canvas font-semibold text-lg px-8 py-3 rounded-full no-underline"
+            className="mt-6 bg-accent text-canvas px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2 no-underline"
           >
             Get in touch
-            <ArrowUpRight size={18} weight="bold" />
+            <ArrowRight size={16} weight="bold" />
           </Link>
-        </div>
+        </nav>
       </div>
-    </>
+    </header>
   );
 }

@@ -129,7 +129,7 @@ const services = [
 
 export default function ServicesBento() {
   return (
-    <section className="relative z-10 py-12 lg:py-24">
+    <section className="relative z-10 py-12">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Section header (sm+ only). On mobile, the new bold "Services that
             drive results" header inside the cards column takes over. */}

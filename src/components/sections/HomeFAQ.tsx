@@ -6,7 +6,7 @@ interface HomeFAQProps {
 
 export default function HomeFAQ({ faqs }: HomeFAQProps) {
   return (
-    <section className="relative z-10 py-12 lg:py-24" aria-labelledby="home-faq">
+    <section className="relative z-10 py-12" aria-labelledby="home-faq">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
         <ScrollReveal>
           <div className="max-w-[680px] mb-10">
