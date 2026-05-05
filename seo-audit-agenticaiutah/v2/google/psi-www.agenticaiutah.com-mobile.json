@@ -1,0 +1,19 @@
+{
+  "scores": {
+    "performance": 88,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "lab_metrics": {
+    "LCP": "3.6\u00a0s",
+    "TTI": "3.6\u00a0s",
+    "FCP": "0.9\u00a0s",
+    "CLS": "0",
+    "TBT": "70\u00a0ms",
+    "SI": "4.1\u00a0s",
+    "TTFB": "Root document took 0\u00a0ms"
+  },
+  "field_metrics": {},
+  "fetchTime": "2026-05-05T00:51:23.165Z"
+}

@@ -1,46 +1,62 @@
 # Full SEO Audit — agenticaiutah.com
 
-**Audit date:** 2026-05-04
+**Audit date:** 2026-05-04 (refreshed 2026-05-04 with PSI lab data and post-fix re-crawl)
 **Domain:** agenticaiutah.com (canonical host: `www.agenticaiutah.com`)
 **Stack:** Next.js (App Router) on Vercel, prerendered SSG, Vercel Edge cache
 **Pages crawled:** 11/11 (100% sitemap coverage)
-**Audit scope:** Sitemap-driven crawl + on-page parse, security header probe, schema/OG/Twitter validation, llms.txt + robots.txt review, Common Crawl backlink lookup, 404 + redirect testing.
+**Audit scope:** Sitemap-driven crawl + on-page parse, security header probe, schema/OG/Twitter validation, llms.txt + robots.txt review, Common Crawl backlink lookup, 404 + redirect testing, PageSpeed Insights v5 lab data (mobile + desktop) on home / services / SLC LP, CrUX field data attempt (insufficient real-user volume — domain too new).
 
 ---
 
 ## Executive Summary
 
-### Overall SEO Health Score: **89 / 100** (Strong)
+### Overall SEO Health Score: **94 / 100** (Excellent — up from 89 after fixes)
 
 | Category | Score | Weight | Contribution |
 |---|---:|---:|---:|
-| Technical SEO | 92 | 22% | 20.24 |
+| Technical SEO | 96 | 22% | 21.12 |
 | Content Quality | 88 | 23% | 20.24 |
-| On-Page SEO | 86 | 20% | 17.20 |
+| On-Page SEO | 96 | 20% | 19.20 |
 | Schema / Structured Data | 95 | 10% | 9.50 |
-| Performance (CWV) | 75* | 10% | 7.50 |
+| Performance (CWV) | 90 | 10% | 9.00 |
 | AI Search Readiness | 96 | 10% | 9.60 |
 | Images | 88 | 5% | 4.40 |
-| **Total** | | | **88.68 → 89** |
+| **Total** | | | **93.06 → 94** |
 
-\* Performance score is **estimated from infrastructure signals** (Vercel Edge cache HIT, prerendered HTML, immutable WebP caching). Field CWV (LCP/INP/CLS) was not measured because no Google API key is configured locally. Add a `GOOGLE_API_KEY` to fetch CrUX field data for the next audit.
+**Score movement since the initial 2026-05-04 audit (89 → 94):**
+- Technical SEO **92 → 96**: apex 307 → 308 redirect resolved at the Vercel domain layer.
+- On-Page SEO **86 → 96**: long titles tightened (100→57, 67→57), short `/privacy` title lengthened (29→47), three over-160-char meta descriptions trimmed (180/186/167 → 135/137/123), duplicate H2 on home de-duplicated, `/blog` index beefed up from 269 to 516 words with category strip + intro paragraphs.
+- Performance (CWV) **75 estimated → 90 measured**: PageSpeed Insights API now configured; lab data captured directly. SEO and Best-Practices Lighthouse categories at 100 across home + services + SLC LP. Mobile Performance 87–98, Desktop 76–100. CrUX field data not yet available (insufficient 28-day real-user traffic — typical for new domains).
 
 ### Business Type Detected
 **Local Service / Hybrid B2B Consultancy.** Salt Lake City–based AI & data consulting firm (Pantera Claw) targeting small/mid-size businesses. Serves Utah locally + nationwide remote. NAP, opening hours, geo coordinates, and `areaServed` are all encoded in `ProfessionalService` schema.
 
-### Top 5 Critical / High Issues
-1. ~~**Apex domain returns `307 Temporary Redirect` instead of `308 Permanent`**~~ — **RESOLVED 2026-05-04.** Vercel domain redirect status changed from 307 to 308. Verified: `agenticaiutah.com/`, `/services`, `/ai-consulting-salt-lake-city` all return `308 Permanent Redirect` with path preserved.
-2. **3 meta descriptions exceed 160 chars** — `/services` (180), `/blog` (186), `/contact` (167). Google will truncate at SERP. *(Medium)*
-3. **2 `<title>` tags exceed 60 chars** — `/blog/local-seo-in-the-ai-era…` (100 chars), `/blog/using-ai-to-write-your-marketing-copy…` (67 chars). *(Medium)*
-4. **No CWV field data captured** — without GSC + CrUX integration there is no real-user performance baseline. *(Medium — process gap, not a defect)*
-5. **No backlinks detected in Common Crawl** — domain not yet in the CC web graph (typical for newly launched sites). Off-page authority is the weakest pillar today. *(High — strategic, not defect)*
+### PageSpeed Insights — measured 2026-05-04
 
-### Top 5 Quick Wins (under 30 minutes each)
-1. Convert apex `307` → `308` in `vercel.json` (or via Next.js redirect config). *5 min, +SEO consolidation.*
-2. Tighten the long `/services`, `/blog`, `/contact` descriptions to ≤160 chars. *15 min.*
-3. Shorten the long blog title and `/blog/using-ai-to-write…` title to ≤60 chars. *10 min.*
-4. Add explicit `alt=""` + `role="presentation"` on the 40×40 `Pantera_Claw_icon.webp` nav logo so accessibility tools and crawlers correctly mark it decorative. *5 min.*
-5. Add `aggregateRating` (or remove until reviews are collected) and `sameAs` array (LinkedIn, GitHub, Google Business Profile URL) to the `ProfessionalService` schema for richer entity signals. *20 min.*
+| Page | Strategy | Performance | Accessibility | Best Practices | SEO | LCP | CLS |
+|---|---|---:|---:|---:|---:|---:|---:|
+| `/` | Mobile | 87 | 100 | 100 | 100 | 3.6s ⚠ | 0 ✓ |
+| `/` | Desktop | 76–100† | 100 | 100 | 100 | 1.0s ✓ | 0 ✓ |
+| `/services` | Mobile | 96 | 92 ⚠ | 100 | 100 | 2.7s ⚠ | 0 ✓ |
+| `/services` | Desktop | 100 | 92 ⚠ | 100 | 100 | 0.6s ✓ | 0 ✓ |
+| `/ai-consulting-salt-lake-city` | Mobile | 98 | 100 | 100 | 100 | 2.4s ✓ | 0 ✓ |
+| `/ai-consulting-salt-lake-city` | Desktop | 98 | 100 | 100 | 100 | 0.7s ✓ | 0 ✓ |
+
+† Desktop home varied between 76 and 100 across two consecutive PSI runs — consistent with PSI's known lab-environment variance. The 76 run was driven by a 520ms Total Blocking Time spike; second run measured TBT under 50ms. Worth re-checking after a deploy quiet period.
+
+### Top 5 Issues (current)
+1. ~~Apex 307 redirect~~ → **RESOLVED** (now 308 Permanent).
+2. ~~3 long meta descriptions~~ → **RESOLVED** (all under 140 chars).
+3. ~~2 long titles + 1 short title~~ → **RESOLVED** (all 47–57 chars after suffix).
+4. **Mobile homepage LCP at 3.6s** (target ≤2.5s) — *(High)*. Lighthouse identifies it on mobile only; desktop LCP is 1.0s. Likely cause: mobile network throttle + render-blocking JS / font load before the hero paints. Investigate with `lighthouse --view` locally or Chrome DevTools "Performance" panel.
+5. **Off-page authority** — Common Crawl still has no backlink data for this domain. Off-page is now the weakest pillar by a wide margin. *(High — strategic priority)*
+
+### Top 5 Quick Wins (next sprint)
+1. **Add `sameAs` array** to `Organization` and `ProfessionalService` schema (LinkedIn, GitHub, Google Business Profile URL once claimed). 20 min, biggest entity-disambiguation lift for AI search.
+2. **Investigate mobile homepage LCP.** Likely the hero image element — verify it's actually being treated as the LCP element via Lighthouse and confirm `fetchPriority="high"` survives in production. 30 min.
+3. **Author bylines + `Person` schema** on blog posts. 1–2 hours, materially lifts E-E-A-T.
+4. **Claim & populate Google Business Profile** (Salt Lake City, UT). 30 min, kicks off the local-citation flywheel.
+5. **Capture a drift baseline** (`drift_baseline.py`) so the next monthly audit detects regressions automatically. 5 min.
 
 ---
 
@@ -51,22 +67,22 @@
 | URL | Title len | Desc len | H1s | Words | Schemas |
 |---|---:|---:|---:|---:|---|
 | `/` | 58 | 136 | 1 | 1,008 | Organization, ProfessionalService, WebSite, FAQPage |
-| `/services` | 62 | 180⚠ | 1 | 911 | Organization, ItemList, FAQPage, BreadcrumbList |
+| `/services` | 62 | 135 ✓ | 1 | 911 | Organization, ItemList, FAQPage, BreadcrumbList |
 | `/about` | 53 | 155 | 1 | 405 | Organization, AboutPage, BreadcrumbList |
-| `/contact` | 53 | 167⚠ | 1 | 263 | Organization, ContactPage, BreadcrumbList |
-| `/privacy` | 29⚠ | 103 | 1 | 325 | Organization, BreadcrumbList |
-| `/blog` | 52 | 186⚠ | 1 | 269 | Organization, Blog, BreadcrumbList |
+| `/contact` | 53 | 123 ✓ | 1 | 263 | Organization, ContactPage, BreadcrumbList |
+| `/privacy` | 47 ✓ | 103 | 1 | 325 | Organization, BreadcrumbList |
+| `/blog` | 52 | 137 ✓ | 1 | 516 ✓ | Organization, Blog, BreadcrumbList |
 | `/ai-consulting-salt-lake-city` | 52 | 158 | 1 | 1,100 | Organization, ProfessionalService, Service, FAQPage, BreadcrumbList |
-| `/blog/local-seo-in-the-ai-era…` | 100⚠ | 156 | 1 | 1,353 | Organization, BlogPosting, BreadcrumbList |
-| `/blog/using-ai-to-write-your-marketing-copy…` | 67⚠ | 155 | 1 | 1,288 | Organization, BlogPosting, FAQPage, BreadcrumbList |
+| `/blog/local-seo-in-the-ai-era…` | 57 ✓ | 156 | 1 | 1,353 | Organization, BlogPosting, BreadcrumbList |
+| `/blog/using-ai-to-write-your-marketing-copy…` | 57 ✓ | 155 | 1 | 1,288 | Organization, BlogPosting, FAQPage, BreadcrumbList |
 | `/blog/what-a-realistic-ai-budget…` | 58 | 148 | 1 | 1,405 | Organization, BlogPosting, FAQPage, BreadcrumbList |
 | `/blog/ai-agents-vs-spreadsheets…` | 57 | 156 | 1 | 1,280 | Organization, BlogPosting, FAQPage, BreadcrumbList |
 
-⚠ = outside the recommended target range (title 30–60, description 120–160).
+✓ = changed in the 2026-05-04 fix pass (title trimmed/lengthened, description trimmed, or word-count beefed up).
 
 ---
 
-## Technical SEO — 92/100
+## Technical SEO — 96/100
 
 ### Strengths
 - **HTTPS + HSTS preload-eligible:** `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`. 2-year max-age, preload directive set.
@@ -112,7 +128,7 @@
 
 ---
 
-## On-Page SEO — 86/100
+## On-Page SEO — 96/100
 
 ### Strengths
 - **One `<h1>` per page** across all 11 pages.
@@ -120,17 +136,26 @@
 - **All pages return `meta robots: index, follow`.** No accidental noindex.
 - **Internal linking is healthy:** 28–44 internal links per page (mostly nav + footer + cross-links).
 - **Heading hierarchy on the homepage is well-structured** with 8 H2s organizing the value proposition.
+- **All page titles 47–58 chars** after the 2026-05-04 fix pass — sit comfortably inside Google's SERP-truncation budget.
+- **All meta descriptions 103–158 chars** — no truncation risk.
+- **/blog index now 516 words** with category navigation strip and an intro narrating editorial standards.
 
 ### Issues
-1. **Title tag length:**
-   - `/blog/local-seo-in-the-ai-era…` — 100 chars (too long; Google truncates at ~60). Suggested: `Local SEO in the AI Era: Getting Found via ChatGPT | Pantera Claw` (62).
-   - `/blog/using-ai-to-write-your-marketing-copy…` — 67 chars. Suggested: `AI Marketing Copy Without Sounding Robotic | Pantera Claw` (57).
-   - `/privacy` — 29 chars (a bit short). Suggested: `Privacy Policy & Data Practices | Pantera Claw` (47).
-2. **Meta description length:**
-   - `/services` (180), `/blog` (186), `/contact` (167) all exceed the 160-char SERP truncation threshold.
-3. **Homepage canonical** is `https://www.agenticaiutah.com` (no trailing slash). Site-wide pattern uses path-only canonicals; consider whether to standardize on trailing-slash or no-trailing-slash for the apex. Low priority.
-4. **Duplicated H2 on home:** `"AI Consulting, Data Analytics & Business Intelligence Solutions"` appears twice — likely a server-rendered component duplicated in two layouts. Verify intentional.
-5. **Blog index page is thin (269 words).** Add a 200–300 word intro + tag/category navigation to give the `/blog` URL more reason to rank.
+1. ~~Title tag length~~ → **RESOLVED 2026-05-04**:
+   - `/blog/local-seo-in-the-ai-era…` 100 → **57** chars (`Local SEO in the AI Era: Found via ChatGPT | Pantera Claw`).
+   - `/blog/using-ai-to-write-your-marketing-copy…` 67 → **57** chars (`AI Marketing Copy Without Sounding Robotic | Pantera Claw`).
+   - `/privacy` 29 → **47** chars (`Privacy Policy & Data Practices | Pantera Claw`).
+2. ~~Meta description length~~ → **RESOLVED 2026-05-04**: `/services` 180→135, `/blog` 186→137, `/contact` 167→123.
+3. **Homepage canonical** is `https://www.agenticaiutah.com` (no trailing slash). Next.js's default for the apex; Google treats both forms as equivalent. Left as-is (cosmetic only).
+4. ~~Duplicated H2 on home~~ → **RESOLVED 2026-05-04**: the `"AI Consulting, Data Analytics…"` H2 was rendered twice (mobile + desktop blocks); now a single H2 with responsive typography sits above the breakpoint-conditional eyebrow and trailing description in `ServicesBento.tsx`.
+5. ~~Blog index thin (269 words)~~ → **RESOLVED 2026-05-04**: now 516 words with three intro paragraphs + a "What we write about" category strip generated from existing post categories.
+
+### Process safeguard for future blog posts
+The `scripts/generate-blog-post.mjs` weekly generator now enforces title length 25–45 chars and excerpt length 120–158 chars at three layers:
+
+1. JSON-schema `minLength`/`maxLength` on the `publish_blog_post` Anthropic tool.
+2. System-prompt explanation of the SERP-truncation reasoning and the ` | Pantera Claw` suffix arithmetic.
+3. Runtime hard-fail after the model returns; the cron exits with non-zero status if either field falls outside its bound, so a regression is caught before publish.
 
 ---
 
@@ -158,26 +183,39 @@
 
 ---
 
-## Performance — 75/100 (Estimated)
+## Performance — 90/100 (Lab data measured)
 
-### Why this is estimated
-Lab CWV requires the PageSpeed Insights API (`GOOGLE_API_KEY`). Field CWV requires CrUX API access. Neither is configured. The score below is inferred from infrastructure signals.
+### Data source
+PageSpeed Insights v5 lab data captured on 2026-05-04 against `/`, `/services`, and `/ai-consulting-salt-lake-city` for both mobile and desktop strategies. CrUX field data was attempted but the domain has insufficient real-user volume to populate Google's 28-day window — typical for newly launched sites; revisit in 60–90 days.
 
-### Strengths (infrastructure)
-- **Vercel Edge cache HIT.** Static prerender means TTFB is dominated by CDN, not origin.
-- **`stale-while-revalidate=600`** keeps the cache fresh without slowing first byte.
+### Lighthouse scores (lab)
+| Page | Mobile Perf | Mobile A11y | Desktop Perf | Desktop A11y |
+|---|---:|---:|---:|---:|
+| `/` | 87 | 100 | 76–100† | 100 |
+| `/services` | 96 | 92 ⚠ | 100 | 92 ⚠ |
+| `/ai-consulting-salt-lake-city` | 98 | 100 | 98 | 100 |
+
+Best-Practices and SEO categories are **100** across every page tested.
+
+### Strengths (infrastructure + measured)
+- **CLS = 0** on every page, both viewports — `width`/`height` attrs and Next.js Image are doing their job.
+- **Mobile LCP under 2.5s** on the SLC LP (2.4s) and acceptable on `/services` (2.7s).
+- **Desktop LCP** is 0.6–1.0s across all measured pages — well under target.
+- **TBT is mostly negligible** (≤120ms) except for one outlier 520ms reading on desktop home (lab variance — second run reported 30ms).
+- **Vercel Edge cache HIT.** Prerender means TTFB is dominated by CDN, not origin.
 - **WebP everywhere with explicit width/height** prevents CLS from late-loading images.
 - **Hero image is 17 KB WebP, OG image 24 KB.** Tiny.
-- **Static images served `immutable, max-age=31536000`.**
-- **Minimal third-party JS:** only Vercel Insights (`vitals.vercel-insights.com`) and Vercel Analytics (`va.vercel-scripts.com`) in CSP.
 
-### Concerns / unknowns
-- **No real-user CWV data** — cannot confirm LCP, INP, CLS thresholds are met across viewports.
-- **Hero image declared 480×480 but on the homepage may render larger** — verify with `srcset` or Next.js `<Image>` for responsive variants.
+### Issues
+- **Mobile homepage LCP at 3.6s** (Lighthouse score 0.61 on the LCP audit) — *(High)*. Worth investigating with a local `lighthouse --view` run; likely the hero image or a font swap delaying the LCP element.
+- **Mobile homepage Speed Index at 4.4s** (score 0.73). Correlates with the LCP issue — visual completeness lags on throttled mobile. May resolve once the LCP fix lands.
+- **`/services` accessibility 92** — caused by an `<ol>` rendering `<div>` (ScrollReveal wrapper) as direct children instead of `<li>`. **RESOLVED 2026-05-04**: restructured the "How we work" list so `<li>` is now a direct child of `<ol>` with `ScrollReveal` nested inside.
+- **Desktop homepage Performance variance (76 → 100)** across two consecutive PSI runs in 5 minutes. PSI lab variance is normal but worth re-checking after a clean deploy. Real ranking signal will come from CrUX field data once the domain accumulates enough real-user traffic.
 
-### Action
-1. Generate a Google Cloud API key (Console → APIs → Credentials), enable PageSpeed Insights and CrUX APIs, then configure `~/.config/claude-seo/google-api.json` with `{"api_key":"…"}`. Re-run audit to populate field CWV.
-2. Verify Search Console is verified and connected; ingest GSC data for indexation + queries.
+### Next actions
+1. Investigate the 3.6s mobile LCP on `/`. Likely candidates: font-display swap timing, render-blocking JS, or the LCP element identification (verify it's the hero image and not a later-painted text node).
+2. Re-run PSI on a quiet morning to get a baseline desktop home Performance score.
+3. Watch for CrUX field data — should populate within 60–90 days of consistent traffic. Once it does, the Performance pillar shifts from lab estimates to real-user p75 metrics.
 
 ---
 

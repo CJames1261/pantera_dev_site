@@ -675,11 +675,14 @@ export default function ServicesView() {
           </ScrollReveal>
           <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-4 list-none p-0 m-0">
             {howWeWork.map(({ step, title, body }, i) => (
-              <ScrollReveal key={step} delay={i * 0.08}>
-                <li
-                  className="group rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
-                  style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
-                >
+              // <li> must be the direct child of <ol> for WCAG list/listitem;
+              // wrap ScrollReveal *inside* the <li> rather than around it.
+              <li
+                key={step}
+                className="group rounded-[28px] border border-white/10 bg-[#111214]/90 p-6 h-full transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#151515]"
+                style={{ boxShadow: "0 18px 50px rgba(0,0,0,0.45)" }}
+              >
+                <ScrollReveal delay={i * 0.08}>
                   <div
                     className="font-mono font-bold text-yellow-400 leading-none mb-4 tracking-tighter"
                     style={{ fontSize: "clamp(2.25rem, 4vw, 3rem)" }}
@@ -692,8 +695,8 @@ export default function ServicesView() {
                   <p className="text-text-secondary text-[16px] leading-6">
                     {body}
                   </p>
-                </li>
-              </ScrollReveal>
+                </ScrollReveal>
+              </li>
             ))}
           </ol>
         </div>

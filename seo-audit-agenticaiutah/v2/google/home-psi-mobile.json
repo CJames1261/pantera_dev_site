@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\trivi\Documents\Github_Projects\claude-seo\scripts\pagespeed_check.py", line 649, in <module>
+    main()
+  File "C:\Users\trivi\Documents\Github_Projects\claude-seo\scripts\pagespeed_check.py", line 522, in main
+    result["psi"][strat] = run_pagespeed(args.url, strategy=strat, api_key=api_key)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trivi\Documents\Github_Projects\claude-seo\scripts\pagespeed_check.py", line 289, in run_pagespeed
+    result["audit_details"][audit_id] = {
+    ~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'audit_details'

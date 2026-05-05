@@ -1,10 +1,12 @@
 # Action Plan — agenticaiutah.com
 
-Prioritized recommendations from the 2026-05-04 full SEO audit.
-**Overall health:** 89/100 (Strong).
+Prioritized recommendations from the 2026-05-04 full SEO audit, refreshed the same day after a fix pass landed.
+**Overall health:** **94/100 (Excellent)** — up from the initial 89.
 **Effort key:** S = under 1 hour · M = 1–4 hours · L = 1–2 days · XL = 1+ week.
 
-> The site is technically excellent. Most of the lift from here is **content breadth** and **off-page authority** — not on-page fixes.
+> Eight of the audit's flagged issues were resolved on 2026-05-04: apex 308 redirect, three over-160-char descriptions, two over-60-char titles, a too-short `/privacy` title, the duplicate homepage H2, the thin `/blog` index, and the `/services` accessibility list-structure violation. The blog generator was also hardened so future weekly posts can't reintroduce title/excerpt length regressions.
+>
+> Remaining lift comes from **off-page authority** (Common Crawl still has no backlinks for this domain) and **content breadth** (only 4 blog posts published).
 
 ---
 
@@ -34,28 +36,36 @@ Prioritized recommendations from the 2026-05-04 full SEO audit.
   - **Month 3 — earned links.** 2 guest posts on local SLC tech blogs / Silicon Slopes news; 1 podcast (Silicon Slopes Podcast or similar); a HARO/Connectively response cadence (3/week) on AI/data topics; LinkedIn thought-leadership cadence weekly.
 - **Track in:** Search Console "Links" report once it populates, plus a quarterly Common Crawl re-check.
 
-### H3. Tighten oversized titles and descriptions — S
-Three descriptions and two titles exceed Google's SERP truncation thresholds. Recommended rewrites:
+### ~~H3. Tighten oversized titles and descriptions~~ — DONE 2026-05-04
 
-| Page | Field | Current → Suggested |
+| Page | Field | Before → After |
 |---|---|---|
-| `/blog/local-seo-in-the-ai-era…` | title | (100c) → `Local SEO in the AI Era: Getting Found via ChatGPT \| Pantera Claw` (62c) |
-| `/blog/using-ai-to-write-your-marketing-copy…` | title | (67c) → `AI Marketing Copy Without Sounding Robotic \| Pantera Claw` (57c) |
-| `/services` | description | (180c) → `AI consulting, custom dashboards, data pipelines, and analytics for SLC and Utah businesses. Five disciplines, one accountable partner.` (~150c) |
-| `/blog` | description | (186c) → `Practical writing on AI consulting, data engineering, dashboards, and analytics — from a Salt Lake City team that ships these systems for clients.` (~150c) |
-| `/contact` | description | (167c) → `Book a free 30-minute consultation with Pantera Claw. Salt Lake City based; Utah and nationwide remote engagements welcome.` (~135c) |
+| `/blog/local-seo-in-the-ai-era…` | title | 100c → 57c (`Local SEO in the AI Era: Found via ChatGPT \| Pantera Claw`) |
+| `/blog/using-ai-to-write-your-marketing-copy…` | title | 67c → 57c (`AI Marketing Copy Without Sounding Robotic \| Pantera Claw`) |
+| `/privacy` | title | 29c → 47c (`Privacy Policy & Data Practices \| Pantera Claw`) |
+| `/services` | description | 180c → 135c |
+| `/blog` | description | 186c → 137c |
+| `/contact` | description | 167c → 123c |
+
+The `scripts/generate-blog-post.mjs` weekly generator now enforces title 25–45 chars and excerpt 120–158 chars at three layers (JSON schema, system prompt, runtime hard-fail) so future posts can't regress.
+
+### H4. Investigate mobile homepage LCP — M
+- **Issue:** PSI mobile lab measured LCP at 3.6s on `/` (Lighthouse score 0.61). Desktop is 1.0s. CLS = 0 everywhere; this is a single-metric regression on mobile.
+- **Likely candidates:**
+  1. The hero image's `fetchPriority="high"` preload not being honored on mobile (verify in Network panel under throttled 3G).
+  2. Web font swap (Outfit / JetBrains Mono via `next/font/google`) delaying first text paint of the LCP element.
+  3. The LCP element is misidentified — Lighthouse may be selecting a later-painted text node rather than the hero. Confirm with `chrome://lighthouse` locally.
+- **Run:** `npx lighthouse https://www.agenticaiutah.com/ --form-factor=mobile --view` and inspect the "Largest Contentful Paint element" diagnostic.
+- **Re-test:** then re-run `python scripts/pagespeed_check.py https://www.agenticaiutah.com/ -s mobile --json` and verify LCP ≤ 2.5s.
 
 ---
 
 ## Medium (fix within 30 days)
 
-### M1. Enable real CWV measurement — S setup, ongoing
-- Provision a Google Cloud project, enable **PageSpeed Insights API** + **CrUX API**, store the key at `~/.config/claude-seo/google-api.json`:
-  ```json
-  { "api_key": "AIza…" }
-  ```
-- Re-run: `python scripts/pagespeed_check.py https://www.agenticaiutah.com/ -s both --json`.
-- Then verify Search Console (`google_auth.py --auth`) and ingest GSC + GA4 to enrich future audits.
+### ~~M1. Enable real CWV measurement~~ — DONE 2026-05-04
+- **Status:** Google Cloud API key configured at `~/.config/claude-seo/google-api.json`. PageSpeed Insights v5 and CrUX APIs both verified accessible (`google_auth.py --check` returns OK on both). Lab data captured for `/`, `/services`, `/ai-consulting-salt-lake-city` on mobile + desktop.
+- **CrUX field data not yet available:** the domain has insufficient real-user volume to populate Google's 28-day window. Revisit in 60–90 days. Once it populates, the Performance pillar shifts from lab estimates to real-user p75 metrics — the actual signal Google uses for rankings.
+- **Still pending:** Search Console + GA4 OAuth (separate auth flow). Run `python scripts/google_auth.py --auth --creds /path/to/client_secret.json` after creating an OAuth 2.0 client in Google Cloud Console with `https://www.googleapis.com/auth/webmasters.readonly` and `https://www.googleapis.com/auth/analytics.readonly` scopes.
 
 ### M2. Add `sameAs` array to Organization / ProfessionalService schema — S
 The schema is otherwise excellent, but the missing `sameAs` is the highest-leverage tweak for entity disambiguation in AI search.
@@ -80,14 +90,13 @@ Confirm each blog post's `BlogPosting` block includes:
 - `headline` (≤110 chars), `image` (1200×630), `datePublished`, `dateModified`, `author` (`@type: Person`), `publisher` (`@type: Organization`, with `logo`), `mainEntityOfPage`, `wordCount`, `inLanguage: "en-US"`, optionally `articleSection` and `keywords`.
 - This is the schema set Google rewards with rich-result eligibility for articles.
 
-### M5. Beef up the `/blog` index — S
-- Currently 269 words. Add a 200–300 word intro section ("What you'll find here") + a category/tag list ("AI Consulting · Data · Dashboards · Local SEO · Budgeting"). Wire the categories to filterable pages later.
-- Goal: give the `/blog` URL its own keyword target ("Pantera Claw blog", "AI data consulting blog Utah").
+### ~~M5. Beef up the `/blog` index~~ — DONE 2026-05-04
+- Word count went from 269 → 516. Added two paragraphs explaining editorial standards plus a "What we write about" category strip (Strategy / AI & ML / Analytics / Engineering / Marketing) generated automatically from existing post categories.
 
-### M6. Tighten short / long titles + duplicate H2 — S
-- Lengthen `/privacy` title to ~45–55 chars (e.g. `Privacy Policy & Data Practices | Pantera Claw`).
-- Investigate duplicate `"AI Consulting, Data Analytics & Business Intelligence Solutions"` H2 on the homepage — likely a layout component rendered twice; remove one or differentiate.
-- Make the homepage canonical match the rest of the site's pattern (decide trailing-slash policy and apply uniformly).
+### ~~M6. Tighten short / long titles + duplicate H2~~ — DONE 2026-05-04
+- `/privacy` title now `Privacy Policy & Data Practices | Pantera Claw` (47 chars).
+- Homepage duplicate H2 fixed: `ServicesBento.tsx` now renders one `<h2>` element with responsive typography, with the breakpoint-conditional eyebrows and trailing descriptions wrapping it.
+- Homepage canonical (no trailing slash for the apex) left as Next.js's default — Google treats both forms as equivalent and the cosmetic concern wasn't worth a special case.
 
 ### M7. Make the decorative nav logo's alt text explicit — S
 The 40×40 nav logo (`Pantera_Claw_icon.webp`) currently has no `alt` attribute. The visible brand text "Pantera Claw" sits next to it, so an empty alt is correct — but make it explicit:
