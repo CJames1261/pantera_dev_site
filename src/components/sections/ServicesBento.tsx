@@ -131,42 +131,39 @@ export default function ServicesBento() {
   return (
     <section className="relative z-10 py-12">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
-        {/* Section header (sm+ only). On mobile, the new bold "Services that
-            drive results" header inside the cards column takes over. */}
+        {/* Section header. Single H2 element shared across breakpoints; the
+            "What we do" eyebrow and trailing description vary visually
+            between mobile and desktop but the heading text is rendered once
+            in the DOM so crawlers and screen readers see a single H2. */}
         <ScrollReveal>
-          <div className="hidden sm:block mb-12">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="mb-8 sm:mb-12">
+            {/* Desktop eyebrow */}
+            <div className="hidden sm:flex items-center gap-3 mb-6">
               <div className="w-1 h-6 bg-yellow-400" />
               <span className="text-sm uppercase tracking-widest text-yellow-400">
                 What we do
               </span>
             </div>
+            {/* Mobile eyebrow */}
+            <div className="sm:hidden">
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-yellow-400">
+                What We Do
+              </p>
+              <div className="mb-5 h-[3px] w-12 rounded-full bg-yellow-400" />
+            </div>
+
             <h2
-              className="font-display font-bold tracking-tighter text-text-primary mb-4"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+              className="font-display font-black sm:font-bold leading-[1] sm:leading-tight tracking-[-0.035em] sm:tracking-tighter text-text-primary mb-4"
+              style={{ fontSize: "clamp(2.125rem, 4vw, 2.75rem)" }}
             >
-              AI Consulting, Data Analytics & Business Intelligence Solutions
+              AI Consulting, Data Analytics &amp; Business Intelligence Solutions
             </h2>
-            <p className="text-text-secondary text-lg max-w-[560px] leading-relaxed">
+
+            <p className="hidden sm:block text-text-secondary text-lg max-w-[560px] leading-relaxed">
               We provide web development, data analytics, and AI services for
               growing businesses — delivered through five integrated disciplines.
             </p>
-          </div>
-        </ScrollReveal>
-
-        {/* MOBILE-ONLY top header — sits above the conversation block on
-            mobile so the user reads the bold "Services That Drive Results"
-            promise first, before the discovery conversation framing. */}
-        <ScrollReveal>
-          <div className="sm:hidden mb-8">
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-yellow-400">
-              What We Do
-            </p>
-            <div className="mb-5 h-[3px] w-12 rounded-full bg-yellow-400" />
-            <h2 className="font-display text-[34px] font-black leading-[1] tracking-[-0.035em] text-text-primary">
-              AI Consulting, Data Analytics &amp; Business Intelligence Solutions
-            </h2>
-            <p className="mt-5 text-base leading-7 text-text-secondary">
+            <p className="sm:hidden mt-5 text-base leading-7 text-text-secondary">
               We provide web development, data analytics, and AI services for
               growing businesses — delivered through five integrated
               disciplines.

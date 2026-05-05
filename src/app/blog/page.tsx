@@ -5,12 +5,29 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { featuredPost, posts, allPosts } from "@/lib/posts";
 
+const CATEGORY_BLURBS: Record<string, string> = {
+  "Strategy": "Decisions about where to invest, what to build, and what to skip.",
+  "AI & ML": "Agentic AI, RAG pipelines, model selection, and what actually ships.",
+  "Analytics": "Business intelligence, metrics that matter, and reading the data.",
+  "Engineering": "Data infrastructure, pipelines, and the unglamorous plumbing.",
+  "Marketing": "AI Overviews, local SEO, content for AI search, and brand voice.",
+};
+
+const categoryCounts = allPosts.reduce<Record<string, number>>((acc, p) => {
+  acc[p.category] = (acc[p.category] ?? 0) + 1;
+  return acc;
+}, {});
+
+const categoriesOrdered = Object.keys(CATEGORY_BLURBS)
+  .filter((c) => (categoryCounts[c] ?? 0) > 0)
+  .map((c) => ({ name: c, blurb: CATEGORY_BLURBS[c], count: categoryCounts[c] }));
+
 const SITE_URL = "https://www.agenticaiutah.com";
 
 export const metadata: Metadata = {
   title: { absolute: "Pantera Claw Blog | Data Engineering, AI & Analytics" },
   description:
-    "Practical guides on AI, data analytics, and business intelligence written for small and mid-size business owners and the engineers who support them. Salt Lake City based, weekly cadence.",
+    "Practical writing on AI, data, dashboards, and analytics for small and mid-size businesses. Salt Lake City based, new posts every Monday.",
   alternates: { canonical: "/blog" },
 };
 
@@ -89,6 +106,24 @@ export default function Blog() {
               on discovery calls — what AI costs, when an agent beats a
               spreadsheet, how to brief AI tools so the output sounds like you.
             </p>
+            <p className="text-text-secondary text-base leading-relaxed max-w-[640px] mb-3">
+              We write from inside the work. The team here designs database
+              schemas, ships dashboards, and stands up agentic AI workflows
+              for clients across the Wasatch Front and the rest of the United
+              States. Each post pulls from a real engagement — anonymized
+              where it needs to be, but never invented. If a recommendation
+              sounds easy here, it&rsquo;s because we already learned the hard
+              version on someone&rsquo;s production system.
+            </p>
+            <p className="text-text-secondary text-base leading-relaxed max-w-[640px] mb-3">
+              You will not find listicles, AI-generated filler, or rebadged
+              vendor whitepapers. Posts run between 1,000 and 1,500 words,
+              include at least one externally cited source, and end with a
+              practical next step you could try this week. We publish weekly,
+              human-edit every draft before it goes live, and link each post
+              back to the service most relevant to the topic so you can dig
+              in further if it lands.
+            </p>
             <p className="text-text-tertiary text-sm leading-relaxed max-w-[640px]">
               {allPosts.length} posts published so far. New writing lands
               roughly every Monday, drafted on real client problems and
@@ -96,6 +131,46 @@ export default function Blog() {
             </p>
           </div>
         </ScrollReveal>
+
+        {categoriesOrdered.length > 0 && (
+          <ScrollReveal>
+            <section
+              aria-labelledby="blog-categories"
+              className="mb-12 lg:mb-16"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-1 h-5 bg-yellow-400" />
+                <h2
+                  id="blog-categories"
+                  className="text-sm uppercase tracking-widest text-yellow-400 font-mono"
+                >
+                  What we write about
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {categoriesOrdered.map((c) => (
+                  <div
+                    key={c.name}
+                    className="rounded-2xl border border-white/10 bg-[#111214]/60 p-4 lg:p-5"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs text-yellow-400 bg-yellow-400/10 border border-yellow-400/20 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5">
+                        <Tag size={11} weight="bold" />
+                        {c.name}
+                      </span>
+                      <span className="font-mono text-[11px] text-text-tertiary">
+                        {c.count} {c.count === 1 ? "post" : "posts"}
+                      </span>
+                    </div>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {c.blurb}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </ScrollReveal>
+        )}
 
         {!featuredPost && (
           <ScrollReveal>

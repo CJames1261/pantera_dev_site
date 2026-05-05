@@ -7,7 +7,7 @@ const SITE_URL = "https://www.agenticaiutah.com";
 export const metadata: Metadata = {
   title: { absolute: "AI & Data Consulting Services in Salt Lake City | Pantera Claw" },
   description:
-    "Five services from a Salt Lake City consultancy: web development, database architecture, dashboard engineering, agentic AI workflows, and advanced analytics for growing businesses.",
+    "AI consulting, custom dashboards, data pipelines, and analytics for SLC and Utah businesses. Five disciplines, one accountable partner.",
   alternates: { canonical: "/services" },
 };
 

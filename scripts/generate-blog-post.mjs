@@ -111,6 +111,11 @@ CRITICAL FORMATTING RULES:
 - Do NOT include the article title as an h1; the page renders the title separately.
 - Never use em dashes (—) or en dashes (–) either. Only commas, semicolons, periods, or rewrites.
 
+SEO METADATA RULES (HARD LIMITS):
+- The page <title> is rendered as "<your title> | Pantera Claw". The " | Pantera Claw" suffix adds 15 characters, so YOUR title MUST be 25 to 45 characters. Titles longer than 45 characters get truncated by Google in SERPs and the post will fail validation.
+- The excerpt is rendered as the meta description AND the blog-card summary. Keep it BETWEEN 130 and 158 characters total. Anything over 160 characters gets truncated by Google. Anything under 120 characters wastes SERP real estate.
+- Do not pad. Do not pre-trim and append "…". Just write a sentence that lands naturally inside the limits.
+
 SEO GUIDANCE:
 - Priority keywords to weave in where natural: ${targetKeywords}.
 - Supporting keywords: ${recommendedKeywords}.
@@ -133,6 +138,15 @@ the title separately. Stay within the target word count.`
 // Tool-use forces the model to return structured JSON validated by the
 // API itself. This avoids the JSON.parse failures we used to see when
 // the model embedded raw double-quoted HTML attributes inside a string.
+// Hard SEO limits. The rendered <title> is "<title> | Pantera Claw" (+15
+// chars suffix), so a 45-char title yields a 60-char SERP title. The excerpt
+// doubles as meta description, so the upper bound is 160 to avoid Google's
+// truncation; the lower bound prevents wasted SERP real estate.
+const MAX_TITLE_LEN = 45
+const MIN_TITLE_LEN = 25
+const MAX_EXCERPT_LEN = 158
+const MIN_EXCERPT_LEN = 120
+
 const blogTool = {
   name: "publish_blog_post",
   description:
@@ -144,12 +158,16 @@ const blogTool = {
     properties: {
       title: {
         type: "string",
-        description: "Compelling article title, under 90 characters, no dashes.",
+        minLength: MIN_TITLE_LEN,
+        maxLength: MAX_TITLE_LEN,
+        description: `Compelling article title, ${MIN_TITLE_LEN} to ${MAX_TITLE_LEN} characters, no dashes, no trailing punctuation. The page <title> is rendered as "<your title> | Pantera Claw", so titles over ${MAX_TITLE_LEN} characters get truncated in Google SERPs.`,
       },
       excerpt: {
         type: "string",
+        minLength: MIN_EXCERPT_LEN,
+        maxLength: MAX_EXCERPT_LEN,
         description:
-          "One to two sentences, under 220 characters, no dashes. Summarizes the post for the blog index card.",
+          `One to two sentences, ${MIN_EXCERPT_LEN} to ${MAX_EXCERPT_LEN} characters, no dashes. Doubles as the meta description and the blog index card summary, so it must read as a complete thought (no trailing ellipsis).`,
       },
       category: {
         type: "string",
@@ -235,6 +253,27 @@ function stripDashes(str) {
 parsed.title = stripDashes(parsed.title)
 parsed.excerpt = stripDashes(parsed.excerpt)
 parsed.bodyHtml = stripDashes(parsed.bodyHtml)
+
+// Hard fail on SEO limit violations so the cron loudly reports a regression
+// instead of silently shipping a post Google will truncate. Tighter than
+// the JSON schema so we catch dash-stripping that nudged length past max.
+const seoErrors = []
+if (parsed.title.length < MIN_TITLE_LEN || parsed.title.length > MAX_TITLE_LEN) {
+  seoErrors.push(
+    `Title is ${parsed.title.length} chars; required ${MIN_TITLE_LEN}-${MAX_TITLE_LEN}. Title: "${parsed.title}"`,
+  )
+}
+if (parsed.excerpt.length < MIN_EXCERPT_LEN || parsed.excerpt.length > MAX_EXCERPT_LEN) {
+  seoErrors.push(
+    `Excerpt is ${parsed.excerpt.length} chars; required ${MIN_EXCERPT_LEN}-${MAX_EXCERPT_LEN}. Excerpt: "${parsed.excerpt}"`,
+  )
+}
+if (seoErrors.length > 0) {
+  console.error("✗ SEO length validation failed:")
+  for (const e of seoErrors) console.error(`  - ${e}`)
+  console.error("Re-run the generator; the model occasionally ignores tool-schema length bounds.")
+  process.exit(1)
+}
 
 const now = new Date()
 const isoDate = now.toISOString().slice(0, 10)

@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 const SITE_URL = "https://www.agenticaiutah.com";
 
 export const metadata: Metadata = {
-  title: { absolute: "Privacy Policy | Pantera Claw" },
+  title: { absolute: "Privacy Policy & Data Practices | Pantera Claw" },
   description:
     "How Pantera Claw collects, uses, and protects information from website visitors and consulting clients.",
   alternates: { canonical: "/privacy" },
