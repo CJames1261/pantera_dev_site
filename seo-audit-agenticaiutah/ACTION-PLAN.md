@@ -16,25 +16,15 @@ Prioritized recommendations from the 2026-05-04 full SEO audit.
 
 ## High (fix within 2 weeks)
 
-### H1. Make the apex → www redirect permanent (308 instead of 307) — S
-- **Issue:** `https://agenticaiutah.com/` returns `307 Temporary Redirect` to `https://www.agenticaiutah.com/`. Search engines treat 307 as a hint, not a canonical move, so link equity from anyone linking to the apex may not consolidate fully on `www`.
-- **Fix:** in `vercel.json` (or `next.config.ts`), declare a permanent redirect:
-  ```json
-  // vercel.json
-  {
-    "redirects": [
-      { "source": "/(.*)", "has": [{ "type": "host", "value": "agenticaiutah.com" }],
-        "destination": "https://www.agenticaiutah.com/$1", "permanent": true }
-    ]
-  }
+### ~~H1. Make the apex → www redirect permanent (308 instead of 307)~~ — DONE 2026-05-04
+- **Status:** Resolved at the Vercel dashboard layer (Settings → Domains → `agenticaiutah.com` → "Redirect to Another Domain" status changed from `307` to `308 Permanent Redirect`).
+- **Verified:** all three sample URLs return `HTTP/1.1 308 Permanent Redirect` with the path preserved:
   ```
-  Or in `next.config.ts`:
-  ```ts
-  redirects: async () => [{ source: '/:path*',
-    has: [{ type: 'host', value: 'agenticaiutah.com' }],
-    destination: 'https://www.agenticaiutah.com/:path*', permanent: true }]
+  curl -sI https://agenticaiutah.com/                            → 308 → /
+  curl -sI https://agenticaiutah.com/services                    → 308 → /services
+  curl -sI https://agenticaiutah.com/ai-consulting-salt-lake-city → 308 → /ai-consulting-salt-lake-city
   ```
-- **Verify:** `curl -sI https://agenticaiutah.com/` should return `308`.
+- **Note:** the existing `next.config.ts` apex→www rule (`permanent: true`) is now redundant because the redirect runs at the edge before reaching the app. Safe to leave as a fallback or remove on next refactor.
 
 ### H2. Build off-page authority — XL (90-day workstream)
 - **Issue:** domain not yet in Common Crawl web graph; no DA/PA signals. This is the single biggest growth lever.

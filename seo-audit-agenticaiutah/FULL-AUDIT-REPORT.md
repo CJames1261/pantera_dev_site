@@ -29,7 +29,7 @@
 **Local Service / Hybrid B2B Consultancy.** Salt Lake City–based AI & data consulting firm (Pantera Claw) targeting small/mid-size businesses. Serves Utah locally + nationwide remote. NAP, opening hours, geo coordinates, and `areaServed` are all encoded in `ProfessionalService` schema.
 
 ### Top 5 Critical / High Issues
-1. **Apex domain returns `307 Temporary Redirect` instead of `308 Permanent`** — `https://agenticaiutah.com/` → `https://www.agenticaiutah.com/`. Search engines treat 307 as non-canonical and may not consolidate signals fully. *(High)*
+1. ~~**Apex domain returns `307 Temporary Redirect` instead of `308 Permanent`**~~ — **RESOLVED 2026-05-04.** Vercel domain redirect status changed from 307 to 308. Verified: `agenticaiutah.com/`, `/services`, `/ai-consulting-salt-lake-city` all return `308 Permanent Redirect` with path preserved.
 2. **3 meta descriptions exceed 160 chars** — `/services` (180), `/blog` (186), `/contact` (167). Google will truncate at SERP. *(Medium)*
 3. **2 `<title>` tags exceed 60 chars** — `/blog/local-seo-in-the-ai-era…` (100 chars), `/blog/using-ai-to-write-your-marketing-copy…` (67 chars). *(Medium)*
 4. **No CWV field data captured** — without GSC + CrUX integration there is no real-user performance baseline. *(Medium — process gap, not a defect)*
@@ -85,7 +85,7 @@
 - **Static asset caching:** WebP images served with `Cache-Control: public, max-age=31536000, immutable`.
 
 ### Issues
-- **Apex (`agenticaiutah.com`) → `www.` redirect uses `307 Temporary` instead of `308 Permanent`.** This is an SEO consolidation flag — Google may treat the redirect as a hint rather than a canonical move. Fix in `vercel.json` or `next.config.ts`.
+- ~~**Apex (`agenticaiutah.com`) → `www.` redirect uses `307 Temporary` instead of `308 Permanent`.**~~ **RESOLVED 2026-05-04** by switching the Vercel domain redirect status from 307 to 308 in **Settings → Domains**. Verified: `curl -sI https://agenticaiutah.com/` returns `308 Permanent Redirect` (path preserved on `/services`, `/ai-consulting-salt-lake-city`, etc.).
 - **CSP allows `'unsafe-inline'` and `'unsafe-eval'` in `script-src`.** Required by Next.js's runtime, but worth tracking — SRI + nonce-based CSP is the long-term goal. Not an SEO blocker; security note only.
 - **Homepage canonical omits the trailing slash** (`https://www.agenticaiutah.com` vs the rest of the site's pattern). Cosmetic; Google treats them as equivalent for the apex.
 
