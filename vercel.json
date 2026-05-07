@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendat",
+      "destination": "https://www.agenticaiutah.com/blog/local-seo-in-the-ai-era-getting-found-when-customers-ask-chatgpt-for-recommendations",
+      "statusCode": 308
+    },
+    {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "agenticaiutah.com" }],
       "destination": "https://www.agenticaiutah.com/$1",

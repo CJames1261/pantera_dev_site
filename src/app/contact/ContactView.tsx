@@ -458,28 +458,28 @@ export default function ContactView() {
             </div>
           </div>
 
-          {/* Service Area Card — replaces an externally hosted skyline image
-              that depended on a Google CDN URL we don't own. */}
-          <div
-            className="aspect-video w-full border border-white/10 overflow-hidden rounded-lg flex items-center justify-center relative"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 20%, rgba(250,204,21,0.18), transparent 55%), radial-gradient(circle at 80% 80%, rgba(250,204,21,0.08), transparent 60%), #0a0a0c",
-            }}
-          >
-            <div className="text-center px-8">
-              <div className="font-mono text-[10px] uppercase text-yellow-400 tracking-[0.22em] mb-3">
-                Service Area
-              </div>
-              <p className="font-display text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
-                Salt Lake County · Utah County · Davis County
-              </p>
-              <p className="text-zinc-400 text-sm mt-3">
-                On-site discovery in the Wasatch Front. Remote build for the
-                rest of the United States.
-              </p>
-            </div>
-          </div>
+          {/* Aerial Salt Lake City photo — restored from the original Stitch
+              port. Hosted on Google's image CDN; if it ever fails to load,
+              swap for a local /public/contact/salt-lake-city.webp. Alt text
+              and title carry the local-SEO geography (Salt Lake City, Salt
+              Lake County, Davis County, Wasatch Front) so the image earns
+              relevance signals on Google Image search and AI Overviews. */}
+          <figure className="aspect-video w-full border border-white/10 overflow-hidden rounded-lg m-0">
+            <img
+              className="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuIbry7ajCBgUbuEwtM_jcbxCcBH0Iyi-IjkL8Vucl3h_xoM3ruqET_rHuTY09Ele-KGFiT_zlRYtUBz5OnwZikGh8D6XPs_j-oAAPv2WopOhvkYutzyNEbRbjdTBF7F1x7CB-ixuqsALqv0HH0MZaHgsttNB6SEFjQS30LMe8_ZXgf7zaIFMGcPATO8c4Z5_mKCnerup6pcwQwp1PGH_CERTAeUak8cSvm8Rd14PwFluGi3vPMMvjFyGjL4ViqH38EMEbRaDFzyM"
+              alt="Aerial night view of downtown Salt Lake City, Utah — Pantera Claw provides AI and data consulting services across Salt Lake County, Davis County, and the wider Wasatch Front."
+              title="Pantera Claw serves Salt Lake City, Salt Lake County, and Davis County along the Wasatch Front."
+              loading="lazy"
+              decoding="async"
+              width={1280}
+              height={720}
+            />
+            <figcaption className="sr-only">
+              Pantera Claw is based in Salt Lake City and serves clients across
+              Salt Lake County and Davis County along the Wasatch Front.
+            </figcaption>
+          </figure>
         </ScrollReveal>
       </section>
 

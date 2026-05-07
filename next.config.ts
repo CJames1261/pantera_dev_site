@@ -5,12 +5,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "agenticaiutah.com" }],
-        destination: "https://www.agenticaiutah.com/:path*",
-        permanent: true,
-      },
+      // Apex → www is handled by vercel.json at the edge — keeping it here
+      // too would create a second redirect hop when the apex truncated-slug
+      // URL is hit, which Google Search Console flags as a redirect chain.
+      //
       // The local-SEO post originally shipped with a slug truncated mid-word
       // ("...recommendat"). The slug now ends on "recommendations"; this 301
       // catches anything that linked to the old URL while it was live.
