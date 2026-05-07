@@ -5,7 +5,7 @@ export default function FeatureAI() {
   return (
     <section className="relative z-10 py-12">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Visual — right on desktop, below text on mobile. */}
           <ScrollReveal className="order-2">
             <div
